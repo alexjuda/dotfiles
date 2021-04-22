@@ -1,4 +1,11 @@
-# based on https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/alacritty/alacritty.yml
+# based (in general) on https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/alacritty/alacritty.yml
+
+env:
+    # Declare alacritty as a regular `xterm-256color` for better compatibility with 
+    # tools that need to run with other terminals with the same config, like `tmux`.
+    # Defaults to `alacritty`.
+    # from https://github.com/alacritty/alacritty/issues/109#issuecomment-507026155
+    TERM: xterm-256color
 
 font:
     normal:
