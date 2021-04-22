@@ -1,0 +1,10 @@
+# based on https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/alacritty/alacritty.yml
+
+font:
+    normal:
+        family: JetBrains Mono
+        style: Regular
+    size: 18
+
+    offset:
+        y: 4
