@@ -13,8 +13,13 @@ font:
         style: Regular
     size: 18
 
+    # Character padding / line height
     offset:
-        y: 4
+        y: 10
+
+    # Character baseline
+    glyph_offset:
+        y: 3 
 
 colors:
     # Doom One color scheme (https://github.com/eendroroy/alacritty-theme/blob/master/themes/doom_one.yml)
