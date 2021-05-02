@@ -15,3 +15,15 @@ Installation
     ln -s $PWD/.tmux.conf ~/.tmux.conf
     ln -s $PWD/linux/.zshrc ~/.zshrc
 
+
+neovim
+======
+
+paq
+---
+
+https://github.com/savq/paq-nvim/
+
+.. code-block:: sh
+    git clone https://github.com/savq/paq-nvim.git \
+        "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/opt/paq-nvim
