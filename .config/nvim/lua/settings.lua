@@ -93,9 +93,11 @@ vim.o.foldexpr="nvim_treesitter#foldexpr()"
 -- Buffer-local options + keymap
 
 local lsp_on_attach = function(client, buf_n)
-    vim.bo[buf_n].omnifunc = "v:lua.vim.lsp.omnifunc"
+    -- We use competion-nvim autocompletion popup instead of the built-in omnifunc
+    -- `<Plug>` commands need recursive mapping.
+    vim.api.nvim_buf_set_keymap(buf_n, "i", "<C-Space>", "<Plug>(completion_trigger)", { noremap=false })
 
-    -- keymap
+    -- Keymap
     local opts = { noremap=true }
     vim.api.nvim_buf_set_keymap(buf_n, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
