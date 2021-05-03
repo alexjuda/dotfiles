@@ -22,6 +22,10 @@ map("n", "<leader>pt", ":NERDTreeToggleVCS<CR>", opts) -- open project tree
 map("n", "<leader>po", ":NERDTreeFind<CR>", opts) -- reveal current file in project
 map("n", "<leader>pf", ":Files<CR>", opts) -- find in pwd
 
+-- Files
+----------
+map("n", "<leader>ft", ":NerdTreeToggle<CR>", opts) -- open files tree
+map("n", "<leader>fr", ":History<CR>", opts) -- recent files
 
 -- Root
 ---------
