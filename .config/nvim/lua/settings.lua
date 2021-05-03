@@ -1,4 +1,6 @@
--- UI
+--------
+-- UI --
+--------
 
 -- Improve scrolling performance, especially in tmux
 vim.o.lazyredraw = true
@@ -36,3 +38,59 @@ vim.o.numberwidth = 6
 
 -- Enable scrolling with mouse
 vim.o.mouse = "a"
+
+------------
+-- Colors --
+------------
+
+require("colorbuddy").colorscheme("onebuddy")
+
+----------------
+-- Treesitter --
+----------------
+
+-- Highlight
+--------------
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    -- custom_captures = {
+    --   -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+    --   ["foo.bar"] = "Identifier",
+    -- },
+  },
+}
+
+-- Incremental selection
+--------------------------
+
+require'nvim-treesitter.configs'.setup {
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+
+
+-- Indentation
+--------------
+
+require'nvim-treesitter.configs'.setup {
+  indent = {
+    enable = true
+  }
+}
+
+-- Folding
+----------
+
+-- Use treesitter's expressions to form folds
+vim.o.foldmethod="expr"
+vim.o.foldexpr="nvim_treesitter#foldexpr()"
+
