@@ -92,7 +92,7 @@ vim.o.foldexpr="nvim_treesitter#foldexpr()"
 
 -- Buffer-local options + keymap
 
-local lsp_on_attach = function(client, buf_n)
+local set_lsp_keymaps = function(client, buf_n)
     -- We use competion-nvim autocompletion popup instead of the built-in omnifunc
     -- `<Plug>` commands need recursive mapping.
     vim.api.nvim_buf_set_keymap(buf_n, "i", "<C-Space>", "<Plug>(completion_trigger)", { noremap=false })
@@ -114,6 +114,16 @@ local lsp_on_attach = function(client, buf_n)
     end
 end
 
+local shared_on_attach = function(client, buf_n)
+    -- Set up completion-nvim
+    require("completion").on_attach(client, buf_n)
+
+    -- TODO: port recommended completion options from
+    -- https://github.com/alexjuda/dotfiles/blob/7bb4b1803b9d8ce52c77256cc8477cc6ed45e8f5/.config/nvim/init.vim#L168
+
+    set_lsp_keymaps(client, buf_n)
+end
+
 -- Python
 require("lspconfig").pyls.setup {
     settings = {
@@ -121,5 +131,5 @@ require("lspconfig").pyls.setup {
             configurationSources = {"flake8"},
         },
     },
-    on_attach = lsp_on_attach,
+    on_attach = shared_on_attach,
 }
