@@ -7,9 +7,10 @@ local opts = { noremap = true }
 vim.g.mapleader = " " -- space as the leader key
 vim.g.maplocalleader = "," -- comma as the local leader key
 
--- vim.g.which_key_map = {}
 local which_key_map = {}
+local which_key_local_map = {}
 vim.fn["which_key#register"]("<Space>", "g:which_key_map")
+vim.fn["which_key#register"](",", "g:which_key_local_map")
 
 -- Fire which key on leader/local leader
 map("n", "<leader>", ":WhichKey '<space>'<CR>", opts)
@@ -46,6 +47,14 @@ map("n", "<leader>fr", ":History<CR>", opts) -- recent files
 ---------
 map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
 
+
+-- Local leader
+-----------------
+which_key_local_map.l = { name = "+lsp" }
+-- The actual keymap is set in LSP `on_attach` callback in `lua/settings.lua`.
+
+
 -- `vim.g` variables can't be modified in place from lua
 vim.g.which_key_map = which_key_map
+vim.g.which_key_local_map = which_key_local_map
 

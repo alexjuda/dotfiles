@@ -92,19 +92,20 @@ vim.o.foldexpr="nvim_treesitter#foldexpr()"
 
 -- Buffer-local options + keymap
 
-local lspconfig = require("lspconfig")
 local lsp_on_attach = function(client, buf_n)
-    -- vim.api.nvim_buf_set_option()
     vim.bo[buf_n].omnifunc = "v:lua.vim.lsp.omnifunc"
 
     -- keymap
     local opts = { noremap=true }
-    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ci", ":LspInfo<cr>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>li", ":LspInfo<cr>", opts)
 
     -- Set keymap only if language server supports it. This way which-key window will show only supported stuff.
     if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    end
+    if client.resolved_capabilities.document_range_formatting then
+        vim.api.nvim_buf_set_keymap(buf_n, "v", "<localleader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 end
 
