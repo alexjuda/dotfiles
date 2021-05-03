@@ -43,6 +43,12 @@ map("n", "<leader>ft", ":NerdTreeToggle<CR>", opts) -- open files tree
 map("n", "<leader>fr", ":History<CR>", opts) -- recent files
 
 
+-- Triggers
+----------
+which_key_map.T = { name = "+triggers" }
+map("n", "<leader>Tn", ":set number!<CR>", opts) -- recent files
+
+
 -- Root
 ---------
 map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
