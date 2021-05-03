@@ -146,3 +146,11 @@ require("lspconfig").pyls.setup {
 -- setup nvim-lspfuzzy
 require("lspfuzzy").setup {}
 
+-----------
+-- Notes --
+-----------
+
+require("vapor").setup {
+    daily_notes_dir = "~/Documents/notes-synced/daily",
+    notes_index_file = "~/Documents/notes-synced/README.md",
+}

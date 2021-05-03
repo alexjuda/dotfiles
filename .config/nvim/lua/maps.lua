@@ -44,9 +44,16 @@ map("n", "<leader>fr", ":History<CR>", opts) -- recent files
 
 
 -- Triggers
-----------
+-------------
 which_key_map.T = { name = "+triggers" }
 map("n", "<leader>Tn", ":set number!<CR>", opts) -- recent files
+
+
+-- Notes
+----------
+which_key_map.n = { name = "+notes" }
+map("n", "<leader>nd", ":lua require('vapor').open_daily_note()<CR>", opts) -- recent files
+map("n", "<leader>ni", ":lua require('vapor').open_notes_index()<CR>", opts) -- recent files
 
 
 -- Root
