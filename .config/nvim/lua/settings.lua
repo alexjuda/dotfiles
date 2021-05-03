@@ -97,8 +97,11 @@ local lsp_on_attach = function(client, buf_n)
 
     -- keymap
     local opts = { noremap=true }
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lD", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>li", ":LspInfo<cr>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
     -- Set keymap only if language server supports it. This way which-key window will show only supported stuff.
     if client.resolved_capabilities.document_formatting then
