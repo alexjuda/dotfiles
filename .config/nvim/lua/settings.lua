@@ -49,9 +49,7 @@ require("colorbuddy").colorscheme("onebuddy")
 -- Treesitter --
 ----------------
 
--- Highlight
---------------
-
+-- highlight
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -62,9 +60,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
--- Incremental selection
---------------------------
-
+-- incremental selection
 require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
@@ -78,19 +74,46 @@ require'nvim-treesitter.configs'.setup {
 }
 
 
--- Indentation
---------------
-
+-- indentation
 require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   }
 }
 
--- Folding
-----------
-
+-- folding
 -- Use treesitter's expressions to form folds
 vim.o.foldmethod="expr"
 vim.o.foldexpr="nvim_treesitter#foldexpr()"
 
+---------
+-- LSP --
+---------
+
+-- Buffer-local options + keymap
+
+local lspconfig = require("lspconfig")
+local lsp_on_attach = function(client, buf_n)
+    -- vim.api.nvim_buf_set_option()
+    vim.bo[buf_n].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+    -- keymap
+    local opts = { noremap=true }
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>cd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ci", ":LspInfo<cr>", opts)
+
+    -- Set keymap only if language server supports it. This way which-key window will show only supported stuff.
+    if client.resolved_capabilities.document_formatting then
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    end
+end
+
+-- Python
+require("lspconfig").pyls.setup {
+    settings = {
+        pyls = {
+            configurationSources = {"flake8"},
+        },
+    },
+    on_attach = lsp_on_attach,
+}
