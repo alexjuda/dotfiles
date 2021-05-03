@@ -133,3 +133,16 @@ require("lspconfig").pyls.setup {
     },
     on_attach = shared_on_attach,
 }
+
+
+-----------
+-- Fuzzy --
+-----------
+
+-- Allow fuzzy matching in autocomplete popup
+-- Tis no work yo :(
+-- vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy", }
+
+-- setup nvim-lspfuzzy
+require("lspfuzzy").setup {}
+
