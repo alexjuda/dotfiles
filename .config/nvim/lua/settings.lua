@@ -2,6 +2,10 @@
 -- UI --
 --------
 
+-- Buffer- or window-local options that we want to provide deafults for need
+-- to be set both globally and "locally". 
+-- See https://oroques.dev/notes/neovim-init/#set-options
+
 -- Improve scrolling performance, especially in tmux
 vim.o.lazyredraw = true
 
@@ -18,23 +22,30 @@ vim.o.timeoutlen = 200
 
 -- Tab size
 vim.o.tabstop = 4
+vim.bo.tabstop = 4
 vim.o.shiftwidth = 4
+vim.bo.shiftwidth = 4
 vim.o.expandtab = true
+vim.bo.expandtab = true
 
 -- Ask for confirmation instead of failing by default
 vim.o.confirm = true
 
 -- Show at least one more line when scrolling
 vim.o.scrolloff = 1
+vim.wo.scrolloff = 1
 
 -- Highlight line under cursor
 vim.o.cursorline = true
+vim.wo.cursorline = true
 
 -- Show line numbers
 vim.o.number = true
+vim.wo.number = true
 
 -- Add some left margin
 vim.o.numberwidth = 6
+vim.wo.numberwidth = 6
 
 -- Enable scrolling with mouse
 vim.o.mouse = "a"
