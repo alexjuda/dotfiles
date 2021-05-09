@@ -151,13 +151,21 @@ require("lspconfig").pyls.setup {
 
 
 -- Java
+-- Assumes that a language server distribution is available in the proper 
+-- directory. Fetch it from https://ftp.fau.de/eclipse/jdtls/snapshots/, put 
+-- it in ~/.local/share/aj-lsp/ and make a symlink so the paths here work.
+
+local is_mac = function() 
+    return vim.fn.has("macunix") == 1
+end
+
 require("lspconfig").jdtls.setup {
     cmd = {
         "java",
         "-jar",
-        "/Users/alex/Downloads/jdt-language-server-1.1.0-202104161621.tar/plugins/org.eclipse.equinox.launcher_1.6.100.v20201223-0822.jar",
+        vim.env.HOME .. "/.local/share/aj-lsp/jdtls/plugins/org.eclipse.equinox.launcher_1.6.100.v20201223-0822.jar",
         "-configuration",
-        "/Users/alex/Downloads/jdt-language-server-1.1.0-202104161621.tar/config_mac",
+        vim.env.HOME .. "/.local/share/aj-lsp/jdtls/" .. (is_mac() and "config_mac" or "config_linux"),
     },
 
     on_attach = shared_on_attach,
