@@ -41,19 +41,20 @@ map("n", "<leader>pf", ":Files<CR>", opts) -- find in pwd
 which_key_map.f = { name = "+files" }
 map("n", "<leader>ft", ":NerdTreeToggle<CR>", opts) -- open files tree
 map("n", "<leader>fr", ":History<CR>", opts) -- recent files
+map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
 
 
 -- Triggers
 -------------
 which_key_map.T = { name = "+triggers" }
-map("n", "<leader>Tn", ":set number!<CR>", opts) -- recent files
+map("n", "<leader>Tn", ":set number!<CR>", opts)
 
 
 -- Notes
 ----------
 which_key_map.n = { name = "+notes" }
-map("n", "<leader>nd", ":lua require('vapor').open_daily_note()<CR>", opts) -- recent files
-map("n", "<leader>ni", ":lua require('vapor').open_notes_index()<CR>", opts) -- recent files
+map("n", "<leader>nd", ":lua require('vapor').open_daily_note()<CR>", opts)
+map("n", "<leader>ni", ":lua require('vapor').open_notes_index()<CR>", opts)
 
 
 -- Root
