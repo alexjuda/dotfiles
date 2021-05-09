@@ -50,6 +50,10 @@ vim.wo.numberwidth = 6
 -- Enable scrolling with mouse
 vim.o.mouse = "a"
 
+-- Improve experience with nvim-completion
+vim.o.completeopt = "menuone,noinsert,noselect"
+
+
 ------------
 -- Colors --
 ------------
