@@ -150,6 +150,20 @@ require("lspconfig").pyls.setup {
 }
 
 
+-- Java
+require("lspconfig").jdtls.setup {
+    cmd = {
+        "java",
+        "-jar",
+        "/Users/alex/Downloads/jdt-language-server-1.1.0-202104161621.tar/plugins/org.eclipse.equinox.launcher_1.6.100.v20201223-0822.jar",
+        "-configuration",
+        "/Users/alex/Downloads/jdt-language-server-1.1.0-202104161621.tar/config_mac",
+    },
+
+    on_attach = shared_on_attach,
+}
+
+
 -----------
 -- Fuzzy --
 -----------
