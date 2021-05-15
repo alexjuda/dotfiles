@@ -21,6 +21,14 @@ font:
     glyph_offset:
         y: 3 
 
+window:
+    # hide window title bar
+    # based on https://github.com/alacritty/alacritty/issues/168
+    # decorations: "full"
+    # decorations: "transparent"
+    # decorations: "buttonless"
+    decorations: "none"
+    
 import:
     - ~/.config/alacritty/themes/dracula.yml
 
