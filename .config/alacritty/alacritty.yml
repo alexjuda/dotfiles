@@ -28,6 +28,11 @@ window:
     # decorations: "transparent"
     # decorations: "buttonless"
     decorations: "none"
+
+    padding:
+        # window margin
+        x: 10
+        y: 6
     
 import:
     - ~/.config/alacritty/themes/dracula.yml
