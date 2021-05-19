@@ -192,3 +192,11 @@ require("vapor").setup {
     daily_notes_dir = "~/Documents/notes-synced/daily",
     notes_index_file = "~/Documents/notes-synced/README.md",
 }
+
+
+----------------
+-- File types --
+----------------
+
+-- # defaults to 'shiftwidth() * 2'
+vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")
