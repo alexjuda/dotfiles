@@ -53,6 +53,9 @@ vim.o.mouse = "a"
 -- Improve experience with nvim-completion
 vim.o.completeopt = "menuone,noinsert,noselect"
 
+-- Switch buffers without saving
+vim.o.hidden = true
+
 
 ------------
 -- Colors --
