@@ -34,6 +34,11 @@ window:
         x: 10
         y: 6
     
+key_bindings:
+    # Make Alt-Left, Alt-Right move between words
+    - { key: Right, mods: Alt, chars: "\x1BF" }
+    - { key: Left,  mods: Alt, chars: "\x1BB" }
+
 import:
     - ~/.config/alacritty/themes/dracula.yml
 
