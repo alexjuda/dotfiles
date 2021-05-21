@@ -33,7 +33,7 @@ map("n", "<leader><TAB>", "<C-^>", opts) -- switch to last buffer
 which_key_map.p = { name = "+project" }
 map("n", "<leader>pt", ":NERDTreeToggleVCS<CR>", opts) -- open project tree
 map("n", "<leader>po", ":NERDTreeFind<CR>", opts) -- reveal current file in project
-map("n", "<leader>pf", ":Files<CR>", opts) -- find in pwd
+map("n", "<leader>pf", ":GitFiles<CR>", opts) -- find in git-recognized files
 
 
 -- Files
@@ -42,6 +42,7 @@ which_key_map.f = { name = "+files" }
 map("n", "<leader>ft", ":NerdTreeToggle<CR>", opts) -- open files tree
 map("n", "<leader>fr", ":History<CR>", opts) -- recent files
 map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
+map("n", "<leader>ff", ":Files<CR>", opts) -- find in pwd
 
 
 -- Triggers
