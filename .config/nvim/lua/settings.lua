@@ -56,6 +56,10 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 -- Switch buffers without saving
 vim.o.hidden = true
 
+-- Set line lengths to 88 by default
+vim.o.textwidth = 88
+vim.bo.textwidth = 88
+
 
 ------------
 -- Colors --
