@@ -68,7 +68,7 @@ require("colorbuddy").colorscheme("onebuddy")
 ----------------
 
 -- highlight
-require'nvim-treesitter.configs'.setup {
+require"nvim-treesitter.configs".setup {
   highlight = {
     enable = true,
     -- custom_captures = {
@@ -79,7 +79,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- incremental selection
-require'nvim-treesitter.configs'.setup {
+require"nvim-treesitter.configs".setup {
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -92,7 +92,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- indentation
-require'nvim-treesitter.configs'.setup {
+require"nvim-treesitter.configs".setup {
   indent = {
     enable = true
   }
@@ -128,5 +128,5 @@ require("vapor").setup {
 -- File types --
 ----------------
 
--- # defaults to 'shiftwidth() * 2'
+-- # defaults to "shiftwidth() * 2"
 vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")

@@ -1,4 +1,4 @@
-require('pkgs')
-require('settings')
-require('maps')
-require('lsp')
+require("pkgs")
+require("settings")
+require("maps")
+require("lsp")
