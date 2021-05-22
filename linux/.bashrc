@@ -141,6 +141,8 @@ eval "$(pyenv virtualenv-init -)"
 # make `cd` completions case insensitive
 bind 'set completion-ignore-case on'
 
+# set prompt
+PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/alex/.sdkman"
