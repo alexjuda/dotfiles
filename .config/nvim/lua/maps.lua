@@ -68,6 +68,12 @@ map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
 which_key_local_map.l = { name = "+lsp" }
 -- The actual keymap is set in LSP `on_attach` callback in `lua/settings.lua`.
 
+-- TODO: bind the keybindings only for python files
+which_key_local_map.s = { name = "+repl" }
+map("n", "<localleader>sc", ":JupyterConnect<CR>", opts)
+map("n", "<localleader>sb", ":JupyterRunFile<CR>", opts)
+map("v", "<localleader>sr", ":JupyterSendRange<CR>", opts)
+
 
 -- `vim.g` variables can't be modified in place from lua
 vim.g.which_key_map = which_key_map
