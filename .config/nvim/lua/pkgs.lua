@@ -23,6 +23,7 @@ paq { 'scrooloose/nerdtree' }
 paq { 'liuchengxu/vim-which-key' }
 paq { 'airblade/vim-rooter' }
 paq {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end} -- Update the parsers on plugin update
+paq { 'jupyter-vim/jupyter-vim' }
 
 
 -- LSP
