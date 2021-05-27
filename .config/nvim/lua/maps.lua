@@ -56,6 +56,8 @@ map("n", "<leader>Tn", ":set number!<CR>", opts)
 which_key_map.n = { name = "+notes" }
 map("n", "<leader>nd", ":lua require('vapor').open_daily_note()<CR>", opts)
 map("n", "<leader>ni", ":lua require('vapor').open_notes_index()<CR>", opts)
+map("n", "<leader>nl", ":lua require('nabla').place_inline()<CR>", opts)
+map("n", "<F5>", ":lua require('nabla').place_inline()<CR>", opts) -- nabla.vim recommends this
 
 
 -- Root
