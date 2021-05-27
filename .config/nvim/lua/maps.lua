@@ -73,7 +73,10 @@ which_key_local_map.l = { name = "+lsp" }
 -- TODO: bind the keybindings only for python files
 which_key_local_map.s = { name = "+repl" }
 map("n", "<localleader>sc", ":JupyterConnect<CR>", opts)
+map("n", "<localleader>sd", ":JupyterDisconnect<CR>", opts)
 map("n", "<localleader>sb", ":JupyterRunFile<CR>", opts)
+map("n", "<localleader>se", ":JupyterRunCell<CR>", opts)
+map("n", "<localleader>sk", ":JupyterTerminateKernel<CR>", opts)
 map("v", "<localleader>sr", ":JupyterSendRange<CR>", opts)
 
 
