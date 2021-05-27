@@ -55,4 +55,5 @@ paq {'machakann/vim-sandwich'}
 ----------
 paq {'tpope/vim-markdown'}
 -- Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+paq {'jbyuki/nabla.nvim'}
 
