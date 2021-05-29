@@ -14,7 +14,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 -- Use point system clipboard to the default register
-vim.o.clipboard = "unnamed"
+vim.o.clipboard = "unnamedplus"
 
 -- Speed up firing up the WhichKey pane.
 -- By default timeoutlen is 1000 ms.
