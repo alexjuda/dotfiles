@@ -60,6 +60,13 @@ vim.o.hidden = true
 vim.o.textwidth = 88
 vim.bo.textwidth = 88
 
+-- Reload files edited externally
+vim.cmd([[
+augroup aj-load-external-edits |
+    autocmd! |
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
+augroup END |
+]])
 
 ------------
 -- Colors --
