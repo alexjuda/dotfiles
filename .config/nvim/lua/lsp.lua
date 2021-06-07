@@ -53,6 +53,17 @@ require("lspconfig").pyls.setup {
 }
 
 
+-- JavaScript --
+----------------
+-- Requires `typescript` and `typescript-language-server` packages.
+-- If they're not installed locally, it will fetch them each time.
+
+require("lspconfig").tsserver.setup {
+    cmd = { "npx", "typescript-language-server", "--stdio", },
+    on_attach = shared_on_attach,
+}
+
+
 -- Java --
 ----------
 -- Assumes that a language server distribution is available in the proper
