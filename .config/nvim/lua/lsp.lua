@@ -2,6 +2,9 @@
 -- LSP --
 ---------
 
+-- show all lsp log msgs
+-- vim.lsp.set_log_level("debug")
+
 -- Buffer-local options + keymap
 
 local set_lsp_keymaps = function(client, buf_n)
