@@ -2,6 +2,9 @@
 -- LSP --
 ---------
 
+-- show all lsp log msgs
+-- vim.lsp.set_log_level("debug")
+
 -- Buffer-local options + keymap
 
 local set_lsp_keymaps = function(client, buf_n)
@@ -46,6 +49,17 @@ require("lspconfig").pyls.setup {
             configurationSources = {"flake8"},
         },
     },
+    on_attach = shared_on_attach,
+}
+
+
+-- JavaScript --
+----------------
+-- Requires `typescript` and `typescript-language-server` packages.
+-- If they're not installed locally, it will fetch them each time.
+
+require("lspconfig").tsserver.setup {
+    cmd = { "npx", "typescript-language-server", "--stdio", },
     on_attach = shared_on_attach,
 }
 
