@@ -28,6 +28,16 @@ map("n", "<leader>bd", ":bdelete<cr>", opts)
 map("n", "<leader><TAB>", "<C-^>", opts) -- switch to last buffer
 
 
+-- Tabs
+------------
+which_key_map.t = { name = "+tabs" }
+map("n", "<leader>tt", ":tabs<cr>", opts) -- list all tabs
+map("n", "<leader>tc", ":tabnew<cr>", opts)
+map("n", "<leader>tn", ":tabNext<cr>", opts) -- aka `gt`
+map("n", "<leader>tp", ":tabprevious<cr>", opts) -- aka `gT`
+map("n", "<leader>td", ":tabclose<cr>", opts)
+map("n", "<leader>tD", ":tabonly<cr>", opts) -- kill all except current tab
+
 -- Project
 ------------
 which_key_map.p = { name = "+project" }
