@@ -8,9 +8,15 @@ env:
     TERM: xterm-256color
 
 font:
+    # Medium font on linux looks closer to macOS regular font rendering
     normal:
         family: JetBrains Mono
-        style: Regular
+        style: Medium
+
+    italic:
+        family: JetBrains Mono
+        style: Medium Italic
+
     size: 18
 
     # Character padding / line height
