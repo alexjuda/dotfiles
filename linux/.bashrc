@@ -127,16 +127,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# pypoetry
-export PATH="~/.poetry/bin:$PATH"
-
-# make poetry's virtual envs be visible by emacs
-export WORKON_HOME=$(poetry config virtualenvs.path)
-
 # pyenv
 export PATH="/home/alex/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # make `cd` completions case insensitive
 bind 'set completion-ignore-case on'
