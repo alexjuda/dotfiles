@@ -30,10 +30,10 @@ font:
 window:
     # hide window title bar
     # based on https://github.com/alacritty/alacritty/issues/168
-    # decorations: "full"
+    decorations: "full"  # default
     # decorations: "transparent"
     # decorations: "buttonless"
-    decorations: "none"
+    # decorations: "none"
 
     padding:
         # window margin
