@@ -9,6 +9,7 @@ alias ggfl="git push --force-with-lease"
 alias gl="git pull"
 alias gm="git merge"
 alias gp="git push"
+alias gpsup='git push --set-upstream origin $(git branch --show-current)'
 alias grb="git rebase"
 alias grh="git reset"
 alias grhh="git reset --hard"
