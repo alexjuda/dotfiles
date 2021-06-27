@@ -35,10 +35,10 @@ window:
     # decorations: "buttonless"
     # decorations: "none"
 
-    padding:
-        # window margin
-        x: 10
-        y: 6
+    # window margin
+    # padding:
+    #     x: 10
+    #     y: 6
     
 key_bindings:
     # Make Alt-Left, Alt-Right move between words
