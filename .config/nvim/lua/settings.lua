@@ -47,6 +47,9 @@ vim.wo.number = true
 vim.o.numberwidth = 6
 vim.wo.numberwidth = 6
 
+-- Don't show tildes for end of buffer lines
+vim.o.fillchars = vim.o.fillchars .. "eob: "
+
 -- Enable scrolling with mouse
 vim.o.mouse = "a"
 
