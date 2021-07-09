@@ -21,11 +21,11 @@ font:
 
     # Character padding / line height
     offset:
-        y: 10
+        y: 4
 
     # Character baseline
     glyph_offset:
-        y: 3 
+        y: 1
 
 window:
     # hide window title bar
