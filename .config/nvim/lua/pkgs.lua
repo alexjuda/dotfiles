@@ -23,8 +23,7 @@ paq { 'scrooloose/nerdtree' }
 paq { 'liuchengxu/vim-which-key' }
 paq { 'airblade/vim-rooter' }
 paq {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end} -- Update the parsers on plugin update
-paq { 'jupyter-vim/jupyter-vim' }
-
+paq {'akinsho/nvim-bufferline.lua'}
 
 -- LSP
 -- -----
@@ -49,6 +48,10 @@ paq {'ojroques/nvim-lspfuzzy'}
 paq {'tpope/vim-commentary'}
 paq {'machakann/vim-sandwich'}
 
+
+-- Integrations
+-----------------
+paq { 'jupyter-vim/jupyter-vim' }
 
 ----------
 -- Notes

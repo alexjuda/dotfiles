@@ -63,6 +63,9 @@ vim.o.hidden = true
 vim.o.textwidth = 88
 vim.bo.textwidth = 88
 
+-- Required by bufferline
+vim.o.termguicolors = true
+
 -- Reload files edited externally
 vim.cmd([[
 augroup aj-load-external-edits |
@@ -127,6 +130,13 @@ vim.o.foldexpr="nvim_treesitter#foldexpr()"
 
 -- setup nvim-lspfuzzy
 require("lspfuzzy").setup {}
+
+
+-----------------
+-- Buffer tabs --
+-----------------
+
+require("bufferline").setup {}
 
 -----------
 -- Notes --
