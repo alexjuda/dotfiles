@@ -27,3 +27,9 @@ https://github.com/savq/paq-nvim/
 .. code-block:: sh
     git clone https://github.com/savq/paq-nvim.git \
         "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/opt/paq-nvim
+
+fonts
+-----
+
+`nvim-bufferline.lua` requires using a font patched with devicon glyphs. 
+Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>`_.

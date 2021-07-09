@@ -23,7 +23,11 @@ paq { 'scrooloose/nerdtree' }
 paq { 'liuchengxu/vim-which-key' }
 paq { 'airblade/vim-rooter' }
 paq {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end} -- Update the parsers on plugin update
+
+-- buffers presented in a tab bar + fancy icons
 paq {'akinsho/nvim-bufferline.lua'}
+paq {'kyazdani42/nvim-web-devicons'}
+
 
 -- LSP
 -- -----
@@ -32,7 +36,6 @@ paq {'neovim/nvim-lspconfig'}
 
 -- Fuzzy completion
 ---------------------
--- paq {'junegunn/fzf', run= { -> fzf#install() } }
 paq {'junegunn/fzf', run=vim.fn["fzf#install"]}
 paq {'junegunn/fzf.vim'}
 
@@ -45,7 +48,9 @@ paq {'ojroques/nvim-lspfuzzy'}
 
 -- Editing
 ------------
+-- trigger comments with `gcc`
 paq {'tpope/vim-commentary'}
+-- wrap selected block in chars
 paq {'machakann/vim-sandwich'}
 
 
