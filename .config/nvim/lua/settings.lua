@@ -74,6 +74,10 @@ augroup aj-load-external-edits |
 augroup END |
 ]])
 
+-- Disable the bottom line with mode name like "-- INSERT --". Status line 
+-- already provides this information.
+vim.o.showmode = false
+
 ------------
 -- Colors --
 ------------
@@ -117,8 +121,8 @@ require"nvim-treesitter.configs".setup {
 
 -- folding
 -- Use treesitter's expressions to form folds
-vim.o.foldmethod="expr"
-vim.o.foldexpr="nvim_treesitter#foldexpr()"
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -----------
 -- Fuzzy --
@@ -130,6 +134,20 @@ vim.o.foldexpr="nvim_treesitter#foldexpr()"
 
 -- setup nvim-lspfuzzy
 require("lspfuzzy").setup {}
+
+
+-----------------
+-- Status line --
+-----------------
+
+vim.g.lightline = {
+    enable = {
+        -- Disable lightline's buffer tab bar
+        tabline = 0,
+    },
+    -- Match the status line's colors to the rest of the editor
+    colorscheme = "one",
+}
 
 
 -----------------

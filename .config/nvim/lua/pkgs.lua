@@ -28,6 +28,9 @@ paq {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end}
 paq {'akinsho/nvim-bufferline.lua'}
 paq {'kyazdani42/nvim-web-devicons'}
 
+-- nicer bottom status line
+paq {'itchyny/lightline.vim'}
+
 
 -- LSP
 -- -----
