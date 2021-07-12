@@ -19,13 +19,13 @@ font:
 
     size: 18
 
-    # Character padding / line height
+    # Vertical character padding. Increase to make line higher.
     offset:
         y: 4
 
-    # Character baseline
+    # Character baseline. Increase to move text up.
     glyph_offset:
-        y: 1
+        y: 2
 
 window:
     # hide window title bar
