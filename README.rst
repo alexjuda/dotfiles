@@ -1,4 +1,4 @@
-###########
+##########
 my dotfiles
 ###########
 
@@ -16,6 +16,10 @@ Installation
     ln -s $PWD/linux/.zshrc ~/.zshrc
 
 
+**********
+Misc setup
+**********
+
 neovim
 ======
 
@@ -25,6 +29,7 @@ paq
 https://github.com/savq/paq-nvim/
 
 .. code-block:: sh
+
     git clone https://github.com/savq/paq-nvim.git \
         "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/opt/paq-nvim
 
@@ -33,3 +38,21 @@ fonts
 
 `nvim-bufferline.lua` requires using a font patched with devicon glyphs. 
 Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>`_.
+
+
+keyboard
+========
+
+revert fn behaviour
+-------------------
+
+Add the following line to `/etc/modprobe.d/hid_apple.conf`
+
+.. code-block:: sh
+    
+    options hid_apple fnmode=2
+
+
+.. code-block:: sh
+    
+    sudo update-initramfs -u
