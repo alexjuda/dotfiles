@@ -172,3 +172,5 @@ require("vapor").setup {
 
 -- # defaults to "shiftwidth() * 2"
 vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")
+
+vim.g.markdown_folding = true
