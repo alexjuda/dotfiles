@@ -66,17 +66,28 @@ vim.bo.textwidth = 88
 -- Required by bufferline
 vim.o.termguicolors = true
 
--- Reload files edited externally
-vim.cmd([[
-augroup aj-load-external-edits |
-    autocmd! |
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
-augroup END |
-]])
 
 -- Disable the bottom line with mode name like "-- INSERT --". Status line 
 -- already provides this information.
 vim.o.showmode = false
+
+------------------
+-- Autocommands --
+------------------
+
+-- Reload files edited externally
+-- vim.cmd([[
+-- augroup aj-load-external-edits
+--     autocmd!
+--     autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
+-- augroup END |
+-- ]])
+
+vim.cmd([[
+augroup aj-set-file-indent-width 
+    autocmd Filetype yaml setlocal shiftwidth=2
+augroup END
+]])
 
 ------------
 -- Colors --
