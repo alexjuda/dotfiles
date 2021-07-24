@@ -56,6 +56,11 @@ paq {'tpope/vim-commentary'}
 -- wrap selected block in chars
 paq {'machakann/vim-sandwich'}
 
+-- Languages
+--------------
+-- Nix 
+paq {'LnL7/vim-nix'}
+
 
 -- Integrations
 -----------------
