@@ -43,7 +43,7 @@ end
 -- Python --
 ------------
 
-require("lspconfig").pyls.setup {
+require("lspconfig").pylsp.setup {
     settings = {
         pyls = {
             configurationSources = {"flake8"},
