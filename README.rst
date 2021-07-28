@@ -56,3 +56,27 @@ Add the following line to `/etc/modprobe.d/hid_apple.conf`
 .. code-block:: sh
     
     sudo update-initramfs -u
+
+
+pipx
+====
+
+The only python package that needs to be installed globally
+
+.. code-block:: sh
+    
+    pip install -u pipx
+
+
+LSP
+===
+
+Python
+------
+
+
+.. code-block:: sh
+    
+    pipx install 'python-lsp-server[flake8,mccabe,rope]'
+    pipx inject python-lsp-server python-lsp-black
+
