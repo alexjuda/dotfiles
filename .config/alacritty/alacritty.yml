@@ -10,18 +10,18 @@ env:
 font:
     # Medium font on linux looks closer to macOS regular font rendering
     normal:
-        family: JetBrains Mono
+        family: JetBrainsMono Nerd Font
         style: Medium
 
-    italic:
-        family: JetBrains Mono
-        style: Medium Italic
+    # italic:
+    #     family: JetBrains Mono
+    #     style: Medium Italic
 
     size: 18
 
     # Vertical character padding. Increase to make line higher.
     offset:
-        y: 4
+        y: 8
 
     # Character baseline. Increase to move text up.
     glyph_offset:
