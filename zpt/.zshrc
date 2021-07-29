@@ -115,7 +115,13 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$PATH:/Users/alex/.local/bin"
 
 # use homebrew's openblas
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/openblas/lib"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openblas/include"
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/openblas/lib/pkgconfig"
+export LDFLAGS="-L/usr/local/opt/openblas/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
+export OPENBLAS="/usr/local/opt/openblas"
+
+# use homebrew's lapack
+export LDFLAGS="-L/usr/local/opt/lapack/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/lapack/include $CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/lapack/lib/pkgconfig:$PKG_CONFIG_PATH"
 
