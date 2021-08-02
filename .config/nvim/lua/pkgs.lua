@@ -2,10 +2,8 @@
 -- Paq config
 ---------------
 
-vim.cmd 'packadd paq-nvim'         -- Load package
-
-local paq = require'paq-nvim'.paq  -- Import module and bind `paq` function
-paq {'savq/paq-nvim', opt=true}    -- Let Paq manage itself
+require "paq" {
+"savq/paq-nvim";                  -- Let Paq manage itself
 
 --------------
 -- Packages
@@ -13,63 +11,64 @@ paq {'savq/paq-nvim', opt=true}    -- Let Paq manage itself
 
 -- Theme 
 ----------
-paq {'tjdevries/colorbuddy.vim'}
-paq {'Th3Whit3Wolf/onebuddy'}
+{'tjdevries/colorbuddy.vim'};
+{'Th3Whit3Wolf/onebuddy'};
 
 
 -- UI
 -------
-paq { 'scrooloose/nerdtree' }
-paq { 'liuchengxu/vim-which-key' }
-paq { 'airblade/vim-rooter' }
-paq {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end} -- Update the parsers on plugin update
+{ 'scrooloose/nerdtree' };
+{ 'liuchengxu/vim-which-key' };
+{ 'airblade/vim-rooter' };
+{'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end}; -- Update the parsers on plugin update
 
 -- buffers presented in a tab bar + fancy icons
-paq {'akinsho/nvim-bufferline.lua'}
-paq {'kyazdani42/nvim-web-devicons'}
+{'akinsho/nvim-bufferline.lua'};
+{'kyazdani42/nvim-web-devicons'};
 
 -- nicer bottom status line
-paq {'itchyny/lightline.vim'}
+{'itchyny/lightline.vim'};
 
 
 -- LSP
 -- -----
-paq {'neovim/nvim-lspconfig'}
+{'neovim/nvim-lspconfig'};
 
 
 -- Fuzzy completion
 ---------------------
-paq {'junegunn/fzf', run=vim.fn["fzf#install"]}
-paq {'junegunn/fzf.vim'}
+{'junegunn/fzf', run=vim.fn["fzf#install"]};
+{'junegunn/fzf.vim'};
 
 -- fuzzy matching for LSP completion
-paq {'nvim-lua/completion-nvim'}
+{'nvim-lua/completion-nvim'};
 
 -- fuzzy matching for other LSP commands
-paq {'ojroques/nvim-lspfuzzy'}
+{'ojroques/nvim-lspfuzzy'};
 
 
 -- Editing
 ------------
 -- trigger comments with `gcc`
-paq {'tpope/vim-commentary'}
+{'tpope/vim-commentary'};
 -- wrap selected block in chars
-paq {'machakann/vim-sandwich'}
+'machakann/vim-sandwich';
 
 -- Languages
 --------------
 -- Nix 
-paq {'LnL7/vim-nix'}
+'LnL7/vim-nix';
 
 
 -- Integrations
 -----------------
-paq { 'jupyter-vim/jupyter-vim' }
+'jupyter-vim/jupyter-vim';
 
 ----------
 -- Notes
 ----------
-paq {'tpope/vim-markdown'}
+'tpope/vim-markdown';
 -- Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-paq {'jbyuki/nabla.nvim'}
+'jbyuki/nabla.nvim';
 
+}
