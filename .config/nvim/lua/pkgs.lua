@@ -17,9 +17,13 @@ require "paq" {
 
 -- UI
 -------
+-- file explorer
 { 'scrooloose/nerdtree' };
+-- leader keybindings helper window
 { 'liuchengxu/vim-which-key' };
+-- `cd` after opening a file
 { 'airblade/vim-rooter' };
+-- code parser for syntax highlight & folds
 {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end}; -- Update the parsers on plugin update
 
 -- buffers presented in a tab bar + fancy icons
