@@ -71,6 +71,18 @@ vim.o.termguicolors = true
 -- already provides this information.
 vim.o.showmode = false
 
+
+
+-- NERDTree --
+--------------
+
+-- Disables the 'Bookmarks' label 'Press ? for help' text.  Default: false
+vim.g.NERDTreeMinimalUI = true
+
+-- When using a context menu to delete or rename a file you may also want to delete the
+-- buffer which is no more valid. Default: false
+vim.g.NERDTreeAutoDeleteBuffer = true
+
 ------------------
 -- Autocommands --
 ------------------
