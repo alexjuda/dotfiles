@@ -45,7 +45,7 @@ end
 
 require("lspconfig").pylsp.setup {
     settings = {
-        pyls = {
+        pylsp = {
             configurationSources = {"flake8"},
         },
     },
