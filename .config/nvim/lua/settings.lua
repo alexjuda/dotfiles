@@ -99,6 +99,7 @@ vim.g.NERDTreeAutoDeleteBuffer = true
 vim.cmd([[
 augroup aj-set-file-indent-width 
     autocmd Filetype yaml setlocal shiftwidth=2
+    autocmd Filetype html setlocal shiftwidth=2
 augroup END
 ]])
 
