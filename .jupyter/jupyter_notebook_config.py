@@ -390,6 +390,7 @@
 #  configuration option.
 #  Default: True
 # c.NotebookApp.open_browser = True
+c.NotebookApp.open_browser = False
 
 ## Hashed password to use for web authentication.
 #
