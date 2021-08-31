@@ -63,6 +63,7 @@ vim.o.hidden = true
 vim.o.textwidth = 88
 vim.bo.textwidth = 88
 
+
 -- Required by bufferline
 vim.o.termguicolors = true
 
@@ -172,8 +173,7 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -----------
 
 -- Allow fuzzy matching in autocomplete popup
--- Tis no work yo :(
--- vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy", }
+vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy", }
 
 -- setup nvim-lspfuzzy
 require("lspfuzzy").setup {}
