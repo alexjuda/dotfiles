@@ -83,6 +83,9 @@ vim.g.NERDTreeMinimalUI = true
 -- buffer which is no more valid. Default: false
 vim.g.NERDTreeAutoDeleteBuffer = true
 
+-- Show hidden files by default
+vim.g.NERDTreeShowHidden = true
+
 ------------------
 -- Autocommands --
 ------------------
