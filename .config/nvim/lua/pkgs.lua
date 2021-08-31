@@ -30,6 +30,12 @@ require "paq" {
     'akinsho/nvim-bufferline.lua';
     'kyazdani42/nvim-web-devicons';
 
+    -- show icons in NERDTree
+    'ryanoasis/vim-devicons';
+
+    -- make the icons in NERDTree have nice colors
+    'tiagofumo/vim-nerdtree-syntax-highlight';
+
     -- nicer bottom status line
     'itchyny/lightline.vim';
 
