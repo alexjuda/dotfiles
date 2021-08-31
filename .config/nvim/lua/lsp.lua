@@ -8,7 +8,7 @@
 -- Buffer-local options + keymap
 
 local set_lsp_keymaps = function(client, buf_n)
-    -- We use competion-nvim autocompletion popup instead of the built-in omnifunc
+    -- We use completion-nvim autocompletion popup instead of the built-in omnifunc
     -- `<Plug>` commands need recursive mapping.
     vim.api.nvim_buf_set_keymap(buf_n, "i", "<C-Space>", "<Plug>(completion_trigger)", { noremap=false })
 
