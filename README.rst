@@ -80,3 +80,25 @@ Python
     pipx install 'python-lsp-server[flake8,mccabe,rope]'
     pipx inject python-lsp-server python-lsp-black
 
+
+JavaScript
+----------
+
+Don't worry about the "-g" flag, npm handles dependency isolation between libraries.
+
+
+.. code-block:: sh
+
+   npm install -g typescript typescript-language-server
+
+
+JSON
+----
+
+Don't worry about the "-g" flag, npm handles dependency isolation between libraries.
+
+
+.. code-block:: sh
+
+   npm install -g vscode-langservers-extracted
+
