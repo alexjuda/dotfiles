@@ -39,6 +39,19 @@ fonts
 `nvim-bufferline.lua` requires using a font patched with devicon glyphs. 
 Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>`_.
 
+tree-sitter
+-----------
+
+By default tree sitter comes with only C installed.
+
+Run:
+
+.. code-block:: viml
+
+   :TSModuleInfo
+   :TSInstall python
+   :TSModuleInfo
+
 
 keyboard
 ========
