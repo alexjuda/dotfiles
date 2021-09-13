@@ -122,6 +122,15 @@ augroup aj-nerdtree-buffers
 augroup END
 ]])
 
+-- Tame Tree-Sitter folds
+-- source: https://stackoverflow.com/a/8316471
+vim.cmd([[
+augroup aj-open-folds-by-default 
+    autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+augroup END
+]])
+
+
 ------------
 -- Colors --
 ------------
