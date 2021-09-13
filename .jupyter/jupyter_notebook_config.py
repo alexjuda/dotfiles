@@ -134,6 +134,7 @@
 ## Reload the webapp when changes are made to any Python src files.
 #  Default: False
 # c.NotebookApp.autoreload = False
+c.NotebookApp.autoreload = True
 
 ## DEPRECATED use base_url
 #  Default: '/'
