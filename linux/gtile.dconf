@@ -1,0 +1,11 @@
+[/]
+preset-resize-1=['<Primary><Shift><Super>Left']
+preset-resize-2=['<Alt><Super>Down']
+preset-resize-3=['<Primary><Shift><Super>Right']
+preset-resize-4=['<Alt><Super>Left']
+preset-resize-5=['<Alt><Super>f']
+preset-resize-6=['<Alt><Super>Right']
+preset-resize-7=['<Primary><Super>Left']
+preset-resize-8=['<Alt><Super>Up']
+preset-resize-9=['<Primary><Super>Right']
+show-icon=true

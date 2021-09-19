@@ -16,6 +16,13 @@ Installation
     ln -s $PWD/linux/.zshrc ~/.zshrc
 
 
+On linux:
+
+.. code-block:: sh
+
+    dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
+
+
 **********
 Misc setup
 **********
