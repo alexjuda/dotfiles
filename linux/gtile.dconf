@@ -17,4 +17,4 @@ resize6='4x4 2:0 3:3,1:0 3:3,3:0 3:3'
 resize7='4x4 0:0 1:1,0:0 2:2'
 resize8='4x4 0:0 3:1,0:0 3:2'
 resize9='4x4 2:0 3:1,1:0 3:2'
-show-icon=true
+show-icon=false
