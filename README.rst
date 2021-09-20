@@ -21,6 +21,7 @@ On linux:
 .. code-block:: sh
 
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
+    dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
 
 
 **********
