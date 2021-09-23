@@ -73,52 +73,22 @@ vim.o.termguicolors = true
 vim.o.showmode = false
 
 
-
--- NERDTree --
+-- NvimTree --
 --------------
+--
+-- false by default, this option allows the cursor to be updated when entering a buffer
+vim.g.nvim_tree_follow = true
 
--- Disables the 'Bookmarks' label 'Press ? for help' text.  Default: false
-vim.g.NERDTreeMinimalUI = true
-
--- When using a context menu to delete or rename a file you may also want to delete the
--- buffer which is no more valid. Default: false
-vim.g.NERDTreeAutoDeleteBuffer = true
-
--- Show hidden files by default
-vim.g.NERDTreeShowHidden = true
 
 ------------------
 -- Autocommands --
 ------------------
-
--- Reload files edited externally
--- vim.cmd([[
--- augroup aj-load-external-edits
---     autocmd!
---     autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
--- augroup END |
--- ]])
 
 -- Customize indent size
 vim.cmd([[
 augroup aj-set-file-indent-width 
     autocmd Filetype yaml setlocal shiftwidth=2
     autocmd Filetype html setlocal shiftwidth=2
-augroup END
-]])
-
--- NERDTree config
-vim.cmd([[
-augroup aj-nerdtree-buffers 
-    " Exit Vim if NERDTree is the only window remaining in the only tab.
-    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-    " Close the tab if NERDTree is the only window remaining in it.
-    " Note: this does more harm than good.
-    " autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-    autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 augroup END
 ]])
 

@@ -17,31 +17,33 @@ require "paq" {
 
     -- UI
     -------
-    -- file explorer
-    'scrooloose/nerdtree';
+    -- lua-based tree explorer
+    'kyazdani42/nvim-tree.lua';
+
     -- leader keybindings helper window
     'liuchengxu/vim-which-key';
+
     -- `cd` after opening a file
     'airblade/vim-rooter';
+
     -- code parser for syntax highlight & folds
     {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end}; -- Update the parsers on plugin update
 
     -- buffers presented in a tab bar + fancy icons
     'akinsho/nvim-bufferline.lua';
+
+    -- nice icons in bufferline & file tree
     'kyazdani42/nvim-web-devicons';
 
     -- show icons in NERDTree
     'ryanoasis/vim-devicons';
-
-    -- make the icons in NERDTree have nice colors
-    'tiagofumo/vim-nerdtree-syntax-highlight';
 
     -- nicer bottom status line
     'itchyny/lightline.vim';
 
 
     -- LSP
-    -- -----
+    --------
     'neovim/nvim-lspconfig';
 
 

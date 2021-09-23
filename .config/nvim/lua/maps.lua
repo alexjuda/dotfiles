@@ -42,8 +42,8 @@ map("n", "<leader>tD", ":tabonly<cr>", opts) -- kill all except current tab
 -- Project
 ------------
 which_key_map.p = { name = "+project" }
-map("n", "<leader>pt", ":NERDTreeToggleVCS<CR>", opts) -- open project tree
-map("n", "<leader>po", ":NERDTreeFind<CR>", opts) -- reveal current file in project
+map("n", "<leader>pt", ":NvimTreeToggle<CR>", opts) -- open project tree
+map("n", "<leader>po", ":NvimTreeFind<CR>", opts) -- reveal current file in project
 map("n", "<leader>pf", ":GitFiles<CR>", opts) -- find in git-recognized files
 
 
