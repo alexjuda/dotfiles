@@ -75,10 +75,12 @@ vim.o.showmode = false
 
 -- NvimTree --
 --------------
---
+
 -- false by default, this option allows the cursor to be updated when entering a buffer
 vim.g.nvim_tree_follow = true
 
+-- false by default, closes the tree when it's the last window
+vim.g.nvim_tree_auto_close = true
 
 ------------------
 -- Autocommands --
