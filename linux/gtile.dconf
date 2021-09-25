@@ -1,4 +1,8 @@
 [/]
+insets-primary-bottom=10
+insets-primary-left=10
+insets-primary-right=10
+insets-primary-top=10
 preset-resize-1=['<Primary><Shift><Super>Left']
 preset-resize-2=['<Alt><Super>Down']
 preset-resize-3=['<Primary><Shift><Super>Right']
@@ -18,3 +22,5 @@ resize7='4x4 0:0 1:1,0:0 2:2'
 resize8='4x4 0:0 3:1,0:0 3:2'
 resize9='4x4 2:0 3:1,1:0 3:2'
 show-icon=false
+window-margin=10
+window-margin-fullscreen-enabled=false
