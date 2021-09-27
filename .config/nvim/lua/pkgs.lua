@@ -70,6 +70,9 @@ require "paq" {
     -- training for motions
     'tjdevries/train.nvim';
 
+    -- allow selecting inside/outside tree-sitter objects, like functions
+    'nvim-treesitter/nvim-treesitter-textobjects';
+
     -- Languages
     --------------
     -- Nix 
