@@ -72,6 +72,9 @@ require "paq" {
 
     -- allow selecting inside/outside tree-sitter objects, like functions
     'nvim-treesitter/nvim-treesitter-textobjects';
+    
+    -- draw ascii diagrams
+    'jbyuki/venn.nvim';
 
     -- Languages
     --------------
