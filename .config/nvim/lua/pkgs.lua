@@ -63,8 +63,12 @@ require "paq" {
     ------------
     -- trigger comments with `gcc`
     'tpope/vim-commentary';
+
     -- wrap selected block in chars
     'machakann/vim-sandwich';
+
+    -- training for motions
+    'tjdevries/train.nvim';
 
     -- Languages
     --------------

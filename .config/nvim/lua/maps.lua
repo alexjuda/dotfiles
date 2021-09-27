@@ -60,6 +60,9 @@ map("n", "<leader>ff", ":Files<CR>", opts) -- find in pwd
 -------------
 which_key_map.T = { name = "+triggers" }
 map("n", "<leader>Tn", ":set number!<CR>", opts)
+map("n", "<leader>TU", ":TrainUpDown<CR>", opts) -- Motion training for up/down
+map("n", "<leader>TW", ":TrainWord<CR>", opts) -- Motion training for words
+map("n", "<leader>TT", ":TrainTextObj<CR>", opts) -- Motion training for text objects
 
 
 -- Notes
