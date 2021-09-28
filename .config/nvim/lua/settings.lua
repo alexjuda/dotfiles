@@ -73,14 +73,20 @@ vim.o.termguicolors = true
 vim.o.showmode = false
 
 
+--------------
 -- NvimTree --
 --------------
 
--- false by default, this option allows the cursor to be updated when entering a buffer
-vim.g.nvim_tree_follow = true
+require("nvim-tree").setup {
+  -- (default false) closes neovim automatically when the tree is the last **WINDOW** in the view
+  auto_close = true,
 
--- false by default, closes the tree when it's the last window
-vim.g.nvim_tree_auto_close = true
+  -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+  update_focused_file = {
+    -- enables the feature (default false)
+    enable = true,
+  },
+}
 
 ------------------
 -- Autocommands --
