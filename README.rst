@@ -60,6 +60,20 @@ Run:
    :TSInstall python
    :TSModuleInfo
 
+xclip
+-----
+
+Fixes clipboard support on linux.
+More details `here <https://vi.stackexchange.com/a/96>`_.
+
+.. code-block:: sh
+
+   sudo apt install xclip
+
+CLI usage (`docs <https://opensource.com/article/19/7/xclip>`_)::
+    
+    echo "foo" | xclip -sel clip
+
 
 keyboard
 ========
