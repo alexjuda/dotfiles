@@ -121,6 +121,8 @@ fi
 
 NIX_PROFILE="$HOME/.nix-profile"
 
+# setup wrapper for bash completions
+. $HOME/.local/share/complete_alias
 
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="/home/alex/.local/bin:$PATH"
