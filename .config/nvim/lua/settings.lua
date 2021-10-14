@@ -110,8 +110,8 @@ augroup END
 vim.cmd([[
 augroup aj-active-window-cursorline
     au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
+    au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
+    au WinLeave,FocusLost * setlocal nocursorline
 augroup END
 ]])
 
