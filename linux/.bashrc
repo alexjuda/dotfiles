@@ -119,6 +119,13 @@ fi
 # ------------------------------------------------------
 # manual setup
 
+NIX_PROFILE="$HOME/.nix-profile"
+
+# enable git completions 
+# . ~/.bash-completions/git-completion.bash
+# requires installation with nix (nix-env -i git)
+. "$NIX_PROFILE/share/git/contrib/completion/git-completion.bash"
+
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="/home/alex/.local/bin:$PATH"
 
