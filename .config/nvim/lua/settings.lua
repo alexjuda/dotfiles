@@ -35,10 +35,6 @@ vim.o.confirm = true
 vim.o.scrolloff = 1
 vim.wo.scrolloff = 1
 
--- Highlight line under cursor
-vim.o.cursorline = true
-vim.wo.cursorline = true
-
 -- Show line numbers
 vim.o.number = true
 vim.wo.number = true
@@ -105,6 +101,17 @@ augroup END
 vim.cmd([[
 augroup aj-open-folds-by-default 
     autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+augroup END
+]])
+
+
+-- Highlight cursor line only in the active window
+-- src: https://vim.fandom.com/wiki/Highlight_current_line
+vim.cmd([[
+augroup aj-active-window-cursorline
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
 augroup END
 ]])
 
