@@ -13,7 +13,7 @@ Installation
     ln -s $PWD/.config/alacritty ~/.config/alacritty
     ln -s $PWD/.config/nvim ~/.config/nvim
     ln -s $PWD/.tmux.conf ~/.tmux.conf
-
+    ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
 
 On linux:
 
@@ -136,7 +136,7 @@ Don't worry about the "-g" flag, npm handles dependency isolation between librar
 
 .. code-block:: sh
 
-   npm install -g vscode-langservers-extracted
+    npm install -g vscode-langservers-extracted
 
 
 Updating the completions
@@ -145,4 +145,5 @@ Updating the completions
 
 .. code-block:: sh
 
-   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o linux/completions/git-completion.bash
+    curl https://raw.githubusercontent.com/cykerway/complete-alias/master/complete_alias \
+        -o vendor/complete_alias
