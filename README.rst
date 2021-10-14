@@ -13,13 +13,14 @@ Installation
     ln -s $PWD/.config/alacritty ~/.config/alacritty
     ln -s $PWD/.config/nvim ~/.config/nvim
     ln -s $PWD/.tmux.conf ~/.tmux.conf
-    ln -s $PWD/linux/.zshrc ~/.zshrc
 
 
 On linux:
 
 .. code-block:: sh
 
+    ln -s $PWD/linux/.bashrc ~/.bashrc
+    ln -s $PWD/linux/completions ~/.bash-completions
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
     dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
 
@@ -137,3 +138,11 @@ Don't worry about the "-g" flag, npm handles dependency isolation between librar
 
    npm install -g vscode-langservers-extracted
 
+
+Updating the completions
+========================
+
+
+.. code-block:: sh
+
+   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o linux/completions/git-completion.bash
