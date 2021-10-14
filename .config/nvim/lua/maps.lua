@@ -26,7 +26,7 @@ map("n", "<leader>bb", ":Buffers<cr>", opts)
 map("n", "<leader>bn", ":bnext<cr>", opts)
 map("n", "<leader>bp", ":bprev<cr>", opts)
 map("n", "<leader>bd", ":bp|bd #<cr>", opts) -- close a buffer, but not a window
-map("n", "<leader>bD", ":NERDTreeClose<bar>bufdo bd<cr>", opts)
+map("n", "<leader>bD", ":%bd|e#|bd#<cr>", opts)
 map("n", "<leader><TAB>", "<C-^>", opts) -- switch to last buffer
 
 
