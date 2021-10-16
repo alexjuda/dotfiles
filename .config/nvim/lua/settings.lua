@@ -197,13 +197,10 @@ require("lspfuzzy").setup {}
 -- Status line --
 -----------------
 
-vim.g.lightline = {
-    enable = {
-        -- Disable lightline's buffer tab bar
-        tabline = 0,
-    },
-    -- Match the status line's colors to the rest of the editor
-    colorscheme = "one",
+require("lualine").setup {
+    options = {
+        theme = "dracula";
+    }
 }
 
 

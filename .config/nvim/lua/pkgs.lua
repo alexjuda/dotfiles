@@ -37,7 +37,7 @@ require "paq" {
     'ryanoasis/vim-devicons';
 
     -- nicer bottom status line
-    'itchyny/lightline.vim';
+    'hoob3rt/lualine.nvim';
 
 
     -- LSP
