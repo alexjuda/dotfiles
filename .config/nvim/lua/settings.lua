@@ -210,6 +210,12 @@ require("lualine").setup {
 
 require("bufferline").setup {}
 
+-----------------
+-- Git goodies --
+-----------------
+
+require("gitsigns").setup {}
+
 -----------
 -- Notes --
 -----------

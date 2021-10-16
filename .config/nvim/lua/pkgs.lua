@@ -39,6 +39,12 @@ require "paq" {
     -- nicer bottom status line
     'hoob3rt/lualine.nvim';
 
+    -- common utilities needed by other plugins
+    "nvim-lua/plenary.nvim";
+
+    -- Git gutter & other goodies
+    "lewis6991/gitsigns.nvim";
+
 
     -- LSP
     --------
