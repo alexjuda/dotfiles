@@ -120,7 +120,7 @@ augroup END
 -- Colors --
 ------------
 
-require("colorbuddy").colorscheme("onebuddy")
+vim.cmd[[colorscheme dracula]]
 
 ----------------
 -- Treesitter --

@@ -11,9 +11,7 @@ require "paq" {
 
     -- Theme 
     ----------
-    'tjdevries/colorbuddy.vim';
-    'Th3Whit3Wolf/onebuddy';
-
+    "Mofiqul/dracula.nvim";
 
     -- UI
     -------
