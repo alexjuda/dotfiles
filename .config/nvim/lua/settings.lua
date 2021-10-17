@@ -126,19 +126,32 @@ vim.cmd[[colorscheme dracula]]
 -- Treesitter --
 ----------------
 
--- highlight
+-- Treesitter-based Markdown --
+-------------------------------
+
+-- Makes `markdown` appear on list of tree-sitter syntaxes (see `TSInstallInfo`).
+-- Based on:
+-- https://www.reddit.com/r/neovim/comments/pmknoi/comment/hcjpccu/?utm_source=share&utm_medium=web2x&context=3
+local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_configs.markdown = {
+  install_info = {
+    url = "https://github.com/ikatyang/tree-sitter-markdown",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  filetype = "markdown",
+}
+
+-- General config --
+-------------------------------
+
+-- Enable all common functionality
+
 require"nvim-treesitter.configs".setup {
   highlight = {
     enable = true,
-    -- custom_captures = {
-    --   -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-    --   ["foo.bar"] = "Identifier",
-    -- },
   },
-}
 
--- incremental selection
-require"nvim-treesitter.configs".setup {
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -148,22 +161,12 @@ require"nvim-treesitter.configs".setup {
       node_decremental = "grm",
     },
   },
-}
 
--- indentation
-require"nvim-treesitter.configs".setup {
   indent = {
-    enable = true
-  }
-}
+    enable = true,
+  },
 
--- folding
--- Use treesitter's expressions to form folds
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-
--- selecting tree-sitter objects
-require("nvim-treesitter.configs").setup { 
+  -- tree-sitter objects for code navigation
   textobjects = {
     select = {
       enable = true,
@@ -181,6 +184,12 @@ require("nvim-treesitter.configs").setup {
     },
   },
 }
+
+
+-- folding
+-- Use treesitter's expressions to form folds
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -----------
 -- Fuzzy --
