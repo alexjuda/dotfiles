@@ -27,6 +27,9 @@ require "paq" {
     -- code parser for syntax highlight & folds
     {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end}; -- Update the parsers on plugin update
 
+    -- treesitter debugging
+    "nvim-treesitter/playground";
+
     -- buffers presented in a tab bar + fancy icons
     'akinsho/nvim-bufferline.lua';
 
