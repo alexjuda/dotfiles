@@ -93,8 +93,6 @@ require "paq" {
     ----------
     -- Notes
     ----------
-    'tpope/vim-markdown';
-    -- Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     'jbyuki/nabla.nvim';
 
 }
