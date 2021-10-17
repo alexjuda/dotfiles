@@ -120,7 +120,10 @@ augroup END
 -- Colors --
 ------------
 
-vim.cmd[[colorscheme dracula]]
+-- Needs to be before setting the colorscheme
+vim.g.onedark_style = "darker"
+
+vim.cmd[[colorscheme onedark]]
 
 ----------------
 -- Treesitter --
@@ -208,7 +211,7 @@ require("lspfuzzy").setup {}
 
 require("lualine").setup {
     options = {
-        theme = "dracula";
+        theme = "onedark";
     }
 }
 
