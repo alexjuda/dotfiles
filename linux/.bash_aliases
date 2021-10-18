@@ -69,9 +69,25 @@ custom_aliases[gstp]="git stash pop"
 custom_aliases[gsts]="git stash show --text"
 
 
-for alias_name in "${!custom_aliases[@]}"; do
-    # apply the alias
-    alias $alias_name="${custom_aliases[$alias_name]}"
-    # make the bash completions work for aliased commands
-    complete -F _complete_alias $alias_name
-done
+
+if [ -n "$ZSH_VERSION" ]; then
+    # assume Zsh
+
+    for alias_name in "${(@k)custom_aliases}"; do
+        # just apply the alias
+        alias $alias_name="$custom_aliases[$alias_name]"
+    done
+
+elif [ -n "$BASH_VERSION" ]; then
+    # assume Bash
+
+    for alias_name in "${!custom_aliases[@]}"; do
+        # apply the alias
+        alias $alias_name="${custom_aliases[$alias_name]}"
+        # make the bash completions work for aliased commands
+        complete -F _complete_alias $alias_name
+    done
+else
+    # assume something else
+fi
+

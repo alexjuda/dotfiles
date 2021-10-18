@@ -72,6 +72,8 @@ export BLOCK_SIZE="'1"          # Add commas to file sizes
 
 # --------- custom setup ------------
 
+. ~/.bash_aliases
+
 # pyenv
 export PATH="/Users/alex/.pyenv/bin:$PATH"
 eval "$(pyenv init - --no-rehash)"
