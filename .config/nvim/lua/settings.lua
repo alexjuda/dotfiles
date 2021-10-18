@@ -231,6 +231,8 @@ require("lualine").setup {
             "filetype",
         },
     },
+    -- Show shorter status line in the nvim-tree side buffer.
+    extensions = { "nvim-tree", }
 }
 
 
