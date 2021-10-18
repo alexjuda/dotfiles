@@ -14,12 +14,14 @@ Installation
     ln -s $PWD/.config/nvim ~/.config/nvim
     ln -s $PWD/.tmux.conf ~/.tmux.conf
     ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
+    ln -s $PWD/zpt/.zshrc ~/.zshrc
 
 On linux:
 
 .. code-block:: sh
 
     ln -s $PWD/linux/.bashrc ~/.bashrc
+    ln -s $PWD/linux/.bash_aliases ~/.bash_aliases
     ln -s $PWD/linux/completions ~/.bash-completions
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
     dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
