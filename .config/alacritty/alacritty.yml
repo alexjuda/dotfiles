@@ -46,7 +46,8 @@ key_bindings:
     - { key: Left,  mods: Alt, chars: "\x1BB" }
 
 import:
-    - ~/.config/alacritty/themes/dracula.yml
+    # - ~/.config/alacritty/themes/dracula.yml
+    - ~/.config/alacritty/themes/one-dark.yml
 
 #colors:
 #    # Doom One color scheme (https://github.com/eendroroy/alacritty-theme/blob/master/themes/doom_one.yml)
