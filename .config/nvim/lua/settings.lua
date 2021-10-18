@@ -209,10 +209,20 @@ require("lspfuzzy").setup {}
 -- Status line --
 -----------------
 
+-- Based on:
+-- * https://www.reddit.com/r/neovim/comments/ojnie2/comment/h52uy92/?utm_source=share&utm_medium=web2x&context=3
+-- * https://github.com/hoob3rt/lualine.nvim#custom-components
+local function ts_statusline()
+    return require("nvim-treesitter").statusline()
+end
+
 require("lualine").setup {
     options = {
-        theme = "onedark";
-    }
+        theme = "onedark",
+    },
+    sections = {
+        lualine_c = { ts_statusline },
+    },
 }
 
 
