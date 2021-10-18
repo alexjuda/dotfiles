@@ -222,6 +222,14 @@ require("lualine").setup {
     },
     sections = {
         lualine_c = { ts_statusline },
+        lualine_x = { 
+            { 
+                "diagnostics", 
+                sources = { "nvim_lsp", },
+            },
+            "fileformat",
+            "filetype",
+        },
     },
 }
 
