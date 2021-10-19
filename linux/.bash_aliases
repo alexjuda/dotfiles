@@ -13,7 +13,7 @@ custom_aliases=(
     "gbl:git blame -b -w"
 
     "gc:git commit -v"
-    "gc!:git commit -v --amend"
+    "gca:git commit -v --amend"  # 'gc!' can't be used in macOS bash
     "gcb:git checkout -b"
     "gcl:git clone --recurse-submodules"
     "gcmsg:git commit -m"
@@ -72,10 +72,11 @@ for entry in "${custom_aliases[@]}"; do
     # Workaround for old bash v3 that ships with macOS.
     # Source: https://stackoverflow.com/a/4444841
     alias_name=${entry%%:*}
-    alias_value=${entry#:*}
+    alias_value=${entry#*:}
 
+    # echo "$alias_name = $alias_value"
     # apply the alias
-    alias $alias_name="${custom_aliases[$alias_name]}"
+    alias "$alias_name"="$alias_value"
     # make the bash completions work for aliased commands
     complete -F _complete_alias $alias_name
 done
