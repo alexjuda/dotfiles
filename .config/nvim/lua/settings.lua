@@ -120,8 +120,11 @@ augroup END
 -- Colors --
 ------------
 
--- Needs to be before setting the colorscheme
-vim.g.onedark_style = "darker"
+-- Make colorscheme darker, but only on Linux
+if vim.loop.os_uname().sysname ~= "Darwin" then
+    -- Needs to be before setting the colorscheme
+    vim.g.onedark_style = "darker"
+end
 
 vim.cmd[[colorscheme onedark]]
 
