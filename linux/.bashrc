@@ -127,13 +127,11 @@ fi
 NIX_PROFILE="$HOME/.nix-profile"
 
 # setup wrapper for bash completions
-. $HOME/.local/share/complete_alias
+[[ -s "$HOME/.local/share/complete_alias" ]] && . "$HOME/.local/share/complete_alias"
 
-# TODO: fix home path
 # added by pipx (https://github.com/pipxproject/pipx)
-export PATH="/home/alex/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
-# TODO: fix home path
 # added by nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -142,8 +140,8 @@ export NVM_DIR="$HOME/.nvm"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init - --no-rehash)"
+eval "$(pyenv virtualenv-init - --no-rehash)"
 
 # make `cd` completions case insensitive
 bind 'set completion-ignore-case on'
@@ -153,5 +151,6 @@ PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
 # TODO: fix home path
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/alex/.sdkman"
-[[ -s "/home/alex/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alex/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="/home/alex/.sdkman"
+# [[ -s "/home/alex/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alex/.sdkman/bin/sdkman-init.sh"
+
