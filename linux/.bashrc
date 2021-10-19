@@ -2,6 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Suppress zsh warning.
+# Source: https://support.apple.com/en-us/HT208050
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -89,7 +93,8 @@ fi
 
 # some more ls aliases
 alias ll='ls -alF'
-alias la='ls -A'
+# alias la='ls -A'
+alias la='ls -a'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -124,9 +129,11 @@ NIX_PROFILE="$HOME/.nix-profile"
 # setup wrapper for bash completions
 . $HOME/.local/share/complete_alias
 
+# TODO: fix home path
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="/home/alex/.local/bin:$PATH"
 
+# TODO: fix home path
 # added by nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -144,6 +151,7 @@ bind 'set completion-ignore-case on'
 # set prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
+# TODO: fix home path
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/alex/.sdkman"
 [[ -s "/home/alex/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alex/.sdkman/bin/sdkman-init.sh"
