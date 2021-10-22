@@ -124,6 +124,10 @@ fi
 # ------------------------------------------------------
 # manual setup
 
+# bash completion on macOS
+# requires "brew install bash-completion@2"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 NIX_PROFILE="$HOME/.nix-profile"
 
 # setup wrapper for bash completions
