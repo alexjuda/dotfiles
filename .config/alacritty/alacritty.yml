@@ -8,10 +8,14 @@ env:
     TERM: xterm-256color
 
 font:
-    # Medium font on linux looks closer to macOS regular font rendering
     normal:
+        # brew tap homebrew/cask-fonts
+        # brew install --cask font-JetBrains-Mono-nerd-font
         family: JetBrainsMono Nerd Font
-        style: Medium
+        style: Regular
+
+        # workaround if the nerd patch is unavailable:
+        # family: JetBrains Mono
 
     # italic:
     #     family: JetBrains Mono
