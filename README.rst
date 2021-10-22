@@ -14,7 +14,7 @@ Installation
     ln -s $PWD/.config/nvim ~/.config/nvim
     ln -s $PWD/.tmux.conf ~/.tmux.conf
     ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
-    ln -s $PWD/zpt/.zshrc ~/.zshrc
+    ln -s $PWD/linux/.bash_aliases ~/.bash_aliases
 
 
 On linux:
@@ -22,7 +22,7 @@ On linux:
 .. code-block:: sh
 
     ln -s $PWD/linux/.bashrc ~/.bashrc
-    ln -s $PWD/linux/.bash_aliases ~/.bash_aliases
+    # TODO see if this is still needed
     ln -s $PWD/linux/completions ~/.bash-completions
     ln -s $PWD/linux/.tmux-linux.conf ~/.tmux-linux.conf
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
@@ -32,12 +32,22 @@ On macOS:
 
 .. code-block:: sh
 
+    ln -s $PWD/linux/.bashrc ~/.bash_profile
     ln -s $PWD/macos/.tmux-macos.conf ~/.tmux-macos.conf
 
 
 **********
 Misc setup
 **********
+
+On macOS:
+
+.. code-block:: sh
+
+    brew install alacritty
+    brew install tmux
+    brew install bash-completion@2
+
 
 neovim
 ======
