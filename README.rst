@@ -16,6 +16,7 @@ Installation
     ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
     ln -s $PWD/zpt/.zshrc ~/.zshrc
 
+
 On linux:
 
 .. code-block:: sh
@@ -23,8 +24,15 @@ On linux:
     ln -s $PWD/linux/.bashrc ~/.bashrc
     ln -s $PWD/linux/.bash_aliases ~/.bash_aliases
     ln -s $PWD/linux/completions ~/.bash-completions
+    ln -s $PWD/linux/.tmux-linux.conf ~/.tmux-linux.conf
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
     dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
+
+On macOS:
+
+.. code-block:: sh
+
+    ln -s $PWD/macos/.tmux-macos.conf ~/.tmux-macos.conf
 
 
 **********
