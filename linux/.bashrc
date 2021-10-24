@@ -144,7 +144,7 @@ export NVM_DIR="$HOME/.nvm"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - --no-rehash)"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init - --no-rehash)"
 
 # make `cd` completions case insensitive
