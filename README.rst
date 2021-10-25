@@ -49,6 +49,14 @@ On macOS:
     brew install bash-completion@2
 
 
+Workaround terminal issues:
+
+.. code-block:: sh
+
+   tic -x vendor/tmux-256color.ti
+   bash vendor/test-24-bit-color.sh
+
+
 neovim
 ======
 
