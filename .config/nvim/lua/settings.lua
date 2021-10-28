@@ -75,12 +75,18 @@ vim.o.showmode = false
 
 require("nvim-tree").setup {
   -- (default false) closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close = true,
+  -- auto_close = false,
 
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
   update_focused_file = {
     -- enables the feature (default false)
     enable = true,
+    update_cwd = true,
+  },
+
+  view = {
+    -- if true the tree will resize itself after opening a file
+    auto_resize = true,
   },
 }
 
