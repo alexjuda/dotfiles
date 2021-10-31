@@ -56,8 +56,8 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.hidden = true
 
 -- Set line lengths to 88 by default
--- vim.o.textwidth = 88
--- vim.bo.textwidth = 88
+vim.o.textwidth = 88
+vim.bo.textwidth = 88
 
 
 -- Required by bufferline
@@ -202,6 +202,18 @@ require"nvim-treesitter.configs".setup {
 -- Use treesitter's expressions to form folds
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
+
+--------------------
+-- Autocompletion --
+--------------------
+
+require("lspkind").init {
+    -- don't show name between the icon and the module on right hand side of the
+    -- completion prompt
+    with_text = false,
+}
+
 
 -----------
 -- Fuzzy --
