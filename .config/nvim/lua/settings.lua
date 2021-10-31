@@ -208,12 +208,6 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- Autocompletion --
 --------------------
 
-require("lspkind").init {
-    -- don't show name between the icon and the module on right hand side of the
-    -- completion prompt
-    with_text = false,
-}
-
 local cmp = require("cmp")
 
 -- setup nvim-cmp
@@ -223,6 +217,7 @@ cmp.setup({
             -- TODO
         end,
     },
+
     mapping = {
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -234,11 +229,20 @@ cmp.setup({
         }),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
+
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
     }, {
         { name = 'buffer' },
-    })
+    }),
+
+    -- Don't show the text like "Function" after the symbol
+    -- src: https://github.com/hrsh7th/nvim-cmp#how-to-show-name-of-item-kind-and-source-like-compe
+    formatting = {
+        format = require("lspkind").cmp_format({
+            with_text = false,
+        }),
+    },
 })
 
 
