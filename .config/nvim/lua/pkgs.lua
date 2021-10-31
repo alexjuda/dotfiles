@@ -64,6 +64,12 @@ require "paq" {
     -- fancy icons in LSP completion prompt
     "onsails/lspkind-nvim";
 
+    -- autocomplete framework
+    "hrsh7th/nvim-cmp";
+
+    -- LSP-based source for cmp
+    "hrsh7th/cmp-nvim-lsp";
+
 
     -- Fuzzy completion
     ---------------------

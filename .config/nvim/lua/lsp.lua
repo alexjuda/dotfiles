@@ -37,6 +37,14 @@ local shared_on_attach = function(client, buf_n)
     set_lsp_keymaps(client, buf_n)
 end
 
+
+-- extend default client capabilities with what cmp can do
+
+local shared_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- require('lspconfig')[%YOUR_LSP_SERVER%].setup {
+--     capabilities = shared_capabilities
+-- }
+
 -- Python --
 ------------
 
@@ -47,6 +55,7 @@ require("lspconfig").pylsp.setup {
         },
     },
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
 
@@ -58,6 +67,7 @@ require("lspconfig").pylsp.setup {
 require("lspconfig").tsserver.setup {
     cmd = { "npx", "typescript-language-server", "--stdio", },
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
 -- JSON --
@@ -74,6 +84,7 @@ require("lspconfig").jsonls.setup {
         },
     },
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
 -- Java --
@@ -94,8 +105,8 @@ require("lspconfig").jdtls.setup {
         "-configuration",
         vim.env.HOME .. "/.local/share/aj-lsp/jdtls/" .. (is_mac() and "config_mac" or "config_linux"),
     },
-
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
 
