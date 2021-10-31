@@ -10,7 +10,6 @@
 local set_lsp_keymaps = function(client, buf_n)
     -- We use completion-nvim autocompletion popup instead of the built-in omnifunc
     -- `<Plug>` commands need recursive mapping.
-    vim.api.nvim_buf_set_keymap(buf_n, "i", "<C-Space>", "<Plug>(completion_trigger)", { noremap=false })
 
     -- Keymap
     local opts = { noremap=true }
@@ -33,11 +32,14 @@ end
 
 local shared_on_attach = function(client, buf_n)
     -- Set up completion-nvim
-    require("completion").on_attach(client, buf_n)
 
     -- TODO: port recommended completion options from
     -- https://github.com/alexjuda/dotfiles/blob/7bb4b1803b9d8ce52c77256cc8477cc6ed45e8f5/.config/nvim/init.vim#L168
+    
+    -- Hook LSP with omnifunc completions.
+    -- src: https://neovim.io/doc/user/lsp.html
 
+    vim.api.nvim_buf_set_option(buf_n, "omnifunc", "v:lua.vim.lsp.omnifunc")
     set_lsp_keymaps(client, buf_n)
 end
 

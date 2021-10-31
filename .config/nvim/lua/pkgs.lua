@@ -47,7 +47,8 @@ require "paq" {
     -- nicer bottom status line
     'hoob3rt/lualine.nvim';
 
-    -- common utilities needed by other plugins
+    -- common utilities needed by other plugins:
+    -- * gisigns
     "nvim-lua/plenary.nvim";
 
     -- Git gutter & other goodies
@@ -64,11 +65,12 @@ require "paq" {
     {'junegunn/fzf', run=vim.fn["fzf#install"]};
     'junegunn/fzf.vim';
 
+    -- TODO: replace with nvim-cmp
     -- fuzzy matching for LSP completion
-    'nvim-lua/completion-nvim';
+    -- 'nvim-lua/completion-nvim';
 
     -- fuzzy matching for other LSP commands
-    'ojroques/nvim-lspfuzzy';
+    -- 'ojroques/nvim-lspfuzzy';
 
 
     -- Editing

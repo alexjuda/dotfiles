@@ -210,8 +210,8 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- Allow fuzzy matching in autocomplete popup
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy", }
 
--- setup nvim-lspfuzzy
-require("lspfuzzy").setup {}
+-- nvim-lspfuzzy overrides LSP handlers to present list-based results in a fzf window
+-- require("lspfuzzy").setup {}
 
 
 -----------------
