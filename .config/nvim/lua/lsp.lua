@@ -99,7 +99,7 @@ require("lspconfig").jsonls.setup {
 -- directory. Fetch it from https://ftp.fau.de/eclipse/jdtls/snapshots/, put it
 -- in ~/.local/share/aj-lsp/ and make a symlink so the paths here work.
 
-local is_mac = function() 
+local is_mac = function()
     return vim.fn.has("macunix") == 1
 end
 
@@ -115,4 +115,71 @@ require("lspconfig").jdtls.setup {
     capabilities = shared_capabilities,
 }
 
+-- Lua --
+---------
+-- Assumes that a language server repo with a built LS binary is available under
+-- ~/.local/share/aj-lsp/ . To get it, follow the instructions from:
+-- https://jdhao.github.io/2021/08/12/nvim_sumneko_lua_conf/#build .
+--
+-- The configuration is based on snippet at
+-- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
 
+local sumneko_cmd = function()
+    local system_name
+    if vim.fn.has("mac") == 1 then
+        system_name = "macOS"
+    elseif vim.fn.has("unix") == 1 then
+        system_name = "Linux"
+    elseif vim.fn.has('win32') == 1 then
+        system_name = "Windows"
+    else
+        print("Unsupported system for sumneko")
+    end
+
+    -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+    -- local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
+    -- local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+    --
+    return {
+        vim.env.HOME
+        ..  "/.local/share/aj-lsp/lua-language-server/bin/"
+        ..  system_name
+        ..  "/lua-language-server"
+    }
+end
+
+local lua_runtime_paths = function()
+    local runtime_path = vim.split(package.path, ';')
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
+
+    return runtime_path
+end
+
+require("lspconfig").sumneko_lua.setup {
+    cmd = sumneko_cmd(),
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Setup your lua path
+                path = lua_runtime_paths(),
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'},
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+    on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
+}
