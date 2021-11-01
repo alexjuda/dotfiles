@@ -2,6 +2,10 @@ local map = vim.api.nvim_set_keymap
 local bufmap = vim.api.nvim_buf_set_keymap
 local opts = { noremap = true }
 
+-- Rebinds
+----------
+-- Rebind § to ` for compatibility with Linux.
+vim.api.nvim_set_keymap("i", "§", "`", opts)
 
 -- Leaders
 ------------
