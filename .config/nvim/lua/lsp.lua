@@ -10,7 +10,6 @@
 local set_lsp_keymaps = function(client, buf_n)
     -- We use completion-nvim autocompletion popup instead of the built-in omnifunc
     -- `<Plug>` commands need recursive mapping.
-    vim.api.nvim_buf_set_keymap(buf_n, "i", "<C-Space>", "<Plug>(completion_trigger)", { noremap=false })
 
     -- Keymap
     local opts = { noremap=true }
@@ -32,14 +31,25 @@ local set_lsp_keymaps = function(client, buf_n)
 end
 
 local shared_on_attach = function(client, buf_n)
-    -- Set up completion-nvim
-    require("completion").on_attach(client, buf_n)
+    -- Hook LSP with omnifunc completions.
+    -- src: https://neovim.io/doc/user/lsp.html
+    -- NOTE: this is the built-in completion fired by <C-x><C-o>. It's an alternative to
+    -- the <C-Space> autocompletion powered by nvim-cmp.
+    vim.api.nvim_buf_set_option(buf_n, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- TODO: port recommended completion options from
-    -- https://github.com/alexjuda/dotfiles/blob/7bb4b1803b9d8ce52c77256cc8477cc6ed45e8f5/.config/nvim/init.vim#L168
+    -- Hook lsp_signature to show signature & parameters when writing invocations.
+    require("lsp_signature").on_attach()
 
     set_lsp_keymaps(client, buf_n)
 end
+
+
+-- extend default client capabilities with what cmp can do
+
+local shared_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- require('lspconfig')[%YOUR_LSP_SERVER%].setup {
+--     capabilities = shared_capabilities
+-- }
 
 -- Python --
 ------------
@@ -51,6 +61,7 @@ require("lspconfig").pylsp.setup {
         },
     },
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
 
@@ -62,6 +73,7 @@ require("lspconfig").pylsp.setup {
 require("lspconfig").tsserver.setup {
     cmd = { "npx", "typescript-language-server", "--stdio", },
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
 -- JSON --
@@ -78,6 +90,7 @@ require("lspconfig").jsonls.setup {
         },
     },
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
 -- Java --
@@ -86,7 +99,7 @@ require("lspconfig").jsonls.setup {
 -- directory. Fetch it from https://ftp.fau.de/eclipse/jdtls/snapshots/, put it
 -- in ~/.local/share/aj-lsp/ and make a symlink so the paths here work.
 
-local is_mac = function() 
+local is_mac = function()
     return vim.fn.has("macunix") == 1
 end
 
@@ -98,8 +111,75 @@ require("lspconfig").jdtls.setup {
         "-configuration",
         vim.env.HOME .. "/.local/share/aj-lsp/jdtls/" .. (is_mac() and "config_mac" or "config_linux"),
     },
-
     on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
 }
 
+-- Lua --
+---------
+-- Assumes that a language server repo with a built LS binary is available under
+-- ~/.local/share/aj-lsp/ . To get it, follow the instructions from:
+-- https://jdhao.github.io/2021/08/12/nvim_sumneko_lua_conf/#build .
+--
+-- The configuration is based on snippet at
+-- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
 
+local sumneko_cmd = function()
+    local system_name
+    if vim.fn.has("mac") == 1 then
+        system_name = "macOS"
+    elseif vim.fn.has("unix") == 1 then
+        system_name = "Linux"
+    elseif vim.fn.has('win32') == 1 then
+        system_name = "Windows"
+    else
+        print("Unsupported system for sumneko")
+    end
+
+    -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+    -- local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
+    -- local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+    --
+    return {
+        vim.env.HOME
+        ..  "/.local/share/aj-lsp/lua-language-server/bin/"
+        ..  system_name
+        ..  "/lua-language-server"
+    }
+end
+
+local lua_runtime_paths = function()
+    local runtime_path = vim.split(package.path, ';')
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
+
+    return runtime_path
+end
+
+require("lspconfig").sumneko_lua.setup {
+    cmd = sumneko_cmd(),
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Setup your lua path
+                path = lua_runtime_paths(),
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'},
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+    on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
+}

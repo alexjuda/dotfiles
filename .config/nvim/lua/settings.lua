@@ -56,8 +56,8 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.hidden = true
 
 -- Set line lengths to 88 by default
--- vim.o.textwidth = 88
--- vim.bo.textwidth = 88
+vim.o.textwidth = 88
+vim.bo.textwidth = 88
 
 
 -- Required by bufferline
@@ -203,6 +203,49 @@ require"nvim-treesitter.configs".setup {
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
+
+--------------------
+-- Autocompletion --
+--------------------
+
+local cmp = require("cmp")
+
+-- setup nvim-cmp
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            -- TODO
+        end,
+    },
+
+    mapping = {
+        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+    }, {
+        { name = 'buffer' },
+    }),
+
+    -- Don't show the text like "Function" after the symbol
+    -- src: https://github.com/hrsh7th/nvim-cmp#how-to-show-name-of-item-kind-and-source-like-compe
+    formatting = {
+        format = require("lspkind").cmp_format({
+            with_text = false,
+        }),
+    },
+})
+
+
 -----------
 -- Fuzzy --
 -----------
@@ -210,8 +253,8 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- Allow fuzzy matching in autocomplete popup
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy", }
 
--- setup nvim-lspfuzzy
-require("lspfuzzy").setup {}
+-- nvim-lspfuzzy overrides LSP handlers to present list-based results in a fzf window
+-- require("lspfuzzy").setup {}
 
 
 -----------------
