@@ -124,6 +124,12 @@ fi
 # ------------------------------------------------------
 # manual setup
 
+
+# set alias for xdg-open on linux
+if ! [ -x "$(command -v open)" ]; then
+    alias open=xdg-open
+fi
+
 # bash completion on macOS
 # requires "brew install bash-completion@2"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
