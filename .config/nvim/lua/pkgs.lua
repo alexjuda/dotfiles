@@ -70,6 +70,8 @@ require "paq" {
     -- LSP-based source for cmp
     "hrsh7th/cmp-nvim-lsp";
 
+    -- Show callable signature when writing invocation
+    "ray-x/lsp_signature.nvim";
 
     -- Fuzzy completion
     ---------------------
