@@ -110,6 +110,6 @@ require "paq" {
     ----------
     -- Notes
     ----------
-    'jbyuki/nabla.nvim';
-
+    -- Render markdown in a side browser window.
+    { "iamcco/markdown-preview.nvim", run="cd app && npm install" };
 }
