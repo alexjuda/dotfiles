@@ -163,6 +163,16 @@ PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 # set current jira ticket id
 [[ -s ~/.local/share/ticket.txt ]] && T=$(cat ~/.local/share/ticket.txt)
 
+# ------ custom utils ------
+
+function pyenv-reset() {
+    pyenv virtualenv-delete $(basename $PWD)
+    [[ -s .python-version ]] && rm .python-version
+    pyenv virtualenv $(basename $PWD)
+    pyenv local $(basename $PWD)
+    pip install --upgrade pip
+}
+
 # TODO: fix home path
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/home/alex/.sdkman"
