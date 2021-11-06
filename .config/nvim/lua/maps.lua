@@ -77,9 +77,15 @@ map("n", "<leader>TT", ":TrainTextObj<CR>", opts) -- Motion training for text ob
 which_key_map.n = { name = "+notes" }
 map("n", "<leader>nd", ":lua require('vapor').open_daily_note()<CR>", opts)
 map("n", "<leader>ni", ":lua require('vapor').open_notes_index()<CR>", opts)
+-- TODO: remove nabla because it's broken
 map("n", "<leader>nl", ":lua require('nabla').place_inline()<CR>", opts)
 map("n", "<F5>", ":lua require('nabla').place_inline()<CR>", opts) -- nabla.vim recommends this
 
+-- Editor
+-----------
+which_key_map.e = { name = "+editor" }
+map("n", "<leader>eu", ":UnicodeSearch! ", opts)
+map("n", "<leader>ev", ":lua toggle_venn()<CR>", opts)
 
 -- Root
 ---------

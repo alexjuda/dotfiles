@@ -96,6 +96,9 @@ require "paq" {
     -- draw ascii diagrams
     'jbyuki/venn.nvim';
 
+    -- help for writing unicode characters
+    "chrisbra/unicode.vim";
+
 
     -- Languages
     --------------
