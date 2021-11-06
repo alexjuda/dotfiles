@@ -7,6 +7,10 @@ local opts = { noremap = true }
 -- Rebind § to ` for compatibility with Linux.
 vim.api.nvim_set_keymap("i", "§", "`", opts)
 
+-- Global
+----------
+map("n", "s", ":HopChar2<CR>", opts)
+
 -- Leaders
 ------------
 vim.g.mapleader = " " -- space as the leader key

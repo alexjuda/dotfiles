@@ -301,6 +301,12 @@ require("bufferline").setup {}
 require("gitsigns").setup {}
 
 -----------
+-- Jumps --
+-----------
+
+require("hop").setup {}
+
+-----------
 -- Notes --
 -----------
 

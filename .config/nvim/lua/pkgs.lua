@@ -90,6 +90,9 @@ require "paq" {
     -- training for motions
     'tjdevries/train.nvim';
 
+    -- quick jumps between lines and words
+    'phaazon/hop.nvim';
+
     -- allow selecting inside/outside tree-sitter objects, like functions
     'nvim-treesitter/nvim-treesitter-textobjects';
 
