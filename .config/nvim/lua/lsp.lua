@@ -37,9 +37,6 @@ local shared_on_attach = function(client, buf_n)
     -- the <C-Space> autocompletion powered by nvim-cmp.
     vim.api.nvim_buf_set_option(buf_n, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- Hook lsp_signature to show signature & parameters when writing invocations.
-    require("lsp_signature").on_attach()
-
     set_lsp_keymaps(client, buf_n)
 end
 

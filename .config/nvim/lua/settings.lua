@@ -64,7 +64,7 @@ vim.bo.textwidth = 88
 vim.o.termguicolors = true
 
 
--- Disable the bottom line with mode name like "-- INSERT --". Status line 
+-- Disable the bottom line with mode name like "-- INSERT --". Status line
 -- already provides this information.
 vim.o.showmode = false
 
@@ -285,6 +285,16 @@ require("lualine").setup {
     },
     -- Show shorter status line in the nvim-tree side buffer.
     extensions = { "nvim-tree", }
+}
+
+
+---------------------
+-- Show signatures --
+---------------------
+
+require("lsp_signature").setup {
+    -- show signature in the middle of multi-line invocations
+    always_trigger = true,
 }
 
 
