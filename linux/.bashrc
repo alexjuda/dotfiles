@@ -163,6 +163,10 @@ PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 # set current jira ticket id
 [[ -s ~/.local/share/ticket.txt ]] && T=$(cat ~/.local/share/ticket.txt)
 
+# Share command history between shells
+# src: https://superuser.com/a/602405
+export PROMPT_COMMAND='history -a'
+
 # ------ custom utils ------
 
 function pyenv-reset() {
