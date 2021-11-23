@@ -69,6 +69,13 @@ vim.o.termguicolors = true
 vim.o.showmode = false
 
 
+---------------
+-- which-key --
+---------------
+require("which-key").setup {
+}
+
+
 --------------
 -- NvimTree --
 --------------

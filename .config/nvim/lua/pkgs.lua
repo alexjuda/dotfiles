@@ -24,7 +24,7 @@ require "paq" {
     'kyazdani42/nvim-tree.lua';
 
     -- leader keybindings helper window
-    'liuchengxu/vim-which-key';
+    "folke/which-key.nvim";
 
     -- `cd` after opening a file
     'airblade/vim-rooter';
