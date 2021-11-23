@@ -11,10 +11,6 @@ require "paq" {
 
     -- Theme
     ----------
-    "Mofiqul/dracula.nvim";
-    "shaunsingh/nord.nvim";
-    "bluz71/vim-nightfly-guicolors";
-    "bluz71/vim-moonfly-colors";
     "rafamadriz/neon";
     "navarasu/onedark.nvim";
 
@@ -107,11 +103,6 @@ require "paq" {
     --------------
     -- Nix
     'LnL7/vim-nix';
-
-
-    -- Integrations
-    -----------------
-    'jupyter-vim/jupyter-vim';
 
     ----------
     -- Notes
