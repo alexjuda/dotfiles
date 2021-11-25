@@ -11,10 +11,6 @@ require "paq" {
 
     -- Theme
     ----------
-    "Mofiqul/dracula.nvim";
-    "shaunsingh/nord.nvim";
-    "bluz71/vim-nightfly-guicolors";
-    "bluz71/vim-moonfly-colors";
     "rafamadriz/neon";
     "navarasu/onedark.nvim";
 
@@ -24,7 +20,7 @@ require "paq" {
     'kyazdani42/nvim-tree.lua';
 
     -- leader keybindings helper window
-    'liuchengxu/vim-which-key';
+    "folke/which-key.nvim";
 
     -- `cd` after opening a file
     'airblade/vim-rooter';
@@ -107,11 +103,6 @@ require "paq" {
     --------------
     -- Nix
     'LnL7/vim-nix';
-
-
-    -- Integrations
-    -----------------
-    'jupyter-vim/jupyter-vim';
 
     ----------
     -- Notes

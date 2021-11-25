@@ -69,6 +69,13 @@ vim.o.termguicolors = true
 vim.o.showmode = false
 
 
+---------------
+-- which-key --
+---------------
+require("which-key").setup {
+}
+
+
 --------------
 -- NvimTree --
 --------------
@@ -175,7 +182,7 @@ require"nvim-treesitter.configs".setup {
   },
 
   indent = {
-    enable = true,
+    enable = false,
   },
 
   -- tree-sitter objects for code navigation
