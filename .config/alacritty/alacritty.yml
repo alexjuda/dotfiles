@@ -21,7 +21,7 @@ font:
     #     family: JetBrains Mono
     #     style: Medium Italic
 
-    size: 18
+    size: 14
 
     # Vertical character padding. Increase to make line higher.
     # offset:
