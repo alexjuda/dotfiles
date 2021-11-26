@@ -83,15 +83,6 @@ map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
 -----------------
 -- The actual keymap is set in LSP `on_attach` callback in `lua/settings.lua`.
 
--- TODO: bind the keybindings only for python files
-map("n", "<localleader>sc", ":JupyterConnect<CR>", opts)
-map("n", "<localleader>sd", ":JupyterDisconnect<CR>", opts)
-map("n", "<localleader>sb", ":JupyterRunFile<CR>", opts)
-map("n", "<localleader>se", ":JupyterRunCell<CR>", opts)
-map("n", "<localleader>sk", ":JupyterTerminateKernel<CR>", opts)
-map("v", "<localleader>sr", ":JupyterSendRange<CR>", opts)
-
-
 -- enable or disable keymappings for venn
 function _G.toggle_venn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled) 
