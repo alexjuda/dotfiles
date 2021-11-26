@@ -98,6 +98,10 @@ require "paq" {
     -- help for writing unicode characters
     "chrisbra/unicode.vim";
 
+    -- Lang-specific
+    ----------------
+    -- Write jupyter notebooks from vim
+    "untitled-ai/jupyter_ascending.vim";
 
     -- Languages
     --------------

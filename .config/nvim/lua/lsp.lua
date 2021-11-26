@@ -57,7 +57,13 @@ require("lspconfig").pylsp.setup {
             configurationSources = {"flake8"},
         },
     },
-    on_attach = shared_on_attach,
+    on_attach = function(client, buf_n)
+        shared_on_attach(client, buf_n)
+
+        -- python-specific keybindings
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
+    end,
     capabilities = shared_capabilities,
 }
 
