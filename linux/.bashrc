@@ -135,6 +135,11 @@ bind 'set completion-ignore-case on'
 # src: https://superuser.com/a/602405
 export PROMPT_COMMAND='history -a'
 
+# Set up direnv
+if [ -x "$(command -v direnv)" ]; then
+    eval "$(direnv hook bash)"
+fi
+
 # ------ custom utils ------
 
 function pyenv-reset() {
