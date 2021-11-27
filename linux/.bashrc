@@ -114,6 +114,15 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+
+# fix brew/pyenv stuff on macOS.
+# src: https://github.com/pyenv/pyenv#homebrew-in-macos
+if [ -x "$(command -v brew)" ]; then
+    alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+fi
+
+
+
 # make `cd` completions case insensitive
 bind 'set completion-ignore-case on'
 
