@@ -150,6 +150,11 @@ function pyenv-reset() {
     pip install --upgrade pip
 }
 
+# short for "python virtualenv name"
+function pn() {
+    pyenv version-name
+}
+
 # TODO: fix home path
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/home/alex/.sdkman"
