@@ -40,6 +40,13 @@ On macOS:
 Misc setup
 **********
 
+Swap keys:
+
+.. code-block:: sh
+
+    xmodmap -e "keycode 94 = grave asciitilde" # make key between shift and z work as grave/tilde
+
+
 On macOS:
 
 .. code-block:: sh
