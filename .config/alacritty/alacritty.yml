@@ -9,11 +9,8 @@ env:
 
 font:
     normal:
-        # brew tap homebrew/cask-fonts
-        # brew install --cask font-JetBrains-Mono-nerd-font
-        family: JetBrainsMono Nerd Font
-        style: Regular
-
+        family: Roboto Mono Nerd Font
+        
         # workaround if the nerd patch is unavailable:
         # family: JetBrains Mono
 

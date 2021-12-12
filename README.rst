@@ -84,6 +84,12 @@ fonts
 `nvim-bufferline.lua` requires using a font patched with devicon glyphs. 
 Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>`_.
 
+
+On macOS:
+
+        brew tap homebrew/cask-fonts
+        brew install --cask font-JetBrains-Mono-nerd-font # or whatever else font you need
+
 tree-sitter
 -----------
 
