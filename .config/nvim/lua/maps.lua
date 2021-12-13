@@ -10,6 +10,7 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 -- Global
 ----------
 map("n", "s", ":HopChar2<CR>", opts)
+map("n", "<space><space>", ":Commands<CR>", opts)
 
 -- Leaders
 ------------
