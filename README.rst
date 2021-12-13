@@ -87,8 +87,10 @@ Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>
 
 On macOS:
 
-        brew tap homebrew/cask-fonts
-        brew install --cask font-JetBrains-Mono-nerd-font # or whatever else font you need
+         brew tap homebrew/cask-fonts
+         brew install --cask font-JetBrains-Mono-nerd-font
+         brew install --cask font-roboto-mono-nerd-font
+         # or whatever else font you need
 
 tree-sitter
 -----------
