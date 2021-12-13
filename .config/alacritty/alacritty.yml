@@ -9,7 +9,12 @@ env:
 
 font:
     normal:
-        family: Roboto Mono Nerd Font
+        # Linux:
+        # family: Roboto Mono Nerd Font
+        
+        # macOS:
+        # family: RobotoMono Nerd Font
+        # style: Regular
         
         # workaround if the nerd patch is unavailable:
         # family: JetBrains Mono
