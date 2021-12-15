@@ -148,18 +148,6 @@ vim.cmd[[colorscheme onedark]]
 -- Treesitter-based Markdown --
 -------------------------------
 
--- Makes `markdown` appear on list of tree-sitter syntaxes (see `TSInstallInfo`).
--- Based on:
--- https://www.reddit.com/r/neovim/comments/pmknoi/comment/hcjpccu/?utm_source=share&utm_medium=web2x&context=3
-local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-
-parser_configs.markdown = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  filetype = "markdown",
-}
 
 -- General config --
 -------------------------------
@@ -167,6 +155,8 @@ parser_configs.markdown = {
 -- Enable all common functionality
 
 require"nvim-treesitter.configs".setup {
+  -- TODO: prepare a list of langs we want to use
+  -- ensure_installed = {},
   highlight = {
     enable = true,
   },
