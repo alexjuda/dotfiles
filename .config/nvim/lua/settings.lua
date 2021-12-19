@@ -56,9 +56,11 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.hidden = true
 
 -- Set line lengths to 88 by default
-vim.o.textwidth = 88
-vim.bo.textwidth = 88
+-- vim.o.textwidth = 88
+-- vim.bo.textwidth = 88
 
+-- Don't soft wrap in the middle of a word
+vim.o.linebreak = true
 
 -- Required by bufferline
 vim.o.termguicolors = true
