@@ -11,8 +11,7 @@ require "paq" {
 
     -- Theme
     ----------
-    "rafamadriz/neon";
-    "navarasu/onedark.nvim";
+    "folke/tokyonight.nvim";
 
     -- UI
     -------

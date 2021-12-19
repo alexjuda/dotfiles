@@ -3,7 +3,7 @@
 --------
 
 -- Buffer- or window-local options that we want to provide deafults for need
--- to be set both globally and "locally". 
+-- to be set both globally and "locally".
 -- See https://oroques.dev/notes/neovim-init/#set-options
 
 -- Improve scrolling performance, especially in tmux
@@ -135,13 +135,10 @@ augroup END
 -- Colors --
 ------------
 
--- Make colorscheme darker, but only on Linux
-if vim.loop.os_uname().sysname ~= "Darwin" then
-    -- Needs to be before setting the colorscheme
-    vim.g.onedark_style = "darker"
-end
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_hide_inactive_statusline = true
 
-vim.cmd[[colorscheme onedark]]
+vim.cmd[[colorscheme tokyonight]]
 
 ----------------
 -- Treesitter --
@@ -270,14 +267,11 @@ local function ts_statusline()
 end
 
 require("lualine").setup {
-    options = {
-        theme = "onedark",
-    },
     sections = {
         lualine_c = { ts_statusline },
-        lualine_x = { 
-            { 
-                "diagnostics", 
+        lualine_x = {
+            {
+                "diagnostics",
                 sources = { "nvim_diagnostic", },
             },
             "fileformat",
