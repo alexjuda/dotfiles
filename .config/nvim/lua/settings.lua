@@ -59,6 +59,10 @@ vim.o.hidden = true
 -- vim.o.textwidth = 88
 -- vim.bo.textwidth = 88
 
+-- Show trailing spaces & tabs.
+vim.o.list = true
+vim.wo.list = true
+
 -- Don't soft wrap in the middle of a word
 vim.o.linebreak = true
 
