@@ -25,6 +25,7 @@ On linux:
     # TODO see if this is still needed
     ln -s $PWD/linux/completions ~/.bash-completions
     ln -s $PWD/linux/.tmux-linux.conf ~/.tmux-linux.conf
+    ln -s $PWD/linux/.Xmodmap ~/.Xmodmap
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
     dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
     dconf load /org/gnome/settings-daemon/plugins/xkb-options/ < linux/xkb-options.dconf
@@ -47,6 +48,7 @@ Remap keys on Linux:
 
     xmodmap -e "keycode 94 = grave asciitilde" # make key between shift and z work as grave/tilde
     xmodmap -pke # show all keybindings
+    xmodmap -pke > linux/.Xmodmap # update keymap
 
 
 On macOS:
