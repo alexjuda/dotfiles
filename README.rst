@@ -27,6 +27,7 @@ On linux:
     ln -s $PWD/linux/.tmux-linux.conf ~/.tmux-linux.conf
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
     dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
+    dconf load /org/gnome/settings-daemon/plugins/xkb-options/ < linux/xkb-options.dconf
 
 On macOS:
 
