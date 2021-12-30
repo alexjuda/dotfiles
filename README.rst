@@ -11,6 +11,7 @@ Installation
 .. code-block:: sh
 
     ln -s $PWD/.config/alacritty ~/.config/alacritty
+    ln -s $PWD/.config/kitty ~/.config/kitty
     ln -s $PWD/.config/nvim ~/.config/nvim
     ln -s $PWD/.tmux.conf ~/.tmux.conf
     ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
@@ -88,7 +89,7 @@ fonts
 -----
 
 `nvim-bufferline.lua` requires using a font patched with devicon glyphs. 
-Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>`_.
+Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>`_ or the `webpage <https://www.nerdfonts.com/font-downloads>`_.
 
 
 On macOS:
