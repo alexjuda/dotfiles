@@ -25,7 +25,7 @@ On linux:
     ln -s $PWD/linux/.bashrc ~/.bashrc
     ln -s $PWD/linux/.tmux-linux.conf ~/.tmux-linux.conf
     ln -s $PWD/linux/.Xmodmap ~/.Xmodmap
-    ln -s $PWD/linux/.xinitrc ~/.xinitrc
+    ln -s $PWD/linux/remap-keys.desktop ~/.config/autostart/remap-keys.desktop
 
     # TODO see if this is still needed
     ln -s $PWD/linux/completions ~/.bash-completions
