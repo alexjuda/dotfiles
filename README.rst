@@ -22,10 +22,13 @@ On linux:
 .. code-block:: sh
 
     ln -s $PWD/linux/.bashrc ~/.bashrc
-    # TODO see if this is still needed
-    ln -s $PWD/linux/completions ~/.bash-completions
     ln -s $PWD/linux/.tmux-linux.conf ~/.tmux-linux.conf
     ln -s $PWD/linux/.Xmodmap ~/.Xmodmap
+    ln -s $PWD/linux/.xinitrc ~/.xinitrc
+
+    # TODO see if this is still needed
+    ln -s $PWD/linux/completions ~/.bash-completions
+
     dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
     dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
     dconf load /org/gnome/settings-daemon/plugins/xkb-options/ < linux/xkb-options.dconf
