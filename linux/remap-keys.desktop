@@ -3,4 +3,4 @@ Name=Remap keys
 Comment=Remap custom keys like tilde
 Exec=xmodmap ~/.Xmodmap
 Type=Application
-X-GNOME-Autostart-enabled=false
+X-GNOME-Autostart-enabled=true
