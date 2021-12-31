@@ -145,6 +145,29 @@ Add the following line to `/etc/modprobe.d/hid_apple.conf`
     sudo update-initramfs -u
 
 
+pyenv
+====
+
+`Instructions <https://github.com/pyenv/pyenv#basic-github-checkout>`_
+
+.. code-block:: sh
+
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    cd ~/.pyenv && src/configure && make -C src
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
+
+Then, install `build dependencies <https://github.com/pyenv/pyenv/wiki#suggested-build-environment>`_.
+
+Finally, set a global python version to be independent from system Python shenanigans.
+
+.. code-block:: sh
+
+    pyenv install --list
+    pyenv install 3.10.1
+    pyenv global 3.10.1
+
+
 pipx
 ====
 
