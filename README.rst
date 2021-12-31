@@ -175,7 +175,7 @@ The only python package that needs to be installed globally
 
 .. code-block:: sh
     
-    pip install -u pipx
+    pip install --user pipx
 
 
 LSP
