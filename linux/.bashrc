@@ -136,6 +136,8 @@ if [ -x "$(command -v direnv)" ]; then
     eval "$(direnv hook bash)"
 fi
 
+# Edit commit messages in nvim
+export EDITOR="nvim"
 
 # src: https://stackoverflow.com/a/19533853
 # Eternal bash history.
