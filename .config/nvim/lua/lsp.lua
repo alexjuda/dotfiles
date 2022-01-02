@@ -128,24 +128,12 @@ require("lspconfig").jdtls.setup {
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
 
 local sumneko_cmd = function()
-    local system_name
-    if vim.fn.has("mac") == 1 then
-        system_name = "macOS"
-    elseif vim.fn.has("unix") == 1 then
-        system_name = "Linux"
-    elseif vim.fn.has('win32') == 1 then
-        system_name = "Windows"
-    else
-        print("Unsupported system for sumneko")
-    end
-
     return {
         vim.env.HOME
-        ..  "/.local/share/aj-lsp/lua-language-server/bin/"
-        ..  system_name
-        ..  "/lua-language-server"
+        .. "/.local/share/aj-lsp/lua-language-server/bin/lua-language-server"
     }
 end
+
 
 local lua_runtime_paths = function()
     local runtime_path = vim.split(package.path, ';')
