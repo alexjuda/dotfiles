@@ -74,6 +74,8 @@ vim.o.termguicolors = true
 -- already provides this information.
 vim.o.showmode = false
 
+-- Set langauge
+vim.cmd[[language en_US.UTF-8]]
 
 ---------------
 -- which-key --
