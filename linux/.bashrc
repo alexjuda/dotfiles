@@ -115,10 +115,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# Don't use pyenv virtualenv-init because it slows down shells tremendously.
+# We'll use direnv instead.
+# eval "$(pyenv virtualenv-init -)"
 
 
-# fix brew/pyenv stuff on macOS.
+# fix brew/pyenv stuff on macOS. Without this, brew formulas that depend on
+# Python would link against pyenv-provided global Python.
 # src: https://github.com/pyenv/pyenv#homebrew-in-macos
 if [ -x "$(command -v brew)" ]; then
     alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
@@ -157,10 +160,11 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # ------ custom utils ------
 
 function pyenv-reset() {
-    pyenv virtualenv-delete $(basename $PWD)
+    local VENV_NAME=$(basename $PWD)
+    pyenv virtualenv-delete "$VENV_NAME"
     [[ -s .python-version ]] && rm .python-version
-    pyenv virtualenv $(basename $PWD)
-    pyenv local $(basename $PWD)
+    pyenv virtualenv "$VENV_NAME"
+    pyenv local "$VENV_NAME"
     pip install --upgrade pip
 }
 
