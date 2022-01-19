@@ -173,6 +173,13 @@ function pn() {
     pyenv version-name
 }
 
+# sets jira ticket that can later be retrieved by echo $T
+function set-ticket() {
+    local ticket="$1"
+    echo ${ticket} > ~/.local/share/ticket.txt
+    T=$(cat ~/.local/share/ticket.txt)
+}
+
 # TODO: fix home path
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/home/alex/.sdkman"
