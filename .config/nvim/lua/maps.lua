@@ -11,6 +11,8 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 ----------
 map("n", "s", ":HopChar2<CR>", opts)
 map("n", "<space><space>", ":Commands<CR>", opts)
+map("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+map("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
 -- Leaders
 ------------
