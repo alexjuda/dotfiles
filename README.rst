@@ -215,7 +215,7 @@ Don't worry about the "-g" flag, npm handles dependency isolation between librar
 Lua
 ---
 
-Download prebuilt LSP from releases page and put it under `~/.local/share/aj-lsp/lua-language-server`::
+Download prebuilt LSP from `releases page <https://github.com/sumneko/lua-language-server/releases>_` and put it under `~/.local/share/aj-lsp/lua-language-server`::
 
     mkdir -p ~/.local/share/aj-lsp
     mv ~/Downloads/lua-language-server ~/.local/share/aj-lsp/
