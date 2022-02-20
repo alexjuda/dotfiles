@@ -150,18 +150,23 @@ vim.cmd[[colorscheme tokyonight]]
 -- Treesitter --
 ----------------
 
--- Treesitter-based Markdown --
--------------------------------
-
-
 -- General config --
 -------------------------------
 
 -- Enable all common functionality
 
 require"nvim-treesitter.configs".setup {
-  -- TODO: prepare a list of langs we want to use
-  -- ensure_installed = {},
+  ensure_installed = {
+    "bash",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "python",
+    "rst",
+  },
+
   highlight = {
     enable = true,
   },
