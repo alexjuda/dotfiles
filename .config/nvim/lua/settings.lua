@@ -187,10 +187,28 @@ require"nvim-treesitter.configs".setup {
 
   -- tree-sitter objects for code navigation
   textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true,
+
+      goto_previous_start = {
+        ["[p"] = "@parameter.inner",
+      },
+      goto_previous_end = {
+        ["[P"] = "@parameter.outer",
+      },
+      goto_next_start = {
+        ["]p"] = "@parameter.inner",
+      },
+      goto_next_end = {
+        ["]P"] = "@parameter.outer",
+      },
+    },
+
     select = {
       enable = true,
 
-      -- Automatically jump forward to textobj, similar to targets.vim 
+      -- Automatically jump forward to textobj, similar to targets.vim
       lookahead = true,
 
       keymaps = {
@@ -201,6 +219,8 @@ require"nvim-treesitter.configs".setup {
         ["ic"] = "@call.inner",
         ["ak"] = "@class.outer",
         ["ik"] = "@class.inner",
+        ["ap"] = "@parameter.outer",
+        ["ip"] = "@parameter.inner",
       },
     },
   },
