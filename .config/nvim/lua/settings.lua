@@ -195,21 +195,25 @@ require"nvim-treesitter.configs".setup {
         ["[p"] = "@parameter.inner",
         ["[f"] = "@function.outer",
         ["[k"] = "@class.outer",
+        ["[i"] = "@call.outer",
       },
       goto_previous_end = {
         ["[P"] = "@parameter.outer",
         ["[F"] = "@function.outer",
         ["[K"] = "@class.outer",
+        ["[I"] = "@call.outer",
       },
       goto_next_start = {
         ["]p"] = "@parameter.inner",
         ["]f"] = "@function.outer",
         ["]k"] = "@class.outer",
+        ["]i"] = "@call.outer",
       },
       goto_next_end = {
         ["]P"] = "@parameter.outer",
         ["]F"] = "@function.outer",
         ["]K"] = "@class.outer",
+        ["]I"] = "@call.outer",
       },
     },
 
@@ -223,8 +227,8 @@ require"nvim-treesitter.configs".setup {
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ac"] = "@call.outer",
-        ["ic"] = "@call.inner",
+        ["ai"] = "@call.outer",
+        ["ii"] = "@call.inner",
         ["ak"] = "@class.outer",
         ["ik"] = "@class.inner",
         ["ap"] = "@parameter.outer",
