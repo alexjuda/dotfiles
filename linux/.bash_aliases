@@ -58,9 +58,8 @@ custom_aliases=(
     "gru:git reset --"
     "grv:git remote -v"
 
-    "gsb:git status -b -s"
     "gsh:git show"
-    "gss:git status -s"
+    "gss:git status --short --branch --untracked-files"
     "gst:git status"
     "gsta:git stash push"
     "gstaa:git stash --apply"
