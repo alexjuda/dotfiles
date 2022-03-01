@@ -67,6 +67,9 @@ custom_aliases=(
     "gstl:git stash list"
     "gstp:git stash pop"
     "gsts:git stash show --text"
+
+    "cdd:cd ~/Desktop"
+    "cdn:cd ~/Documents/notes-synced"
 )
 
 for entry in "${custom_aliases[@]}"; do
