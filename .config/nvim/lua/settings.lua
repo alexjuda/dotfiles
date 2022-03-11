@@ -302,7 +302,12 @@ end
 require("lualine").setup {
     sections = {
         lualine_a = {},
-        lualine_b = { "filename" },
+        lualine_b = {
+            {
+                "filename",
+                path = 1,
+            }
+        },
         lualine_c = { ts_statusline },
         lualine_x = {
             {
