@@ -77,6 +77,11 @@ vim.o.showmode = false
 -- Set langauge
 vim.cmd[[language en_US.UTF-8]]
 
+
+-- Use a single, unified status line regardless of the number of windows. Works
+-- with neovim>=0.7 (edge atm).
+vim.o.laststatus = 3
+
 ---------------
 -- which-key --
 ---------------
