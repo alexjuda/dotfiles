@@ -89,6 +89,13 @@ require("which-key").setup {
 }
 
 
+---------------
+-- shade.nvim --
+---------------
+require("shade").setup {
+}
+
+
 --------------
 -- NvimTree --
 --------------

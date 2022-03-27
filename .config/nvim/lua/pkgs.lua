@@ -49,6 +49,9 @@ require "paq" {
     -- Git gutter & other goodies
     "lewis6991/gitsigns.nvim";
 
+    -- Dim inactive windows
+    "sunjon/shade.nvim";
+
 
     -- LSP
     --------
