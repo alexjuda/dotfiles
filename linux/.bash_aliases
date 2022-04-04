@@ -1,7 +1,8 @@
-# Aliases compatible with:
-# https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
 
 custom_aliases=(
+    # -------------- git aliases ----------------
+    # git aliases compatible with:
+    # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
     "g:git"
     "ga:git add"
     "gaa:git add --all"
@@ -68,8 +69,14 @@ custom_aliases=(
     "gstp:git stash pop"
     "gsts:git stash show --text"
 
+    # --------------- dir movement --------------
     "cdd:cd ~/Desktop"
     "cdn:cd ~/Documents/notes-synced"
+
+    # --------------- listing dirs --------------
+    "l1:tree -L 1 ."
+    "l2:tree -L 2 ."
+    "l3:tree -L 3 ."
 )
 
 for entry in "${custom_aliases[@]}"; do
