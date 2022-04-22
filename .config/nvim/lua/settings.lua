@@ -138,17 +138,6 @@ augroup END
 ]])
 
 
--- Highlight cursor line only in the active window
--- src: https://vim.fandom.com/wiki/Highlight_current_line
-vim.cmd([[
-augroup aj-active-window-cursorline
-    au!
-    au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
-    au WinLeave,FocusLost * setlocal nocursorline
-augroup END
-]])
-
-
 ------------
 -- Colors --
 ------------
