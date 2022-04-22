@@ -74,9 +74,9 @@ custom_aliases=(
     "cdn:cd ~/Documents/notes-synced"
 
     # --------------- listing dirs --------------
-    "l1:tree -L 1 ."
-    "l2:tree -L 2 ."
-    "l3:tree -L 3 ."
+    "l1:tree -L 1"
+    "l2:tree -L 2"
+    "l3:tree -L 3"
 )
 
 for entry in "${custom_aliases[@]}"; do
