@@ -27,9 +27,6 @@ require "paq" {
     -- code parser for syntax highlight & folds
     {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end}; -- Update the parsers on plugin update
 
-    -- treesitter debugging
-    "nvim-treesitter/playground";
-
     -- buffers presented in a tab bar + fancy icons
     'akinsho/nvim-bufferline.lua';
 
@@ -85,9 +82,6 @@ require "paq" {
     -- wrap selected block in chars
     'machakann/vim-sandwich';
 
-    -- training for motions
-    'tjdevries/train.nvim';
-
     -- quick jumps between lines and words
     'phaazon/hop.nvim';
 
@@ -104,11 +98,6 @@ require "paq" {
     ----------------
     -- Write jupyter notebooks from vim
     "untitled-ai/jupyter_ascending.vim";
-
-    -- Languages
-    --------------
-    -- Nix
-    'LnL7/vim-nix';
 
     ----------
     -- Notes
