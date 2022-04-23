@@ -92,6 +92,7 @@ require("which-key").setup {
 ---------------
 -- shade.nvim --
 ---------------
+-- Enabling this clears startup screen :(
 require("shade").setup {
 }
 
@@ -143,8 +144,6 @@ augroup END
 ------------
 
 vim.g.tokyonight_style = "night"
-vim.g.tokyonight_hide_inactive_statusline = true
-
 vim.cmd[[colorscheme tokyonight]]
 
 ----------------
