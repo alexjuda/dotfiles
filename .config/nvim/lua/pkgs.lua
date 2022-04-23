@@ -104,4 +104,7 @@ require "paq" {
     ----------
     -- Render markdown in a side browser window.
     { "iamcco/markdown-preview.nvim", run="cd app && npm install" };
+
+    -- LaTeX syntax & autocompiling
+    { "lervag/vimtex" };
 }
