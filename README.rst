@@ -46,15 +46,6 @@ On macOS:
 Misc setup
 **********
 
-Remap keys on Linux:
-
-.. code-block:: sh
-
-    xmodmap -e "keycode 94 = grave asciitilde" # make key between shift and z work as grave/tilde
-    xmodmap -pke # show all keybindings
-    xmodmap -pke > linux/.Xmodmap # update keymap
-
-
 On macOS:
 
 .. code-block:: sh
