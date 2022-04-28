@@ -180,6 +180,7 @@ Python
     
     pipx install 'python-lsp-server[flake8,mccabe,rope]'
     pipx inject python-lsp-server python-lsp-black
+    pipx inject python-lsp-server pylsp-rope
 
 
 JavaScript
