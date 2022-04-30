@@ -109,12 +109,7 @@ require("nvim-tree").setup {
   update_focused_file = {
     -- enables the feature (default false)
     enable = true,
-    update_cwd = true,
-  },
-
-  view = {
-    -- if true the tree will resize itself after opening a file
-    auto_resize = true,
+    -- update_cwd = true,
   },
 }
 
