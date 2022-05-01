@@ -97,6 +97,15 @@ require("shade").setup {
 }
 
 
+--------------------
+-- neoscroll.nvim --
+--------------------
+require("neoscroll").setup {
+    easing_function = "sine",
+}
+
+
+
 --------------
 -- NvimTree --
 --------------
