@@ -142,6 +142,13 @@ fi
 # Edit commit messages in nvim
 export EDITOR="nvim"
 
+# node
+# Use custom prefix for global packages to workaround sudo installation under
+# Fedora. Source:
+# https://danillolima.com/en/npm/how-to-fix-permissions-on-globally-installing-npm-packages-on-linux/
+export PATH="~/.npm-global/bin:$PATH"
+
+
 # src: https://stackoverflow.com/a/19533853
 # Eternal bash history.
 # ---------------------
