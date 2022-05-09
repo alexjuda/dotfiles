@@ -6,9 +6,10 @@ wezterm.on("update-right-status", function(window, pane)
 end)
 
 return {
-  keys = {
-    {key="9", mods="ALT", action=wezterm.action{ShowLauncherArgs={flags="FUZZY|WORKSPACES"}}},
-    {key="n", mods="ALT", action=wezterm.action{SwitchWorkspaceRelative=1}},
-    {key="p", mods="ALT", action=wezterm.action{SwitchWorkspaceRelative=-1}},
+    default_prog = {"/usr/local/bin/bash", "-l",},
+    keys = {
+        {key="9", mods="ALT", action=wezterm.action{ShowLauncherArgs={flags="FUZZY|WORKSPACES"}}},
+        {key="n", mods="ALT", action=wezterm.action{SwitchWorkspaceRelative=1}},
+        {key="p", mods="ALT", action=wezterm.action{SwitchWorkspaceRelative=-1}},
   },
 }
