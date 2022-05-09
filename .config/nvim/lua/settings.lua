@@ -148,6 +148,12 @@ augroup END
 ------------
 
 vim.g.tokyonight_style = "night"
+
+-- Fix too bright fold line background.
+-- It's set to the color of gutter foreground in:
+-- https://github.com/folke/tokyonight.nvim/blob/8223c970677e4d88c9b6b6d81bda23daf11062bb/lua/tokyonight/theme.lua#L36
+-- vim.g.tokyonight_colors = { fg_gutter = "#16161E", }
+
 vim.cmd[[colorscheme tokyonight]]
 
 ----------------
