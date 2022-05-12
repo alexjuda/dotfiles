@@ -9,10 +9,12 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 
 -- Global
 ----------
-map("n", "s", ":HopChar2<CR>", opts)
 map("n", "<space><space>", ":Commands<CR>", opts)
+
 map("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 map("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+
+map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
 
 -- Leaders
 ------------
@@ -47,6 +49,9 @@ map("n", "<leader>pt", ":NvimTreeToggle<CR>", opts) -- open project tree
 map("n", "<leader>po", ":NvimTreeFindFile<CR>", opts) -- reveal current file in project
 map("n", "<leader>pf", ":GitFiles<CR>", opts) -- find in git-recognized files
 
+-- Search
+-----------
+map("n", "<leader>ss", ":Rg ", opts) -- search symbol in project
 
 -- Files
 ----------
