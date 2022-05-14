@@ -170,3 +170,13 @@ require("lspconfig").sumneko_lua.setup {
     on_attach = shared_on_attach,
     capabilities = shared_capabilities,
 }
+
+
+-- Rust --
+----------
+-- Requires `rust-analyzer` installed.
+
+require("lspconfig").rust_analyzer.setup {
+    on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
+}
