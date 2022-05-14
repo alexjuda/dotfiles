@@ -92,8 +92,8 @@ map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
 -- The actual keymap is set in LSP `on_attach` callback in `lua/settings.lua`.
 
 -- enable or disable keymappings for venn
-function _G.toggle_venn()
-    local venn_enabled = vim.inspect(vim.b.venn_enabled) 
+function _G.aj_toggle_venn()
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
     if(venn_enabled == "nil") then
         vim.b.venn_enabled = true
         vim.cmd[[setlocal ve=all]]
@@ -110,5 +110,18 @@ function _G.toggle_venn()
         vim.b.venn_enabled = nil
     end
 end
-map("n", "<localleader>v", ":lua toggle_venn()<CR>", opts)
+map("n", "<localleader>v", ":lua aj_toggle_venn()<CR>", opts)
 
+-- paste as markdown link
+function _G.aj_paste_markdown_link()
+    local url = vim.fn.getreg("*")
+    local formatted = "()[" .. url .. "]"
+
+    -- taken from https://www.reddit.com/r/neovim/comments/psux8f/comment/hdsfi9s/?utm_source=share&utm_medium=web2x&context=3
+    local pos = vim.api.nvim_win_get_cursor(0)[2]
+    local line = vim.api.nvim_get_current_line()
+    local new_line = line:sub(0, pos + 1) .. formatted .. line:sub(pos + 2)
+    vim.api.nvim_set_current_line(new_line)
+end
+-- TODO: set this only when entering markdown files
+map("n", "<localleader>p", ":lua aj_paste_markdown_link()<CR>", opts)
