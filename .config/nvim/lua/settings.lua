@@ -315,6 +315,15 @@ local function ts_statusline()
     return require("nvim-treesitter").statusline()
 end
 
+-- Simulates how Emacs shows currently active minor modes on the status line.
+local function minor_mode_status()
+    local status = ""
+    if (vim.inspect(vim.b.venn_enabled) ~= "nil") then
+        status = status .. "V"
+    end
+    return status
+end
+
 require("lualine").setup {
     sections = {
         lualine_a = {},
@@ -326,6 +335,7 @@ require("lualine").setup {
         },
         lualine_c = { ts_statusline },
         lualine_x = {
+            minor_mode_status,
             {
                 "diagnostics",
                 sources = { "nvim_diagnostic", },
