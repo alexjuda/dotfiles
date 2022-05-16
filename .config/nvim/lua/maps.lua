@@ -80,7 +80,7 @@ map("n", "<F5>", ":lua require('nabla').place_inline()<CR>", opts) -- nabla.vim 
 -- Editor
 -----------
 map("n", "<leader>eu", ":UnicodeSearch! ", opts)
-map("n", "<leader>ev", ":lua toggle_venn()<CR>", opts)
+map("n", "<leader>ev", ":lua aj_toggle_venn()<CR>", opts)
 
 -- Root
 ---------
