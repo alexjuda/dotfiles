@@ -11,6 +11,7 @@ custom_aliases=(
     "gba:git branch --all"
     "gbd:git branch -d"
     "gbD:git branch -D"
+    "gbDD:git branch | grep -v 'dev' | grep -v 'main' | xargs git branch -D"
     "gbl:git blame -b -w"
 
     "gc:git commit -v"
