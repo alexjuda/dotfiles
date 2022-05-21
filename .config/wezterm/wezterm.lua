@@ -1,13 +1,21 @@
 local wezterm = require 'wezterm'
 
+local on_linux = function()
+    -- Based on https://stackoverflow.com/a/3652420
+    local f = io.popen("uname")
+    local output = f:read("*a")
+    f:close()
+    return output == "Linux\n"
+end
+
 -- Workspace mgmt. Src: https://wezfurlong.org/wezterm/config/lua/keyassignment/SwitchWorkspaceRelative.html
 wezterm.on("update-right-status", function(window, pane)
   window:set_right_status(window:active_workspace())
 end)
 
 return {
-    -- Override shell. System bash in macOS os old. Let's use the homebrew one.
-    default_prog = {"/usr/local/bin/bash", "-l",},
+    -- System bash in macOS os old. Let's use the homebrew one if not on Linux.
+    default_prog = on_linux() and {"/bin/bash", "-l",} or {"/usr/local/bin/bash", "-l",},
 
     -- Black/desaturated yellow color scheme.
     color_scheme = "Batman",
