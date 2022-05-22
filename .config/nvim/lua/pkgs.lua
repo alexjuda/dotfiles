@@ -50,6 +50,9 @@ require "paq" {
     -- Dim inactive windows
     "sunjon/shade.nvim";
 
+    -- Find and replace
+    "s1n7ax/nvim-search-and-replace";
+
 
     -- LSP
     --------

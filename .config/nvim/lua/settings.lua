@@ -104,6 +104,10 @@ require("neoscroll").setup {
     easing_function = "sine",
 }
 
+-----------------------------
+-- nvim-search-and-replace --
+-----------------------------
+require("nvim-search-and-replace").setup()
 
 
 --------------
