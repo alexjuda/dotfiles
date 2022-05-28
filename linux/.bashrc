@@ -187,8 +187,9 @@ function set-ticket() {
     T=$(cat ~/.local/share/ticket.txt)
 }
 
+. "$HOME/.cargo/env"
+
 # TODO: fix home path
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/home/alex/.sdkman"
 # [[ -s "/home/alex/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alex/.sdkman/bin/sdkman-init.sh"
-
