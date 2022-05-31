@@ -124,6 +124,11 @@ require("nvim-tree").setup {
     enable = true,
     -- update_cwd = true,
   },
+
+  view = {
+    -- sets the window width to file lengths
+    adaptive_size = true,
+  },
 }
 
 ------------------
