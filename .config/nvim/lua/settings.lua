@@ -369,7 +369,6 @@ require("lsp_signature").setup {
 -- Buffer tabs --
 -----------------
 
-require("bufferline").setup {}
 
 -----------------
 -- Git goodies --
