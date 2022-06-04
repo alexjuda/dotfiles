@@ -5,7 +5,7 @@ custom_aliases=(
     # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
     "g:git"
     "ga:git add"
-    "gaa:git add --all"
+    "gap:git add --interactive --patch"
 
     "gb:git branch"
     "gba:git branch --all"
