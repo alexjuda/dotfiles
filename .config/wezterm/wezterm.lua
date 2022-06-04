@@ -27,5 +27,14 @@ return {
         {key="p", mods="ALT", action=wezterm.action{SwitchWorkspaceRelative=-1}},
         {key="w", mods="ALT|CMD", action=wezterm.action{CloseCurrentPane={confirm=true}}},
         {key="w", mods="CTRL|SHIFT|ALT", action=wezterm.action{CloseCurrentPane={confirm=true}}},
-  },
+    },
+
+    -- Borders
+    window_padding = {
+        left = 0,
+        right = 0,
+        top = 0,
+        bottom = 0,
+    },
+
 }
