@@ -10,37 +10,14 @@ Installation
 
 .. code-block:: sh
 
-    ln -s $PWD/.config/alacritty ~/.config/alacritty
-    ln -s $PWD/.config/kitty ~/.config/kitty
     ln -s $PWD/.config/wezterm ~/.config/wezterm
     ln -s $PWD/.config/nvim ~/.config/nvim
-    ln -s $PWD/.tmux.conf ~/.tmux.conf
     ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
     ln -s $PWD/linux/.bash_aliases ~/.bash_aliases
-
-
-On linux:
-
-.. code-block:: sh
-
     ln -s $PWD/linux/.bashrc ~/.bashrc
-    ln -s $PWD/linux/.tmux-linux.conf ~/.tmux-linux.conf
-    ln -s $PWD/linux/.Xmodmap ~/.Xmodmap
-    ln -s $PWD/linux/remap-keys.desktop ~/.config/autostart/remap-keys.desktop
 
     # TODO see if this is still needed
     ln -s $PWD/linux/completions ~/.bash-completions
-
-    dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
-    dconf load /org/gnome/settings-daemon/plugins/media-keys/ < linux/media-keys.dconf
-    dconf load /org/gnome/desktop/input-sources/xkb-options/ < linux/xkb-options.dconf
-
-On macOS:
-
-.. code-block:: sh
-
-    ln -s $PWD/linux/.bashrc ~/.bash_profile
-    ln -s $PWD/macos/.tmux-macos.conf ~/.tmux-macos.conf
 
 
 **********
@@ -51,8 +28,6 @@ On macOS:
 
 .. code-block:: sh
 
-    brew install alacritty
-    brew install tmux
     brew install bash-completion@2
 
 
@@ -117,24 +92,6 @@ More details `here <https://vi.stackexchange.com/a/96>`_.
 CLI usage (`docs <https://opensource.com/article/19/7/xclip>`_)::
     
     echo "foo" | xclip -sel clip
-
-
-keyboard
-========
-
-revert fn behaviour
--------------------
-
-Add the following line to `/etc/modprobe.d/hid_apple.conf`
-
-.. code-block:: sh
-    
-    options hid_apple fnmode=2
-
-
-.. code-block:: sh
-    
-    sudo update-initramfs -u
 
 
 pyenv
