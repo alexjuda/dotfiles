@@ -37,4 +37,7 @@ return {
         bottom = 0,
     },
 
+    -- Fonts
+    -- The default is the bundled JetBrains Mono, but it lacks the nerd glyphs required by nvim-tree.
+    font = wezterm.font("FiraCode Nerd Font"),
 }
