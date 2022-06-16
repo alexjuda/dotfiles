@@ -71,11 +71,9 @@ map("n", "<leader>TT", ":TrainTextObj<CR>", opts) -- Motion training for text ob
 
 -- Notes
 ----------
-map("n", "<leader>nd", ":lua require('vapor').open_daily_note()<CR>", opts)
-map("n", "<leader>ni", ":lua require('vapor').open_notes_index()<CR>", opts)
--- TODO: remove nabla because it's broken
-map("n", "<leader>nl", ":lua require('nabla').place_inline()<CR>", opts)
-map("n", "<F5>", ":lua require('nabla').place_inline()<CR>", opts) -- nabla.vim recommends this
+map("n", "<leader>nd", ":lua require('vapor').open_scratch()<CR>", opts)
+map("n", "<leader>ns", ":lua require('vapor').open_scratch()<CR>", opts)
+map("n", "<leader>nt", ":lua require('vapor').open_todo()<CR>", opts)
 
 -- Editor
 -----------

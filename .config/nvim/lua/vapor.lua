@@ -44,30 +44,35 @@ local function merge_tables(t1, t2)
     return t1_copy
 end
 
-
 local function daily_file_name(timestamp)
-    return os.date("%Y-%m-%d", timestamp)
+    return os.date("%Y/%Y-%m-%d", timestamp)
 end
 
-local function make_daily_file_path()
-    return vim.g.vapor.daily_notes_dir .. "/" .. daily_file_name(os.time()) .. '.md'
+local function make_scratch_path()
+    return vim.g.vapor.scratch_dir .. "/" .. daily_file_name(os.time()) .. '.md'
+end
+
+local function make_todo_path()
+    return vim.g.vapor.todo_dir .. "/" .. daily_file_name(os.time()) .. '.md'
 end
 
 local function edit_file(path)
     vim.api.nvim_exec("edit " .. path, false)
 end
 
-function module.open_daily_note()
-    edit_file(make_daily_file_path())
+-- public
+
+function module.open_scratch()
+    edit_file(make_scratch_path())
 end
 
-function module.open_notes_index()
-    edit_file(vim.g.vapor.notes_index_file)
+function module.open_todo()
+    edit_file(make_todo_path())
 end
 
 local default_settings = {
-    daily_notes_dir = "~/vapor-notes/daily";
-    notes_index_file = "~/vapor-notes/index.md";
+    scratch_dir = "~/vapor-notes/scratch";
+    todo_dir = "~/vapor-notes/todo";
 }
 
 function module.setup(settings)

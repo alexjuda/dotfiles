@@ -390,9 +390,8 @@ require("hop").setup {}
 -----------
 
 require("vapor").setup {
-    -- quickfix for namespacing daily notes with a year
-    daily_notes_dir = "~/Documents/notes-synced/daily/2022",
-    notes_index_file = "~/Documents/notes-synced/README.md",
+    scratch_dir = "~/Documents/notes-synced/daily",
+    todo_dir = "~/Documents/notes-synced/todo",
 }
 
 
