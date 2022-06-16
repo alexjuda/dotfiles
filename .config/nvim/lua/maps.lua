@@ -89,8 +89,8 @@ map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
 
 -- Local leader
 -----------------
--- The actual keymap is set in LSP `on_attach` callback in `lua/settings.lua`.
 
+-- venn --
 -- enable or disable keymappings for venn
 function _G.aj_toggle_venn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled)
@@ -112,6 +112,7 @@ function _G.aj_toggle_venn()
 end
 map("n", "<localleader>v", ":lua aj_toggle_venn()<CR>", opts)
 
+-- markdown --
 -- paste as markdown link
 function _G.aj_paste_markdown_link()
     local url = vim.fn.getreg("*")
@@ -125,3 +126,8 @@ function _G.aj_paste_markdown_link()
 end
 -- TODO: set this only when entering markdown files
 map("n", "<localleader>p", ":lua aj_paste_markdown_link()<CR>", opts)
+
+
+-- LSP local leaders --
+-- We gotta do it here, because buf-local mappings don't seem to work properly in visual mode :(.
+vim.api.nvim_set_keymap("v", "<localleader>la", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
