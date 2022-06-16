@@ -79,8 +79,11 @@ vim.cmd[[language en_US.UTF-8]]
 
 
 -- Use a single, unified status line regardless of the number of windows. Works
--- with neovim>=0.7 (edge atm).
+-- with neovim>=0.7.
 vim.o.laststatus = 3
+
+-- Hide command line if not currently writing a command. Works with neovim >=0.8.
+vim.o.cmdheight = 0
 
 ---------------
 -- which-key --
