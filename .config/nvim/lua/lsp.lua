@@ -22,10 +22,10 @@ local set_lsp_keymaps = function(client, buf_n)
     vim.api.nvim_buf_set_keymap(buf_n, "v", "<localleader>la", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
 
     -- Set keymap only if language server supports it. This way which-key window will show only supported stuff.
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
         vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lf", ":lua vim.lsp.buf.formatting()<CR>", opts)
     end
-    if client.resolved_capabilities.document_range_formatting then
+    if client.server_capabilities.document_range_formatting then
         vim.api.nvim_buf_set_keymap(buf_n, "v", "<localleader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 end
