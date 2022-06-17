@@ -130,7 +130,9 @@ require("nvim-tree").setup {
 
   view = {
     -- sets the window width to file lengths
-    adaptive_size = true,
+    -- adaptive_size = true,
+
+    width = 42,
   },
 }
 
