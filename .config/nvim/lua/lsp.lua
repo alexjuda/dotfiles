@@ -179,3 +179,13 @@ require("lspconfig").rust_analyzer.setup {
     on_attach = shared_on_attach,
     capabilities = shared_capabilities,
 }
+
+
+-- ltex-ls --
+-------------
+-- LaTeX & Markdown linter based on LanguageTool.
+--
+-- Assumes that `ltex-ls` is installed and is available in the $PATH.
+-- Install from a release from: https://github.com/valentjn/ltex-ls/releases.
+
+require("lspconfig").ltex.setup {}
