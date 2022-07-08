@@ -188,4 +188,6 @@ require("lspconfig").rust_analyzer.setup {
 -- Assumes that `ltex-ls` is installed and is available in the $PATH.
 -- Install from a release from: https://github.com/valentjn/ltex-ls/releases.
 
-require("lspconfig").ltex.setup {}
+require("lspconfig").ltex.setup {
+    on_attach = shared_on_attach,
+}
