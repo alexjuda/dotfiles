@@ -40,4 +40,6 @@ return {
     -- Fonts
     -- The default is the bundled JetBrains Mono, but it lacks the nerd glyphs required by nvim-tree.
     font = wezterm.font("FiraCode Nerd Font"),
+    -- Change font size without messing up OS window layout.
+    adjust_window_size_when_changing_font_size = false,
 }
