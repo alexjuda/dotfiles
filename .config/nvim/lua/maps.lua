@@ -129,3 +129,9 @@ map("n", "<localleader>p", ":lua aj_paste_markdown_link()<CR>", opts)
 -- LSP local leaders --
 -- We gotta do it here, because buf-local mappings don't seem to work properly in visual mode :(.
 vim.api.nvim_set_keymap("v", "<localleader>la", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
+
+-- Show info about currently active LSP connections
+vim.api.nvim_set_keymap("n", "<localleader>Li", ":LspInfo<CR>", opts)
+
+-- Kill LSP clients
+vim.api.nvim_set_keymap("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", opts)
