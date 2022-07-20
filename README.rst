@@ -172,6 +172,11 @@ Download prebuilt LSP from `releases page <https://github.com/sumneko/lua-langua
 
 See also the guide at <https://jdhao.github.io/2021/08/12/nvim_sumneko_lua_conf/#build>.
 
+ltex-ls
+-------
+
+Download a recent release from <https://github.com/valentjn/ltex-ls/releases> or run `brew install ltex-ls`.
+
 Updating the completions
 ========================
 
