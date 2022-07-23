@@ -479,9 +479,9 @@
           "extraLabel": "Numpad"
         },
         {
-          "keyCode": 96,
-          "label": "8",
-          "extraLabel": "Numpad"
+          "keyCode": 2386,
+          "label": "↑",
+          "extraLabel": "C+S+"
         },
         {
           "keyCode": 97,
@@ -557,19 +557,19 @@
           "extraLabel": "Numpad"
         },
         {
-          "keyCode": 92,
-          "label": "4",
-          "extraLabel": "Numpad"
+          "keyCode": 2384,
+          "label": "←",
+          "extraLabel": "C+S+"
         },
         {
-          "keyCode": 93,
-          "label": "5",
-          "extraLabel": "Numpad"
+          "keyCode": 2385,
+          "label": "↓",
+          "extraLabel": "C+S+"
         },
         {
-          "keyCode": 94,
-          "label": "6",
-          "extraLabel": "Numpad"
+          "keyCode": 2383,
+          "label": "→",
+          "extraLabel": "C+S+"
         },
         {
           "keyCode": 85,
@@ -5498,15 +5498,15 @@
       11,
       10,
       9,
-      9,
+      3,
       9,
       10,
       4,
       15,
       10,
-      9,
-      9,
-      9,
+      3,
+      3,
+      3,
       10,
       0,
       10,
