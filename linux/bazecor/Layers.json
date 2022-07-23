@@ -474,9 +474,9 @@
           "extraLabel": "Numpad"
         },
         {
-          "keyCode": 95,
-          "label": "7",
-          "extraLabel": "Numpad"
+          "keyCode": 2850,
+          "label": "5",
+          "extraLabel": "Meh+"
         },
         {
           "keyCode": 2386,
@@ -484,9 +484,9 @@
           "extraLabel": "C+S+"
         },
         {
-          "keyCode": 97,
-          "label": "9",
-          "extraLabel": "Numpad"
+          "keyCode": 2868,
+          "label": "'",
+          "extraLabel": "Meh+"
         },
         {
           "keyCode": 84,
@@ -5496,20 +5496,20 @@
       6,
       15,
       11,
-      10,
       9,
+      6,
       3,
+      6,
       9,
-      10,
       4,
       15,
-      10,
+      9,
       3,
       3,
       3,
-      10,
+      9,
       0,
-      10,
+      9,
       9,
       9,
       9,
