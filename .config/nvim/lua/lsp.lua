@@ -18,7 +18,7 @@ local set_lsp_keymaps = function(client, buf_n)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lD", ":lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lf", ":lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lf", ":lua vim.lsp.buf.format()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "v", "<localleader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
 end
 
