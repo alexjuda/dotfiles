@@ -11,8 +11,8 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 ----------
 map("n", "<space><space>", ":Commands<CR>", opts)
 
-map("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-map("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+map("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
+map("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
 
 map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
 
