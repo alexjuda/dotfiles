@@ -175,7 +175,10 @@ See also the guide at <https://jdhao.github.io/2021/08/12/nvim_sumneko_lua_conf/
 ltex-ls
 -------
 
-Download a recent release from <https://github.com/valentjn/ltex-ls/releases> or run `brew install ltex-ls`.
+`brew install ltex-ls` or:
+
+1. Grab a release from https://github.com/valentjn/ltex-ls/releases
+2. Put the exec on your $PATH.
 
 Updating the completions
 ========================
