@@ -15,6 +15,7 @@ Installation
     ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
     ln -s $PWD/linux/.bash_aliases ~/.bash_aliases
     ln -s $PWD/linux/.bashrc ~/.bashrc
+    ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/
 
     # TODO see if this is still needed
     ln -s $PWD/linux/completions ~/.bash-completions

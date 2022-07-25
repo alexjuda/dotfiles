@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Fail quickly
+set -e
+
+DIRS=$@
+
+START_DIR=$(pwd)
+
+for DIR in $DIRS; do
+    cd $DIR
+    git fetch -p
+    git checkout main
+    git rebase origin/main
+    cd $START_DIR
+done
