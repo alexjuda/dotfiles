@@ -292,14 +292,14 @@
           "verbose": "Left Control"
         },
         {
-          "keyCode": 227,
-          "label": "LEFT LINUX",
-          "verbose": "Left Linux"
-        },
-        {
           "keyCode": 226,
           "label": "LEFT ALT",
           "verbose": "Left Alt"
+        },
+        {
+          "keyCode": 227,
+          "label": "LEFT LINUX",
+          "verbose": "Left Linux"
         },
         {
           "keyCode": 24576,
@@ -345,6 +345,11 @@
           "extraLabel": "MACRO"
         },
         {
+          "keyCode": 227,
+          "label": "LEFT LINUX",
+          "verbose": "Left Linux"
+        },
+        {
           "keyCode": 230,
           "label": "RIGHT ALT",
           "extraLabel": "",
@@ -353,11 +358,6 @@
         {
           "keyCode": 101,
           "label": "MENU"
-        },
-        {
-          "keyCode": 227,
-          "label": "LEFT LINUX",
-          "verbose": "Left Linux"
         },
         {
           "keyCode": 228,
