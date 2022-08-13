@@ -78,6 +78,9 @@ custom_aliases=(
     "l1:tree -L 1"
     "l2:tree -L 2"
     "l3:tree -L 3"
+
+    # --------------- shortcuts --------------
+    "lg:lazygit"
 )
 
 for entry in "${custom_aliases[@]}"; do
