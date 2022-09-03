@@ -32,6 +32,14 @@ On macOS:
     brew install bash-completion@2
 
 
+On linux:
+
+.. code-block:: sh
+
+    dconf load /org/gnome/shell/extensions/gtile/ < linux/gtile.dconf
+    dconf dump /org/gnome/shell/extensions/gtile/ > linux/gtile.dconf
+
+
 Workaround terminal issues:
 
 .. code-block:: sh
