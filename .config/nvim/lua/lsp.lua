@@ -167,6 +167,8 @@ require("lspconfig").sumneko_lua.setup {
 -- Rust --
 ----------
 -- Requires `rust-analyzer` installed.
+-- For LSP settings, see also:
+-- https://rust-analyzer.github.io/manual.html#nvim-lsp
 
 require("lspconfig").rust_analyzer.setup {
     on_attach = shared_on_attach,
