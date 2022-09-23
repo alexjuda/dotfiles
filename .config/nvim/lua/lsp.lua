@@ -166,7 +166,9 @@ require("lspconfig").sumneko_lua.setup {
 
 -- Rust --
 ----------
--- Requires `rust-analyzer` installed.
+-- Requires `rust-analyzer` available at PATH. Installation:
+-- https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
+--
 -- For LSP settings, see also:
 -- https://rust-analyzer.github.io/manual.html#nvim-lsp
 
