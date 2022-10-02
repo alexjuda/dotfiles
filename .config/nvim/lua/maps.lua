@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local bufmap = vim.api.nvim_buf_set_keymap
 local opts = { noremap = true }
 
@@ -79,6 +79,44 @@ map("n", "<leader>nt", ":lua require('vapor').open_todo()<CR>", opts)
 -----------
 map("n", "<leader>eu", ":UnicodeSearch! ", opts)
 map("n", "<leader>ev", ":lua aj_toggle_venn()<CR>", opts)
+
+
+-- Gitsigns
+-- src: https://github.com/lewis6991/gitsigns.nvim#keymaps
+----------------------------------------------------------
+local gs = package.loaded.gitsigns
+
+-- Navigation
+map('n', ']g', function()
+  if vim.wo.diff then return ']c' end
+  vim.schedule(function() gs.next_hunk() end)
+  return '<Ignore>'
+end, {expr=true})
+
+map('n', '[g', function()
+  if vim.wo.diff then return '[c' end
+  vim.schedule(function() gs.prev_hunk() end)
+  return '<Ignore>'
+end, {expr=true})
+
+-- map('n', ']g', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+-- map('n', '[g', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+-- Actions
+map({'n', 'v'}, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts)
+map('n', '<leader>gS', gs.stage_buffer, opts)
+map('n', '<leader>gu', gs.undo_stage_hunk, opts)
+map('n', '<leader>gR', gs.reset_buffer, opts)
+map('n', '<leader>gp', gs.preview_hunk, opts)
+map('n', '<leader>gb', function() gs.blame_line{full=true} end, opts)
+map('n', '<leader>tb', gs.toggle_current_line_blame, opts)
+map('n', '<leader>gd', gs.diffthis, opts)
+map('n', '<leader>gD', function() gs.diffthis('~') end, opts)
+map('n', '<leader>td', gs.toggle_deleted, opts)
+
+-- Text object
+map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+
 
 -- Root
 ---------
