@@ -5,6 +5,11 @@
 require "paq" {
     "savq/paq-nvim";                  -- Let Paq manage itself
 
+    -- Packages to check out:
+    -- * fuzzy registers https://github.com/AckslD/nvim-neoclip.lua
+    -- * clipboard mgr https://github.com/gennaro-tedesco/nvim-peekup
+    -- * incremental rename https://github.com/smjonas/inc-rename.nvim
+
     --------------
     -- Packages
     --------------
