@@ -17,8 +17,7 @@ return {
     -- System bash in macOS os old. Let's use the homebrew one if not on Linux.
     default_prog = on_linux() and {"/bin/bash", "-l",} or {"/usr/local/bin/bash", "-l",},
 
-    -- Black/desaturated yellow color scheme.
-    color_scheme = "Batman",
+    color_scheme = "Gruvbox Dark",
 
     -- Custom keybindings
     keys = {
