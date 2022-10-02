@@ -1,4 +1,13 @@
-local map = vim.keymap.set
+wk = require("which-key")
+
+local map = function(mode, key, cmd, opts, doc)
+    vim.keymap.set(mode, key, cmd, opts)
+
+    if doc then
+        wk.register({[key] = doc})
+    end
+end
+
 local bufmap = vim.api.nvim_buf_set_keymap
 local opts = { noremap = true }
 
@@ -99,20 +108,20 @@ map('n', '[g', function()
   return '<Ignore>'
 end, {expr=true})
 
--- map('n', ']g', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
--- map('n', '[g', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
 
 -- Actions
-map({'n', 'v'}, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts)
-map('n', '<leader>gS', gs.stage_buffer, opts)
-map('n', '<leader>gu', gs.undo_stage_hunk, opts)
-map('n', '<leader>gR', gs.reset_buffer, opts)
-map('n', '<leader>gp', gs.preview_hunk, opts)
-map('n', '<leader>gb', function() gs.blame_line{full=true} end, opts)
-map('n', '<leader>tb', gs.toggle_current_line_blame, opts)
-map('n', '<leader>gd', gs.diffthis, opts)
-map('n', '<leader>gD', function() gs.diffthis('~') end, opts)
-map('n', '<leader>td', gs.toggle_deleted, opts)
+map({'n', 'v'}, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts, "stage hunk")
+map('n', '<leader>gS', gs.stage_buffer, opts, "stage buffer")
+map('n', '<leader>gu', gs.undo_stage_hunk, opts, "undo stage hunk")
+map('n', '<leader>gR', gs.reset_buffer, opts, "reset buffer")
+map('n', '<leader>gp', gs.preview_hunk, opts, "preview hunk")
+map('n', '<leader>gb', function() gs.blame_line{full=true} end, opts, "blame line")
+map('n', '<leader>tb', gs.toggle_current_line_blame, opts, "toggle current line blame")
+map('n', '<leader>gd', gs.diffthis, opts, "diff this")
+map('n', '<leader>gD', function() gs.diffthis('~') end, opts, "diff tilde (?)")
+map('n', '<leader>td', gs.toggle_deleted, opts, "toggle deleted")
+
 
 -- Text object
 map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
