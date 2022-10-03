@@ -12,7 +12,7 @@ local set_lsp_keymaps = function(client, buf_n)
     -- `<Plug>` commands need recursive mapping.
 
     -- Keymap
-    local opts = { noremap=true }
+    local opts = { noremap = true }
     vim.api.nvim_buf_set_keymap(buf_n, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ld", ":lua vim.lsp.buf.definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lD", ":lua vim.lsp.buf.references()<CR>", opts)
@@ -46,7 +46,7 @@ local shared_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.
 require("lspconfig").pylsp.setup {
     settings = {
         pylsp = {
-            configurationSources = {"flake8"},
+            configurationSources = { "flake8" },
         },
     },
     on_attach = function(client, buf_n)
@@ -80,7 +80,7 @@ require("lspconfig").jsonls.setup {
         -- add support for full buffer formatting using range formatting
         Format = {
             function()
-                vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
             end
         },
     },
@@ -144,7 +144,7 @@ require("lspconfig").sumneko_lua.setup {
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
+                globals = { 'vim' },
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
@@ -188,7 +188,7 @@ local function read_dict_words()
     local path = vim.env.HOME .. "/.local/share/lang-servers/ltex-ls-data/dict.txt"
 
     local f = io.open(path)
-    if f==nil then
+    if f == nil then
         print("Warning: dict file doesn't exist at" .. path)
         return {}
     end
@@ -207,7 +207,7 @@ require("lspconfig").ltex.setup {
     settings = {
         ltex = {
             dictionary = {
-                 ["en-US"] = read_dict_words(),
+                ["en-US"] = read_dict_words(),
             },
         },
     },
