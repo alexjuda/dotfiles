@@ -120,10 +120,7 @@ require("lspconfig").jdtls.setup {
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
 
 local sumneko_cmd = function()
-    return {
-        vim.env.HOME
-        .. "/.local/share/aj-lsp/lua-language-server/bin/lua-language-server"
-    }
+    return { "lua-language-server" }
 end
 
 
