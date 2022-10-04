@@ -1,10 +1,10 @@
-wk = require("which-key")
+local wk = require("which-key")
 
 local map = function(mode, key, cmd, opts, doc)
     vim.keymap.set(mode, key, cmd, opts)
 
     if doc then
-        wk.register({[key] = doc})
+        wk.register({ [key] = doc })
     end
 end
 
