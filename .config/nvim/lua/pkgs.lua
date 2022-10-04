@@ -3,7 +3,7 @@
 ---------------
 
 require "paq" {
-    "savq/paq-nvim";                  -- Let Paq manage itself
+    "savq/paq-nvim"; -- Let Paq manage itself
 
     -- Packages to check out:
     -- * fuzzy registers https://github.com/AckslD/nvim-neoclip.lua
@@ -32,7 +32,7 @@ require "paq" {
     'airblade/vim-rooter';
 
     -- code parser for syntax highlight & folds
-    {'nvim-treesitter/nvim-treesitter', run=function() vim.cmd(":TSUpdate") end}; -- Update the parsers on plugin update
+    { 'nvim-treesitter/nvim-treesitter', run = function() vim.cmd(":TSUpdate") end }; -- Update the parsers on plugin update
 
     -- nice icons in bufferline & file tree
     'kyazdani42/nvim-web-devicons';
@@ -77,7 +77,7 @@ require "paq" {
 
     -- Fuzzy completion
     ---------------------
-    {'junegunn/fzf', run=vim.fn["fzf#install"]};
+    { 'junegunn/fzf', run = vim.fn["fzf#install"] };
     'junegunn/fzf.vim';
 
 
@@ -114,7 +114,7 @@ require "paq" {
     -- Notes
     ----------
     -- Render markdown in a side browser window.
-    { "iamcco/markdown-preview.nvim", run="cd app && npm install" };
+    { "iamcco/markdown-preview.nvim", run = "cd app && npm install" };
 
     -- LaTeX syntax & autocompiling
     { "lervag/vimtex" };

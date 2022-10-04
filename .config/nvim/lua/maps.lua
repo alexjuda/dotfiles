@@ -97,26 +97,26 @@ local gs = package.loaded.gitsigns
 
 -- Navigation
 map('n', ']g', function()
-  if vim.wo.diff then return ']c' end
-  vim.schedule(function() gs.next_hunk() end)
-  return '<Ignore>'
-end, {expr=true})
+    if vim.wo.diff then return ']c' end
+    vim.schedule(function() gs.next_hunk() end)
+    return '<Ignore>'
+end, { expr = true })
 
 map('n', '[g', function()
-  if vim.wo.diff then return '[c' end
-  vim.schedule(function() gs.prev_hunk() end)
-  return '<Ignore>'
-end, {expr=true})
+    if vim.wo.diff then return '[c' end
+    vim.schedule(function() gs.prev_hunk() end)
+    return '<Ignore>'
+end, { expr = true })
 
 
 
 -- Actions
-map({'n', 'v'}, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts, "stage hunk")
+map({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts, "stage hunk")
 map('n', '<leader>gS', gs.stage_buffer, opts, "stage buffer")
 map('n', '<leader>gu', gs.undo_stage_hunk, opts, "undo stage hunk")
 map('n', '<leader>gR', gs.reset_buffer, opts, "reset buffer")
 map('n', '<leader>gp', gs.preview_hunk, opts, "preview hunk")
-map('n', '<leader>gb', function() gs.blame_line{full=true} end, opts, "blame line")
+map('n', '<leader>gb', function() gs.blame_line { full = true } end, opts, "blame line")
 map('n', '<leader>tb', gs.toggle_current_line_blame, opts, "toggle current line blame")
 map('n', '<leader>gd', gs.diffthis, opts, "diff this")
 map('n', '<leader>gD', function() gs.diffthis('~') end, opts, "diff tilde (?)")
@@ -124,7 +124,7 @@ map('n', '<leader>td', gs.toggle_deleted, opts, "toggle deleted")
 
 
 -- Text object
-map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
 
 -- Root
@@ -139,9 +139,9 @@ map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
 -- enable or disable keymappings for venn
 function _G.aj_toggle_venn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled)
-    if(venn_enabled == "nil") then
+    if (venn_enabled == "nil") then
         vim.b.venn_enabled = true
-        vim.cmd[[setlocal ve=all]]
+        vim.cmd [[setlocal ve=all]]
         -- draw a line on HJKL keystokes
         bufmap(0, "n", "J", "<C-v>j:VBox<cr>", opts)
         bufmap(0, "n", "K", "<C-v>k:VBox<cr>", opts)
@@ -150,11 +150,12 @@ function _G.aj_toggle_venn()
         -- draw a box by pressing "f" with visual selection
         bufmap(0, "v", "f", ":VBox<cr>", opts)
     else
-        vim.cmd[[setlocal ve=]]
-        vim.cmd[[mapclear <buffer>]]
+        vim.cmd [[setlocal ve=]]
+        vim.cmd [[mapclear <buffer>]]
         vim.b.venn_enabled = nil
     end
 end
+
 map("n", "<localleader>v", ":lua aj_toggle_venn()<CR>", opts)
 
 -- markdown --
@@ -169,6 +170,7 @@ function _G.aj_paste_markdown_link()
     local new_line = line:sub(0, pos + 1) .. formatted .. line:sub(pos + 2)
     vim.api.nvim_set_current_line(new_line)
 end
+
 -- TODO: set this only when entering markdown files
 map("n", "<localleader>p", ":lua aj_paste_markdown_link()<CR>", opts)
 

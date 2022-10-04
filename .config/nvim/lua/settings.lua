@@ -75,7 +75,7 @@ vim.o.termguicolors = true
 vim.o.showmode = false
 
 -- Set langauge
-vim.cmd[[language en_US.UTF-8]]
+vim.cmd [[language en_US.UTF-8]]
 
 
 -- Use a single, unified status line regardless of the number of windows. Works
@@ -118,22 +118,22 @@ require("nvim-search-and-replace").setup()
 --------------
 
 require("nvim-tree").setup {
-  -- (default false) closes neovim automatically when the tree is the last **WINDOW** in the view
-  -- auto_close = false,
+    -- (default false) closes neovim automatically when the tree is the last **WINDOW** in the view
+    -- auto_close = false,
 
-  -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-  update_focused_file = {
-    -- enables the feature (default false)
-    enable = true,
-    -- update_cwd = true,
-  },
+    -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+    update_focused_file = {
+        -- enables the feature (default false)
+        enable = true,
+        -- update_cwd = true,
+    },
 
-  view = {
-    -- sets the window width to file lengths
-    -- adaptive_size = true,
+    view = {
+        -- sets the window width to file lengths
+        -- adaptive_size = true,
 
-    width = 42,
-  },
+        width = 42,
+    },
 }
 
 ------------------
@@ -176,77 +176,77 @@ vim.cmd([[colorscheme gruvbox]])
 
 -- Enable all common functionality
 
-require"nvim-treesitter.configs".setup {
-  ensure_installed = {
-    "bash",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "markdown",
-    "python",
-    "rst",
-  },
-
-  highlight = {
-    enable = true,
-  },
-
-  indent = {
-    enable = false,
-  },
-
-  -- tree-sitter objects for code navigation
-  textobjects = {
-    move = {
-      enable = true,
-      set_jumps = true,
-
-      goto_previous_start = {
-        ["[p"] = "@parameter.inner",
-        ["[f"] = "@function.outer",
-        ["[k"] = "@class.outer",
-        ["[i"] = "@call.outer",
-      },
-      goto_previous_end = {
-        ["[P"] = "@parameter.outer",
-        ["[F"] = "@function.outer",
-        ["[K"] = "@class.outer",
-        ["[I"] = "@call.outer",
-      },
-      goto_next_start = {
-        ["]p"] = "@parameter.inner",
-        ["]f"] = "@function.outer",
-        ["]k"] = "@class.outer",
-        ["]i"] = "@call.outer",
-      },
-      goto_next_end = {
-        ["]P"] = "@parameter.outer",
-        ["]F"] = "@function.outer",
-        ["]K"] = "@class.outer",
-        ["]I"] = "@call.outer",
-      },
+require "nvim-treesitter.configs".setup {
+    ensure_installed = {
+        "bash",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "python",
+        "rst",
     },
 
-    select = {
-      enable = true,
-
-      -- Automatically jump forward to textobj, similar to targets.vim
-      lookahead = true,
-
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ai"] = "@call.outer",
-        ["ii"] = "@call.inner",
-        ["ak"] = "@class.outer",
-        ["ik"] = "@class.inner",
-        ["ap"] = "@parameter.outer",
-        ["ip"] = "@parameter.inner",
-      },
+    highlight = {
+        enable = true,
     },
-  },
+
+    indent = {
+        enable = false,
+    },
+
+    -- tree-sitter objects for code navigation
+    textobjects = {
+        move = {
+            enable = true,
+            set_jumps = true,
+
+            goto_previous_start = {
+                ["[p"] = "@parameter.inner",
+                ["[f"] = "@function.outer",
+                ["[k"] = "@class.outer",
+                ["[i"] = "@call.outer",
+            },
+            goto_previous_end = {
+                ["[P"] = "@parameter.outer",
+                ["[F"] = "@function.outer",
+                ["[K"] = "@class.outer",
+                ["[I"] = "@call.outer",
+            },
+            goto_next_start = {
+                ["]p"] = "@parameter.inner",
+                ["]f"] = "@function.outer",
+                ["]k"] = "@class.outer",
+                ["]i"] = "@call.outer",
+            },
+            goto_next_end = {
+                ["]P"] = "@parameter.outer",
+                ["]F"] = "@function.outer",
+                ["]K"] = "@class.outer",
+                ["]I"] = "@call.outer",
+            },
+        },
+
+        select = {
+            enable = true,
+
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+
+            keymaps = {
+                -- You can use the capture groups defined in textobjects.scm
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ai"] = "@call.outer",
+                ["ii"] = "@call.inner",
+                ["ak"] = "@class.outer",
+                ["ik"] = "@class.inner",
+                ["ap"] = "@parameter.outer",
+                ["ip"] = "@parameter.inner",
+            },
+        },
+    },
 }
 
 

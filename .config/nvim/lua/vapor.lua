@@ -81,4 +81,3 @@ function module.setup(settings)
 end
 
 return module
-
