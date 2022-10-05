@@ -41,4 +41,7 @@ return {
 
     -- Change font size without messing up OS window layout.
     adjust_window_size_when_changing_font_size = false,
+
+    -- The default font size (10.0) is too small on 4K screens.
+    font_size = 18.0,
 }
