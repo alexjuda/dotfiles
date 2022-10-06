@@ -17,7 +17,6 @@ require "paq" {
     -- Theme
     ----------
     "folke/tokyonight.nvim";
-    "marko-cerovac/material.nvim";
     "ellisonleao/gruvbox.nvim";
 
     -- UI
