@@ -90,10 +90,25 @@ map("n", "<leader>eu", ":UnicodeSearch! ", opts)
 map("n", "<leader>ev", ":lua aj_toggle_venn()<CR>", opts)
 
 
+-- Git--
+--------
+
 -- Gitsigns
 -- src: https://github.com/lewis6991/gitsigns.nvim#keymaps
 ----------------------------------------------------------
 local gs = package.loaded.gitsigns
+
+-- Actions
+map({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts, "stage hunk")
+map('n', '<leader>gS', gs.stage_buffer, opts, "stage buffer")
+map('n', '<leader>gu', gs.undo_stage_hunk, opts, "undo stage hunk")
+map('n', '<leader>gR', gs.reset_buffer, opts, "reset buffer")
+map('n', '<leader>gp', gs.preview_hunk, opts, "preview hunk")
+map('n', '<leader>gb', function() gs.blame_line { full = true } end, opts, "blame line")
+map('n', '<leader>tb', gs.toggle_current_line_blame, opts, "toggle current line blame")
+map('n', '<leader>gd', gs.diffthis, opts, "diff this")
+map('n', '<leader>gD', function() gs.diffthis('~') end, opts, "diff tilde (?)")
+map('n', '<leader>td', gs.toggle_deleted, opts, "toggle deleted")
 
 -- Navigation
 map('n', ']g', function()
@@ -108,24 +123,12 @@ map('n', '[g', function()
     return '<Ignore>'
 end, { expr = true })
 
-
-
--- Actions
-map({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts, "stage hunk")
-map('n', '<leader>gS', gs.stage_buffer, opts, "stage buffer")
-map('n', '<leader>gu', gs.undo_stage_hunk, opts, "undo stage hunk")
-map('n', '<leader>gR', gs.reset_buffer, opts, "reset buffer")
-map('n', '<leader>gp', gs.preview_hunk, opts, "preview hunk")
-map('n', '<leader>gb', function() gs.blame_line { full = true } end, opts, "blame line")
-map('n', '<leader>tb', gs.toggle_current_line_blame, opts, "toggle current line blame")
-map('n', '<leader>gd', gs.diffthis, opts, "diff this")
-map('n', '<leader>gD', function() gs.diffthis('~') end, opts, "diff tilde (?)")
-map('n', '<leader>td', gs.toggle_deleted, opts, "toggle deleted")
-
-
 -- Text object
 map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
+-- openingh
+map("n", "<Leader>gr", ":OpenInGHRepo <CR>", opts)
+map("n", "<Leader>gf", ":OpenInGHFile <CR>", opts)
 
 -- Root
 ---------

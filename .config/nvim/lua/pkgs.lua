@@ -56,6 +56,9 @@ require "paq" {
     -- Clipboard manager
     "gennaro-tedesco/nvim-peekup";
 
+    -- Open file/line in GitHub
+    "almo7aya/openingh.nvim";
+
     -- LSP
     --------
 
