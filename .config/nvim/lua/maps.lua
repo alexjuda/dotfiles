@@ -13,6 +13,16 @@ end
 local bufmap = vim.api.nvim_buf_set_keymap
 local opts = { noremap = true }
 
+-- Shared opts for telescope's finder
+local finder_opts = {
+    -- Telescope defaults to an rg invocation that ignores hidden files. I
+    -- wanna make rg search inside the hidden files/dirs as well (--hidden).
+    -- However, I don't wanna include results from the .git folder.
+    --
+    -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
+    find_command = { "rg", "--files", "--color", "never", "--hidden", "--glob", "!.git" },
+}
+
 -- Rebinds
 ----------
 -- Rebind § to ` for compatibility with Linux.
@@ -58,8 +68,7 @@ map("n", "<leader>tD", ":tabonly<cr>", opts) -- kill all except current tab
 ------------
 map("n", "<leader>pt", ":NvimTreeToggle<CR>", opts) -- open project tree
 map("n", "<leader>po", ":NvimTreeFindFile<CR>", opts) -- reveal current file in project
--- map("n", "<leader>pf", ":GitFiles<CR>", opts) -- find in git-recognized files
-map("n", "<leader>pf", function() telescope.find_files() end, opts, "find files")
+map("n", "<leader>pf", function() telescope.find_files(finder_opts)  end, opts, "find files")
 
 -- Search
 -----------
