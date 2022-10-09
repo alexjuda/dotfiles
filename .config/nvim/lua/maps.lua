@@ -1,4 +1,5 @@
 local wk = require("which-key")
+local telescope = require("telescope.builtin")
 
 local map = function(mode, key, cmd, opts, doc)
     vim.keymap.set(mode, key, cmd, opts)
@@ -18,7 +19,7 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 
 -- Global
 ----------
-map("n", "<space><space>", ":Commands<CR>", opts)
+map("n", "<space><space>", function() telescope.commands() end, opts, "commands")
 
 map("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 map("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
@@ -33,7 +34,7 @@ vim.g.maplocalleader = "," -- comma as the local leader key
 
 -- Buffers
 ------------
-map("n", "<leader>bb", ":Buffers<cr>", opts)
+map("n", "<leader>bb", function() telescope.buffers() end, opts, "buffers")
 map("n", "<leader>bp", ":bprev<cr>", opts)
 map("n", "<leader>bn", ":bnext<cr>", opts)
 map("n", "<leader>bd", ":bp|bd #<cr>", opts) -- close a buffer, but not a window
@@ -56,18 +57,20 @@ map("n", "<leader>tD", ":tabonly<cr>", opts) -- kill all except current tab
 ------------
 map("n", "<leader>pt", ":NvimTreeToggle<CR>", opts) -- open project tree
 map("n", "<leader>po", ":NvimTreeFindFile<CR>", opts) -- reveal current file in project
-map("n", "<leader>pf", ":GitFiles<CR>", opts) -- find in git-recognized files
+-- map("n", "<leader>pf", ":GitFiles<CR>", opts) -- find in git-recognized files
+map("n", "<leader>pf", function() telescope.find_files() end, opts, "find files")
 
 -- Search
 -----------
-map("n", "<leader>ss", ":Rg ", opts) -- search symbol in project
+map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, opts, "search in buffer")
+map("n", "<leader>ss", function() telescope.live_grep() end, opts, "search in PWD")
 
 -- Files
 ----------
 map("n", "<leader>ft", ":NerdTreeToggle<CR>", opts) -- open files tree
-map("n", "<leader>fr", ":History<CR>", opts) -- recent files
+map("n", "<leader>fr", function() telescope.oldfiles() end, opts, "recent files")
 map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
-map("n", "<leader>ff", ":Files<CR>", opts) -- find in pwd
+map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
 
 
 -- Triggers

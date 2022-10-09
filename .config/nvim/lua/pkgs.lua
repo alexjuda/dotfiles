@@ -42,6 +42,7 @@ require "paq" {
 
     -- common utilities needed by other plugins:
     -- * gisigns
+    -- * telescope
     "nvim-lua/plenary.nvim";
 
     -- Git gutter & other goodies
@@ -79,9 +80,7 @@ require "paq" {
 
     -- Fuzzy completion
     ---------------------
-    { 'junegunn/fzf', run = vim.fn["fzf#install"] };
-    'junegunn/fzf.vim';
-
+    {"nvim-telescope/telescope.nvim", branch="0.1.0"};
 
     -- Editing
     ------------
