@@ -23,19 +23,6 @@ local finder_opts = {
     find_command = { "rg", "--files", "--color", "never", "--hidden", "--glob", "!.git" },
 }
 
--- Rebinds
-----------
--- Rebind § to ` for compatibility with Linux.
-vim.api.nvim_set_keymap("i", "§", "`", opts)
-
--- Global
-----------
-map("n", "<space><space>", function() telescope.commands() end, opts, "commands")
-
-map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
-map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
-
-map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
 
 -- Leaders
 ------------
@@ -199,3 +186,22 @@ vim.api.nvim_set_keymap("n", "<localleader>Li", ":LspInfo<CR>", opts)
 
 -- Kill LSP clients
 vim.api.nvim_set_keymap("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", opts)
+
+
+-- Rebinds
+----------
+-- Rebind § to ` for compatibility with Linux.
+vim.api.nvim_set_keymap("i", "§", "`", opts)
+
+-- Global
+----------
+map("n", "<space><space>", function() telescope.commands() end, opts, "commands")
+
+map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
+map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
+
+map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
+
+
+map("n", "yp", '"0p', opts, "paste last yanked")
+map("n", "yP", '"0P', opts, "paste last yanked, prev")
