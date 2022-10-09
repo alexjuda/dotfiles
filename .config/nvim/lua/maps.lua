@@ -1,5 +1,6 @@
 local wk = require("which-key")
 local telescope = require("telescope.builtin")
+local vapor = require("vapor")
 
 local map = function(mode, key, cmd, opts, doc)
     vim.keymap.set(mode, key, cmd, opts)
@@ -21,8 +22,8 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 ----------
 map("n", "<space><space>", function() telescope.commands() end, opts, "commands")
 
-map("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
-map("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
+map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
+map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
 
 map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
 
@@ -83,9 +84,8 @@ map("n", "<leader>TT", ":TrainTextObj<CR>", opts) -- Motion training for text ob
 
 -- Notes
 ----------
-map("n", "<leader>nd", ":lua require('vapor').open_scratch()<CR>", opts)
-map("n", "<leader>ns", ":lua require('vapor').open_scratch()<CR>", opts)
-map("n", "<leader>nt", ":lua require('vapor').open_todo()<CR>", opts)
+map("n", "<leader>nd", function() vapor.open_scratch() end, opts, "daily note")
+map("n", "<leader>nt", function() vapor.open_todo() end, opts, "daily todo")
 
 -- Editor
 -----------
