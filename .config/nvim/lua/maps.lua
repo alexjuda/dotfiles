@@ -1,3 +1,4 @@
+local hop = require('hop')
 local wk = require("which-key")
 local telescope = require("telescope.builtin")
 local vapor = require("vapor")
@@ -202,6 +203,7 @@ map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic
 
 map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
 
-
 map("n", "yp", '"0p', opts, "paste last yanked")
 map("n", "yP", '"0P', opts, "paste last yanked, prev")
+
+map("n", "ss", ":HopWord<CR>", opts)
