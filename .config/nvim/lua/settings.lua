@@ -69,7 +69,6 @@ vim.o.linebreak = true
 -- Required by bufferline
 vim.o.termguicolors = true
 
-
 -- Disable the bottom line with mode name like "-- INSERT --". Status line
 -- already provides this information.
 vim.o.showmode = false
@@ -77,13 +76,17 @@ vim.o.showmode = false
 -- Set langauge
 vim.cmd [[language en_US.UTF-8]]
 
-
 -- Use a single, unified status line regardless of the number of windows. Works
 -- with neovim>=0.7.
 vim.o.laststatus = 3
 
 -- Hide command line if not currently writing a command. Works with neovim >=0.8.
 -- vim.o.cmdheight = 0
+
+-- Make the `/` buffer search case insensitive unless the pattern includes at
+-- least one capital letter.
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 ---------------
 -- which-key --
