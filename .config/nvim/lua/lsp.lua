@@ -47,7 +47,7 @@ end
 
 -- extend default client capabilities with what cmp can do
 
-local shared_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local shared_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- require('lspconfig')[%YOUR_LSP_SERVER%].setup {
 --     capabilities = shared_capabilities
 -- }
