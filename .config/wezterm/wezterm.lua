@@ -8,11 +8,6 @@ local on_linux = function()
     return output == "Linux\n"
 end
 
--- Workspace mgmt. Src: https://wezfurlong.org/wezterm/config/lua/keyassignment/SwitchWorkspaceRelative.html
-wezterm.on("update-right-status", function(window, pane)
-  window:set_right_status(window:active_workspace())
-end)
-
 return {
     -- System bash in macOS os old. Let's use the homebrew one if not on Linux.
     default_prog = on_linux() and {"/bin/bash", "-l",} or {"/usr/local/bin/bash", "-l",},
@@ -21,9 +16,6 @@ return {
 
     -- Custom keybindings
     keys = {
-        {key="9", mods="ALT", action=wezterm.action{ShowLauncherArgs={flags="FUZZY|WORKSPACES"}}},
-        {key="n", mods="ALT", action=wezterm.action{SwitchWorkspaceRelative=1}},
-        {key="p", mods="ALT", action=wezterm.action{SwitchWorkspaceRelative=-1}},
         {key="w", mods="ALT|CMD", action=wezterm.action{CloseCurrentPane={confirm=true}}},
         {key="w", mods="CTRL|SHIFT|ALT", action=wezterm.action{CloseCurrentPane={confirm=true}}},
     },
