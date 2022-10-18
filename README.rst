@@ -144,10 +144,19 @@ Python
 
 
 .. code-block:: sh
-    
+
     pipx install 'python-lsp-server[flake8,mccabe,rope]'
     pipx inject python-lsp-server python-lsp-black
     pipx inject python-lsp-server pylsp-rope
+
+
+Python 2
+--------
+
+.. code-block:: sh
+
+    npm install -g pyright
+
 
 
 JavaScript

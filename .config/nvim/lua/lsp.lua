@@ -29,9 +29,9 @@ local set_lsp_keymaps = function(client, buf_n)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lws", ":lua vim.lsp.buf.workspace_symbol()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lwf", ":lua vim.lsp.buf.list_workspace_folders()<CR>", opts)
 
-    wk.register({["<localleader>l"] = "+lsp commands"})
-    wk.register({["<localleader>lw"] = "+workspace"})
-    wk.register({["<localleader>L"] = "+lsp connectors"})
+    wk.register({ ["<localleader>l"] = "+lsp commands" })
+    wk.register({ ["<localleader>lw"] = "+workspace" })
+    wk.register({ ["<localleader>L"] = "+lsp connectors" })
 end
 
 local shared_on_attach = function(client, buf_n)
@@ -55,22 +55,31 @@ local shared_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
 -- Python --
 ------------
 
-require("lspconfig").pylsp.setup {
-    settings = {
-        pylsp = {
-            configurationSources = { "flake8" },
-        },
-    },
+-- [Uncomment for python-pylsp-server]
+-- require("lspconfig").pylsp.setup {
+--     settings = {
+--         pylsp = {
+--             configurationSources = { "flake8" },
+--         },
+--     },
+--     on_attach = function(client, buf_n)
+--         shared_on_attach(client, buf_n)
+
+--         -- python-specific keybindings
+--         vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
+--         vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
+--     end,
+--     capabilities = shared_capabilities,
+-- }
+
+-- Requires `pyright` package. If it isn't installed locally, this will fetch them each time.
+require("lspconfig").pyright.setup {
+    cmd = { "npx", "pyright-langserver", "--stdio" },
     on_attach = function(client, buf_n)
         shared_on_attach(client, buf_n)
-
-        -- python-specific keybindings
-        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
-        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
     end,
     capabilities = shared_capabilities,
 }
-
 
 -- JavaScript --
 ----------------
