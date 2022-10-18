@@ -55,24 +55,24 @@ local shared_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
 -- Python --
 ------------
 
--- [Uncomment for python-pylsp-server]
--- require("lspconfig").pylsp.setup {
---     settings = {
---         pylsp = {
---             configurationSources = { "flake8" },
---         },
---     },
---     on_attach = function(client, buf_n)
---         shared_on_attach(client, buf_n)
+-- Requires `python-lsp-server` pip package.
+require("lspconfig").pylsp.setup {
+    settings = {
+        pylsp = {
+            configurationSources = { "flake8" },
+        },
+    },
+    on_attach = function(client, buf_n)
+        shared_on_attach(client, buf_n)
 
---         -- python-specific keybindings
---         vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
---         vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
---     end,
---     capabilities = shared_capabilities,
--- }
+        -- python-specific keybindings
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
+    end,
+    capabilities = shared_capabilities,
+}
 
--- Requires `pyright` package. If it isn't installed locally, this will fetch them each time.
+-- Requires `pyright` npm package. If it isn't installed locally, this will fetch them each time.
 require("lspconfig").pyright.setup {
     cmd = { "npx", "pyright-langserver", "--stdio" },
     on_attach = function(client, buf_n)
