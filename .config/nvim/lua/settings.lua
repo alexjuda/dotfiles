@@ -373,10 +373,11 @@ require("lsp_signature").setup {
 }
 
 
------------------
--- Buffer tabs --
------------------
+---------------------
+-- Symbols sidebar --
+---------------------
 
+require("aerial").setup {}
 
 -----------------
 -- Git goodies --

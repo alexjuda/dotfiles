@@ -8,6 +8,7 @@
 -- Buffer-local options + keymap
 
 local wk = require("which-key")
+local aerial = require("aerial")
 
 local set_lsp_keymaps = function(client, buf_n)
     -- We use completion-nvim autocompletion popup instead of the built-in omnifunc
@@ -42,6 +43,8 @@ local shared_on_attach = function(client, buf_n)
     vim.api.nvim_buf_set_option(buf_n, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     set_lsp_keymaps(client, buf_n)
+
+    aerial.on_attach(client, buf_n)
 end
 
 

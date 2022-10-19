@@ -78,9 +78,15 @@ require "paq" {
     -- Show callable signature when writing invocation
     "ray-x/lsp_signature.nvim";
 
+    -- Symbols sidebar
+    "stevearc/aerial.nvim";
+
+
     -- Fuzzy completion
     ---------------------
+
     {"nvim-telescope/telescope.nvim", branch="0.1.0"};
+
 
     -- Editing
     ------------

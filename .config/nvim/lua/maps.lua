@@ -43,15 +43,6 @@ map("n", "<C-PageUp>", ":bprev<cr>", opts) -- linux-like prev tab
 map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 
 
--- Tabs
-------------
-map("n", "<leader>tt", ":tabs<cr>", opts) -- list all tabs
-map("n", "<leader>tc", ":tabnew<cr>", opts)
-map("n", "<leader>tn", ":tabNext<cr>", opts) -- aka `gt`
-map("n", "<leader>tp", ":tabprevious<cr>", opts) -- aka `gT`
-map("n", "<leader>td", ":tabclose<cr>", opts)
-map("n", "<leader>tD", ":tabonly<cr>", opts) -- kill all except current tab
-
 -- Project
 ------------
 map("n", "<leader>pt", ":NvimTreeToggle<CR>", opts) -- open project tree
@@ -71,12 +62,13 @@ map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
 map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
 
 
--- Triggers
+-- Toggles
 -------------
-map("n", "<leader>Tn", ":set number!<CR>", opts)
-map("n", "<leader>TU", ":TrainUpDown<CR>", opts) -- Motion training for up/down
-map("n", "<leader>TW", ":TrainWord<CR>", opts) -- Motion training for words
-map("n", "<leader>TT", ":TrainTextObj<CR>", opts) -- Motion training for text objects
+map("n", "<leader>tn", ":set number!<CR>", opts)
+map("n", "<leader>tU", ":TrainUpDown<CR>", opts) -- Motion training for up/down
+map("n", "<leader>tW", ":TrainWord<CR>", opts) -- Motion training for words
+map("n", "<leader>tT", ":TrainTextObj<CR>", opts) -- Motion training for text objects
+map("n", "<leader>ta", ":AerialToggle!<CR>", opts) -- Toggle aerial sidebar
 
 
 -- Notes
@@ -200,6 +192,9 @@ map("n", "<space><space>", function() telescope.commands() end, opts, "commands"
 
 map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
 map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
+
+map("n", "[a", "<cmd>AerialPrev<CR>", opts, "prev symbol (aerial)")
+map("n", "]a", "<cmd>AerialNext<CR>", opts, "next symbol (aerial)")
 
 map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
 
