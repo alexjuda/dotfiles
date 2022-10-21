@@ -110,15 +110,13 @@ export NVM_DIR="$HOME/.nvm"
 # set prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
 
+# Auto-activate venv
+export PATH="venv/bin:$PATH"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-# Don't use pyenv virtualenv-init because it slows down shells tremendously.
-# We'll use direnv instead.
-# eval "$(pyenv virtualenv-init -)"
-
 
 # fix brew/pyenv stuff on macOS. Without this, brew formulas that depend on
 # Python would link against pyenv-provided global Python.
@@ -134,10 +132,6 @@ bind 'set completion-ignore-case on'
 # set current jira ticket id
 [[ -s ~/.local/share/ticket.txt ]] && T=$(cat ~/.local/share/ticket.txt)
 
-# Set up direnv
-if [ -x "$(command -v direnv)" ]; then
-    eval "$(direnv hook bash)"
-fi
 
 # Edit commit messages in nvim
 export EDITOR="nvim"
