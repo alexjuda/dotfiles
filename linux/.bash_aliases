@@ -81,6 +81,7 @@ custom_aliases=(
 
     # --------------- shortcuts --------------
     "lg:lazygit"
+    "va:source venv/bin/activate"
 )
 
 for entry in "${custom_aliases[@]}"; do
