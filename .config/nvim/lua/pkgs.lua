@@ -108,10 +108,6 @@ require "paq" {
     -- help for writing unicode characters
     "chrisbra/unicode.vim";
 
-    -- quasi-smooth scrolling
-    "karb94/neoscroll.nvim";
-
-
     -- Lang-specific
     ----------------
     -- Write jupyter notebooks from vim
