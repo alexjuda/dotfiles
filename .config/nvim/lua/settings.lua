@@ -238,13 +238,6 @@ require "nvim-treesitter.configs".setup {
     },
 }
 
-
--- folding
--- Use treesitter's expressions to form folds
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-
-
 --------------------
 -- Autocompletion --
 --------------------
@@ -297,10 +290,6 @@ cmp.setup({
 
 -- Allow fuzzy matching in autocomplete popup
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy", }
-
--- nvim-lspfuzzy overrides LSP handlers to present list-based results in a fzf window
--- require("lspfuzzy").setup {}
-
 
 -----------------
 -- Status line --
