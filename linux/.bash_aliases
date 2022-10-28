@@ -82,6 +82,9 @@ custom_aliases=(
     # --------------- shortcuts --------------
     "lg:lazygit"
     "va:source venv/bin/activate"
+    "nv:nvim"
+    # -- open last edited file
+    "nvl:nvim -c 'e #<1'"
 )
 
 for entry in "${custom_aliases[@]}"; do
