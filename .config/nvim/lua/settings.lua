@@ -270,8 +270,6 @@ cmp.setup({
 
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-    }, {
-        { name = 'buffer' },
     }),
 
     -- Don't show the text like "Function" after the symbol
