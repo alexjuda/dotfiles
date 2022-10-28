@@ -6,9 +6,6 @@
 -- to be set both globally and "locally".
 -- See https://oroques.dev/notes/neovim-init/#set-options
 
--- Improve scrolling performance, especially in tmux
-vim.o.lazyredraw = true
-
 -- Make splits happen at the other part of the screen
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -54,10 +51,6 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 
 -- Switch buffers without saving
 vim.o.hidden = true
-
--- Set line lengths to 88 by default
--- vim.o.textwidth = 88
--- vim.bo.textwidth = 88
 
 -- Show trailing spaces & tabs.
 vim.o.list = true
