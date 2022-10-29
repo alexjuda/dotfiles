@@ -95,8 +95,8 @@ require("which-key").setup {
 -- shade.nvim --
 ---------------
 -- Enabling this clears startup screen :(
-require("shade").setup {
-}
+-- require("shade").setup {
+-- }
 
 
 -----------------------------
@@ -153,10 +153,9 @@ augroup END
 -- Colors --
 ------------
 
--- vim.g.tokyonight_style = "night"
--- vim.cmd[[colorscheme tokyonight]]
-
-vim.cmd([[colorscheme tokyonight]])
+require("gruvbox").setup {
+    dim_inactive = true,
+}
 vim.cmd([[colorscheme gruvbox]])
 
 ----------------
