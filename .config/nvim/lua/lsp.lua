@@ -43,8 +43,6 @@ local shared_on_attach = function(client, buf_n)
     vim.api.nvim_buf_set_option(buf_n, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     set_lsp_keymaps(client, buf_n)
-
-    aerial.on_attach(client, buf_n)
 end
 
 
