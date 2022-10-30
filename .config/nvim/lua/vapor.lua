@@ -1,3 +1,4 @@
+-- Daily notes & todo lists. As light as water vapor.
 local module = {}
 
 -- Usage
