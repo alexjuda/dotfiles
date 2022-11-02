@@ -233,4 +233,16 @@ require("lspconfig").ltex.setup {
             },
         },
     },
+    filetypes = { "markdown", "tex", },
+}
+
+
+-- esbonio --
+-------------
+--
+-- Language server for Sphinx and rst.
+
+require("lspconfig").esbonio.setup {
+    on_attach = shared_on_attach,
+    cmd = { "esbonio", },
 }
