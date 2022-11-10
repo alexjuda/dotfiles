@@ -175,5 +175,10 @@ function set-ticket() {
     T=$(cat ~/.local/share/ticket.txt)
 }
 
+# short for cd + ls
+function cl() {
+    cd "$1" && ls -alh
+}
+
 # Load cargo if loader exists
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
