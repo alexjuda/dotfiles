@@ -176,7 +176,7 @@ function set-ticket() {
 }
 
 # short for cd + ls
-function cl() {
+function cdl() {
     cd "$1" && ls -alh
 }
 
