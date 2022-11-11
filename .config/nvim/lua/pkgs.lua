@@ -12,10 +12,9 @@ require "paq" {
     -- Packages
     --------------
 
-    -- Theme
+    -- Color Themes
     ----------
-    "folke/tokyonight.nvim";
-    "ellisonleao/gruvbox.nvim";
+    "bluz71/vim-moonfly-colors";
 
     -- UI
     -------

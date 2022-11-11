@@ -59,8 +59,6 @@ vim.wo.list = true
 -- Don't soft wrap in the middle of a word
 vim.o.linebreak = true
 
--- Required by bufferline
-vim.o.termguicolors = true
 
 -- Disable the bottom line with mode name like "-- INSERT --". Status line
 -- already provides this information.
@@ -89,6 +87,7 @@ vim.opt.smartcase = true
 ---------------
 require("which-key").setup {
 }
+
 
 
 ---------------
@@ -152,11 +151,9 @@ augroup END
 ------------
 -- Colors --
 ------------
-
-require("gruvbox").setup {
-    dim_inactive = true,
-}
-vim.cmd([[colorscheme gruvbox]])
+-- Without this, moonfly uses old vi colors.
+vim.o.termguicolors = true
+vim.cmd([[colorscheme moonfly]])
 
 ----------------
 -- Treesitter --
