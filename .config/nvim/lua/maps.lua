@@ -201,4 +201,6 @@ map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opt
 map("n", "yp", '"0p', opts, "paste last yanked")
 map("n", "yP", '"0P', opts, "paste last yanked, prev")
 
-map("n", "ss", ":HopWord<CR>", opts)
+map("n", "s/", ":HopPatternMW<CR>", opts)
+map("n", "ss", ":HopChar2MW<CR>", opts)
+map("n", "ss", ":HopChar2MW<CR>", opts)
