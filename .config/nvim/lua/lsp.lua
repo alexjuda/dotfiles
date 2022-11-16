@@ -73,14 +73,6 @@ require("lspconfig").pylsp.setup {
     capabilities = shared_capabilities,
 }
 
--- Requires `pyright` npm package. If it isn't installed locally, this will fetch them each time.
-require("lspconfig").pyright.setup {
-    cmd = { "npx", "pyright-langserver", "--stdio" },
-    on_attach = function(client, buf_n)
-        shared_on_attach(client, buf_n)
-    end,
-    capabilities = shared_capabilities,
-}
 
 -- JavaScript --
 ----------------
