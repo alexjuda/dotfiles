@@ -56,6 +56,9 @@ require "paq" {
     -- Open file/line in GitHub
     "almo7aya/openingh.nvim";
 
+    -- Terminal keybindings for command mode
+    "linty-org/readline.nvim";
+
     -- LSP
     --------
 
