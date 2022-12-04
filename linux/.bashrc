@@ -154,18 +154,13 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # ------ custom utils ------
 
-function pyenv-reset() {
-    local VENV_NAME=$(basename $PWD)
-    pyenv virtualenv-delete "$VENV_NAME"
-    [[ -s .python-version ]] && rm .python-version
-    pyenv virtualenv "$VENV_NAME"
-    pyenv local "$VENV_NAME"
-    pip install --upgrade pip
-}
-
-# short for "python virtualenv name"
-function pn() {
-    pyenv version-name
+function venv-reset() {
+    local venv_path="./venv"
+    [[ -s $venv_path ]] && echo "removing $venv_path..." && rm -r $venv_path
+    echo "creating new venv at $venv_path..."
+    python3 -m venv $venv_path
+    source "${venv_path}/bin/activate"
+    pip install --upgrade pip wheel
 }
 
 # sets jira ticket that can later be retrieved by echo $T
@@ -179,6 +174,7 @@ function set-ticket() {
 function cdl() {
     cd "$1" && ls -alh
 }
+
 
 # Load cargo if loader exists
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
