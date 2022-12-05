@@ -175,6 +175,11 @@ function cdl() {
     cd "$1" && ls -alh
 }
 
+# tool for finding common ancenstor of two branches. I never remember the
+# correct git command name.
+function git-common-ancestor() {
+    git merge-base "$1" "$2"
+}
 
 # Load cargo if loader exists
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
