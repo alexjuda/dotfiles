@@ -80,9 +80,13 @@ require("lspconfig").pylsp.setup {
     on_attach = function(client, buf_n)
         shared_on_attach(client, buf_n)
 
-        -- python-specific keybindings
-        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
-        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
+        -- Disable capabilities already covered by pyright.
+        -- Based on https://neovim.discourse.group/t/how-to-config-multiple-lsp-for-document-hover/3093/2
+        --
+        -- Seems to work around buggy autocomplete behavior, where the symbol disappears after hitting <CR>.
+        client.server_capabilities.hoverProvider = false
+        -- Workaround for duplicated "new symbol name" prompts.
+        client.server_capabilities.renameProvider = false
     end,
     capabilities = shared_capabilities,
 }
