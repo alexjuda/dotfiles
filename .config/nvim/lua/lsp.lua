@@ -56,6 +56,20 @@ local shared_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
 -- Python --
 ------------
 
+-- Requires ``pyright`` installed via npm.
+require("lspconfig").pyright.setup {
+    settings = {
+    },
+    on_attach = function(client, buf_n)
+        shared_on_attach(client, buf_n)
+
+        -- python-specific keybindings
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
+        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
+    end,
+    capabilities = shared_capabilities,
+}
+
 -- Requires `python-lsp-server` pip package.
 require("lspconfig").pylsp.setup {
     settings = {
