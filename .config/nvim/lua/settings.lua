@@ -309,10 +309,15 @@ end
 
 require("lualine").setup {
     sections = {
-        lualine_a = {},
+        lualine_a = {
+            -- Show buffer number using the vim status line format:
+            -- https://vimdoc.sourceforge.net/htmldoc/options.html#'statusline'
+            {"%n"},
+        },
         lualine_b = {
             {
                 "filename",
+                -- Show relative path.
                 path = 1,
             }
         },
