@@ -21,6 +21,9 @@ require "paq" {
     -- lua-based tree explorer
     'kyazdani42/nvim-tree.lua';
 
+    -- Edit directories
+    'elihunter173/dirbuf.nvim';
+
     -- leader keybindings helper window
     "folke/which-key.nvim";
 

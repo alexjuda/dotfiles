@@ -109,22 +109,19 @@ require("nvim-search-and-replace").setup()
 --------------
 
 require("nvim-tree").setup {
-    -- (default false) closes neovim automatically when the tree is the last **WINDOW** in the view
-    -- auto_close = false,
-
     -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
     update_focused_file = {
-        -- enables the feature (default false)
+        -- Default: false.
         enable = true,
-        -- update_cwd = true,
     },
 
     view = {
-        -- sets the window width to file lengths
-        -- adaptive_size = true,
-
-        width = 42,
+        -- Set window width to filename lengths. Default: false.
+        adaptive_size = true,
     },
+
+    -- Don't open dir buffers in nvim-tree. Fixes integration with dirbuf.
+    hijack_directories = { enable = false },
 }
 
 ------------------
