@@ -124,6 +124,12 @@ require("nvim-tree").setup {
     hijack_directories = { enable = false },
 }
 
+----------------
+-- image.nvim --
+----------------
+require('image').setup {}
+
+
 ------------------
 -- Autocommands --
 ------------------

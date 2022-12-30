@@ -99,9 +99,14 @@ More details `here <https://vi.stackexchange.com/a/96>`_.
    sudo apt install xclip
 
 CLI usage (`docs <https://opensource.com/article/19/7/xclip>`_)::
-    
+
     echo "foo" | xclip -sel clip
 
+
+image.nvim
+----------
+
+Generating ASCII art image previews requires `ascii-image-converter <https://github.com/TheZoraiz/ascii-image-converter>`_ in the ``$PATH``.
 
 pyenv
 ====

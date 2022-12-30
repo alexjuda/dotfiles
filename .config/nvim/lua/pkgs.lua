@@ -8,10 +8,6 @@ require "paq" {
     -- Packages to check out:
     -- * incremental rename https://github.com/smjonas/inc-rename.nvim
 
-    --------------
-    -- Packages
-    --------------
-
     -- Color Themes
     ----------
     "bluz71/vim-moonfly-colors";
@@ -45,6 +41,7 @@ require "paq" {
     -- common utilities needed by other plugins:
     -- * gisigns
     -- * telescope
+    -- * image.nvim
     "nvim-lua/plenary.nvim";
 
     -- Git gutter & other goodies
@@ -61,6 +58,9 @@ require "paq" {
 
     -- Terminal keybindings for command mode
     "linty-org/readline.nvim";
+
+    -- Show image file preview as ASCII art
+    "samodostal/image.nvim";
 
     -- LSP
     --------
