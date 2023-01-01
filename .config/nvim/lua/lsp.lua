@@ -45,6 +45,7 @@ local shared_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Requires ``pyright`` installed via npm.
 require("lspconfig").pyright.setup {
+    cmd = { "npx", "pyright-langserver", "--stdio", },
     settings = {
     },
     on_attach = function(client, buf_n)
