@@ -73,6 +73,7 @@ require("lspconfig").pylsp.setup {
         --
         -- Seems to work around buggy autocomplete behavior, where the symbol disappears after hitting <CR>.
         client.server_capabilities.hoverProvider = false
+        client.server_capabilities.completionProvider = nil
         -- Workaround for duplicated "new symbol name" prompts.
         client.server_capabilities.renameProvider = false
     end,
