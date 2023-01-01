@@ -11,9 +11,6 @@ local wk = require("which-key")
 local aerial = require("aerial")
 
 local set_lsp_keymaps = function(client, buf_n)
-    -- We use completion-nvim autocompletion popup instead of the built-in omnifunc
-    -- `<Plug>` commands need recursive mapping.
-
     -- Keymap
     local opts = { noremap = true }
     vim.api.nvim_buf_set_keymap(buf_n, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
@@ -36,22 +33,12 @@ local set_lsp_keymaps = function(client, buf_n)
 end
 
 local shared_on_attach = function(client, buf_n)
-    -- Hook LSP with omnifunc completions.
-    -- src: https://neovim.io/doc/user/lsp.html
-    -- NOTE: this is the built-in completion fired by <C-x><C-o>. It's an alternative to
-    -- the <C-Space> autocompletion powered by nvim-cmp.
-    vim.api.nvim_buf_set_option(buf_n, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
     set_lsp_keymaps(client, buf_n)
 end
 
 
 -- extend default client capabilities with what cmp can do
-
 local shared_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
--- require('lspconfig')[%YOUR_LSP_SERVER%].setup {
---     capabilities = shared_capabilities
--- }
 
 -- Python --
 ------------
@@ -66,6 +53,7 @@ require("lspconfig").pyright.setup {
         -- python-specific keybindings
         vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
         vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
+
     end,
     capabilities = shared_capabilities,
 }
