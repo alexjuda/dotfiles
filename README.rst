@@ -25,14 +25,18 @@ Installation
 Misc setup
 **********
 
-On macOS:
+On macOS
+********
 
 .. code-block:: sh
 
     brew install bash-completion@2
 
 
-On linux:
+On linux
+********
+
+gTile.
 
 .. code-block:: sh
 
@@ -40,7 +44,24 @@ On linux:
     dconf dump /org/gnome/shell/extensions/gtile/ > linux/gtile.dconf
 
 
-Workaround terminal issues:
+Gnome keybindings to match Amethyst.
+
+.. code-block:: sh
+
+    dconf dump /org/gnome/desktop/wm/keybindings/ > linux/gnome.dconf
+    dconf load /org/gnome/desktop/wm/keybindings/ < linux/gnome.dconf
+
+
+pop-shell keybindings to match Amethyst.
+
+.. code-block:: sh
+
+    dconf dump /org/gnome/desktop/wm/keybindings/ > linux/gnome.dconf
+    dconf load /org/gnome/desktop/wm/keybindings/ < linux/gnome.dconf
+
+
+Working around terminal issues
+******************************
 
 .. code-block:: sh
 
