@@ -1,7 +1,7 @@
 [/]
 activate-window-menu=@as []
 cycle-windows=['<Shift><Alt>k']
-cycle-windows-backward=['<Alt>k']
+cycle-windows-backward=['<Shift><Alt>j']
 move-to-workspace-1=@as []
 move-to-workspace-last=@as []
 move-to-workspace-left=['<Shift><Control><Alt>Left']
