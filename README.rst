@@ -56,7 +56,7 @@ pop-shell keybindings to match Amethyst.
 
 .. code-block:: sh
 
-    dconf dump /org/gnome/desktop/wm/keybindings/ > linux/gnome.dconf
+    dconf dump /org/gnome/shell/extensions/pop-shell/ > linux/pop-shell.dconf
     dconf load /org/gnome/desktop/wm/keybindings/ < linux/gnome.dconf
 
 

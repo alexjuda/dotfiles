@@ -1,0 +1,17 @@
+[/]
+activate-launcher=@as []
+active-hint=false
+active-hint-border-radius=uint32 4
+focus-down=['<Shift><Alt>Down']
+focus-left=['<Shift><Alt>Left']
+focus-right=['<Shift><Alt>Right']
+focus-up=['<Shift><Alt>Up']
+show-title=true
+tile-by-default=true
+tile-enter=['<Shift><Control><Alt>Return']
+tile-orientation=['<Shift><Alt>o']
+tile-swap-left=@as []
+tile-swap-right=@as []
+toggle-floating=@as []
+toggle-stacking-global=['<Shift><Control><Alt>s']
+toggle-tiling=['<Shift><Alt>t']
