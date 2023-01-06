@@ -215,3 +215,33 @@ vim.keymap.set('!', '<M-BS>', readline.backward_kill_word)
 vim.keymap.set('!', '<C-w>', readline.unix_word_rubout)
 vim.keymap.set('!', '<C-k>', readline.kill_line)
 vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
+
+
+------------------
+-- My own utils --
+------------------
+
+-- Inserting values at point --
+--------------------------------
+--
+local function insert_text_at_cursor(text)
+    -- Based on https://vi.stackexchange.com/a/39684
+    local current_win = 0
+    local row, col = unpack(vim.api.nvim_win_get_cursor(current_win))
+    local text_len = text:len()
+
+    vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { text })
+    vim.api.nvim_win_set_cursor(current_win, {row, col + text_len})
+end
+
+-- Insert current date anywhere
+local function local_date(timestamp)
+    return os.date("%Y-%m-%d", timestamp)
+end
+
+local function insert_current_date()
+    local date = local_date(os.time())
+    insert_text_at_cursor(date)
+end
+
+vim.keymap.set({"i", "n"}, "<F3>", insert_current_date)
