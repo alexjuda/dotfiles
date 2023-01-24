@@ -104,6 +104,9 @@ require "paq" {
     -- allow selecting inside/outside tree-sitter objects, like functions
     'nvim-treesitter/nvim-treesitter-textobjects';
 
+    -- swap treesitter objects --
+    "Wansmer/sibling-swap.nvim";
+
     -- draw ascii diagrams
     'jbyuki/venn.nvim';
 

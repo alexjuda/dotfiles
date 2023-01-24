@@ -242,6 +242,11 @@ require "nvim-treesitter.configs".setup {
     },
 }
 
+--------------------------
+-- TreeSitter Additions --
+--------------------------
+require('sibling-swap').setup {}
+
 --------------------
 -- Autocompletion --
 --------------------
