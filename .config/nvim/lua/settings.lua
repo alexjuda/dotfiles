@@ -158,6 +158,10 @@ augroup END
 ------------
 -- Without this, moonfly uses old vi colors.
 vim.o.termguicolors = true
+
+-- Without this, moonfly uses gray blocks for window separators.
+vim.g.moonflyWinSeparator = 2
+
 vim.cmd([[colorscheme moonfly]])
 
 ----------------
