@@ -11,6 +11,7 @@ Installation
 .. code-block:: sh
 
     ln -s $PWD/.config/wezterm ~/.config/wezterm
+    ln -s $PWD/.config/kitty ~/.config/kitty
     ln -s $PWD/.config/nvim ~/.config/nvim
     ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias
     ln -s $PWD/linux/.bash_aliases ~/.bash_aliases
