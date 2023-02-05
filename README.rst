@@ -178,8 +178,9 @@ Python
 
 .. code-block:: sh
 
-    pipx install 'python-lsp-server[flake8,mccabe,rope]'
+    pipx install 'python-lsp-server[rope]'
     pipx inject python-lsp-server python-lsp-black
+    pipx inject python-lsp-server python-lsp-ruff
     pipx inject python-lsp-server pylsp-rope
 
 
