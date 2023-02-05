@@ -90,12 +90,18 @@ fonts
 Get it from the `release page <https://github.com/ryanoasis/nerd-fonts/releases>`_ or the `webpage <https://www.nerdfonts.com/font-downloads>`_.
 
 
-On macOS:
+On macOS::
 
-         brew tap homebrew/cask-fonts
-         brew install --cask font-JetBrains-Mono-nerd-font
-         brew install --cask font-roboto-mono-nerd-font
-         # or whatever else font you need
+    brew tap homebrew/cask-fonts
+    brew install --cask font-JetBrains-Mono-nerd-font
+    brew install --cask font-roboto-mono-nerd-font
+    # or whatever else font you need
+
+On Fedora::
+    
+    sudo dnf install jetbrains-mono-fonts
+
+
 
 tree-sitter
 -----------
