@@ -29,8 +29,8 @@ vim.bo.expandtab = true
 vim.o.confirm = true
 
 -- Show at least one more line when scrolling
-vim.o.scrolloff = 1
-vim.wo.scrolloff = 1
+vim.o.scrolloff = 8
+vim.wo.scrolloff = 8
 
 -- Show line numbers
 vim.o.number = true
