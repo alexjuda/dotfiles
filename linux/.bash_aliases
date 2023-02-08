@@ -62,7 +62,7 @@ custom_aliases=(
 
     "gsh:git show"
     "gss:git status --short --branch --untracked-files"
-    "gst:git status"
+    "gst:git stash"
     "gsta:git stash push"
     "gstaa:git stash --apply"
     "gstall:git stash push --all"
