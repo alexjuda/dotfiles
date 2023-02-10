@@ -246,3 +246,11 @@ require("lspconfig").esbonio.setup {
     on_attach = shared_on_attach,
     cmd = { "esbonio", },
 }
+
+
+-- ccls --
+-- C++ and other languages from the C family.
+-- Installation on Fedora: https://stackoverflow.com/a/71810871
+require("lspconfig").ccls.setup {
+    on_attach = shared_on_attach,
+}

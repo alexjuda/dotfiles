@@ -232,6 +232,19 @@ ltex-ls
 1. Grab a release from https://github.com/valentjn/ltex-ls/releases
 2. Put the exec on your $PATH.
 
+
+C++
+---
+
+`brew install ccls` or:
+
+#. Clone ccls repo.
+#. Install build deps: ``sudo dnf install clang clang-devel llvm-devel``.
+#. ``cmake .``
+#. ``make``
+#. ``mv ./ccls ~/.local/bin``
+
+
 Updating the completions
 ========================
 
