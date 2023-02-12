@@ -157,12 +157,15 @@ augroup END
 -- Colors --
 ------------
 -- Without this, moonfly uses old vi colors.
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 
 -- Without this, moonfly uses gray blocks for window separators.
-vim.g.moonflyWinSeparator = 2
 
-vim.cmd([[colorscheme moonfly]])
+require('ayu').setup({
+    mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+    overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+})
+require('ayu').colorscheme()
 
 ----------------
 -- Treesitter --

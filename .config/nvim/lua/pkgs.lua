@@ -10,7 +10,7 @@ require "paq" {
 
     -- Color Themes
     ----------
-    "bluz71/vim-moonfly-colors";
+    "Shatur/neovim-ayu";
 
     -- UI
     -------
