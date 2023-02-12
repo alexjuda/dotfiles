@@ -496,14 +496,14 @@
           "verbose": "Disabled"
         },
         {
-          "keyCode": 83,
-          "label": "NUMLOCK",
-          "verbose": "Num Lock"
+          "keyCode": 2351,
+          "label": "[",
+          "extraLabel": "C+S+"
         },
         {
-          "keyCode": 0,
-          "label": "NO KEY",
-          "verbose": "Disabled"
+          "keyCode": 2352,
+          "label": "]",
+          "extraLabel": "C+S+"
         },
         {
           "keyCode": 0,
@@ -5499,8 +5499,8 @@
       8,
       8,
       12,
-      15,
-      11,
+      10,
+      10,
       12,
       12,
       3,
