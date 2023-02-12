@@ -367,8 +367,9 @@
       ],
       [
         {
-          "keyCode": 53,
-          "label": "`"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 58,
@@ -433,8 +434,9 @@
           "label": "DEL"
         },
         {
-          "keyCode": 43,
-          "label": "TAB"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 0,
@@ -469,14 +471,14 @@
           "verbose": "Disabled"
         },
         {
-          "keyCode": 86,
-          "label": "-",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 2850,
-          "label": "5",
-          "extraLabel": "Meh+"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 2386,
@@ -484,14 +486,14 @@
           "extraLabel": "C+S+"
         },
         {
-          "keyCode": 2868,
-          "label": "'",
-          "extraLabel": "Meh+"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 84,
-          "label": "/",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 83,
@@ -504,10 +506,9 @@
           "verbose": "Disabled"
         },
         {
-          "keyCode": 65535,
-          "label": "",
-          "extraLabel": "TRANS",
-          "verbose": "Transparent"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 49226,
@@ -552,9 +553,9 @@
           "verbose": "Disabled"
         },
         {
-          "keyCode": 87,
-          "label": "+",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 2384,
@@ -572,9 +573,9 @@
           "extraLabel": "C+S+"
         },
         {
-          "keyCode": 85,
-          "label": "*",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 0,
@@ -582,13 +583,14 @@
           "verbose": "Disabled"
         },
         {
-          "keyCode": 49,
-          "label": "\\"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 225,
-          "label": "LEFT SHIFT",
-          "verbose": "Left Shift"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 0,
@@ -641,56 +643,58 @@
           "verbose": "Disabled"
         },
         {
-          "keyCode": 98,
-          "label": "0",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 89,
-          "label": "1",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 90,
-          "label": "2",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 91,
-          "label": "3",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 99,
-          "label": ".",
-          "extraLabel": "Numpad"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 82,
           "label": "↑"
         },
         {
-          "keyCode": 224,
-          "label": "LEFT CTRL",
-          "verbose": "Left Control"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 227,
-          "label": "LEFT LINUX",
-          "verbose": "Left Linux"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 226,
-          "label": "LEFT ALT",
-          "verbose": "Left Alt"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 44,
-          "label": "SPACE"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 44,
-          "label": "SPACE"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 0,
@@ -720,18 +724,19 @@
           "extraLabel": "LED"
         },
         {
-          "keyCode": 44,
-          "label": "SPACE"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 44,
-          "label": "SPACE"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
-          "keyCode": 230,
-          "label": "RIGHT ALT",
-          "extraLabel": "",
-          "verbose": "AltGr"
+          "keyCode": 0,
+          "label": "NO KEY",
+          "verbose": "Disabled"
         },
         {
           "keyCode": 80,
@@ -5453,14 +5458,14 @@
       4
     ],
     [
-      4,
+      12,
       8,
       8,
       8,
       8,
       8,
       8,
-      4,
+      12,
       15,
       9,
       0,
@@ -5472,18 +5477,18 @@
       0,
       0,
       10,
-      4,
+      13,
       15,
       7,
       7,
       4,
       4,
       1,
-      4,
-      4,
-      4,
-      1,
-      1,
+      12,
+      12,
+      12,
+      12,
+      12,
       9,
       6,
       11,
@@ -5493,33 +5498,33 @@
       8,
       8,
       8,
-      6,
+      12,
       15,
       11,
-      9,
-      6,
+      12,
+      12,
       3,
-      6,
-      9,
-      4,
+      12,
+      12,
+      12,
       15,
-      9,
+      12,
       3,
       3,
       3,
-      9,
+      12,
       0,
-      9,
-      9,
-      9,
-      9,
-      9,
+      12,
+      12,
+      12,
+      12,
+      12,
       0,
       0,
       0,
-      4,
-      1,
-      1,
+      12,
+      13,
+      13,
       9,
       3,
       6,
