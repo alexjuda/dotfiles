@@ -195,7 +195,7 @@ map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic
 map("n", "[a", "<cmd>AerialPrev<CR>", opts, "prev symbol (aerial)")
 map("n", "]a", "<cmd>AerialNext<CR>", opts, "next symbol (aerial)")
 
-map("n", "[q", ":cnext<CR>", opts, "prev quickfix")
+map("n", "[q", ":cprev<CR>", opts, "prev quickfix")
 map("n", "]q", ":cnext<CR>", opts, "next quickfix")
 
 map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
