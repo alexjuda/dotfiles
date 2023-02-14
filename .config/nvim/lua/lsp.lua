@@ -134,35 +134,13 @@ require("lspconfig").jdtls.setup {
 
 -- Lua --
 ---------
--- Assumes that a language server repo with a built LS binary is available under
--- ~/.local/share/aj-lsp/ . To get it, follow the instructions from:
--- https://jdhao.github.io/2021/08/12/nvim_sumneko_lua_conf/#build .
---
--- The configuration is based on snippet at
--- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
-
-local sumneko_cmd = function()
-    return { "lua-language-server" }
-end
-
-
-local lua_runtime_paths = function()
-    local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, "lua/?.lua")
-    table.insert(runtime_path, "lua/?/init.lua")
-
-    return runtime_path
-end
-
-require("lspconfig").sumneko_lua.setup {
-    cmd = sumneko_cmd(),
+-- Requires `lua-language=server` available at PATH.
+require("lspconfig").lua_ls.setup {
     settings = {
         Lua = {
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
-                -- Setup your lua path
-                path = lua_runtime_paths(),
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
