@@ -181,5 +181,9 @@ function git-common-ancestor() {
     git merge-base "$1" "$2"
 }
 
+
+export PATH="/usr/local/cuda-12.0/bin:$PATH"
+
+
 # Load cargo if loader exists
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
