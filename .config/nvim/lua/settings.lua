@@ -332,15 +332,26 @@ end
 require("lualine").setup {
     sections = {
         lualine_a = {
-            -- Show buffer number using the vim status line format:
-            -- https://vimdoc.sourceforge.net/htmldoc/options.html#'statusline'
-            {"%n"},
+            {
+                -- Show buffer number using the vim status line format:
+                -- https://vimdoc.sourceforge.net/htmldoc/options.html#'statusline'
+                "%n",
+
+                separator = { left = "", right = "" },
+            }
         },
         lualine_b = {
             {
                 "filename",
                 -- Show relative path.
                 path = 1,
+
+                -- Show symbols after the filepath. Src: https://github.com/nvim-lualine/lualine.nvim#buffers-component-options
+                symbols = {
+                    modified = ' ●', -- Text to show when the buffer is modified
+                    alternate_file = '#', -- Text to show to identify the alternate file
+                    directory = '', -- Text to show when the buffer is a directory
+                },
             }
         },
         lualine_c = { ts_statusline },
@@ -353,6 +364,13 @@ require("lualine").setup {
             "fileformat",
             "filetype",
         },
+        lualine_z = {
+            -- Override default separators.
+            {
+                "location",
+                separator = { left = "", right = "" },
+            },
+        }
     },
     -- Show shorter status line in the nvim-tree side buffer.
     extensions = { "nvim-tree", }
