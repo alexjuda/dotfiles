@@ -23,9 +23,6 @@ require "paq" {
     -- leader keybindings helper window
     "folke/which-key.nvim";
 
-    -- `cd` after opening a file
-    'airblade/vim-rooter';
-
     -- code parser for syntax highlight & folds
     { 'nvim-treesitter/nvim-treesitter', run = function() vim.cmd(":TSUpdate") end }; -- Update the parsers on plugin update
 
