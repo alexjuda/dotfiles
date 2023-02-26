@@ -89,6 +89,9 @@ vim.opt.signcolumn = "number"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Make `:find` work recursively. Override the built-in default ("/usr/include").
+vim.opt.path = "**"
+
 ---------------
 -- which-key --
 ---------------
