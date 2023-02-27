@@ -1,2 +1,5 @@
 # neovim spelling dictionary
 .config/nvim/spell
+
+# Lua LSP config
+.luarc.json
