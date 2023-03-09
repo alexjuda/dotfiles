@@ -35,6 +35,5 @@ return {
     adjust_window_size_when_changing_font_size = false,
 
     -- The default font size (10.0) is too small on 4K screens.
-    -- font_size = 18.0, -- for external display
-    font_size = 12.0, -- for a MacBook
+    font_size = 14,
 }
