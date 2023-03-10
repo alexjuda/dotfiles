@@ -14,7 +14,7 @@ local function scheme_for_appearance(appearance)
         -- return 'Builtin Solarized Dark'
         return 'ayu'
     else
-        return 'ayu_light'
+        return 'Github'
     end
 end
 
