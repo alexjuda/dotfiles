@@ -44,9 +44,8 @@ map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 
 -- Project
 ------------
-map("n", "<leader>pt", ":NvimTreeToggle<CR>", opts) -- open project tree
-map("n", "<leader>po", ":NvimTreeFindFile<CR>", opts) -- reveal current file in project
-map("n", "<leader>pf", function() telescope.find_files(finder_opts)  end, opts, "find files")
+map("n", "<leader>pt", ":SidebarNvimToggle<CR>", opts) -- open project tree
+map("n", "<leader>pf", function() telescope.find_files(finder_opts)  end, opts, "find file by name")
 
 -- Search
 -----------
@@ -55,8 +54,9 @@ map("n", "<leader>ss", function() telescope.live_grep() end, opts, "search in PW
 
 -- Files
 ----------
-map("n", "<leader>ft", ":NerdTreeToggle<CR>", opts) -- open files tree
+map("n", "<leader>ft", ":SidebarNvimToggle<CR>", opts) -- open files tree
 map("n", "<leader>fr", function() telescope.oldfiles() end, opts, "recent files")
+map("n", "<leader>fR", ":SidebarNvimUpdate<CR>", opts) -- reload sidebar's state
 map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
 map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
 

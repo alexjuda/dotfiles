@@ -114,25 +114,19 @@ require("which-key").setup {
 require("nvim-search-and-replace").setup()
 
 
---------------
--- NvimTree --
---------------
+------------------
+-- sidebar.nvim --
+------------------
 
-require("nvim-tree").setup {
-    -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-    update_focused_file = {
-        -- Default: false.
-        enable = true,
+require("sidebar-nvim").setup({
+    -- sections = { "datetime", "git", "diagnostics" },
+    sections = { "files", "symbols", "git", },
+    files = {
+        -- show_hidden = false,
+        show_hidden = true,
     },
+})
 
-    view = {
-        -- Set window width to filename lengths. Default: false.
-        adaptive_size = true,
-    },
-
-    -- Don't open dir buffers in nvim-tree. Fixes integration with dirbuf.
-    hijack_directories = { enable = false },
-}
 
 ----------------
 -- image.nvim --
@@ -146,7 +140,7 @@ require('image').setup {}
 
 -- Customize indent size
 vim.cmd([[
-augroup aj-set-file-indent-width 
+augroup aj-set-file-indent-width
     autocmd Filetype yaml setlocal shiftwidth=2
     autocmd Filetype html setlocal shiftwidth=2
 augroup END
@@ -155,7 +149,7 @@ augroup END
 -- Tame Tree-Sitter folds
 -- source: https://stackoverflow.com/a/8316471
 vim.cmd([[
-augroup aj-open-folds-by-default 
+augroup aj-open-folds-by-default
     autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
 augroup END
 ]])
@@ -275,17 +269,14 @@ cmp.setup({
         expand = function(args)
         end,
     },
-
     mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
-
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
     }),
-
     -- Don't show the text like "Function" after the symbol
     -- src: https://github.com/hrsh7th/nvim-cmp#how-to-show-name-of-item-kind-and-source-like-compe
     formatting = {

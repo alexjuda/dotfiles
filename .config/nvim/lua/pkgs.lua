@@ -14,9 +14,6 @@ require "paq" {
 
     -- UI
     -------
-    -- lua-based tree explorer
-    'kyazdani42/nvim-tree.lua';
-
     -- Edit directories
     'elihunter173/dirbuf.nvim';
 
@@ -27,10 +24,13 @@ require "paq" {
     { 'nvim-treesitter/nvim-treesitter', run = function() vim.cmd(":TSUpdate") end }; -- Update the parsers on plugin update
 
     -- nice icons in bufferline & file tree
-    'kyazdani42/nvim-web-devicons';
+    -- 'kyazdani42/nvim-web-devicons';
 
     -- show icons in NERDTree
-    'ryanoasis/vim-devicons';
+    -- 'ryanoasis/vim-devicons';
+
+    -- Sidebar with files, LSP symbols, and LSP diagnostics.
+    "sidebar-nvim/sidebar.nvim";
 
     -- nicer bottom status line
     'hoob3rt/lualine.nvim';
