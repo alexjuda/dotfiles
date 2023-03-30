@@ -23,12 +23,6 @@ require "paq" {
     -- code parser for syntax highlight & folds
     { 'nvim-treesitter/nvim-treesitter', run = function() vim.cmd(":TSUpdate") end }; -- Update the parsers on plugin update
 
-    -- nice icons in bufferline & file tree
-    -- 'kyazdani42/nvim-web-devicons';
-
-    -- show icons in NERDTree
-    -- 'ryanoasis/vim-devicons';
-
     -- Sidebar with files, LSP symbols, and LSP diagnostics.
     "sidebar-nvim/sidebar.nvim";
 
