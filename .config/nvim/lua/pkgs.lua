@@ -41,9 +41,6 @@ require "paq" {
     -- Find and replace
     "s1n7ax/nvim-search-and-replace";
 
-    -- Clipboard manager
-    "gennaro-tedesco/nvim-peekup";
-
     -- Open file/line in GitHub
     "almo7aya/openingh.nvim";
 
