@@ -18,7 +18,7 @@ custom_aliases=(
     "gca:git commit -v --amend"  # 'gc!' can't be used in macOS bash
     "gcb:git checkout -b"
     "gcl:git clone --recurse-submodules"
-    "gcmsg:git commit -m"
+    "gcm:git commit -m"
     "gco:git checkout"
     "gcp:git cherry-pick"
 
@@ -32,16 +32,12 @@ custom_aliases=(
     "gf:git fetch -p"
 
     "ggfl:git push --force-with-lease"
-    'ggsup:git branch --set-upstream-to=origin/$(git branch --show-current)'
 
-    "gl:git pull"
-    "glg:git log --stat"
-    "glgp:git log --stat -p"
-    "glgg:git log --graph"
-    "glgga:git log --graph --decorate --all"
-    "glgm:git log --graph --max-count=10"
+    "gls:git log --stat"
+    "glg:git log --graph"
+    "glga:git log --graph --decorate --all"
     "glo:git log --oneline --decorate"
-    "glog:git log --oneline --decorate --graph"
+    "glog:git log --oneline --decorate --graph --all"
     "gloga:git log --oneline --decorate --graph --all"
 
     "gm:git merge"
@@ -61,6 +57,7 @@ custom_aliases=(
     "grv:git remote -v"
 
     "gsh:git show"
+    "gs:git status --untracked-files"
     "gss:git status --short --branch --untracked-files"
     "gst:git stash"
     "gsta:git stash push"
