@@ -211,7 +211,6 @@ require("lspconfig").ltex.setup {
             },
         },
     },
-    filetypes = { "markdown", "tex", },
 }
 
 
