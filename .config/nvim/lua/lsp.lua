@@ -225,6 +225,18 @@ require("lspconfig").esbonio.setup {
 }
 
 
+-- html --
+----------
+--
+-- Language server for html, css, and js.
+-- Requires installing https://github.com/hrsh7th/vscode-langservers-extracted
+
+require("lspconfig").html.setup {
+    on_attach = shared_on_attach,
+    cmd = { "npx", "vscode-html-language-server", "--stdio", },
+}
+
+
 -- ccls --
 -- C++ and other languages from the C family.
 -- Installation on Fedora: https://stackoverflow.com/a/71810871

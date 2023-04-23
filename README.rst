@@ -204,6 +204,16 @@ Don't worry about the "-g" flag, npm handles dependency isolation between librar
    npm install -g typescript typescript-language-server
 
 
+HTML
+----
+
+Language server extracted from VSCode. `Source <https://github.com/hrsh7th/vscode-langservers-extracted>_`.
+
+.. code-block:: sh
+
+   npm install -g vscode-langservers-extracted
+
+
 JSON
 ----
 
