@@ -4,7 +4,7 @@
     1. NVIDIA drivers
     2. kitty
 
-2. Linking configs 
+2. Linking configs
 
 ```bash
 ln -s $PWD/config/kitty ~/.config/kitty
@@ -16,7 +16,7 @@ mkdir ~/.local/bin
 ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/
 ```
 
-3. Neovim 
+3. Neovim
 
 ```bash
 sudo dnf install neovim
@@ -25,4 +25,12 @@ git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME
 mkdir -p ~/.local/share/lang-servers/ltex-ls-data
 touch ~/.local/share/lang-servers/ltex-ls-data/dict.txt
 nvim -c ":PaqSync"
+```
+
+4. IDEs
+
+```bash
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+# Compile dynamic bash extension
+cd ~/.pyenv && src/configure && make -C src
 ```
