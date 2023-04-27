@@ -27,10 +27,18 @@ touch ~/.local/share/lang-servers/ltex-ls-data/dict.txt
 nvim -c ":PaqSync"
 ```
 
-4. IDEs
+4. Python
+
+Src:
+* https://github.com/pyenv/pyenv#installation
+* https://stribny.name/blog/install-python-dev/
 
 ```bash
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 # Compile dynamic bash extension
 cd ~/.pyenv && src/configure && make -C src
+
+sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+pyenv install ...
+pyenv global ...
 ```
