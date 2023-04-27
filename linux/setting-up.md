@@ -1,10 +1,11 @@
 # Setting Up
 
-1. Install from Gnome Software
-    1. NVIDIA drivers
-    2. kitty
+## 1. Gnome Software
 
-2. Linking configs
+1. NVIDIA drivers
+2. kitty
+
+## 2. Linking configs
 
 ```bash
 ln -s $PWD/config/kitty ~/.config/kitty
@@ -16,7 +17,7 @@ mkdir ~/.local/bin
 ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/
 ```
 
-3. Neovim
+## 3. Neovim
 
 ```bash
 sudo dnf install neovim
@@ -27,7 +28,30 @@ touch ~/.local/share/lang-servers/ltex-ls-data/dict.txt
 nvim -c ":PaqSync"
 ```
 
-4. Python
+## 4. ghrel
+
+1. Download `ghrel` from https://github.com/jreisinger/ghrel/releases.
+2. Unzip it under `~/.local/share/aj-apps/`.
+3. `mkdir ~/.local/bin && ln -s $PWD/ghrel ~/.local/bin/`.
+
+## 5. Fonts
+
+* src: https://docs.rockylinux.org/books/nvchad/nerd_fonts/
+
+```bash
+ghrel -p JetBrainsMono.zip ryanoasis/nerd-fonts
+mkdir -p ~/.local/share/fonts/JetBrainsMono
+unzip JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono/
+```
+
+## 5. System tools
+
+```bash
+sudo dnf install fd-find
+sudo dnf install ripgrep
+```
+
+## 6. Python
 
 Src:
 * https://github.com/pyenv/pyenv#installation
