@@ -3,3 +3,6 @@
 
 # Lua LSP config
 .luarc.json
+
+# Python
+/venv
