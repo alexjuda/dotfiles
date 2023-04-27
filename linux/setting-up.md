@@ -66,3 +66,14 @@ sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel
 pyenv install ...
 pyenv global ...
 ```
+
+
+## 7. Node
+
+* src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
+
+```bash
+sudo dnf install nodejs
+mkdir ~/.local/share/npm-global
+npm config set prefix ~/.local/share/npm-global
+```
