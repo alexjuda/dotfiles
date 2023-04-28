@@ -19,16 +19,25 @@ def _print_bold(text: str):
     print(ColorCode.BOLD + text + ColorCode.END)
 
 
-def _ask_run_cmd(cmd: str):
-    _print_bold(cmd)
-    ans = input("Run this command? [y]es/[n]o/[q]uit ")
+def _ask_n_run_cmd(cmd: str):
+    while True:
+        _print_bold(cmd)
+        ans = input("Run ^ command? [y]es/[n]o/[q]uit: ")
 
-    if ans == "y":
-        _run_cmd(cmd)
+        if ans == "y":
+            _run_cmd(cmd)
+            break
+        elif ans == "n":
+            # Skipping this command
+            break
+        elif ans == "q":
+            raise StopIteration()
+        else:
+            print(f"Invalid answer: {ans}")
 
 
 def main():
-    _ask_run_cmd("ls -al")
+    _ask_n_run_cmd("ls -al")
 
 
 if __name__ == "__main__":
