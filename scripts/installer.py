@@ -6,6 +6,94 @@ from dataclasses import dataclass
 import typing as t
 
 
+def main():
+    nerd_font = "NerdFontsSymbolsOnly"
+    Runner.run(
+        [
+            "sudo dnf install jetbrains-mono-fonts",
+            f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",  # noqa: E501
+            f"mkdir -p ~/.local/share/fonts/{nerd_font}",
+            f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",  # noqa: E501
+            f"fc-cache ~/.local/share/fonts/{nerd_font}",
+        ],
+        group="fonts",
+    )
+
+    Runner.run(
+        [
+            "sudo dnf install fd-find",
+            "sudo dnf install ripgrep",
+            "sudo dnf install gh",
+            "sudo dnf copr enable atim/lazygit -y",
+            "sudo dnf install lazygit",
+            "sudo dnf install htop",
+        ],
+        group="system utilities",
+    )
+
+    # Src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
+    Runner.run(
+        [
+            "sudo dnf install nodejs",
+            "mkdir -p ~/.local/share/npm-global",
+            "npm config set prefix ~/.local/share/npm-global",
+        ],
+        group="node",
+    )
+
+    # Src:
+    # * https://github.com/pyenv/pyenv#installation
+    # * https://stribny.name/blog/install-python-dev/
+    Runner.run(
+        [
+            "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
+            "cd ~/.pyenv && src/configure && make -C src",
+            "sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils",  # noqa: E501
+            "pyenv install -k 3",
+            "pyenv global 3 && pyenv versions",
+            "sudo dnf install pipx",
+        ],
+        group="python",
+    )
+
+    Runner.run(
+        [
+            "pipx install 'python-lsp-server[rope]'",
+            "pipx inject python-lsp-server python-lsp-black",
+            "pipx inject python-lsp-server python-lsp-ruff",
+            "pipx inject python-lsp-server pylsp-rope",
+            "npm install -g pyright",
+        ],
+        group="LSP (Python)",
+    )
+
+    Runner.run(
+        [
+            "npm install -g typescript typescript-language-server",
+        ],
+        group="LSP (JavaScript)",
+    )
+
+    Runner.run(
+        [
+            "npm install -g vscode-langservers-extracted",
+        ],
+        group="LSP (HTML + JSON)",
+    )
+
+    ls_dir = "~/Desktop/langservers"
+    Runner.run(
+        [
+            "mkdir -p ~/.local/share/aj-apps",
+            f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
+            Runner.Notice(
+                f"Go to {ls_dir}. Unzip ltex-ls. Move it under ~/.local/share/aj-apps. Link the ~/.local/bin"  # noqa: E501
+            ),
+        ],
+        group="LSP (LanguageTool)",
+    )
+
+
 class Runner:
     @dataclass
     class Notice:
@@ -107,94 +195,6 @@ class Runner:
                 cls._ask_n_run_cmd(cmd)
             except StopIteration:
                 break
-
-
-def main():
-    nerd_font = "NerdFontsSymbolsOnly"
-    Runner.run(
-        [
-            "sudo dnf install jetbrains-mono-fonts",
-            f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",  # noqa: E501
-            f"mkdir -p ~/.local/share/fonts/{nerd_font}",
-            f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",  # noqa: E501
-            f"fc-cache ~/.local/share/fonts/{nerd_font}",
-        ],
-        group="fonts",
-    )
-
-    Runner.run(
-        [
-            "sudo dnf install fd-find",
-            "sudo dnf install ripgrep",
-            "sudo dnf install gh",
-            "sudo dnf copr enable atim/lazygit -y",
-            "sudo dnf install lazygit",
-            "sudo dnf install htop",
-        ],
-        group="system utilities",
-    )
-
-    # Src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
-    Runner.run(
-        [
-            "sudo dnf install nodejs",
-            "mkdir -p ~/.local/share/npm-global",
-            "npm config set prefix ~/.local/share/npm-global",
-        ],
-        group="node",
-    )
-
-    # Src:
-    # * https://github.com/pyenv/pyenv#installation
-    # * https://stribny.name/blog/install-python-dev/
-    Runner.run(
-        [
-            "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
-            "cd ~/.pyenv && src/configure && make -C src",
-            "sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils",  # noqa: E501
-            "pyenv install -k 3",
-            "pyenv global 3 && pyenv versions",
-            "sudo dnf install pipx",
-        ],
-        group="python",
-    )
-
-    Runner.run(
-        [
-            "pipx install 'python-lsp-server[rope]'",
-            "pipx inject python-lsp-server python-lsp-black",
-            "pipx inject python-lsp-server python-lsp-ruff",
-            "pipx inject python-lsp-server pylsp-rope",
-            "npm install -g pyright",
-        ],
-        group="LSP (Python)",
-    )
-
-    Runner.run(
-        [
-            "npm install -g typescript typescript-language-server",
-        ],
-        group="LSP (JavaScript)",
-    )
-
-    Runner.run(
-        [
-            "npm install -g vscode-langservers-extracted",
-        ],
-        group="LSP (HTML + JSON)",
-    )
-
-    ls_dir = "~/Desktop/langservers"
-    Runner.run(
-        [
-            "mkdir -p ~/.local/share/aj-apps",
-            f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
-            Runner.Notice(
-                f"Go to {ls_dir}. Unzip ltex-ls. Move it under ~/.local/share/aj-apps. Link the ~/.local/bin"  # noqa: E501
-            ),
-        ],
-        group="LSP (LanguageTool)",
-    )
 
 
 if __name__ == "__main__":
