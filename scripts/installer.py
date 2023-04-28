@@ -70,5 +70,14 @@ def main():
     ], group="fonts")
 
 
+    Runner.run([
+        "sudo dnf install fd-find",
+        "sudo dnf install ripgrep",
+        "sudo dnf install gh",
+        "sudo dnf copr enable atim/lazygit -y",
+        "sudo dnf install lazygit",
+    ], group="system utilities")
+
+
 if __name__ == "__main__":
     main()
