@@ -2,33 +2,76 @@
 
 import subprocess
 import sys
+from dataclasses import dataclass
 import typing as t
 
 
 class Runner:
-    class ColorCode:
+    @dataclass
+    class Notice:
+        msg: str
+
+    class _ColorCode:
         # The terminal codes usually include brackets. Having a single opening
         # bracket screws up code editors.
         BOLD = "\033" + chr(91) + "1m"
         END = "\033" + chr(91) + "0m"
 
-    @staticmethod
-    def _run_cmd(cmd: str):
-        proc = subprocess.run(cmd, shell=True)
-        proc.check_returncode()
-
     @classmethod
     def _print_bold(cls, text: str):
-        print(cls.ColorCode.BOLD + text + cls.ColorCode.END)
+        print(cls._ColorCode.BOLD + text + cls._ColorCode.END)
+
+    class _Cmd(t.Protocol):
+        def announce(self):
+            ...
+
+        @property
+        def prompt(self) -> str:
+            ...
+
+        def execute(self):
+            ...
+
+    class _ShellCmd:
+        def __init__(self, line: str):
+            self._line = line
+
+        def announce(self):
+            Runner._print_bold(self._line)
+
+        @property
+        def prompt(self) -> str:
+            return "Run ^ command?"
+
+        def execute(self):
+            proc = subprocess.run(self._line, shell=True)
+            proc.check_returncode()
+
+    class _NoticeCmd:
+        def __init__(self, notice: "Runner.Notice"):
+            self._notice = notice
+
+        def announce(self):
+            print(self._notice.msg)
+
+        @property
+        def prompt(self) -> str:
+            return "Have you done ^?"
+
+        def execute(self):
+            # No action needed.
+            pass
+
+    Entry = t.Union[str, Notice]
 
     @classmethod
-    def _ask_n_run_cmd(cls, cmd: str):
+    def _ask_n_run_cmd(cls, cmd: _Cmd):
         while True:
-            cls._print_bold(cmd)
-            ans = input("Run ^ command? [y]es/[n]o/[q]uit/[s]kip group: ")
+            cmd.announce()
+            ans = input(f"{cmd.prompt} [y]es/[n]o/[q]uit/[s]kip group: ")
 
             if ans == "y":
-                cls._run_cmd(cmd)
+                cmd.execute()
                 print()
                 break
             elif ans == "n":
@@ -43,13 +86,23 @@ class Runner:
                 print(f"Invalid answer: {ans}")
 
     @classmethod
-    def run(cls, cmds: t.Sequence[str], group: t.Optional[str] = None):
+    def _cmd_for_entry(cls, entry: Entry) -> "Runner._Cmd":
+        if isinstance(entry, str):
+            return cls._ShellCmd(entry)
+        elif isinstance(entry, cls.Notice):
+            return cls._NoticeCmd(entry)
+        else:
+            raise TypeError(f"Invalid run entry type: {type(entry)}")
+
+    @classmethod
+    def run(cls, entries: t.Sequence[Entry], group: t.Optional[str] = None):
         if group is not None:
             print("=" * 80)
             print(group.capitalize())
             print("=" * 80)
 
-        for cmd in cmds:
+        for entry in entries:
+            cmd = cls._cmd_for_entry(entry)
             try:
                 cls._ask_n_run_cmd(cmd)
             except StopIteration:
@@ -129,6 +182,18 @@ def main():
             "npm install -g vscode-langservers-extracted",
         ],
         group="LSP (HTML + JSON)",
+    )
+
+    ls_dir = "~/Desktop/langservers"
+    Runner.run(
+        [
+            "mkdir -p ~/.local/share/aj-apps",
+            f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
+            Runner.Notice(
+                f"Go to {ls_dir}. Unzip ltex-ls. Move it under ~/.local/share/aj-apps. Link the ~/.local/bin"  # noqa: E501
+            ),
+        ],
+        group="LSP (LanguageTool)",
     )
 
 
