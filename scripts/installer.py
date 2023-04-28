@@ -102,12 +102,33 @@ def main():
             "pyenv install -k 3",
             "pyenv global 3 && pyenv versions",
             "sudo dnf install pipx",
+        ],
+        group="python",
+    )
+
+    Runner.run(
+        [
             "pipx install 'python-lsp-server[rope]'",
             "pipx inject python-lsp-server python-lsp-black",
             "pipx inject python-lsp-server python-lsp-ruff",
             "pipx inject python-lsp-server pylsp-rope",
+            "npm install -g pyright",
         ],
-        group="python",
+        group="LSP (Python)",
+    )
+
+    Runner.run(
+        [
+            "npm install -g typescript typescript-language-server",
+        ],
+        group="LSP (JavaScript)",
+    )
+
+    Runner.run(
+        [
+            "npm install -g vscode-langservers-extracted",
+        ],
+        group="LSP (HTML + JSON)",
     )
 
 
