@@ -52,12 +52,13 @@ class Runner:
 
 
 def main():
-    font_name = "NerdFontsSymbolsOnly"
+    nerd_font = "NerdFontsSymbolsOnly"
     Runner.run([
-        f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {font_name}.zip ryanoasis/nerd-fonts",
-        f"mkdir -p ~/.local/share/fonts/{font_name}",
-        f"unzip ~/Desktop/fonts/{font_name}.zip -d ~/.local/share/fonts/{font_name}",
-        f"fc-cache ~/.local/share/fonts/{font_name}",
+        "sudo dnf install jetbrains-mono-fonts",
+        f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",
+        f"mkdir -p ~/.local/share/fonts/{nerd_font}",
+        f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",
+        f"fc-cache ~/.local/share/fonts/{nerd_font}",
     ])
 
 
