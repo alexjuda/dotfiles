@@ -79,11 +79,28 @@ def main():
         "sudo dnf install htop",
     ], group="system utilities")
 
+    # Src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
     Runner.run([
         "sudo dnf install nodejs",
         "mkdir -p ~/.local/share/npm-global",
         "npm config set prefix ~/.local/share/npm-global",
     ], group="node")
+
+    # Src:
+    # * https://github.com/pyenv/pyenv#installation
+    # * https://stribny.name/blog/install-python-dev/
+    Runner.run([
+        "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
+        "cd ~/.pyenv && src/configure && make -C src",
+        "sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils",
+        "pyenv install -k 3",
+        "pyenv global 3 && pyenv versions",
+        "sudo dnf install pipx",
+        "pipx install 'python-lsp-server[rope]'",
+        "pipx inject python-lsp-server python-lsp-black",
+        "pipx inject python-lsp-server python-lsp-ruff",
+        "pipx inject python-lsp-server pylsp-rope",
+    ], group="python")
 
 
 if __name__ == "__main__":
