@@ -35,6 +35,7 @@ class Runner:
                 break
             elif ans == "n":
                 # Skipping this command
+                print()
                 break
             elif ans == "q":
                 raise StopIteration()
@@ -51,9 +52,12 @@ class Runner:
 
 
 def main():
+    font_name = "NerdFontsSymbolsOnly"
     Runner.run([
-        "ls -al",
-        "ls -alh",
+        f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {font_name}.zip ryanoasis/nerd-fonts",
+        f"mkdir -p ~/.local/share/fonts/{font_name}",
+        f"unzip ~/Desktop/fonts/{font_name}.zip -d ~/.local/share/fonts/{font_name}",
+        f"fc-cache ~/.local/share/fonts/{font_name}",
     ])
 
 
