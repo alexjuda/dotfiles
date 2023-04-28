@@ -1,6 +1,7 @@
 #!/bin/env python3
 
 import subprocess
+import sys
 import typing as t
 
 
@@ -27,7 +28,7 @@ class Runner:
     def _ask_n_run_cmd(cls, cmd: str):
         while True:
             cls._print_bold(cmd)
-            ans = input("Run ^ command? [y]es/[n]o/[q]uit: ")
+            ans = input("Run ^ command? [y]es/[n]o/[q]uit/[s]kip group: ")
 
             if ans == "y":
                 cls._run_cmd(cmd)
@@ -38,12 +39,19 @@ class Runner:
                 print()
                 break
             elif ans == "q":
+                sys.exit()
+            elif ans == "s":
                 raise StopIteration()
             else:
                 print(f"Invalid answer: {ans}")
 
     @classmethod
-    def run(cls, cmds: t.Sequence[str]):
+    def run(cls, cmds: t.Sequence[str], group: t.Optional[str] = None):
+        if group is not None:
+            print("=" * 80)
+            print(group.capitalize())
+            print("=" * 80)
+
         for cmd in cmds:
             try:
                 cls._ask_n_run_cmd(cmd)
@@ -59,7 +67,7 @@ def main():
         f"mkdir -p ~/.local/share/fonts/{nerd_font}",
         f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",
         f"fc-cache ~/.local/share/fonts/{nerd_font}",
-    ])
+    ], group="fonts")
 
 
 if __name__ == "__main__":
