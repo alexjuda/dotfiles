@@ -76,6 +76,7 @@ def main():
         "sudo dnf install gh",
         "sudo dnf copr enable atim/lazygit -y",
         "sudo dnf install lazygit",
+        "sudo dnf install htop",
     ], group="system utilities")
 
     Runner.run([
