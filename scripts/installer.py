@@ -78,6 +78,12 @@ def main():
         "sudo dnf install lazygit",
     ], group="system utilities")
 
+    Runner.run([
+        "sudo dnf install nodejs",
+        "mkdir -p ~/.local/share/npm-global",
+        "npm config set prefix ~/.local/share/npm-global",
+    ], group="node")
+
 
 if __name__ == "__main__":
     main()
