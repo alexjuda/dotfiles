@@ -5,22 +5,21 @@ import sys
 import typing as t
 
 
-class ColorCode:
-    # The terminal codes usually include brackets. Having a single opening
-    # bracket screws up code editors.
-    BOLD = "\033" + chr(91) + "1m"
-    END = "\033" + chr(91) + "0m"
-
-
 class Runner:
+    class ColorCode:
+        # The terminal codes usually include brackets. Having a single opening
+        # bracket screws up code editors.
+        BOLD = "\033" + chr(91) + "1m"
+        END = "\033" + chr(91) + "0m"
+
     @staticmethod
     def _run_cmd(cmd: str):
         proc = subprocess.run(cmd, shell=True)
         proc.check_returncode()
 
-    @staticmethod
-    def _print_bold(text: str):
-        print(ColorCode.BOLD + text + ColorCode.END)
+    @classmethod
+    def _print_bold(cls, text: str):
+        print(cls.ColorCode.BOLD + text + cls.ColorCode.END)
 
     @classmethod
     def _ask_n_run_cmd(cls, cmd: str):
