@@ -1,6 +1,7 @@
 #!/bin/env python3
 
 import subprocess
+import typing as t
 
 
 class ColorCode:
@@ -10,34 +11,50 @@ class ColorCode:
     END = "\033" + chr(91) + "0m"
 
 
-def _run_cmd(cmd: str):
-    proc = subprocess.run(cmd, shell=True)
-    proc.check_returncode()
+class Runner:
+    @staticmethod
+    def _run_cmd(cmd: str):
+        proc = subprocess.run(cmd, shell=True)
+        proc.check_returncode()
 
 
-def _print_bold(text: str):
-    print(ColorCode.BOLD + text + ColorCode.END)
+    @staticmethod
+    def _print_bold(text: str):
+        print(ColorCode.BOLD + text + ColorCode.END)
 
 
-def _ask_n_run_cmd(cmd: str):
-    while True:
-        _print_bold(cmd)
-        ans = input("Run ^ command? [y]es/[n]o/[q]uit: ")
+    @classmethod
+    def _ask_n_run_cmd(cls, cmd: str):
+        while True:
+            cls._print_bold(cmd)
+            ans = input("Run ^ command? [y]es/[n]o/[q]uit: ")
 
-        if ans == "y":
-            _run_cmd(cmd)
-            break
-        elif ans == "n":
-            # Skipping this command
-            break
-        elif ans == "q":
-            raise StopIteration()
-        else:
-            print(f"Invalid answer: {ans}")
+            if ans == "y":
+                cls._run_cmd(cmd)
+                print()
+                break
+            elif ans == "n":
+                # Skipping this command
+                break
+            elif ans == "q":
+                raise StopIteration()
+            else:
+                print(f"Invalid answer: {ans}")
+
+    @classmethod
+    def run(cls, cmds: t.Sequence[str]):
+        for cmd in cmds:
+            try:
+                cls._ask_n_run_cmd(cmd)
+            except StopIteration:
+                break
 
 
 def main():
-    _ask_n_run_cmd("ls -al")
+    Runner.run([
+        "ls -al",
+        "ls -alh",
+    ])
 
 
 if __name__ == "__main__":
