@@ -395,10 +395,9 @@
       "verbose": "Disabled"
     },
     {
-      "keyCode": 0,
-      "label": "KEY",
-      "extraLabel": "NO",
-      "verbose": "Disabled"
+      "keyCode": 2384,
+      "label": "←",
+      "extraLabel": "C+S+"
     },
     {
       "keyCode": 0,
@@ -441,10 +440,9 @@
       "verbose": "Disabled"
     },
     {
-      "keyCode": 0,
-      "label": "KEY",
-      "extraLabel": "NO",
-      "verbose": "Disabled"
+      "keyCode": 2383,
+      "label": "→",
+      "extraLabel": "C+S+"
     },
     {
       "keyCode": 0,
@@ -495,7 +493,7 @@
     12,
     12,
     12,
-    12,
+    8,
     12,
     9,
     6,
@@ -531,7 +529,7 @@
     0,
     0,
     12,
-    13,
+    8,
     13,
     9,
     3,
