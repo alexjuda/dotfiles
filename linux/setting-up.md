@@ -34,46 +34,10 @@ nvim -c ":PaqSync"
 2. Unzip it under `~/.local/share/aj-apps/`.
 3. `mkdir ~/.local/bin && ln -s $PWD/ghrel ~/.local/bin/`.
 
-## 5. Fonts
+## 5. Use installer
 
-* src: https://docs.rockylinux.org/books/nvchad/nerd_fonts/
-
-```bash
-ghrel -p JetBrainsMono.zip ryanoasis/nerd-fonts
-mkdir -p ~/.local/share/fonts/JetBrainsMono
-unzip JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono/
-```
-
-## 5. System tools
+Most of the remaining set-up is automated via the installer script.
 
 ```bash
-sudo dnf install fd-find
-sudo dnf install ripgrep
-```
-
-## 6. Python
-
-Src:
-* https://github.com/pyenv/pyenv#installation
-* https://stribny.name/blog/install-python-dev/
-
-```bash
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-# Compile dynamic bash extension
-cd ~/.pyenv && src/configure && make -C src
-
-sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
-pyenv install ...
-pyenv global ...
-```
-
-
-## 7. Node
-
-* src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
-
-```bash
-sudo dnf install nodejs
-mkdir ~/.local/share/npm-global
-npm config set prefix ~/.local/share/npm-global
+python3 scripts/installer.py
 ```
