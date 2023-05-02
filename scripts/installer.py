@@ -93,6 +93,21 @@ def main():
         group="LSP (LanguageTool)",
     )
 
+    path_3rd_party = "~/Code/3rd-party"
+    Runner.run(
+        [
+            # ccls' build deps
+            "sudo dnf install cmake clang-devel llvm-devel",
+            f"mkdir -p {path_3rd_party}",
+            f"git clone --depth=1 --recursive git@github.com:MaskRay/ccls.git {path_3rd_party}/ccls",  # noqa: E501
+            f"cd {path_3rd_party}/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release",  # noqa: E501
+            f"cd {path_3rd_party}/ccls && cmake --build Release",
+            # TODO: fix the install target
+            f"cd {path_3rd_party}/ccls && cmake  --build . -DCMAKE_INSTALL_PREFIX=~/.local --target install",  # noqa: E501
+        ],
+        group="LSP (C++)",
+    )
+
 
 class Runner:
     @dataclass
