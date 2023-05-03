@@ -102,8 +102,7 @@ def main():
             f"git clone --depth=1 --recursive git@github.com:MaskRay/ccls.git {path_3rd_party}/ccls",  # noqa: E501
             f"cd {path_3rd_party}/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release",  # noqa: E501
             f"cd {path_3rd_party}/ccls && cmake --build Release",
-            # TODO: fix the install target
-            f"cd {path_3rd_party}/ccls && cmake  --build . -DCMAKE_INSTALL_PREFIX=~/.local --target install",  # noqa: E501
+            f"cp {path_3rd_party}/ccls/Release/ccls ~/.local/bin/ccls",
         ],
         group="LSP (C++)",
     )
