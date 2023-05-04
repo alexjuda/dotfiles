@@ -77,6 +77,7 @@ def main():
             "pyenv install -k 3",
             "pyenv global 3 && pyenv versions",
             "sudo dnf install pipx",
+            "pipx install cookiecutter",
         ],
         group="python",
     )
