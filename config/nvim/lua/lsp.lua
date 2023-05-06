@@ -15,6 +15,8 @@ local set_lsp_keymaps = function(client, buf_n)
     local opts = { noremap = true }
     vim.api.nvim_buf_set_keymap(buf_n, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "gt", ":lua vim.lsp.buf.type_definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
