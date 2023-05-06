@@ -415,6 +415,17 @@ vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")
 --------------
 vim.g.markdown_folding = true
 
+-- C++ --
+---------
+-- Use // ... instead pf /* ... */
+local use_line_comments = "aj-use-line-comments"
+vim.api.nvim_create_augroup(use_line_comments, { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+    group = use_line_comments,
+    pattern = { "cpp" },
+    command = "setlocal commentstring=//%s",
+})
+
 -- YAML --
 ----------
 -- Customize indent size
