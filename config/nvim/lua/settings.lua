@@ -134,25 +134,6 @@ require("sidebar-nvim").setup({
 require('image').setup {}
 
 
-------------------
--- Autocommands --
-------------------
-
--- Customize indent size
-vim.cmd([[
-augroup aj-set-file-indent-width
-    autocmd Filetype yaml setlocal shiftwidth=2
-    autocmd Filetype html setlocal shiftwidth=2
-augroup END
-]])
-
--- Tame Tree-Sitter folds
--- source: https://stackoverflow.com/a/8316471
-vim.cmd([[
-augroup aj-open-folds-by-default
-    autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
-augroup END
-]])
 
 
 ------------
@@ -409,11 +390,47 @@ require("vapor").setup {
 }
 
 
-----------------
--- File types --
-----------------
+------------------
+-- Autocommands --
+------------------
 
+-- Tame Tree-Sitter folds
+-- source: https://stackoverflow.com/a/8316471
+vim.cmd([[
+augroup aj-open-folds-by-default
+    autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+augroup END
+]])
+
+------------------------------
+-- Filetype-specific config --
+------------------------------
+
+-- Python --
+------------
 -- # defaults to "shiftwidth() * 2"
 vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")
 
+-- Markdown --
+--------------
 vim.g.markdown_folding = true
+
+-- YAML --
+----------
+-- Customize indent size
+local set_indent_autocmd = "aj-set-indent-width"
+vim.api.nvim_create_augroup(set_indent_autocmd, { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+    group = set_indent_autocmd,
+    pattern = { "yaml" },
+    command = "setlocal shiftwidth=2",
+})
+
+-- HTML --
+----------
+-- Customize indent size
+vim.api.nvim_create_autocmd("Filetype", {
+    group = set_indent_autocmd,
+    pattern = { "html" },
+    command = "setlocal shiftwidth=2",
+})
