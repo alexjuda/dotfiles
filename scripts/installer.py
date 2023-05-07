@@ -128,13 +128,14 @@ def main():
     )
 
     ls_dir = "~/Desktop/langservers"
+    path_aj_apps = "~/.local/share/aj-apps"
     groups.append(
         Runner.Group(
             [
                 "mkdir -p ~/.local/share/aj-apps",
                 f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
                 Runner.Notice(
-                    f"Go to {ls_dir}. Unzip ltex-ls. Move it under ~/.local/share/aj-apps. Link the ~/.local/bin"  # noqa: E501
+                    f"Go to {ls_dir}. Unzip ltex-ls. Move it under {path_aj_apps}. Link the ~/.local/bin"  # noqa: E501
                 ),
             ],
             name="languagetool-lsp",
@@ -154,6 +155,19 @@ def main():
                 f"cp {path_3rd_party}/ccls/Release/ccls ~/.local/bin/ccls",
             ],
             name="cpp-lsp",
+        )
+    )
+
+    file_pattern = "lua-language-server-*-linux-x64"
+    groups.append(
+        Runner.Group(
+            [
+                f"cd ~/Downloads && ghrel -p {file_pattern}.tar.gz LuaLS/lua-language-server",  # noqa: E501
+                f"cd ~/Downloads && tar -xzf {file_pattern}.tar.gz --one-top-level",
+                f"mv ~/Downloads/{file_pattern} {path_aj_apps}/",
+                f"cd {path_aj_apps}/{file_pattern}/bin && ln -s $PWD/lua-language-server ~/.local/bin/",  # noqa: E501
+            ],
+            name="lua-lsp",
         )
     )
 
