@@ -1,5 +1,6 @@
 #!/bin/env python3
 
+import argparse
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -61,7 +62,7 @@ def main():
                 "sudo dnf install lazygit",
                 "sudo dnf install htop",
             ],
-            name="system utilities",
+            name="system-utilities",
         )
     )
 
@@ -104,7 +105,7 @@ def main():
                 "pipx inject python-lsp-server pylsp-rope",
                 "npm install -g pyright",
             ],
-            name="LSP (Python)",
+            name="python-lsp",
         )
     )
 
@@ -113,7 +114,7 @@ def main():
             [
                 "npm install -g typescript typescript-language-server",
             ],
-            name="LSP (JavaScript)",
+            name="js-lsp",
         )
     )
 
@@ -122,7 +123,7 @@ def main():
             [
                 "npm install -g vscode-langservers-extracted",
             ],
-            name="LSP (HTML + JSON)",
+            name="html-json-lsp",
         )
     )
 
@@ -136,7 +137,7 @@ def main():
                     f"Go to {ls_dir}. Unzip ltex-ls. Move it under ~/.local/share/aj-apps. Link the ~/.local/bin"  # noqa: E501
                 ),
             ],
-            name="LSP (LanguageTool)",
+            name="languagetool-lsp",
         )
     )
 
@@ -152,11 +153,11 @@ def main():
                 f"cd {path_3rd_party}/ccls && cmake --build Release",
                 f"cp {path_3rd_party}/ccls/Release/ccls ~/.local/bin/ccls",
             ],
-            name="LSP (C++)",
+            name="cpp-lsp",
         )
     )
 
-    Runner.run(groups)
+    Runner(groups).run_with_cli()
 
 
 class Runner:
@@ -253,11 +254,11 @@ class Runner:
             raise TypeError(f"Invalid run entry type: {type(entry)}")
 
     @classmethod
-    def run(cls, groups: t.Sequence[Group]):
+    def _run_groups(cls, groups: t.Sequence[Group]):
         for group in groups:
             if group.name is not None:
                 print("=" * 80)
-                print(group.name.title())
+                print(group.name)
                 print("=" * 80)
 
             for entry in group.entries:
@@ -265,7 +266,42 @@ class Runner:
                 try:
                     cls._ask_n_run_cmd(cmd)
                 except StopIteration:
+                    print()
                     break
+
+    def __init__(self, groups: t.Sequence[Group]):
+        self._groups = groups
+
+    def run(self):
+        self._run_groups(self._groups)
+
+    def run_with_cli(self):
+        argparser = argparse.ArgumentParser()
+        argparser.add_argument("-g", "--group", help="Run only this command group")
+        argparser.add_argument(
+            "-l",
+            "--list-groups",
+            help="Print available groups instead of running anything",
+            action="store_true",
+        )
+
+        args = argparser.parse_args()
+
+        if args.list_groups:
+            print("Available groups:")
+            for group in self._groups:
+                print(group.name)
+            return
+
+        if (selected_group := args.group) is not None:
+            try:
+                group = next(filter(lambda g: g.name == selected_group, self._groups))
+            except StopIteration:
+                raise ValueError(f"Invalid group name: {selected_group}")
+
+            self._run_groups([group])
+        else:
+            self._run_groups(self._groups)
 
 
 if __name__ == "__main__":
