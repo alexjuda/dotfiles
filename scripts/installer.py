@@ -7,137 +7,169 @@ import typing as t
 
 
 def main():
-    Runner.run(
-        [
-            "ln -s $PWD/config/kitty ~/.config/kitty",
-            "ln -s $PWD/config/nvim ~/.config/nvim",
-            "ln -s $PWD/linux/.bash_aliases ~/.bash_aliases",
-            "ln -s $PWD/linux/.bashrc ~/.bashrc",
-            "ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias",
-            "mkdir -p ~/.local/bin",
-            "ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/",
-        ],
-        group="configs",
+    groups = []
+    groups.append(
+        Runner.Group(
+            [
+                "ln -s $PWD/config/kitty ~/.config/kitty",
+                "ln -s $PWD/config/nvim ~/.config/nvim",
+                "ln -s $PWD/linux/.bash_aliases ~/.bash_aliases",
+                "ln -s $PWD/linux/.bashrc ~/.bashrc",
+                "ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias",
+                "mkdir -p ~/.local/bin",
+                "ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/",
+            ],
+            name="configs",
+        )
     )
 
-    Runner.run(
-        [
-            "sudo dnf install neovim",
-            "sudo dnf install gcc-c++",
-            'git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim',
-            "mkdir -p ~/.local/share/lang-servers/ltex-ls-data",
-            "touch ~/.local/share/lang-servers/ltex-ls-data/dict.txt",
-            'nvim -c ":PaqSync"',
-        ],
-        group="neovim",
+    groups.append(
+        Runner.Group(
+            [
+                "sudo dnf install neovim",
+                "sudo dnf install gcc-c++",
+                'git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim',  # noqa: E501
+                "mkdir -p ~/.local/share/lang-servers/ltex-ls-data",
+                "touch ~/.local/share/lang-servers/ltex-ls-data/dict.txt",
+                'nvim -c ":PaqSync"',
+            ],
+            name="neovim",
+        )
     )
 
     nerd_font = "NerdFontsSymbolsOnly"
-    Runner.run(
-        [
-            "sudo dnf install jetbrains-mono-fonts",
-            f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",  # noqa: E501
-            f"mkdir -p ~/.local/share/fonts/{nerd_font}",
-            f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",  # noqa: E501
-            f"fc-cache ~/.local/share/fonts/{nerd_font}",
-        ],
-        group="fonts",
+    groups.append(
+        Runner.Group(
+            [
+                "sudo dnf install jetbrains-mono-fonts",
+                f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",  # noqa: E501
+                f"mkdir -p ~/.local/share/fonts/{nerd_font}",
+                f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",  # noqa: E501
+                f"fc-cache ~/.local/share/fonts/{nerd_font}",
+            ],
+            name="fonts",
+        )
     )
 
-    Runner.run(
-        [
-            "sudo dnf install fd-find",
-            "sudo dnf install ripgrep",
-            "sudo dnf install gh",
-            "sudo dnf copr enable atim/lazygit -y",
-            "sudo dnf install lazygit",
-            "sudo dnf install htop",
-        ],
-        group="system utilities",
+    groups.append(
+        Runner.Group(
+            [
+                "sudo dnf install fd-find",
+                "sudo dnf install ripgrep",
+                "sudo dnf install gh",
+                "sudo dnf copr enable atim/lazygit -y",
+                "sudo dnf install lazygit",
+                "sudo dnf install htop",
+            ],
+            name="system utilities",
+        )
     )
 
     # Src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
-    Runner.run(
-        [
-            "sudo dnf install nodejs",
-            "mkdir -p ~/.local/share/npm-global",
-            "npm config set prefix ~/.local/share/npm-global",
-        ],
-        group="node",
+    groups.append(
+        Runner.Group(
+            [
+                "sudo dnf install nodejs",
+                "mkdir -p ~/.local/share/npm-global",
+                "npm config set prefix ~/.local/share/npm-global",
+            ],
+            name="node",
+        )
     )
 
     # Src:
     # * https://github.com/pyenv/pyenv#installation
     # * https://stribny.name/blog/install-python-dev/
-    Runner.run(
-        [
-            "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
-            "cd ~/.pyenv && src/configure && make -C src",
-            "sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils",  # noqa: E501
-            "pyenv install -k 3",
-            "pyenv global 3 && pyenv versions",
-            "sudo dnf install pipx",
-            "pipx install cookiecutter",
-        ],
-        group="python",
+    groups.append(
+        Runner.Group(
+            [
+                "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
+                "cd ~/.pyenv && src/configure && make -C src",
+                "sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils",  # noqa: E501
+                "pyenv install -k 3",
+                "pyenv global 3 && pyenv versions",
+                "sudo dnf install pipx",
+                "pipx install cookiecutter",
+            ],
+            name="python",
+        )
     )
 
-    Runner.run(
-        [
-            "pipx install 'python-lsp-server[rope]'",
-            "pipx inject python-lsp-server python-lsp-black",
-            "pipx inject python-lsp-server python-lsp-ruff",
-            "pipx inject python-lsp-server pylsp-rope",
-            "npm install -g pyright",
-        ],
-        group="LSP (Python)",
+    groups.append(
+        Runner.Group(
+            [
+                "pipx install 'python-lsp-server[rope]'",
+                "pipx inject python-lsp-server python-lsp-black",
+                "pipx inject python-lsp-server python-lsp-ruff",
+                "pipx inject python-lsp-server pylsp-rope",
+                "npm install -g pyright",
+            ],
+            name="LSP (Python)",
+        )
     )
 
-    Runner.run(
-        [
-            "npm install -g typescript typescript-language-server",
-        ],
-        group="LSP (JavaScript)",
+    groups.append(
+        Runner.Group(
+            [
+                "npm install -g typescript typescript-language-server",
+            ],
+            name="LSP (JavaScript)",
+        )
     )
 
-    Runner.run(
-        [
-            "npm install -g vscode-langservers-extracted",
-        ],
-        group="LSP (HTML + JSON)",
+    groups.append(
+        Runner.Group(
+            [
+                "npm install -g vscode-langservers-extracted",
+            ],
+            name="LSP (HTML + JSON)",
+        )
     )
 
     ls_dir = "~/Desktop/langservers"
-    Runner.run(
-        [
-            "mkdir -p ~/.local/share/aj-apps",
-            f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
-            Runner.Notice(
-                f"Go to {ls_dir}. Unzip ltex-ls. Move it under ~/.local/share/aj-apps. Link the ~/.local/bin"  # noqa: E501
-            ),
-        ],
-        group="LSP (LanguageTool)",
+    groups.append(
+        Runner.Group(
+            [
+                "mkdir -p ~/.local/share/aj-apps",
+                f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
+                Runner.Notice(
+                    f"Go to {ls_dir}. Unzip ltex-ls. Move it under ~/.local/share/aj-apps. Link the ~/.local/bin"  # noqa: E501
+                ),
+            ],
+            name="LSP (LanguageTool)",
+        )
     )
 
     path_3rd_party = "~/Code/3rd-party"
-    Runner.run(
-        [
-            # ccls' build deps
-            "sudo dnf install cmake clang-devel llvm-devel",
-            f"mkdir -p {path_3rd_party}",
-            f"git clone --depth=1 --recursive git@github.com:MaskRay/ccls.git {path_3rd_party}/ccls",  # noqa: E501
-            f"cd {path_3rd_party}/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release",  # noqa: E501
-            f"cd {path_3rd_party}/ccls && cmake --build Release",
-            f"cp {path_3rd_party}/ccls/Release/ccls ~/.local/bin/ccls",
-        ],
-        group="LSP (C++)",
+    groups.append(
+        Runner.Group(
+            [
+                # ccls' build deps
+                "sudo dnf install cmake clang-devel llvm-devel",
+                f"mkdir -p {path_3rd_party}",
+                f"git clone --depth=1 --recursive git@github.com:MaskRay/ccls.git {path_3rd_party}/ccls",  # noqa: E501
+                f"cd {path_3rd_party}/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release",  # noqa: E501
+                f"cd {path_3rd_party}/ccls && cmake --build Release",
+                f"cp {path_3rd_party}/ccls/Release/ccls ~/.local/bin/ccls",
+            ],
+            name="LSP (C++)",
+        )
     )
+
+    Runner.run(groups)
 
 
 class Runner:
     @dataclass
     class Notice:
         msg: str
+
+    Entry = t.Union[str, Notice]
+
+    @dataclass(frozen=True)
+    class Group:
+        entries: t.Sequence["Runner.Entry"]
+        name: t.Optional[str]
 
     class _ColorCode:
         # The terminal codes usually include brackets. Having a single opening
@@ -190,8 +222,6 @@ class Runner:
             # No action needed.
             pass
 
-    Entry = t.Union[str, Notice]
-
     @classmethod
     def _ask_n_run_cmd(cls, cmd: _Cmd):
         while True:
@@ -223,18 +253,19 @@ class Runner:
             raise TypeError(f"Invalid run entry type: {type(entry)}")
 
     @classmethod
-    def run(cls, entries: t.Sequence[Entry], group: t.Optional[str] = None):
-        if group is not None:
-            print("=" * 80)
-            print(group.capitalize())
-            print("=" * 80)
+    def run(cls, groups: t.Sequence[Group]):
+        for group in groups:
+            if group.name is not None:
+                print("=" * 80)
+                print(group.name.title())
+                print("=" * 80)
 
-        for entry in entries:
-            cmd = cls._cmd_for_entry(entry)
-            try:
-                cls._ask_n_run_cmd(cmd)
-            except StopIteration:
-                break
+            for entry in group.entries:
+                cmd = cls._cmd_for_entry(entry)
+                try:
+                    cls._ask_n_run_cmd(cmd)
+                except StopIteration:
+                    break
 
 
 if __name__ == "__main__":
