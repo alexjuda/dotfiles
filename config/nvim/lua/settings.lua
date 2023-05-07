@@ -2,7 +2,7 @@
 -- UI --
 --------
 
--- Buffer- or window-local options that we want to provide deafults for need
+-- Buffer- or window-local options that we want to provide defaults for need
 -- to be set both globally and "locally".
 -- See https://oroques.dev/notes/neovim-init/#set-options
 
@@ -61,7 +61,6 @@ vim.wo.list = true
 -- Don't soft wrap in the middle of a word
 vim.o.linebreak = true
 
-
 -- Disable the bottom line with mode name like "-- INSERT --". Status line
 -- already provides this information.
 vim.o.showmode = false
@@ -99,15 +98,6 @@ require("which-key").setup {
 }
 
 
-
----------------
--- shade.nvim --
----------------
--- Enabling this clears startup screen :(
--- require("shade").setup {
--- }
-
-
 -----------------------------
 -- nvim-search-and-replace --
 -----------------------------
@@ -132,8 +122,6 @@ require("sidebar-nvim").setup({
 -- image.nvim --
 ----------------
 require('image').setup {}
-
-
 
 
 ------------
@@ -323,9 +311,9 @@ require("lualine").setup {
 
                 -- Show symbols after the filepath. Src: https://github.com/nvim-lualine/lualine.nvim#buffers-component-options
                 symbols = {
-                    modified = ' ●', -- Text to show when the buffer is modified
+                    modified = ' ●',    -- Text to show when the buffer is modified
                     alternate_file = '#', -- Text to show to identify the alternate file
-                    directory = '', -- Text to show when the buffer is a directory
+                    directory = '',    -- Text to show when the buffer is a directory
                 },
             }
         },
