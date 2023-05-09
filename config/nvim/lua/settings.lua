@@ -91,6 +91,10 @@ vim.opt.smartcase = true
 -- Make `:find` work recursively. Override the built-in default ("/usr/include").
 vim.opt.path = "**"
 
+-- Tell neovim plugins written in Python use the default interpreter. Helps with virtual environments.
+-- src: https://github.com/tweekmonster/nvim-python-doctor/wiki/Simple-Installation
+vim.cmd [[let g:python3_host_prog = 'python']]
+
 ---------------
 -- which-key --
 ---------------
@@ -376,6 +380,12 @@ require("vapor").setup {
     scratch_dir = "~/Documents/notes-synced/daily",
     todo_dir = "~/Documents/notes-synced/todo",
 }
+
+
+----------------
+-- magma.nvim --
+----------------
+vim.cmd [[let g:magma_image_provider = 'kitty']]
 
 
 ------------------
