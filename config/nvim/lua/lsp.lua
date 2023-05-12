@@ -45,10 +45,24 @@ local shared_capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Python --
 ------------
 
+-- Infers the full executable path based on shell command name
+local read_exec_path = function(exec_name)
+    local handle = io.popen("which " .. exec_name)
+    local result = handle:read("*a"):gsub("\n", "")
+    handle:close()
+    return result
+end
+
 -- Requires ``pyright`` installed via npm.
 require("lspconfig").pyright.setup {
     cmd = { "npx", "pyright-langserver", "--stdio", },
+    cmd_env = {
+    },
     settings = {
+        python = {
+            -- Use the locally available python executable. Enables using pyright from an activated venv.
+            pythonPath = read_exec_path("python"),
+        },
     },
     on_attach = function(client, buf_n)
         shared_on_attach(client, buf_n)
