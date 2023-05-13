@@ -68,9 +68,10 @@ require("lspconfig").pyright.setup {
         shared_on_attach(client, buf_n)
 
         -- python-specific keybindings
-        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>se", "<Plug>JupyterExecute", {})
-        vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>sa", "<Plug>JupyterExecuteAll", {})
-
+        vim.keymap.set("n", "<localleader>mi", ":MagmaInit<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("n", "<localleader>mD", ":MagmaDenit<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("n", "<localleader>mm", ":MagmaEvaluateLine<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("v", "<localleader>mm", ":<C-u>MagmaEvaluateVisual<CR>", { noremap = true, buffer = buf_n })
     end,
     capabilities = shared_capabilities,
 }
