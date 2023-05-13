@@ -103,9 +103,6 @@ require "paq" {
 
     -- Lang-specific
     ----------------
-    -- Write jupyter notebooks from vim
-    "untitled-ai/jupyter_ascending.vim";
-
     -- Run Python code interactively with Jupyter
     "dccsillag/magma-nvim";
 
