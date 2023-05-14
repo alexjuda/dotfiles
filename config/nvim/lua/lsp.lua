@@ -8,7 +8,6 @@
 -- Buffer-local options + keymap
 
 local wk = require("which-key")
-local aerial = require("aerial")
 
 local set_lsp_keymaps = function(client, buf_n)
     -- Keymap
@@ -53,6 +52,19 @@ local read_exec_path = function(exec_name)
     return result
 end
 
+
+-- Workaround for virtual magma windows being stuck after cell deletion.
+local function close_float()
+    -- removes any stuck floating window
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        if config.relative ~= "" then
+            vim.api.nvim_win_close(win, false)
+            print("Closing window", win)
+        end
+    end
+end
+
 -- Requires ``pyright`` installed via npm.
 require("lspconfig").pyright.setup {
     cmd = { "npx", "pyright-langserver", "--stdio", },
@@ -72,6 +84,8 @@ require("lspconfig").pyright.setup {
         vim.keymap.set("n", "<localleader>mD", ":MagmaDenit<CR>", { noremap = true, buffer = buf_n })
         vim.keymap.set("n", "<localleader>mm", ":MagmaEvaluateLine<CR>", { noremap = true, buffer = buf_n })
         vim.keymap.set("v", "<localleader>mm", ":<C-u>MagmaEvaluateVisual<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("n", "<localleader>md", ":MagmaDelete<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("n", "<localleader>mw", close_float, { noremap = true, buffer = buf_n })
     end,
     capabilities = shared_capabilities,
 }
