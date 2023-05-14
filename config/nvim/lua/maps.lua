@@ -26,7 +26,7 @@ local finder_opts = {
 
 -- Leaders
 ------------
-vim.g.mapleader = " " -- space as the leader key
+vim.g.mapleader = " "      -- space as the leader key
 vim.g.maplocalleader = "," -- comma as the local leader key
 
 
@@ -37,15 +37,15 @@ map("n", "<leader>bp", ":bprev<cr>", opts)
 map("n", "<leader>bn", ":bnext<cr>", opts)
 map("n", "<leader>bd", ":bp|bd #<cr>", opts) -- close a buffer, but not a window
 map("n", "<leader>bD", ":%bd|e#|bd#<cr>", opts)
-map("n", "<leader><TAB>", "<C-^>", opts) -- switch to last buffer
-map("n", "<C-PageUp>", ":bprev<cr>", opts) -- linux-like prev tab
+map("n", "<leader><TAB>", "<C-^>", opts)     -- switch to last buffer
+map("n", "<C-PageUp>", ":bprev<cr>", opts)   -- linux-like prev tab
 map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 
 
 -- Project
 ------------
 map("n", "<leader>pt", ":SidebarNvimToggle<CR>", opts) -- open project tree
-map("n", "<leader>pf", function() telescope.find_files(finder_opts)  end, opts, "find file by name")
+map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "find file by name")
 
 -- Search
 -----------
@@ -64,9 +64,9 @@ map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files"
 -- Toggles
 -------------
 map("n", "<leader>tn", ":set number!<CR>", opts)
-map("n", "<leader>tU", ":TrainUpDown<CR>", opts) -- Motion training for up/down
-map("n", "<leader>tW", ":TrainWord<CR>", opts) -- Motion training for words
-map("n", "<leader>tT", ":TrainTextObj<CR>", opts) -- Motion training for text objects
+map("n", "<leader>tU", ":TrainUpDown<CR>", opts)   -- Motion training for up/down
+map("n", "<leader>tW", ":TrainWord<CR>", opts)     -- Motion training for words
+map("n", "<leader>tT", ":TrainTextObj<CR>", opts)  -- Motion training for text objects
 map("n", "<leader>ta", ":AerialToggle!<CR>", opts) -- Toggle aerial sidebar
 
 
@@ -234,7 +234,7 @@ local function insert_text_at_cursor(text)
     local text_len = text:len()
 
     vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { text })
-    vim.api.nvim_win_set_cursor(current_win, {row, col + text_len})
+    vim.api.nvim_win_set_cursor(current_win, { row, col + text_len })
 end
 
 -- Insert current date anywhere
@@ -247,4 +247,4 @@ local function insert_current_date()
     insert_text_at_cursor(date)
 end
 
-vim.keymap.set({"i", "n"}, "<F3>", insert_current_date)
+vim.keymap.set({ "i", "n" }, "<F3>", insert_current_date)
