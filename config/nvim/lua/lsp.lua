@@ -80,12 +80,20 @@ require("lspconfig").pyright.setup {
         shared_on_attach(client, buf_n)
 
         -- python-specific keybindings
+        --
+        -- magma
         vim.keymap.set("n", "<localleader>mi", ":MagmaInit<CR>", { noremap = true, buffer = buf_n })
         vim.keymap.set("n", "<localleader>mD", ":MagmaDenit<CR>", { noremap = true, buffer = buf_n })
         vim.keymap.set("n", "<localleader>mm", ":MagmaEvaluateLine<CR>", { noremap = true, buffer = buf_n })
         vim.keymap.set("v", "<localleader>mm", ":<C-u>MagmaEvaluateVisual<CR>", { noremap = true, buffer = buf_n })
         vim.keymap.set("n", "<localleader>md", ":MagmaDelete<CR>", { noremap = true, buffer = buf_n })
         vim.keymap.set("n", "<localleader>mw", close_float, { noremap = true, buffer = buf_n })
+
+        -- jupyter
+        vim.keymap.set("n", "<localleader>jc", ":JupyterConnect<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("n", "<localleader>jD", ":JupyterDisconnect<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("n", "<localleader>jk", ":JupyterTerminateKernel<CR>", { noremap = true, buffer = buf_n })
+        vim.keymap.set("n", "<localleader>jj", ":JupyterSendCell<CR>", { noremap = true, buffer = buf_n })
     end,
     capabilities = shared_capabilities,
 }

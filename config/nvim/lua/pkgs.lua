@@ -106,6 +106,9 @@ require "paq" {
     -- Run Python code interactively with Jupyter
     "dccsillag/magma-nvim";
 
+    -- Send selection to a jupyter instance running in a qtconsole
+    "jupyter-vim/jupyter-vim";
+
     ----------
     -- Notes
     ----------
