@@ -224,6 +224,10 @@ require "nvim-treesitter.configs".setup {
     },
 }
 
+-- Use treesitter for folds
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 --------------------------
 -- TreeSitter Additions --
 --------------------------
@@ -392,13 +396,15 @@ vim.cmd [[let g:magma_image_provider = 'kitty']]
 -- Autocommands --
 ------------------
 
--- Tame Tree-Sitter folds
--- source: https://stackoverflow.com/a/8316471
-vim.cmd([[
-augroup aj-open-folds-by-default
-    autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
-augroup END
-]])
+-- Open all folds by default
+-- src: https://stackoverflow.com/a/8316817
+local open_all_folds = "aj-open-all-folds"
+vim.api.nvim_create_augroup(open_all_folds, { clear = true })
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    group = open_all_folds,
+    pattern = { "*" },
+    command = "normal zR",
+})
 
 ------------------------------
 -- Filetype-specific config --
@@ -407,7 +413,7 @@ augroup END
 -- Python --
 ------------
 -- # defaults to "shiftwidth() * 2"
-vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")
+-- vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")
 
 -- Markdown --
 --------------
@@ -415,7 +421,7 @@ vim.g.markdown_folding = true
 
 -- C++ --
 ---------
--- Use // ... instead pf /* ... */
+-- Use // ... instead of /* ... */
 local use_line_comments = "aj-use-line-comments"
 vim.api.nvim_create_augroup(use_line_comments, { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
