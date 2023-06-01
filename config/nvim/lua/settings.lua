@@ -108,20 +108,6 @@ require("which-key").setup {
 require("nvim-search-and-replace").setup()
 
 
-------------------
--- sidebar.nvim --
-------------------
-
-require("sidebar-nvim").setup({
-    -- sections = { "datetime", "git", "diagnostics" },
-    sections = { "files", "symbols", "git", },
-    files = {
-        -- show_hidden = false,
-        show_hidden = true,
-    },
-})
-
-
 ----------------
 -- image.nvim --
 ----------------
@@ -319,9 +305,9 @@ require("lualine").setup {
 
                 -- Show symbols after the filepath. Src: https://github.com/nvim-lualine/lualine.nvim#buffers-component-options
                 symbols = {
-                    modified = ' ●',    -- Text to show when the buffer is modified
+                    modified = ' ●', -- Text to show when the buffer is modified
                     alternate_file = '#', -- Text to show to identify the alternate file
-                    directory = '',    -- Text to show when the buffer is a directory
+                    directory = '', -- Text to show when the buffer is a directory
                 },
             }
         },
@@ -343,8 +329,6 @@ require("lualine").setup {
             },
         }
     },
-    -- Show shorter status line in the nvim-tree side buffer.
-    extensions = { "nvim-tree", }
 }
 
 
@@ -363,6 +347,25 @@ require("lsp_signature").setup {
 ---------------------
 
 require("aerial").setup {}
+
+
+-----------------------
+-- Project File Tree --
+-----------------------
+-- Unless you are still migrating, remove the deprecated commands from v1.x
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
+-- If you want icons for diagnostic errors, you'll need to define them somewhere:
+vim.fn.sign_define("DiagnosticSignError",
+    { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn",
+    { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo",
+    { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint",
+    { text = "", texthl = "DiagnosticSignHint" })
+
+require("neo-tree").setup()
 
 -----------------
 -- Git goodies --

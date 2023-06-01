@@ -44,7 +44,8 @@ map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 
 -- Project
 ------------
-map("n", "<leader>pt", ":SidebarNvimToggle<CR>", opts) -- open project tree
+map("n", "<leader>pb", ":Neotree buffers<CR>", opts) -- show buffers
+map("n", "<leader>pt", ":Neotree toggle<CR>", opts) -- open/close project tree
 map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "find file by name")
 
 -- Search

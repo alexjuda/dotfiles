@@ -23,16 +23,21 @@ require "paq" {
     -- code parser for syntax highlight & folds
     { 'nvim-treesitter/nvim-treesitter', run = function() vim.cmd(":TSUpdate") end }; -- Update the parsers on plugin update
 
-    -- Sidebar with files, LSP symbols, and LSP diagnostics.
-    "sidebar-nvim/sidebar.nvim";
+    -- File tree sidebar
+    "nvim-neo-tree/neo-tree.nvim";
+
+    -- neo-tree's deps
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
 
     -- nicer bottom status line
     'hoob3rt/lualine.nvim';
 
     -- common utilities needed by other plugins:
-    -- * gisigns
+    -- * gitsigns
     -- * telescope
     -- * image.nvim
+    -- * neo-tree
     "nvim-lua/plenary.nvim";
 
     -- Git gutter & other goodies
