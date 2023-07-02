@@ -42,9 +42,10 @@ map("n", "<C-PageUp>", ":bprev<cr>", opts)   -- linux-like prev tab
 map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 
 
--- Project
-------------
-map("n", "<leader>pb", ":Neotree buffers<CR>", opts) -- show buffers
+-- Project Sidebar
+------------------
+map("n", "<leader>pb", ":Neotree buffers<CR>", opts) -- show buffers in the sidebar
+map("n", "<leader>po", ":Neotree reveal<CR>", opts) -- show current file in the project tree
 map("n", "<leader>pt", ":Neotree toggle<CR>", opts) -- open/close project tree
 map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "find file by name")
 
