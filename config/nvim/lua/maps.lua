@@ -56,9 +56,7 @@ map("n", "<leader>ss", function() telescope.live_grep() end, opts, "search in PW
 
 -- Files
 ----------
-map("n", "<leader>ft", ":SidebarNvimToggle<CR>", opts) -- open files tree
 map("n", "<leader>fr", function() telescope.oldfiles() end, opts, "recent files")
-map("n", "<leader>fR", ":SidebarNvimUpdate<CR>", opts) -- reload sidebar's state
 map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
 map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
 
@@ -66,9 +64,6 @@ map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files"
 -- Toggles
 -------------
 map("n", "<leader>tn", ":set number!<CR>", opts)
-map("n", "<leader>tU", ":TrainUpDown<CR>", opts)   -- Motion training for up/down
-map("n", "<leader>tW", ":TrainWord<CR>", opts)     -- Motion training for words
-map("n", "<leader>tT", ":TrainTextObj<CR>", opts)  -- Motion training for text objects
 map("n", "<leader>ta", ":AerialToggle!<CR>", opts) -- Toggle aerial sidebar
 
 
