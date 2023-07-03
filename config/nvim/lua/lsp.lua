@@ -13,6 +13,7 @@ local set_lsp_keymaps = function(client, buf_n)
     -- Keymap
     local opts = { noremap = true }
     vim.api.nvim_buf_set_keymap(buf_n, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<c-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
@@ -21,9 +22,9 @@ local set_lsp_keymaps = function(client, buf_n)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ld", ":lua vim.lsp.buf.document_symbol()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lw", ":lua vim.lsp.buf.workspace_symbol()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lf", ":lua vim.lsp.buf.format()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "v", "<localleader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
 
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lws", ":lua vim.lsp.buf.workspace_symbol()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lwf", ":lua vim.lsp.buf.list_workspace_folders()<CR>", opts)
