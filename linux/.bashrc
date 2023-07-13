@@ -2,6 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# --- profiling ---
+# Source: https://stackoverflow.com/a/5015179
+# PS4='+ $(gdate "+%s.%N")\011 '
+# exec 3>&2 2>/tmp/bashstart.$$.log
+# set -x
+# --- /profiling ---
+
 # Suppress zsh warning.
 # Source: https://support.apple.com/en-us/HT208050
 export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -191,3 +198,8 @@ export PATH="/usr/local/cuda-12.0/bin:$PATH"
 
 # Load cargo if loader exists
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
+
+# --- profiling ---
+# set +x
+# exec 2>&3 3>&-
+# --- /profiling ---
