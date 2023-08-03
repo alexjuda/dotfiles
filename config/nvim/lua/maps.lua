@@ -49,10 +49,12 @@ map("n", "<leader>po", ":Neotree reveal<CR>", opts) -- show current file in the 
 map("n", "<leader>pt", ":Neotree toggle<CR>", opts) -- open/close project tree
 map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "find file by name")
 
+
 -- Search
 -----------
 map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, opts, "search in buffer")
 map("n", "<leader>ss", function() telescope.live_grep() end, opts, "search in PWD")
+
 
 -- Files
 ----------
@@ -66,16 +68,20 @@ map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files"
 map("n", "<leader>tn", ":set number!<CR>", opts)
 map("n", "<leader>ta", ":AerialToggle!<CR>", opts) -- Toggle aerial sidebar
 
+
 -- Tabs
 -------------
 map("n", "<leader>Tn", ":tabNext<CR>", opts)
-map("n", "<leader>TN", ":tabnew<CR>", opts)
 map("n", "<leader>Tp", ":tabprev<CR>", opts)
+map("n", "<leader>TN", ":tabnew<CR>", opts)
+map("n", "<leader>Td", ":tabclose<CR>", opts)
+
 
 -- Notes
 ----------
 map("n", "<leader>nd", function() vapor.open_scratch() end, opts, "daily note")
 map("n", "<leader>nt", function() vapor.open_todo() end, opts, "daily todo")
+
 
 -- Editor
 -----------
