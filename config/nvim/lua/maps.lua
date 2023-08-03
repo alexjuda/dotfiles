@@ -66,6 +66,11 @@ map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files"
 map("n", "<leader>tn", ":set number!<CR>", opts)
 map("n", "<leader>ta", ":AerialToggle!<CR>", opts) -- Toggle aerial sidebar
 
+-- Tabs
+-------------
+map("n", "<leader>Tn", ":tabNext<CR>", opts)
+map("n", "<leader>TN", ":tabnew<CR>", opts)
+map("n", "<leader>Tp", ":tabprev<CR>", opts)
 
 -- Notes
 ----------
