@@ -305,9 +305,9 @@ require("lualine").setup {
 
                 -- Show symbols after the filepath. Src: https://github.com/nvim-lualine/lualine.nvim#buffers-component-options
                 symbols = {
-                    modified = ' ●', -- Text to show when the buffer is modified
+                    modified = ' ●',    -- Text to show when the buffer is modified
                     alternate_file = '#', -- Text to show to identify the alternate file
-                    directory = '', -- Text to show when the buffer is a directory
+                    directory = '',    -- Text to show when the buffer is a directory
                 },
             }
         },
@@ -394,6 +394,13 @@ require("vapor").setup {
 ----------------
 vim.cmd [[let g:magma_image_provider = 'kitty']]
 
+-------------------
+-- Eval snippets --
+-------------------
+require("mdeval").setup {
+    -- Workaround for errors like "bad argument #1 to 'pairs'"
+    eval_options = {},
+}
 
 ------------------
 -- Autocommands --

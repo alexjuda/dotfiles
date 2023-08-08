@@ -114,6 +114,9 @@ require "paq" {
     -- Send selection to a jupyter instance running in a qtconsole
     "jupyter-vim/jupyter-vim";
 
+    -- Eval code snippets
+    "jubnzv/mdeval.nvim";
+
     ----------
     -- Notes
     ----------
