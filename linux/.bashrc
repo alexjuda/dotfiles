@@ -203,3 +203,5 @@ export PATH="/usr/local/cuda-12.0/bin:$PATH"
 # set +x
 # exec 2>&3 3>&-
 # --- /profiling ---
+
+source /Users/alex/.config/broot/launcher/bash/br
