@@ -38,6 +38,7 @@ require "paq" {
     -- * telescope
     -- * image.nvim
     -- * neo-tree
+    -- * octo.nvim
     "nvim-lua/plenary.nvim";
 
     -- Git gutter & other goodies
@@ -54,6 +55,9 @@ require "paq" {
 
     -- Show image file preview as ASCII art
     "samodostal/image.nvim";
+
+    -- Access GitHub PRs from neovim
+    "pwntester/octo.nvim";
 
     -- LSP
     --------

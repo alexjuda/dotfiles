@@ -114,6 +114,8 @@ require("nvim-search-and-replace").setup()
 require('image').setup {}
 
 
+require("octo").setup {}
+
 ------------
 -- Colors --
 ------------
@@ -305,9 +307,9 @@ require("lualine").setup {
 
                 -- Show symbols after the filepath. Src: https://github.com/nvim-lualine/lualine.nvim#buffers-component-options
                 symbols = {
-                    modified = ' ●',    -- Text to show when the buffer is modified
+                    modified = ' ●', -- Text to show when the buffer is modified
                     alternate_file = '#', -- Text to show to identify the alternate file
-                    directory = '',    -- Text to show when the buffer is a directory
+                    directory = '', -- Text to show when the buffer is a directory
                 },
             }
         },
