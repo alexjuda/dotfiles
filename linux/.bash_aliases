@@ -96,12 +96,9 @@ custom_aliases=(
 for entry in "${custom_aliases[@]}"; do
     # Workaround for old bash v3 that ships with macOS.
     # Source: https://stackoverflow.com/a/4444841
-    alias_name=${entry%%:*}
-    alias_value=${entry#*:}
-
-    # echo "$alias_name = $alias_value"
+    # "$alias_name = $alias_value"
     # apply the alias
-    alias "$alias_name"="$alias_value"
+    alias "${entry%%:*}"="${entry#*:}"
     # make the bash completions work for aliased commands
     complete -F _complete_alias $alias_name
 done
