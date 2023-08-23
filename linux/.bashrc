@@ -158,6 +158,14 @@ function git-common-ancestor() {
 # Load cargo if loader exists
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
 
+# Added by nvm
+# You can set $NVM_DIR to any location, but leaving it unchanged from
+# /usr/local/Cellar/nvm/0.39.5 will destroy any nvm-installed Node
+# installations upon upgrade/reinstall.
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 # --- profiling ---
 # set +x
 # exec 2>&3 3>&-
