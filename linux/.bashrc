@@ -44,28 +44,6 @@ shopt -s checkwinsize
 # Change dirs with pure paths without the 'cd' command.
 shopt -s autocd
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -107,16 +85,8 @@ NIX_PROFILE="$HOME/.nix-profile"
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="$HOME/.local/bin:$PATH"
 
-# added by nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # set prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] \$ '
-
-# Auto-activate venv
-export PATH="venv/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -130,13 +100,11 @@ if [ -x "$(command -v brew)" ]; then
     alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 fi
 
-
 # make `cd` completions case insensitive
 bind 'set completion-ignore-case on'
 
 # set current jira ticket id
 [[ -s ~/.local/share/ticket.txt ]] && T=$(cat ~/.local/share/ticket.txt)
-
 
 # Edit commit messages in nvim
 export EDITOR="nvim"
@@ -181,20 +149,11 @@ function set-ticket() {
     T=$(cat ~/.local/share/ticket.txt)
 }
 
-# short for cd + ls
-function cdl() {
-    cd "$1" && ls -alh
-}
-
 # tool for finding common ancenstor of two branches. I never remember the
 # correct git command name.
 function git-common-ancestor() {
     git merge-base "$1" "$2"
 }
-
-
-export PATH="/usr/local/cuda-12.0/bin:$PATH"
-
 
 # Load cargo if loader exists
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
@@ -203,5 +162,3 @@ export PATH="/usr/local/cuda-12.0/bin:$PATH"
 # set +x
 # exec 2>&3 3>&-
 # --- /profiling ---
-
-source /Users/alex/.config/broot/launcher/bash/br
