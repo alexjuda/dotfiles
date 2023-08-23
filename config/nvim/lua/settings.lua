@@ -461,3 +461,11 @@ vim.api.nvim_create_autocmd("Filetype", {
     pattern = { "html" },
     command = "setlocal shiftwidth=2",
 })
+
+-- TypeScript --
+-- Customize indent size
+vim.api.nvim_create_autocmd("Filetype", {
+    group = set_indent_autocmd,
+    pattern = { "typescript,typescriptreact" },
+    command = "setlocal shiftwidth=2",
+})
