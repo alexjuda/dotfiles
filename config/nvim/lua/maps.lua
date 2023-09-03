@@ -86,7 +86,6 @@ map("n", "<leader>nt", function() vapor.open_todo() end, opts, "daily todo")
 -- Editor
 -----------
 map("n", "<leader>eu", ":UnicodeSearch! ", opts)
-map("n", "<leader>ev", ":lua aj_toggle_venn()<CR>", opts)
 
 
 -- Git--
@@ -139,7 +138,7 @@ map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
 
 -- venn --
 -- enable or disable keymappings for venn
-function _G.aj_toggle_venn()
+local function toggle_venn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled)
     if (venn_enabled == "nil") then
         vim.b.venn_enabled = true
@@ -158,7 +157,7 @@ function _G.aj_toggle_venn()
     end
 end
 
-map("n", "<localleader>v", ":lua aj_toggle_venn()<CR>", opts)
+map("n", "<leader>tv", function () toggle_venn() end, opts, "toggle venn")
 
 -- LSP local leaders --
 -- We gotta do it here, because buf-local mappings don't seem to work properly in visual mode :(.
