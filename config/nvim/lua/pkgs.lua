@@ -112,11 +112,6 @@ require "paq" {
 
     -- Lang-specific
     ----------------
-    -- Run Python code interactively with Jupyter
-    "dccsillag/magma-nvim";
-
-    -- Send selection to a jupyter instance running in a qtconsole
-    "jupyter-vim/jupyter-vim";
 
     -- Eval code snippets
     "jubnzv/mdeval.nvim";
@@ -124,9 +119,6 @@ require "paq" {
     ----------
     -- Notes
     ----------
-    -- Render markdown in a side browser window.
-    { "iamcco/markdown-preview.nvim", run = "cd app && npm install" };
-
     -- LaTeX syntax & autocompiling
     { "lervag/vimtex" };
 }
