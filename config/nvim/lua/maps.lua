@@ -160,23 +160,6 @@ end
 
 map("n", "<localleader>v", ":lua aj_toggle_venn()<CR>", opts)
 
--- markdown --
--- paste as markdown link
-function _G.aj_paste_markdown_link()
-    local url = vim.fn.getreg("*")
-    local formatted = "()[" .. url .. "]"
-
-    -- taken from https://www.reddit.com/r/neovim/comments/psux8f/comment/hdsfi9s/?utm_source=share&utm_medium=web2x&context=3
-    local pos = vim.api.nvim_win_get_cursor(0)[2]
-    local line = vim.api.nvim_get_current_line()
-    local new_line = line:sub(0, pos + 1) .. formatted .. line:sub(pos + 2)
-    vim.api.nvim_set_current_line(new_line)
-end
-
--- TODO: set this only when entering markdown files
-map("n", "<localleader>p", ":lua aj_paste_markdown_link()<CR>", opts)
-
-
 -- LSP local leaders --
 -- We gotta do it here, because buf-local mappings don't seem to work properly in visual mode :(.
 vim.api.nvim_set_keymap("v", "<localleader>la", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
