@@ -14,3 +14,5 @@ compinit
 
 # Configure aliases
 . ~/.bash_aliases
+
+export EDITOR="nvim"
