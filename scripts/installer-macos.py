@@ -97,12 +97,13 @@ def main():
     groups.append(
         Runner.Group(
             [
-                "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
-                "cd ~/.pyenv && src/configure && make -C src",
-                "sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils",  # noqa: E501
+                # Pyenv & Python
+                "brew install pyenv",
                 "pyenv install -k 3",
                 "pyenv global 3 && pyenv versions",
-                "sudo dnf install pipx",
+
+                # Pipx
+                "brew install pipx",
                 "pipx install cookiecutter",
             ],
             name="python",
