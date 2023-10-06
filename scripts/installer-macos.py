@@ -117,7 +117,7 @@ def main():
                 "pipx inject python-lsp-server python-lsp-black",
                 "pipx inject python-lsp-server python-lsp-ruff",
                 "pipx inject python-lsp-server pylsp-rope",
-                "npm install -g pyright",
+                "pipx install pyright",
             ],
             name="python-lsp",
         )
