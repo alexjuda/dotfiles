@@ -83,13 +83,25 @@ custom_aliases=(
     "nvl:nvim -c 'e #<1'"
 )
 
+# Define aliases
 for entry in "${custom_aliases[@]}"; do
     # Workaround for old bash v3 that ships with macOS.
     # Source: https://stackoverflow.com/a/4444841
     # "$alias_name = $alias_value"
     # apply the alias
     alias "${entry%%:*}"="${entry#*:}"
-    # make the bash completions work for aliased commands
-    complete -F _complete_alias "${entry%%:*}"
 done
 
+# Enable tab completion in bash. Needs to run for all aliases.
+if [ -v BASH ]; then
+    for entry in "${custom_aliases[@]}"; do
+        complete -F _complete_alias "${entry%%:*}"
+    done
+fi
+
+# Enable tab completion in zsh. Only needed for root commands.
+# src: https://unix.stackexchange.com/a/477909
+if [ -v ZSH_VERSION ]; then
+    compdef g="git"
+    compdef nv="nvim"
+fi
