@@ -172,14 +172,10 @@ def main():
         )
     )
 
-    file_pattern = "lua-language-server-*-linux-x64"
     groups.append(
         Runner.Group(
             [
-                f"cd ~/Downloads && ghrel -p {file_pattern}.tar.gz LuaLS/lua-language-server",  # noqa: E501
-                f"cd ~/Downloads && tar -xzf {file_pattern}.tar.gz --one-top-level",
-                f"mv ~/Downloads/{file_pattern} {path_aj_apps}/",
-                f"cd {path_aj_apps}/{file_pattern}/bin && ln -s $PWD/lua-language-server ~/.local/bin/",  # noqa: E501
+                "brew install lua-language-server",
             ],
             name="lua-lsp",
         )
