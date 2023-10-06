@@ -4,9 +4,15 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Local paths
 export PATH="/Users/alex/.local/bin:$PATH"
 
+CUSTOM_APPS="/Users/alex/.local/share/aj-apps"
+
+# zsh config lazy loader. Helps speeding up the terminal.
+. "$CUSTOM_APPS/zsh-lazyload/zsh-lazyload.zsh"
+
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+lazyload nvm -- '. "$NVM_DIR/nvm.sh"'
+lazyload node -- '. "$NVM_DIR/nvm.sh"'
 
 # Enable tab completion for aliased commands
 autoload -Uz compinit
@@ -18,6 +24,4 @@ compinit
 export EDITOR="nvim"
 
 # Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'

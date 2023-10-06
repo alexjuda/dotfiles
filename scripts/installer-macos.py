@@ -9,6 +9,7 @@ import typing as t
 
 def main():
     groups = []
+    share_aj_apps = "~/.local/share/aj-apps"
     groups.append(
         Runner.Group(
             [
@@ -19,6 +20,10 @@ def main():
 
                 "mkdir -p ~/.local/bin",
                 "ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/",
+
+                f"mkdir -p {share_aj_apps}",
+                f"ln -s $PWD/macos/pyenv.sh {share_aj_apps}/pyenv.sh",
+                f"git clone https://github.com/qoomon/zsh-lazyload.git {share_aj_apps}/zsh-lazyload"  # noqa: E501insta
             ],
             name="configs",
         )
@@ -30,7 +35,7 @@ def main():
             [
                 '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
                 "brew install git",
-                f"git config --global user.email 'FIXME'",
+                "git config --global user.email 'FIXME'",
                 "git config --global user.name 'Alexander Juda'",
                 "brew install gcc",
             ],
@@ -59,7 +64,7 @@ def main():
                 "brew install font-jetbrains-mono",
                 f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {font_dir}.zip ryanoasis/nerd-fonts",  # noqa: E501
                 f"unzip ~/Desktop/fonts/{font_dir}.zip -d ~/Desktop/fonts/{font_dir}",
-                f"cp ~/Desktop/fonts/{font_dir}/SymbolsNerdFont*-Regular.ttf ~/Library/Fonts/",
+                f"cp ~/Desktop/fonts/{font_dir}/SymbolsNerdFont*-Regular.ttf ~/Library/Fonts/",  # noqa: E501
             ],
             name="fonts",
         )
@@ -83,7 +88,7 @@ def main():
     groups.append(
         Runner.Group(
             [
-                "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh",
+                "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh",  # noqa: E501
                 "bash install_nvm.sh",
                 "nvm install --lts",
             ],
@@ -144,14 +149,13 @@ def main():
     )
 
     ls_dir = "~/Desktop/langservers"
-    path_aj_apps = "~/.local/share/aj-apps"
     groups.append(
         Runner.Group(
             [
                 "mkdir -p ~/.local/share/aj-apps",
                 f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
                 Runner.Notice(
-                    f"Go to {ls_dir}. Unzip ltex-ls. Move it under {path_aj_apps}. Link the ~/.local/bin"  # noqa: E501
+                    f"Go to {ls_dir}. Unzip ltex-ls. Move it under {share_aj_apps}. Link the ~/.local/bin"  # noqa: E501
                 ),
             ],
             name="languagetool-lsp",
