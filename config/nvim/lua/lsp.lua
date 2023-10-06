@@ -68,9 +68,6 @@ end
 
 -- Requires ``pyright`` installed via npm.
 require("lspconfig").pyright.setup {
-    cmd = { "npx", "pyright-langserver", "--stdio", },
-    cmd_env = {
-    },
     settings = {
         python = {
             -- Use the locally available python executable. Enables using pyright from an activated venv.
