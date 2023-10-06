@@ -97,11 +97,13 @@ def main():
     groups.append(
         Runner.Group(
             [
-                # Pyenv & Python
-                "brew install pyenv",
+                # Pyenv. We don't wanna use homebrew's pyenv because it makes the
+                # terminal super slow.
+                "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
+                "cd ~/.pyenv && src/configure && make -C src",
+                # Python
                 "pyenv install -k 3",
                 "pyenv global 3 && pyenv versions",
-
                 # Pipx
                 "brew install pipx",
                 "pipx install cookiecutter",
