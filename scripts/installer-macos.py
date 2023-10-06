@@ -51,21 +51,6 @@ def main():
         )
     )
 
-    # groups.append(
-    #     Runner.Group(
-    #         [
-    #             "sudo dnf install neovim",
-    #             "sudo dnf install gcc-c++",
-    #             'git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim',  # noqa: E501
-    #             "mkdir -p ~/.local/share/lang-servers/ltex-ls-data",
-    #             "touch ~/.local/share/lang-servers/ltex-ls-data/dict.txt",
-    #             'nvim -c ":PaqSync"',
-    #         ],
-    #         name="neovim",
-    #     )
-    # )
-
-
     font_dir = "NerdFontsSymbolsOnly"
     groups.append(
         Runner.Group(
@@ -80,41 +65,27 @@ def main():
         )
     )
 
-    # nerd_font = "NerdFontsSymbolsOnly"
-    # groups.append(
-    #     Runner.Group(
-    #         [
-    #             "sudo dnf install jetbrains-mono-fonts",
-    #             f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",  # noqa: E501
-    #             f"mkdir -p ~/.local/share/fonts/{nerd_font}",
-    #             f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",  # noqa: E501
-    #             f"fc-cache ~/.local/share/fonts/{nerd_font}",
-    #         ],
-    #         name="fonts",
-    #     )
-    # )
-
     groups.append(
         Runner.Group(
             [
-                "sudo dnf install fd-find",
-                "sudo dnf install ripgrep",
-                "sudo dnf install gh",
-                "sudo dnf copr enable atim/lazygit -y",
-                "sudo dnf install lazygit",
-                "sudo dnf install htop",
+                "brew install fd",
+                "brew install ripgrep",
+                "brew install gh",
+                "brew install lazygit",
+                "brew install htop",
+                "brew install glances",
             ],
-            name="system-utilities",
+            name="cli-flair",
         )
     )
 
-    # Src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
+    # Src: https://heynode.com/tutorial/install-nodejs-locally-nvm/
     groups.append(
         Runner.Group(
             [
-                "sudo dnf install nodejs",
-                "mkdir -p ~/.local/share/npm-global",
-                "npm config set prefix ~/.local/share/npm-global",
+                "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh",
+                "bash install_nvm.sh",
+                "nvm install --lts",
             ],
             name="node",
         )
