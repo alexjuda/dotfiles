@@ -1,4 +1,3 @@
-
 custom_aliases=(
     # -------------- git aliases ----------------
     # git aliases compatible with:

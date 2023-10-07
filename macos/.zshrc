@@ -1,10 +1,17 @@
+# Note on .zshrc, .zprofile, .zshenv: https://ss64.com/osx/syntax-profile.html.
+# tl;dr we need .zshrc.
+# * .zprofile is for SSH connection details only
+# * .zshenv is for all shells, including non-interactive ones
+
 # Homebrew paths
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -f /opt/homebrew/bin/brew ]]; then 
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Local paths
-export PATH="/Users/alex/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
-CUSTOM_APPS="/Users/alex/.local/share/aj-apps"
+CUSTOM_APPS="$HOME/.local/share/aj-apps"
 
 # zsh config lazy loader. Helps speeding up the terminal.
 . "$CUSTOM_APPS/zsh-lazyload/zsh-lazyload.zsh"
