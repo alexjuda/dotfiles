@@ -9,16 +9,21 @@ import typing as t
 
 def main():
     groups = []
+    share_aj_apps = "~/.local/share/aj-apps"
     groups.append(
         Runner.Group(
             [
+                "sudo dnf install zsh",
+                "mkdir -p ~/.config",
                 "ln -s $PWD/config/kitty ~/.config/kitty",
                 "ln -s $PWD/config/nvim ~/.config/nvim",
-                "ln -s $PWD/linux/.bash_aliases ~/.bash_aliases",
-                "ln -s $PWD/linux/.bashrc ~/.bashrc",
-                "ln -s $PWD/vendor/complete_alias ~/.local/share/complete_alias",
+                "ln -s $PWD/macos/.zprofile ~/.zprofile",
+
                 "mkdir -p ~/.local/bin",
                 "ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/",
+
+                f"mkdir -p {share_aj_apps}",
+                f"git clone https://github.com/qoomon/zsh-lazyload.git {share_aj_apps}/zsh-lazyload"  # noqa: E501insta
             ],
             name="configs",
         )
@@ -27,8 +32,18 @@ def main():
     groups.append(
         Runner.Group(
             [
+                "git config --global user.email 'FIXME'",
+                "git config --global user.name 'Alexander Juda'",
+                "sudo dnf install gcc-g++",
+            ],
+            name="coreutils",
+        )
+    )
+
+    groups.append(
+        Runner.Group(
+            [
                 "sudo dnf install neovim",
-                "sudo dnf install gcc-c++",
                 'git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim',  # noqa: E501
                 "mkdir -p ~/.local/share/lang-servers/ltex-ls-data",
                 "touch ~/.local/share/lang-servers/ltex-ls-data/dict.txt",
@@ -38,15 +53,15 @@ def main():
         )
     )
 
-    nerd_font = "NerdFontsSymbolsOnly"
+    font_dir = "NerdFontsSymbolsOnly"
     groups.append(
         Runner.Group(
             [
-                "sudo dnf install jetbrains-mono-fonts",
-                f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",  # noqa: E501
-                f"mkdir -p ~/.local/share/fonts/{nerd_font}",
-                f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",  # noqa: E501
-                f"fc-cache ~/.local/share/fonts/{nerd_font}",
+                "brew tap homebrew/cask-fonts",
+                "brew install font-jetbrains-mono",
+                f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {font_dir}.zip ryanoasis/nerd-fonts",  # noqa: E501
+                f"unzip ~/Desktop/fonts/{font_dir}.zip -d ~/Desktop/fonts/{font_dir}",
+                f"cp ~/Desktop/fonts/{font_dir}/SymbolsNerdFont*-Regular.ttf ~/Library/Fonts/",  # noqa: E501
             ],
             name="fonts",
         )
@@ -55,24 +70,24 @@ def main():
     groups.append(
         Runner.Group(
             [
-                "sudo dnf install fd-find",
-                "sudo dnf install ripgrep",
-                "sudo dnf install gh",
-                "sudo dnf copr enable atim/lazygit -y",
-                "sudo dnf install lazygit",
-                "sudo dnf install htop",
+                "brew install fd",
+                "brew install ripgrep",
+                "brew install gh",
+                "brew install lazygit",
+                "brew install htop",
+                "brew install glances",
             ],
-            name="system-utilities",
+            name="cli-flair",
         )
     )
 
-    # Src: https://developer.fedoraproject.org/tech/languages/nodejs/nodejs.html
+    # Src: https://heynode.com/tutorial/install-nodejs-locally-nvm/
     groups.append(
         Runner.Group(
             [
-                "sudo dnf install nodejs",
-                "mkdir -p ~/.local/share/npm-global",
-                "npm config set prefix ~/.local/share/npm-global",
+                "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh",  # noqa: E501
+                "bash install_nvm.sh",
+                "nvm install --lts",
             ],
             name="node",
         )
@@ -84,11 +99,15 @@ def main():
     groups.append(
         Runner.Group(
             [
+                # Pyenv. We don't wanna use homebrew's pyenv because it makes the
+                # terminal super slow.
                 "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
                 "cd ~/.pyenv && src/configure && make -C src",
-                "sudo dnf install zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils",  # noqa: E501
+                f"ln -s $PWD/macos/pyenv.sh {share_aj_apps}/pyenv.sh",
+                # Python
                 "pyenv install -k 3",
                 "pyenv global 3 && pyenv versions",
+                # Pipx
                 "sudo dnf install pipx",
                 "pipx install cookiecutter",
             ],
@@ -103,7 +122,7 @@ def main():
                 "pipx inject python-lsp-server python-lsp-black",
                 "pipx inject python-lsp-server python-lsp-ruff",
                 "pipx inject python-lsp-server pylsp-rope",
-                "npm install -g pyright",
+                "pipx install pyright",
             ],
             name="python-lsp",
         )
@@ -128,14 +147,13 @@ def main():
     )
 
     ls_dir = "~/Desktop/langservers"
-    path_aj_apps = "~/.local/share/aj-apps"
     groups.append(
         Runner.Group(
             [
                 "mkdir -p ~/.local/share/aj-apps",
                 f"mkdir -p {ls_dir} && cd {ls_dir} && ghrel -p ltex-ls-*-linux-x64.tar.gz valentjn/ltex-ls",  # noqa: E501
                 Runner.Notice(
-                    f"Go to {ls_dir}. Unzip ltex-ls. Move it under {path_aj_apps}. Link the ~/.local/bin"  # noqa: E501
+                    f"Go to {ls_dir}. Unzip ltex-ls. Move it under {share_aj_apps}. Link the ~/.local/bin"  # noqa: E501
                 ),
             ],
             name="languagetool-lsp",
@@ -158,14 +176,10 @@ def main():
         )
     )
 
-    file_pattern = "lua-language-server-*-linux-x64"
     groups.append(
         Runner.Group(
             [
-                f"cd ~/Downloads && ghrel -p {file_pattern}.tar.gz LuaLS/lua-language-server",  # noqa: E501
-                f"cd ~/Downloads && tar -xzf {file_pattern}.tar.gz --one-top-level",
-                f"mv ~/Downloads/{file_pattern} {path_aj_apps}/",
-                f"cd {path_aj_apps}/{file_pattern}/bin && ln -s $PWD/lua-language-server ~/.local/bin/",  # noqa: E501
+                "brew install lua-language-server",
             ],
             name="lua-lsp",
         )
