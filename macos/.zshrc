@@ -21,9 +21,14 @@ export NVM_DIR="$HOME/.nvm"
 lazyload nvm -- '. "$NVM_DIR/nvm.sh"'
 lazyload node -- '. "$NVM_DIR/nvm.sh"'
 
-# Enable tab completion for aliased commands
+# Enable tab completion customization. Used for aliased commands and completion
+# autocorrect.
 autoload -Uz compinit
 compinit
+
+# Make 'cd' match case-insensitive.
+# Src: https://superuser.com/a/1092328
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Configure aliases
 . ~/.bash_aliases
