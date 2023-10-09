@@ -16,7 +16,8 @@ def main():
                 "mkdir -p ~/.config",
                 "ln -s $PWD/config/kitty ~/.config/kitty",
                 "ln -s $PWD/config/nvim ~/.config/nvim",
-                "ln -s $PWD/macos/.zprofile ~/.zprofile",
+                "ln -s $PWD/macos/.zshrc ~/.zshrc",
+                "ln -s $PWD/linux/.bash_aliases ~/.bash_aliases",
 
                 "mkdir -p ~/.local/bin",
                 "ln -s $PWD/scripts/git-fetch-repos ~/.local/bin/",
