@@ -14,6 +14,9 @@ def main():
         Runner.Group(
             [
                 "sudo dnf install zsh",
+                # For 'chsh'
+                "sudo dnf install util-linux-user",
+                "chsh -s /bin/zsh",
                 "mkdir -p ~/.config",
                 "ln -s $PWD/config/kitty ~/.config/kitty",
                 "ln -s $PWD/config/nvim ~/.config/nvim",
@@ -71,12 +74,12 @@ def main():
     groups.append(
         Runner.Group(
             [
-                "brew install fd",
-                "brew install ripgrep",
-                "brew install gh",
-                "brew install lazygit",
-                "brew install htop",
-                "brew install glances",
+                "sudo dnf install fd-find",
+                "sudo dnf install ripgrep",
+                "sudo dnf install gh",
+                "sudo dnf install lazygit",
+                "sudo dnf install htop",
+                "sudo dnf install glances",
             ],
             name="cli-flair",
         )
