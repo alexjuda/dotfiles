@@ -41,3 +41,21 @@ export EDITOR="nvim"
 
 # Pyenv
 lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'
+
+# Custom utils
+# TODO: move to autoloaded files
+function venv-reset() {
+    local venv_path="./venv"
+    [[ -s $venv_path ]] && echo "removing $venv_path..." && rm -r $venv_path
+    echo "creating new venv at $venv_path..."
+    python3 -m venv $venv_path
+    source "${venv_path}/bin/activate"
+    pip install --upgrade pip wheel
+}
+
+# sets jira ticket that can later be retrieved by echo $T
+function set-ticket() {
+    local ticket="$1"
+    echo ${ticket} > ~/.local/share/ticket.txt
+    T=$(cat ~/.local/share/ticket.txt)
+}
