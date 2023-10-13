@@ -3,6 +3,11 @@
 # * .zprofile is for SSH connection details only
 # * .zshenv is for all shells, including non-interactive ones
 
+# Terminal prompt
+# Based on https://sureshjoshi.com/development/zsh-prompts-that-dont-suck
+PROMPT='%(?.%F{blue}⏺.%F{red}⏺)%f %2~ '
+RPROMPT='%F{8}⏱ %*%f'
+
 # Homebrew paths
 if [[ -f /opt/homebrew/bin/brew ]]; then 
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -11,9 +16,8 @@ fi
 # Local paths
 export PATH="$HOME/.local/bin:$PATH"
 
-CUSTOM_APPS="$HOME/.local/share/aj-apps"
-
 # zsh config lazy loader. Helps speeding up the terminal.
+CUSTOM_APPS="$HOME/.local/share/aj-apps"
 . "$CUSTOM_APPS/zsh-lazyload/zsh-lazyload.zsh"
 
 # Node Version Manager
