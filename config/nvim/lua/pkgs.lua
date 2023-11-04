@@ -39,6 +39,7 @@ require "paq" {
     -- * image.nvim
     -- * neo-tree
     -- * octo.nvim
+    -- * data-viewer.nvim
     "nvim-lua/plenary.nvim";
 
     -- Git gutter & other goodies
@@ -58,6 +59,9 @@ require "paq" {
 
     -- Access GitHub PRs from neovim
     "pwntester/octo.nvim";
+
+    -- Visualize tabular data files
+    "VidocqH/data-viewer.nvim";
 
     -- LSP
     --------
