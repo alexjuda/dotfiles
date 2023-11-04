@@ -21,7 +21,7 @@ require "paq" {
     "folke/which-key.nvim";
 
     -- code parser for syntax highlight & folds
-    { 'nvim-treesitter/nvim-treesitter', run = function() vim.cmd(":TSUpdate") end }; -- Update the parsers on plugin update
+    { 'nvim-treesitter/nvim-treesitter', build = function() vim.cmd(":TSUpdate") end }; -- Update the parsers on plugin update
 
     -- File tree sidebar
     "nvim-neo-tree/neo-tree.nvim";
