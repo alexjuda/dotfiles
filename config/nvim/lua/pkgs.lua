@@ -51,7 +51,7 @@ require "paq" {
     "almo7aya/openingh.nvim";
 
     -- Terminal keybindings for command mode
-    "linty-org/readline.nvim";
+    "assistcontrol/readline.nvim";
 
     -- Show image file preview as ASCII art
     "samodostal/image.nvim";
