@@ -88,12 +88,10 @@ def main():
         )
     )
 
-    # Src: https://heynode.com/tutorial/install-nodejs-locally-nvm/
     groups.append(
         Runner.Group(
             [
-                "curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh",  # noqa: E501
-                "bash install_nvm.sh",
+                "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash",
                 "nvm install --lts",
             ],
             name="node",
@@ -112,8 +110,8 @@ def main():
                 "cd ~/.pyenv && src/configure && make -C src",
                 f"ln -s $PWD/macos/pyenv.sh {share_aj_apps}/pyenv.sh",
                 # Python
-                "pyenv install -k 3",
-                "pyenv global 3 && pyenv versions",
+                Runner.Notice("Run separately: pyenv install -k 3"),
+                Runner.Notice("Run separately: pyenv global 3 && pyenv versions"),
                 # Pipx
                 "sudo dnf install pipx",
                 "pipx install cookiecutter",
