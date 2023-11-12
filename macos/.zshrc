@@ -24,6 +24,7 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 export NVM_DIR="$HOME/.nvm"
 lazyload nvm -- '. "$NVM_DIR/nvm.sh"'
 lazyload node -- '. "$NVM_DIR/nvm.sh"'
+lazyload npm -- '. "$NVM_DIR/nvm.sh"'
 
 # Enable tab completion customization. Used for aliased commands and completion
 # autocorrect.
