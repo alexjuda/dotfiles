@@ -33,6 +33,17 @@ def main():
         )
     )
 
+
+    groups.append(
+        Runner.Group(
+            [
+                "flatpak install flathub com.spotify.Client",
+                "flatpak install flathub org.signal.Signal",
+            ],
+            name="gui-apps",
+        )
+    )
+
     groups.append(
         Runner.Group(
             [
