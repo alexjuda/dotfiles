@@ -58,14 +58,16 @@ def main():
         )
     )
 
-    font_dir = "NerdFontsSymbolsOnly"
+    nerd_font = "NerdFontsSymbolsOnly"
     groups.append(
         Runner.Group(
             [
+                "sudo dnf install jetbrains-mono-fonts",
                 Runner.Notice("Install ghrel manually"),
-                f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {font_dir}.zip ryanoasis/nerd-fonts",  # noqa: E501
-                f"unzip ~/Desktop/fonts/{font_dir}.zip -d ~/Desktop/fonts/{font_dir}",
-                f"cp ~/Desktop/fonts/{font_dir}/SymbolsNerdFont*-Regular.ttf ~/Library/Fonts/",  # noqa: E501
+                f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {nerd_font}.zip ryanoasis/nerd-fonts",  # noqa: E501
+                f"mkdir -p ~/.local/share/fonts/{nerd_font}",
+                f"unzip ~/Desktop/fonts/{nerd_font}.zip -d ~/.local/share/fonts/{nerd_font}",  # noqa: E501
+                f"fc-cache ~/.local/share/fonts/{nerd_font}",
             ],
             name="fonts",
         )
