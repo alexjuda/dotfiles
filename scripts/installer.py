@@ -184,7 +184,10 @@ def main():
     groups.append(
         Runner.Group(
             [
-                "brew install lua-language-server",
+                "cd ~/Downloads && ghrel -v -p '*-linux-x64.tar.gz' LuaLS/lua-language-server",
+                f"mkdir -p {share_aj_apps}/lua-language-server",
+                f"cd ~/Downloads && tar -xzf lua-language-server-*-linux-x64.tar.gz -C {share_aj_apps}/lua-language-server",
+                f"ln -s {share_aj_apps}/lua-language-server/bin/lua-language-server ~/.local/bin/",
             ],
             name="lua-lsp",
         )
