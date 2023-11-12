@@ -47,6 +47,7 @@ def main():
     groups.append(
         Runner.Group(
             [
+                # Not flatpak because flatpak "can't access host's SDKs".
                 "sudo dnf install neovim",
                 'git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim',  # noqa: E501
                 "mkdir -p ~/.local/share/lang-servers/ltex-ls-data",
@@ -61,8 +62,6 @@ def main():
     groups.append(
         Runner.Group(
             [
-                "brew tap homebrew/cask-fonts",
-                "brew install font-jetbrains-mono",
                 f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {font_dir}.zip ryanoasis/nerd-fonts",  # noqa: E501
                 f"unzip ~/Desktop/fonts/{font_dir}.zip -d ~/Desktop/fonts/{font_dir}",
                 f"cp ~/Desktop/fonts/{font_dir}/SymbolsNerdFont*-Regular.ttf ~/Library/Fonts/",  # noqa: E501
