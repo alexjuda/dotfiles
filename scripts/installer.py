@@ -79,6 +79,7 @@ def main():
                 "sudo dnf install fd-find",
                 "sudo dnf install ripgrep",
                 "sudo dnf install gh",
+                "sudo dnf copr enable atim/lazygit",
                 "sudo dnf install lazygit",
                 "sudo dnf install htop",
                 "sudo dnf install glances",
