@@ -38,6 +38,11 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 # Configure aliases
 . ~/.bash_aliases
 
+# Fix deleting one path component at a time.
+# Source: https://stackoverflow.com/a/1438523
+autoload -U select-word-style
+select-word-style bash
+
 export EDITOR="nvim"
 
 # Pyenv
