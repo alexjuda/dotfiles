@@ -369,7 +369,12 @@ vim.fn.sign_define("DiagnosticSignInfo",
 vim.fn.sign_define("DiagnosticSignHint",
     { text = "", texthl = "DiagnosticSignHint" })
 
-require("neo-tree").setup()
+require("neo-tree").setup {
+    filesystem = {
+        -- Let dirbuf handle editing directories.
+        hijack_netrw_behavior = "disabled",
+    },
+}
 
 -----------------
 -- Git goodies --
