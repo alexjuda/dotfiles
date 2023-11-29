@@ -120,6 +120,8 @@ def main():
                 "git clone https://github.com/pyenv/pyenv.git ~/.pyenv",
                 "cd ~/.pyenv && src/configure && make -C src",
                 f"ln -s $PWD/macos/pyenv.sh {share_aj_apps}/pyenv.sh",
+                # Source: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+                "sudo dnf install make gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2",
                 # Python
                 Runner.Notice("Run separately: pyenv install -k 3"),
                 Runner.Notice("Run separately: pyenv global 3 && pyenv versions"),
