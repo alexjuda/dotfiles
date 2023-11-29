@@ -270,6 +270,23 @@ cmp.setup({
 -- Allow fuzzy matching in autocomplete popup
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy", }
 
+---------------
+-- Telescope --
+---------------
+require("telescope").setup {
+    defaults = {
+        mappings = {
+            n = {
+                ["<C-X>"] = require("telescope.actions").delete_buffer,
+            },
+            i = {
+                ["<C-X>"] = require("telescope.actions").delete_buffer,
+            },
+        },
+    },
+}
+
+
 -----------------
 -- Status line --
 -----------------
