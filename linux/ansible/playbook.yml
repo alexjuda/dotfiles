@@ -64,3 +64,24 @@
     ansible.builtin.file:
       path: ~/.local/share/lang-servers/ltex-ls-data/dict.txt
       state: touch
+
+  - name: enable lazygit's copr
+    community.general.copr:
+      name: atim/lazygit
+    # requires '-K' flag when running
+    become: true
+    tags: superuser
+
+  - name: install system utils
+    ansible.builtin.dnf:
+      name:
+        - fd-find
+        - ripgrep
+        - lazygit
+        - gh
+        - htop
+        - glances
+      state: latest
+    # requires '-K' flag when running
+    become: true
+    tags: superuser
