@@ -1,16 +1,20 @@
 ---
 # Running:
-# ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>'"
+# ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>' -K"
+# or:
+# ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>'" --skip-tags superuser
 - name: Set up a Fedora workstation.
   hosts: local
 
   tasks:
-  # - name: upgrade DNF packages
-  #   dnf:
-  #     name: "*"
-  #     state: latest
-  #   # requires '-kK' flag when running
-  #   become: true
+  - name: upgrade DNF packages
+    dnf:
+      name: "*"
+      state: latest
+    # requires '-K' flag when running
+    become: true
+    tags: superuser
+
   - name: Clone dotfiles
     git:
       repo: git@github.com:alexjuda/dotfiles.git
@@ -35,3 +39,11 @@
       src: ~/Code/dotfiles/config/nvim
       dest: ~/.config/nvim
       state: link
+
+  - name: install neovim
+    dnf:
+      name: "neovim"
+      state: latest
+    # requires '-K' flag when running
+    become: true
+    tags: superuser
