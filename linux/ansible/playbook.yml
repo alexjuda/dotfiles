@@ -1,0 +1,31 @@
+---
+# Running:
+# ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>'"
+- name: Set up a Fedora workstation.
+  hosts: local
+
+  tasks:
+  # - name: upgrade DNF packages
+  #   dnf:
+  #     name: "*"
+  #     state: latest
+  #   # requires '-kK' flag when running
+  #   become: true
+  - name: Clone dotfiles
+    git:
+      repo: git@github.com:alexjuda/dotfiles.git
+      dest: ~/Code/dotfiles
+      clone: yes
+      update: yes
+
+  - name: Set git email
+    community.general.git_config:
+      name: user.email
+      scope: global
+      value: "{{ git_email }}"
+
+  - name: Set git username
+    community.general.git_config:
+      name: user.name
+      scope: global
+      value: "{{ git_username }}"
