@@ -16,7 +16,7 @@
       repo: git@github.com:alexjuda/dotfiles.git
       dest: ~/Code/dotfiles
       clone: yes
-      update: yes
+      update: no
 
   - name: Set git email
     community.general.git_config:
@@ -29,3 +29,9 @@
       name: user.name
       scope: global
       value: "{{ git_username }}"
+
+  - name: Link neovim config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/nvim
+      dest: ~/.config/nvim
+      state: link
