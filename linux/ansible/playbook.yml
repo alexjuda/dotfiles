@@ -86,3 +86,10 @@
     # requires '-K' flag when running
     become: true
     tags: superuser
+
+
+  - name: install GUI apps
+    community.general.flatpak:
+      name:
+        - com.spotify.Client
+        - org.signal.Signal
