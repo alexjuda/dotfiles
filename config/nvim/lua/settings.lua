@@ -91,6 +91,9 @@ vim.opt.smartcase = true
 -- Make `:find` work recursively. Override the built-in default ("/usr/include").
 vim.opt.path = "**"
 
+-- Disable swapfiles. Fixes opening the same file from multiple vims.
+vim.opt.swapfile = false
+
 -- Tell neovim plugins written in Python use the default interpreter. Helps with virtual environments.
 -- src: https://github.com/tweekmonster/nvim-python-doctor/wiki/Simple-Installation
 vim.cmd [[let g:python3_host_prog = 'python']]
