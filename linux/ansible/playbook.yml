@@ -75,6 +75,7 @@
   - name: install system utils
     ansible.builtin.dnf:
       name:
+        - gcc-c++
         - fd-find
         - ripgrep
         - lazygit
