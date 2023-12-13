@@ -98,3 +98,8 @@
     # requires '-K' flag when running
     become: true
     tags: superuser
+
+  - name: swap caps lock<->escape keys
+    community.general.dconf:
+      key: "/org/gnome/desktop/input-sources/xkb-options"
+      value: "['caps:swapescape']"
