@@ -133,13 +133,11 @@
       cmd: ~/Code/dotfiles/scripts/fetch-gh-asset.py ryanoasis nerd-fonts NerdFontsSymbolsOnly.zip --first
     register: nerd_fonts_symbols_only_zip_url
 
-  - name: make dir for nerd font symbols
-    ansible.builtin.file:
-      path: /tmp/nerd_fonts_symbols_only
-      state: directory
-
   - name: unarchive nerd font symbols
     ansible.builtin.unarchive:
       src: "{{ nerd_fonts_symbols_only_zip_url }}"
-      dest: /tmp/nerd_fonts_symbols_only
+      dest: ~/.local/share/fonts/NerdFontsSymbolsOnly
       remote_src: yes
+
+  - name: reset font cache
+    ansible.builtin.command: fc-cache ~/.local/share/fonts
