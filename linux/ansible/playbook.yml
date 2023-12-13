@@ -74,9 +74,10 @@
     become: true
     tags: superuser
 
-  - name: install system utils
+  - name: install system packages
     ansible.builtin.dnf:
       name:
+        - zsh
         - gcc-c++
         - fd-find
         - ripgrep
@@ -88,7 +89,6 @@
     # requires '-K' flag when running
     become: true
     tags: superuser
-
 
   - name: install GUI apps
     community.general.flatpak:
@@ -103,3 +103,10 @@
     community.general.dconf:
       key: "/org/gnome/desktop/input-sources/xkb-options"
       value: "['caps:swapescape', 'ctrl:swap_rwin_rctl']"
+
+  - name: set zsh as the default shell for user {{ ansible_env.USER }}
+    ansible.builtin.user:
+      name: "{{ ansible_env.USER }}"
+      shell: /usr/bin/zsh
+    become: true
+    tags: superuser
