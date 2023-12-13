@@ -19,16 +19,16 @@ def main():
 
     parser = ArgumentParser()
     parser.add_argument("url")
-    parser.add_argument("file_glob")
     parser.add_argument("target_dir")
+    parser.add_argument("--filename", nargs="+")
     args = parser.parse_args()
 
     logger.info(f"{args = }")
 
-    _extract(args.url, args.file_glob, args.target_dir)
+    _extract(args.url, args.filename, args.target_dir)
 
 
-def _extract(url, file_glob, target_dir):
+def _extract(url, filenames, target_dir):
     parsed = urlparse(url)
     resp = _send_get(host=parsed.hostname, path=parsed.path, headers={"User-Agent": "python"})
     with NamedTemporaryFile() as tmp_file:
@@ -39,6 +39,10 @@ def _extract(url, file_glob, target_dir):
 
         zip_file = ZipFile(tmp_file)
         logger.info(f"Files inside the zip: {zip_file.namelist()}")
+
+        for filename in filenames:
+            logger.info(f"Extracting {filename} to {target_dir}")
+            zip_file.extract(filename, path=target_dir)
 
 
 def _parse_url_comps(url):
