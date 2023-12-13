@@ -104,9 +104,11 @@
       key: "/org/gnome/desktop/input-sources/xkb-options"
       value: "['caps:swapescape', 'ctrl:swap_rwin_rctl']"
 
-  - name: set zsh as the default shell for user {{ ansible_env.USER }}
+  - name: set zsh as the default shell for user {{ ansible_user_id }}
+    vars:
+      the_user: "{{ ansible_user_id }}"
     ansible.builtin.user:
-      name: "{{ ansible_env.USER }}"
-      shell: /usr/bin/zsh
+      name: "{{ the_user }}"
+      shell: /bin/zsh
     become: true
     tags: superuser
