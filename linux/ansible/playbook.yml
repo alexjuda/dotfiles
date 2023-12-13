@@ -3,6 +3,8 @@
 # ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>' -K"
 # or:
 # ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>'" --skip-tags superuser
+# or:
+# ansible-playbook -i inventory.yml playbook.yml --tags superuser -K
 - name: Set up a Fedora workstation.
   hosts: local
 
@@ -93,3 +95,6 @@
       name:
         - com.spotify.Client
         - org.signal.Signal
+    # requires '-K' flag when running
+    become: true
+    tags: superuser
