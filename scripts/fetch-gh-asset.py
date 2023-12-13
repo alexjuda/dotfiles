@@ -2,6 +2,7 @@
 
 import json
 import re
+from argparse import ArgumentParser
 from pathlib import Path
 from http.client import HTTPSConnection
 
@@ -22,10 +23,16 @@ def _send_get_gh(path):
 
 
 def main():
-    owner = "ryanoasis"
-    repo = "nerd-fonts"
-    asset_regex = r"NerdFontsSymbolsOnly\.zip"
+    parser = ArgumentParser()
+    parser.add_argument("owner")
+    parser.add_argument("repo")
+    parser.add_argument("asset_regex")
+    args = parser.parse_args()
 
+    _find_download_url(args.owner, args.repo, args.asset_regex)
+
+
+def _find_download_url(owner, repo, asset_regex):
     _, release_body = _send_get_gh(f"/repos/{owner}/{repo}/releases/latest")
     release_id = release_body["id"]
 
