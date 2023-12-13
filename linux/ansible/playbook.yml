@@ -1,7 +1,5 @@
 ---
 # Running:
-# ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>' -K"
-# or:
 # ansible-playbook -i inventory.yml playbook.yml --extra-vars "git_email=<FIXME> git_username='<FIRST> <LAST>'" --skip-tags superuser
 # or:
 # ansible-playbook -i inventory.yml playbook.yml --tags superuser -K
@@ -17,7 +15,7 @@
     become: true
     tags: superuser
 
-  - name: Clone dotfiles
+  - name: clone dotfiles
     git:
       repo: git@github.com:alexjuda/dotfiles.git
       dest: ~/Code/dotfiles
@@ -112,3 +110,20 @@
       shell: /bin/zsh
     become: true
     tags: superuser
+
+  - name: link zsh config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/macos/.zshrc
+      dest: ~/.zshrc
+      state: link
+
+  - name: link aliases
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/linux/.bash_aliases
+      dest: ~/.bash_aliases
+      state: link
+
+  - name: clone zsh lazyload
+    git:
+      repo: https://github.com/qoomon/zsh-lazyload.git
+      dest: ~/.local/share/aj-apps/zsh-lazyload
