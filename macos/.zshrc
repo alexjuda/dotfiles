@@ -3,6 +3,16 @@
 # * .zprofile is for SSH connection details only
 # * .zshenv is for all shells, including non-interactive ones
 
+
+# Zsh doesn't store command history unless told to do so. Source:
+# https://unix.stackexchange.com/a/470707
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+# Add command to history immediately after execution, as opposed to when the
+# session is closed.
+setopt SHARE_HISTORY
+
 # Terminal prompt
 # Based on https://sureshjoshi.com/development/zsh-prompts-that-dont-suck
 PROMPT='%(?.%F{blue}⏺.%F{red}⏺)%f %2~ '
