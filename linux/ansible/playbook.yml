@@ -36,20 +36,6 @@
       scope: global
       value: "{{ git_username }}"
 
-  - name: Link neovim config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/nvim
-      dest: ~/.config/nvim
-      state: link
-
-  - name: install neovim
-    dnf:
-      name: "neovim"
-      state: latest
-    # requires '-K' flag when running
-    become: true
-    tags: superuser
-
   - name: clone paq
     git:
       repo: https://github.com/savq/paq-nvim.git
@@ -67,6 +53,18 @@
       path: ~/.local/share/lang-servers/ltex-ls-data/dict.txt
       state: touch
 
+  - name: link neovim config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/nvim
+      dest: ~/.config/nvim
+      state: link
+
+  - name: link kitty config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/kitty
+      dest: ~/.config/kitty
+      state: link
+
   - name: enable lazygit's copr
     community.general.copr:
       name: atim/lazygit
@@ -77,14 +75,16 @@
   - name: install system packages
     ansible.builtin.dnf:
       name:
-        - zsh
-        - gcc-c++
         - fd-find
-        - ripgrep
-        - lazygit
+        - gcc-c++
         - gh
-        - htop
         - glances
+        - htop
+        - kitty
+        - lazygit
+        - neovim
+        - ripgrep
+        - zsh
       state: latest
     # requires '-K' flag when running
     become: true
