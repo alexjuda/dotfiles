@@ -80,6 +80,7 @@
         - gh
         - glances
         - htop
+        - jetbrains-mono-fonts
         - kitty
         - lazygit
         - neovim
