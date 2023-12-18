@@ -6,7 +6,7 @@
 # or:
 # ansible-playbook -i inventory.yml playbook.yml --extra-vars "@vars.yml" -K
 - name: Set up a Fedora workstation.
-  hosts: local
+  hosts: all
 
   tasks:
   - name: upgrade DNF packages
