@@ -6,6 +6,7 @@ all:
 	$(MAKE) root-only
 
 
+# To use a specific SSH host, set INVENTORY="<hostname>,"
 INVENTORY = "inventory.yml"
 EXTRA =
 
@@ -18,6 +19,11 @@ root-only:
 .PHONY: rootless-only
 rootless-only:
 	ansible-playbook -i $(INVENTORY) playbook.yml --extra-vars @vars.yml --skip-tags superuser $(VERBOSE) $(EXTRA)
+
+
+.PHONY: no-mac
+no-mac:
+	ansible-playbook -i $(INVENTORY) playbook.yml --extra-vars @vars.yml --skip-tags mac -K $(VERBOSE) $(EXTRA)
 
 
 .PHONY: from-wip
