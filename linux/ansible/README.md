@@ -24,3 +24,5 @@ make no-mac INVENTORY="<machine name>.local,"
 Steps to run manually after on the guest:
 
 1. Open neovim. Run: `:PaqSync`
+2. Fix telescope repo.
+3. Log in to Firefox.
