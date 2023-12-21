@@ -1,9 +1,8 @@
 VERBOSE = "-vv"
 
-.PHONY: all
-all:
-	$(MAKE) rootless-only
-	$(MAKE) root-only
+.PHONY: nop
+nop:
+	@echo Hello, world!
 
 
 # To use a specific SSH host, set INVENTORY="<hostname>,"
