@@ -1,0 +1,2 @@
+- name: print hello 2
+  ansible.builtin.command: echo hello 2
