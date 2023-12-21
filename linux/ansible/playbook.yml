@@ -95,6 +95,7 @@
     community.general.flatpak:
       name:
         - com.spotify.Client
+        - org.gnome.Geary
         - org.signal.Signal
     # requires '-K' flag when running
     become: true
