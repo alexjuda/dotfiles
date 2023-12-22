@@ -37,6 +37,7 @@
       - neovim
       - pipx
       - ripgrep
+      - xclip
       - zsh
     state: present
   become: true
