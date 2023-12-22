@@ -3,9 +3,17 @@
     repo: https://github.com/pyenv/pyenv.git
     dest: ~/.local/share/pyenv
 
-- name: build native script
+- name: prep building native ext
   ansible.builtin.command:
-    cmd: cd ~/.local/share/pyenv && src/configure && make -C src
+    cmd: src/configure
+    chdir: ~/.local/share/pyenv
+    creates: ~/.local/share/src/Makefile
+
+- name: build native ext
+  ansible.builtin.command:
+    cmd: make -C src
+    chdir: ~/.local/share/pyenv
+    creates: ~/.local/share/libexec/pyenv-realpath.dylib
 
 - name: link pyenv lazyload script
   ansible.builtin.file:
