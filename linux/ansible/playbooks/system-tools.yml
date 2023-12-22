@@ -1,0 +1,62 @@
+- name: upgrade DNF packages
+  dnf:
+    name: "*"
+    state: latest
+  become: true
+  tags: superuser
+
+- name: Set git email
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_email }}"
+
+- name: Set git username
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ git_username }}"
+
+- name: enable lazygit's copr
+  community.general.copr:
+    name: atim/lazygit
+  become: true
+  tags: superuser
+
+- name: install system packages
+  ansible.builtin.dnf:
+    name:
+      - fd-find
+      - gcc-c++
+      - gh
+      - glances
+      - htop
+      - jetbrains-mono-fonts
+      - kitty
+      - lazygit
+      - neovim
+      - pipx
+      - ripgrep
+      - xclip
+      - zsh
+    state: present
+  become: true
+  tags: superuser
+
+- name: install GUI apps
+  community.general.flatpak:
+    name:
+      - com.spotify.Client
+      - org.gnome.Geary
+      - org.signal.Signal
+  become: true
+  tags: superuser
+
+- name: set zsh as the default shell for user {{ ansible_user_id }}
+  vars:
+    the_user: "{{ ansible_user_id }}"
+  ansible.builtin.user:
+    name: "{{ the_user }}"
+    shell: /bin/zsh
+  become: true
+  tags: superuser

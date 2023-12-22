@@ -1,35 +1,29 @@
-VERBOSE = "-vv"
-
 .PHONY: nop
 nop:
 	@echo Hello, world!
 
+# Required
+HOST =
 
-# To use a specific SSH host, set INVENTORY="<hostname>,"
-INVENTORY = "inventory.yml"
+# Optional
 EXTRA =
+PLAYBOOK = playbooks/main.yml
+VERBOSE = "-vv"
 
+.PHONY: framework
+framework:
+	ansible-playbook -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --skip-tags macbook-only -K $(VERBOSE) $(EXTRA)
 
-.PHONY: root-only
-root-only:
-	ansible-playbook -i $(INVENTORY) playbook.yml --extra-vars @vars.yml --tags superuser -K $(VERBOSE) $(EXTRA)
+.PHONY: macbook
+macbook:
+	ansible-playbook -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --skip-tags framework-only -K $(VERBOSE) $(EXTRA)
 
-
-.PHONY: rootless-only
-rootless-only:
-	ansible-playbook -i $(INVENTORY) playbook.yml --extra-vars @vars.yml --skip-tags superuser $(VERBOSE) $(EXTRA)
-
-
-.PHONY: no-mac
-no-mac:
-	ansible-playbook -i $(INVENTORY) playbook.yml --extra-vars @vars.yml --skip-tags mac -K $(VERBOSE) $(EXTRA)
-
-
-.PHONY: from-wip
-from-wip:
-	ansible-playbook -i $(INVENTORY) playbook.yml --extra-vars @vars.yml --start-at-task wip $(VERBOSE) $(EXTRA)
-
+.PHONY: snow
+snow:
+	ansible-playbook -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --skip-tags macbook-only,framework-only -K $(VERBOSE) $(EXTRA)
 
 .PHONY: wip-only
 wip-only:
-	ansible-playbook -i $(INVENTORY) playbook.yml --extra-vars @vars.yml --tags wip $(VERBOSE) $(EXTRA)
+	ansible-playbook -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --tags wip $(VERBOSE) $(EXTRA)
+
+
