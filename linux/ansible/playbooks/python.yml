@@ -48,3 +48,24 @@
   ansible.builtin.command:
     cmd: ~/.pyenv/bin/pyenv install -k 3.12.1
     creates: ~/.pyenv/versions/3.*
+
+- name: install cookiecutter
+  community.general.pipx:
+    name: cookiecutter
+
+- name: install pyright
+  community.general.pipx:
+    name: pyright
+
+- name: install pylsp
+  community.general.pipx:
+    name: "python-lsp-server[rope]"
+
+- name: inject to pylsp
+  community.general.pipx:
+    name: "python-lsp-server"
+    inject_packages:
+      - python-lsp-black
+      - python-lsp-ruff
+      - pylsp-rope
+    state: inject
