@@ -1,19 +1,19 @@
 - name: clone pyenv
   ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
-    dest: ~/.local/share/pyenv
+    dest: ~/.pyenv
 
 - name: prep building native ext
   ansible.builtin.command:
     cmd: src/configure
-    chdir: ~/.local/share/pyenv
-    creates: ~/.local/share/src/Makefile
+    chdir: ~/.pyenv
+    creates: ~/.pyenv/src/Makefile
 
 - name: build native ext
   ansible.builtin.command:
     cmd: make -C src
-    chdir: ~/.local/share/pyenv
-    creates: ~/.local/share/libexec/pyenv-realpath.dylib
+    chdir: ~/.pyenv
+    creates: ~/.pyenv/libexec/pyenv-realpath.dylib
 
 - name: link pyenv lazyload script
   ansible.builtin.file:
@@ -46,4 +46,5 @@
 
 - name: install latest Python 3
   ansible.builtin.command:
-    cmd: ~/.local/share/pyenv/bin/pyenv install -k 3
+    cmd: ~/.pyenv/bin/pyenv install -k 3.12.1
+    creates: ~/.pyenv/versions/3.*
