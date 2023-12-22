@@ -14,3 +14,11 @@
   - name: gnome tasks
     ansible.builtin.include_tasks:
       file: gnome.yml
+
+  - name: fonts tasks
+    ansible.builtin.include_tasks:
+      file: fonts.yml
+
+  - name: docker tasks
+    ansible.builtin.include_tasks:
+      file: docker.yml
