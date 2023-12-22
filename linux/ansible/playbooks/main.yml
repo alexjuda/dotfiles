@@ -19,6 +19,10 @@
     ansible.builtin.include_tasks:
       file: fonts.yml
 
+  - name: python tasks
+    ansible.builtin.include_tasks:
+      file: python.yml
+
   - name: docker tasks
     ansible.builtin.include_tasks:
       file: docker.yml

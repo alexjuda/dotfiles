@@ -1,0 +1,41 @@
+- name: clone pyenv
+  ansible.builtin.git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: ~/.local/share/pyenv
+
+- name: build native script
+  ansible.builtin.command:
+    cmd: cd ~/.local/share/pyenv && src/configure && make -C src
+
+- name: link pyenv lazyload script
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/macos/pyenv.sh
+    dest: ~/.local/share/aj-apps/pyenv.sh
+    state: link
+
+- name: install python system deps
+  ansible.builtin.dnf:
+    name:
+      - bzip2
+      - bzip2-devel
+      - gcc
+      - gdbm-libs
+      - libffi-devel
+      - libnsl2
+      - libuuid-devel
+      - make
+      - openssl-devel
+      - patch
+      - readline-devel
+      - sqlite
+      - sqlite-devel
+      - tk-devel
+      - xz-devel
+      - zlib-devel
+    state: present
+  become: true
+  tags: superuser
+
+- name: install latest Python 3
+  ansible.builtin.command:
+    cmd: pyenv install -k 3
