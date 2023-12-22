@@ -1,5 +1,5 @@
 # My dotfiles
 
-A single repo with all system configuration, powered by symlinks.
+A single repo with all my configs. System tools, shell, code editor, keyboard remaps. System configuration is deployed with [Ansible](https://www.ansible.com/). See [linux/ansible/Makefile](linux/ansible/Makefile).
 
-Rework in progress. See [linux/setting-up.md](linux/setting-up.md) for the new approach. See [old-readme.rst](old-readme.rst) for the old but battle-tested one.
+There are also few out-of-date [installer scripts](scripts).
