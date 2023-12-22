@@ -37,7 +37,7 @@
       - neovim
       - ripgrep
       - zsh
-    state: latest
+    state: present
   become: true
   tags: superuser
 
