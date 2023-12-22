@@ -1,0 +1,58 @@
+- name: clone dotfiles
+  git:
+    repo: git@github.com:alexjuda/dotfiles.git
+    dest: ~/Code/dotfiles
+    clone: yes
+    update: no
+
+- name: link kitty config
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/config/kitty
+    dest: ~/.config/kitty
+    state: link
+
+- name: link neovim config
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/config/nvim
+    dest: ~/.config/nvim
+    state: link
+
+# Please run: nvim -c ":PaqSync" manually
+#
+# TODO: fix telescope git HEAD
+- name: clone paq
+  git:
+    repo: https://github.com/savq/paq-nvim.git
+    dest: ~/.local/share/nvim/site/pack/paqs/start/paq-nvim
+
+- name: clone paq
+  git:
+    repo: https://github.com/savq/paq-nvim.git
+    dest: ~/.local/share/nvim/site/pack/paqs/start/paq-nvim
+
+- name: make ltex dict dir
+  ansible.builtin.file:
+    path: ~/.local/share/lang-servers/ltex-ls-data
+    state: directory
+
+- name: touch ltex dict file
+  ansible.builtin.file:
+    path: ~/.local/share/lang-servers/ltex-ls-data/dict.txt
+    state: touch
+
+- name: link zsh config
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/macos/.zshrc
+    dest: ~/.zshrc
+    state: link
+
+- name: link aliases
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/linux/.bash_aliases
+    dest: ~/.bash_aliases
+    state: link
+
+- name: clone zsh lazyload
+  git:
+    repo: https://github.com/qoomon/zsh-lazyload.git
+    dest: ~/.local/share/aj-apps/zsh-lazyload

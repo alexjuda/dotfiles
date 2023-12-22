@@ -3,9 +3,10 @@
 
   tasks:
 
-  - name: print hello 1
-    ansible.builtin.command: echo hello 1
-
   - name: include system tasks
     ansible.builtin.include_tasks:
       file: system-tools.yml
+
+  - name: include configs tasks
+    ansible.builtin.include_tasks:
+      file: link-configs.yml
