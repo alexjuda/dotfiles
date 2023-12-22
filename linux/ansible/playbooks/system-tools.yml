@@ -35,6 +35,7 @@
       - kitty
       - lazygit
       - neovim
+      - pipx
       - ripgrep
       - zsh
     state: present
