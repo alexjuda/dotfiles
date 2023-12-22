@@ -10,20 +10,6 @@
 
   tasks:
 
-  - name: swap caps lock<->esc & right cmd<->ctrl
-    community.general.dconf:
-      key: "/org/gnome/desktop/input-sources/xkb-options"
-      value: "['caps:swapescape', 'ctrl:swap_rwin_rctl']"
-    tags: mac
-
-  # Emulates a macbook-like keyboard layout.
-  # For list of keyboard swap IDs, see `man xkeyboard-config`
-  - name: swap caps lock<->esc, left alt<->windows & right alt<->ctrl
-    community.general.dconf:
-      key: "/org/gnome/desktop/input-sources/xkb-options"
-      value: "['caps:swapescape', 'altwin:swap_lalt_lwin', 'ctrl:swap_ralt_rctl']"
-
-
   - name: find URL for nerd font symbols
     ansible.builtin.command:
       cmd: ~/Code/dotfiles/scripts/fetch-gh-asset.py ryanoasis nerd-fonts NerdFontsSymbolsOnly.zip$ --first

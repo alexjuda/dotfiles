@@ -3,10 +3,14 @@
 
   tasks:
 
-  - name: include system tasks
+  - name: system tasks
     ansible.builtin.include_tasks:
       file: system-tools.yml
 
-  - name: include configs tasks
+  - name: configs tasks
     ansible.builtin.include_tasks:
       file: link-configs.yml
+
+  - name: gnome tasks
+    ansible.builtin.include_tasks:
+      file: gnome.yml
