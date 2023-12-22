@@ -46,4 +46,4 @@
 
 - name: install latest Python 3
   ansible.builtin.command:
-    cmd: pyenv install -k 3
+    cmd: ~/.local/share/pyenv/bin/pyenv install -k 3
