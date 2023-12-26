@@ -17,6 +17,12 @@
     scope: global
     value: "{{ git_username }}"
 
+- name: Set main git branch name
+  community.general.git_config:
+    name: init.defaultBranch
+    scope: global
+    value: main
+
 - name: enable lazygit's copr
   community.general.copr:
     name: atim/lazygit
