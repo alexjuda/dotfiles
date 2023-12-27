@@ -147,6 +147,7 @@ require("nvim-treesitter.configs").setup {
 
     ensure_installed = {
         "bash",
+        "cpp",
         "git_rebase",
         "gitcommit",
         "gitignore",
