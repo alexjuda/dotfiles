@@ -142,9 +142,14 @@ require('ayu').colorscheme()
 
 -- Enable all common functionality
 
-require "nvim-treesitter.configs".setup {
+require("nvim-treesitter.configs").setup {
+    modules = {},
+
     ensure_installed = {
         "bash",
+        "git_rebase",
+        "gitcommit",
+        "gitignore",
         "html",
         "javascript",
         "json",
@@ -155,6 +160,12 @@ require "nvim-treesitter.configs".setup {
         "rst",
         "typescript",
     },
+
+    sync_install = true,
+
+    auto_install = false,
+
+    ignore_install = {},
 
     highlight = {
         enable = true,
