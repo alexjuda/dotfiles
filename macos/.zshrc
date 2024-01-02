@@ -33,6 +33,7 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
+# Add the following commands as triggers for loading nvm.
 lazyload nvm -- '. "$NVM_DIR/nvm.sh"'
 lazyload node -- '. "$NVM_DIR/nvm.sh"'
 lazyload npm -- '. "$NVM_DIR/nvm.sh"'
@@ -57,7 +58,10 @@ select-word-style bash
 export EDITOR="nvim"
 
 # Pyenv
+# Add the following commands as triggers for loading pyenv.
 lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'
+lazyload python -- '. $CUSTOM_APPS/pyenv.sh'
+lazyload python3 -- '. $CUSTOM_APPS/pyenv.sh'
 
 # Custom utils
 # TODO: move to autoloaded files
