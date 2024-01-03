@@ -60,8 +60,8 @@ export EDITOR="nvim"
 # Pyenv
 # Add the following commands as triggers for loading pyenv.
 lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'
-lazyload python -- '. $CUSTOM_APPS/pyenv.sh'
-lazyload python3 -- '. $CUSTOM_APPS/pyenv.sh'
+lazyload python -- 'pyenv; python'
+lazyload python3 -- 'pyenv; python'
 
 # Custom utils
 # TODO: move to autoloaded files
