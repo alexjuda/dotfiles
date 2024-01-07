@@ -81,6 +81,9 @@ vim.opt.signcolumn = "number"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Don't highlight the last search.
+vim.opt.hlsearch = false
+
 -- Make `:find` work recursively. Override the built-in default ("/usr/include").
 vim.opt.path = "**"
 
@@ -94,8 +97,7 @@ vim.cmd [[let g:python3_host_prog = 'python']]
 ---------------
 -- which-key --
 ---------------
-require("which-key").setup {
-}
+require("which-key").setup {}
 
 
 -----------------------------
