@@ -70,7 +70,7 @@ vim.cmd [[language en_US.UTF-8]]
 vim.o.laststatus = 3
 
 -- Hide command line if not currently writing a command. Works with neovim >=0.8.
--- vim.o.cmdheight = 0
+vim.o.cmdheight = 0
 
 -- Show horizontal line at cursor row.
 vim.opt.cursorline = true
