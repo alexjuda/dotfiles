@@ -24,7 +24,7 @@ local set_lsp_keymaps = function(client, buf_n)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>ld", ":lua vim.lsp.buf.document_symbol()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lw", ":lua vim.lsp.buf.workspace_symbol()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lf", ":lua vim.lsp.buf.format()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(buf_n, "v", "<localleader>lf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(buf_n, "v", "<localleader>lf", ":lua vim.lsp.buf.format()<CR>", opts)
 
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lws", ":lua vim.lsp.buf.workspace_symbol()<CR>", opts)
     vim.api.nvim_buf_set_keymap(buf_n, "n", "<localleader>lwf", ":lua vim.lsp.buf.list_workspace_folders()<CR>", opts)

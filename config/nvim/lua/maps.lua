@@ -173,7 +173,7 @@ map("n", "<leader>tv", function () toggle_venn() end, opts, "toggle venn")
 
 -- LSP local leaders --
 -- We gotta do it here, because buf-local mappings don't seem to work properly in visual mode :(.
-vim.api.nvim_set_keymap("v", "<localleader>la", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
+vim.api.nvim_set_keymap("v", "<localleader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
 
 -- Show info about currently active LSP connections
 vim.api.nvim_set_keymap("n", "<localleader>Li", ":LspInfo<CR>", opts)
