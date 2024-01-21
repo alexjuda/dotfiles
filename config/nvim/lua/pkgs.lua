@@ -114,6 +114,9 @@ require "paq" {
     -- help for writing unicode characters
     "chrisbra/unicode.vim";
 
+    -- align text, e.g. markdown tables
+    "junegunn/vim-easy-align";
+
     -- Lang-specific
     ----------------
 
