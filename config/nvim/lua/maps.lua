@@ -189,7 +189,7 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 
 -- Global
 ----------
-map("n", "<space><space>", function() telescope.commands() end, opts, "commands")
+map({"n", "v"}, "<leader><leader>", function() telescope.commands() end, opts, "commands")
 
 map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
 map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
