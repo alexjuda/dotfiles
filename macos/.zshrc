@@ -31,6 +31,9 @@ export PATH="$HOME/.local/bin:$PATH"
 CUSTOM_APPS="$HOME/.local/share/aj-apps"
 . "$CUSTOM_APPS/zsh-lazyload/zsh-lazyload.zsh"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 # Add the following commands as triggers for loading nvm.

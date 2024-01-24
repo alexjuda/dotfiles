@@ -33,6 +33,7 @@
   ansible.builtin.dnf:
     name:
       - fd-find
+      - direnv
       - gcc-c++
       - gh
       - glances
