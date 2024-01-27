@@ -125,11 +125,13 @@ require("octo").setup {}
 
 -- Without this, moonfly uses gray blocks for window separators.
 
-require('ayu').setup({
-    mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-    overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-})
-require('ayu').colorscheme()
+-- require('ayu').setup({
+--     mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+--     overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+-- })
+-- require('ayu').colorscheme()
+
+vim.cmd.colorscheme "catppuccin"
 
 ----------------
 -- Treesitter --

@@ -12,6 +12,8 @@ require "paq" {
     ----------
     "Shatur/neovim-ayu";
 
+    "catppuccin/nvim";
+
     -- UI
     -------
     -- Edit directories
