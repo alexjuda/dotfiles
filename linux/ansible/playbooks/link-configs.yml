@@ -11,6 +11,12 @@
     dest: ~/.config/kitty
     state: link
 
+- name: link wezterm config
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/config/wezterm
+    dest: ~/.config/wezterm
+    state: link
+
 - name: link neovim config
   ansible.builtin.file:
     src: ~/Code/dotfiles/config/nvim
