@@ -40,4 +40,8 @@ return {
     adjust_window_size_when_changing_font_size = false,
     -- The default font size (10.0) is too small on 4K screens.
     font_size = 14,
+
+    -- Stop "WezTerm Update Available" spam on new panes. Flatpak distribution
+    -- is few releases behind so it's impossible to install the latest version.
+    check_for_updates = false,
 }
