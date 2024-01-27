@@ -12,7 +12,8 @@ local function scheme_for_appearance(appearance)
     -- Based on https://wezfurlong.org/wezterm/config/lua/wezterm.gui/get_appearance.html
     if appearance:find 'Dark' then
         -- return 'Builtin Solarized Dark'
-        return 'ayu'
+        -- return 'ayu'
+        return 'Catppuccin Mocha'
     else
         return 'Github'
     end
