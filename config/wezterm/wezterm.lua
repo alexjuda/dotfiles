@@ -19,8 +19,6 @@ local function scheme_for_appearance(appearance)
 end
 
 return {
-    -- System bash in macOS os old. Let's use the homebrew one if not on Linux.
-    default_prog = on_linux() and { "/bin/bash", "-l", } or { "/usr/local/bin/bash", "-l", },
     -- Determine colorscheme based on System-reported light/dark appearance.
     color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
     -- Custom keybindings
