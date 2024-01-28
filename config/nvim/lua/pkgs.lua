@@ -65,6 +65,9 @@ require "paq" {
     -- Visualize tabular data files
     "VidocqH/data-viewer.nvim";
 
+    -- Create missing directory on :w.
+    "jghauser/mkdir.nvim";
+
     -- LSP
     --------
 
