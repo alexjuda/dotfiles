@@ -74,7 +74,7 @@ vim.opt.cursorline = true
 -- Show gitsigns & diagnostics over the line numbers. There's an issue where the status
 -- line background isn't applied to the sign column. This setting makes it a little
 -- less annoying. See also: https://github.com/lewis6991/gitsigns.nvim/issues/563
-vim.opt.signcolumn = "number"
+-- vim.opt.signcolumn = "number"
 
 -- Make the `/` buffer search case insensitive unless the pattern includes at
 -- least one capital letter.
