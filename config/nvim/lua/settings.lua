@@ -76,6 +76,10 @@ vim.opt.cursorline = true
 -- less annoying. See also: https://github.com/lewis6991/gitsigns.nvim/issues/563
 -- vim.opt.signcolumn = "number"
 
+-- Always show sign column. Otherwise, it would appear and disappear whenever entering
+-- and exiting insert mode in a markdown file with spelling issues.
+vim.opt.signcolumn = "yes"
+
 -- Make the `/` buffer search case insensitive unless the pattern includes at
 -- least one capital letter.
 vim.opt.ignorecase = true
