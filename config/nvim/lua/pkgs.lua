@@ -65,6 +65,9 @@ require "paq" {
     -- Visualize tabular data files
     "VidocqH/data-viewer.nvim";
 
+    -- Close buffers after x mins of inactivity.
+    "chrisgrieser/nvim-early-retirement";
+
     -- Create missing directory on :w.
     "jghauser/mkdir.nvim";
 

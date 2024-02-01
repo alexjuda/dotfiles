@@ -390,6 +390,15 @@ require("lsp_signature").setup {
 require("aerial").setup {}
 
 
+-----------------------------------
+-- Close buffers after some time --
+-----------------------------------
+
+require("early-retirement").setup {
+    -- Default: 20 min.
+    retirementAgeMins = 5,
+}
+
 -----------------------
 -- Project File Tree --
 -----------------------
