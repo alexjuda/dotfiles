@@ -71,6 +71,9 @@ require "paq" {
     -- Create missing directory on :w.
     "jghauser/mkdir.nvim";
 
+    -- Use neovim's diff mode to view git diffs.
+    "sindrets/diffview.nvim";
+
     -- LSP
     --------
 

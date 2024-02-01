@@ -428,6 +428,10 @@ require("neo-tree").setup {
 
 require("gitsigns").setup {}
 
+------------------------------
+-- View git diffs in neovim --
+------------------------------
+
 -----------
 -- Jumps --
 -----------
