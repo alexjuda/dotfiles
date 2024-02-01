@@ -45,6 +45,7 @@ custom_aliases=(
     "grbc:git rebase --continue"
     "grbi:git rebase -i"
     "grh:git reset"
+    "grhu:git reset @{u}"
     "grhh:git reset --hard"
     "grv:git remote -v"
 
