@@ -7,16 +7,18 @@
 
 -- Buffer-local options + keymap
 
-local wk = require("which-key")
 
 local set_lsp_keymaps = function(client, buf_n)
-    -- Keymap
+    local wk = require("which-key")
+
     local buf_map_with_name = function(mode, lhs, rhs, name)
         local opts = { buffer = buf_n, noremap = true }
         vim.keymap.set(mode, lhs, rhs, opts)
 
         wk.register({ [lhs] = name })
     end
+
+    local telescope = require("telescope.builtin")
 
     buf_map_with_name("n", "K", function() vim.lsp.buf.hover() end, "hover")
     buf_map_with_name("n", "<c-k>", function() vim.lsp.buf.signature_help() end, "signature help")
@@ -27,13 +29,11 @@ local set_lsp_keymaps = function(client, buf_n)
     buf_map_with_name("n", "gt", function() vim.lsp.buf.type_definition() end, "type definition")
     buf_map_with_name("n", "<localleader>lr", function() vim.lsp.buf.rename() end, "rename")
     buf_map_with_name("n", "<localleader>la", function() vim.lsp.buf.code_action() end, "code action")
-    buf_map_with_name("n", "<localleader>ld", function() vim.lsp.buf.document_symbol() end, "document symbol")
-    buf_map_with_name("n", "<localleader>lw", function() vim.lsp.buf.workspace_symbol() end, "workspace symbol")
+    buf_map_with_name("n", "<localleader>ld", function() telescope.lsp_document_symbols() end, "document symbol")
     buf_map_with_name("n", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
     buf_map_with_name("v", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
 
-    buf_map_with_name("n", "<localleader>lws", function() vim.lsp.buf.workspace_symbol() end, "workspace symbol")
-    buf_map_with_name("n", "<localleader>lwf", function() vim.lsp.buf.list_workspace_folders() end, "workspace folders")
+    buf_map_with_name("n", "<localleader>lws", function() telescope.lsp_dynamic_workspace_symbols() end, "workspace symbol")
 
     wk.register({ ["<localleader>l"] = "+lsp commands" })
     wk.register({ ["<localleader>lw"] = "+workspace" })
