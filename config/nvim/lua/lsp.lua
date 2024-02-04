@@ -31,13 +31,29 @@ local set_lsp_keymaps = function(client, buf_n)
 
     buf_map_with_name("n", "<localleader>lr", function() vim.lsp.buf.rename() end, "rename")
     buf_map_with_name("n", "<localleader>la", function() vim.lsp.buf.code_action() end, "code action")
-    buf_map_with_name("n", "<localleader>ld", function() telescope.lsp_document_symbols() end, "document symbol")
     buf_map_with_name("n", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
     buf_map_with_name("v", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
 
-    buf_map_with_name("n", "<localleader>lws", function() telescope.lsp_dynamic_workspace_symbols() end, "workspace symbol")
+    buf_map_with_name("n", "<localleader>lbs", function() telescope.lsp_document_symbols() end, "symbols in this buffer")
+    buf_map_with_name(
+        "n", "<localleader>lbd",
+        function() telescope.diagnostics { bufnr = 0 } end,
+        "diagnostics in this buffer"
+    )
+
+    buf_map_with_name(
+        "n", "<localleader>lwd",
+        function() telescope.diagnostics() end,
+        "diagnostics in workspace"
+    )
+    buf_map_with_name(
+        "n", "<localleader>lws",
+        function() telescope.lsp_dynamic_workspace_symbols() end,
+        "symbols in workspace"
+    )
 
     wk.register({ ["<localleader>l"] = "+lsp commands" })
+    wk.register({ ["<localleader>lb"] = "+buffer" })
     wk.register({ ["<localleader>lw"] = "+workspace" })
     wk.register({ ["<localleader>L"] = "+lsp connectors" })
 end
