@@ -70,7 +70,6 @@ local yank_file_path = function()
 end
 
 map("n", "<leader>fr", function() telescope.oldfiles() end, opts, "recent files")
-map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
 map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
 map("n", "<leader>fy", function() yank_file_path() end, opts, "copy file path")
 
