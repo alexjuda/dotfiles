@@ -11,24 +11,29 @@ local wk = require("which-key")
 
 local set_lsp_keymaps = function(client, buf_n)
     -- Keymap
-    local map = vim.keymap.set
-    local opts = { buffer = buf_n, noremap = true }
-    map("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
-    map("n", "<c-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
-    map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
-    map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
-    map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
-    map("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-    map("n", "gt", ":lua vim.lsp.buf.type_definition()<CR>", opts)
-    map("n", "<localleader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
-    map("n", "<localleader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
-    map("n", "<localleader>ld", ":lua vim.lsp.buf.document_symbol()<CR>", opts)
-    map("n", "<localleader>lw", ":lua vim.lsp.buf.workspace_symbol()<CR>", opts)
-    map("n", "<localleader>lf", ":lua vim.lsp.buf.format()<CR>", opts)
-    map("v", "<localleader>lf", ":lua vim.lsp.buf.format()<CR>", opts)
+    local buf_map_with_name = function(mode, lhs, rhs, name)
+        local opts = { buffer = buf_n, noremap = true }
+        vim.keymap.set(mode, lhs, rhs, opts)
 
-    map("n", "<localleader>lws", ":lua vim.lsp.buf.workspace_symbol()<CR>", opts)
-    map("n", "<localleader>lwf", ":lua vim.lsp.buf.list_workspace_folders()<CR>", opts)
+        wk.register({ [lhs] = name })
+    end
+
+    buf_map_with_name("n", "K", function() vim.lsp.buf.hover() end, "hover")
+    buf_map_with_name("n", "<c-k>", function() vim.lsp.buf.signature_help() end, "signature help")
+    buf_map_with_name("n", "gd", function() vim.lsp.buf.definition() end, "definition")
+    buf_map_with_name("n", "gD", function() vim.lsp.buf.declaration() end, "declaration")
+    buf_map_with_name("n", "gi", function() vim.lsp.buf.implementation() end, "implementation")
+    buf_map_with_name("n", "gr", function() vim.lsp.buf.references() end, "references")
+    buf_map_with_name("n", "gt", function() vim.lsp.buf.type_definition() end, "type definition")
+    buf_map_with_name("n", "<localleader>lr", function() vim.lsp.buf.rename() end, "rename")
+    buf_map_with_name("n", "<localleader>la", function() vim.lsp.buf.code_action() end, "code action")
+    buf_map_with_name("n", "<localleader>ld", function() vim.lsp.buf.document_symbol() end, "document symbol")
+    buf_map_with_name("n", "<localleader>lw", function() vim.lsp.buf.workspace_symbol() end, "workspace symbol")
+    buf_map_with_name("n", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
+    buf_map_with_name("v", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
+
+    buf_map_with_name("n", "<localleader>lws", function() vim.lsp.buf.workspace_symbol() end, "workspace symbol")
+    buf_map_with_name("n", "<localleader>lwf", function() vim.lsp.buf.list_workspace_folders() end, "workspace folders")
 
     wk.register({ ["<localleader>l"] = "+lsp commands" })
     wk.register({ ["<localleader>lw"] = "+workspace" })
