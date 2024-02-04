@@ -22,11 +22,13 @@ local set_lsp_keymaps = function(client, buf_n)
 
     buf_map_with_name("n", "K", function() vim.lsp.buf.hover() end, "hover")
     buf_map_with_name("n", "<c-k>", function() vim.lsp.buf.signature_help() end, "signature help")
-    buf_map_with_name("n", "gd", function() vim.lsp.buf.definition() end, "definition")
+
+    buf_map_with_name("n", "gd", function() telescope.lsp_definitions() end, "definition")
     buf_map_with_name("n", "gD", function() vim.lsp.buf.declaration() end, "declaration")
-    buf_map_with_name("n", "gi", function() vim.lsp.buf.implementation() end, "implementation")
-    buf_map_with_name("n", "gr", function() vim.lsp.buf.references() end, "references")
-    buf_map_with_name("n", "gt", function() vim.lsp.buf.type_definition() end, "type definition")
+    buf_map_with_name("n", "gi", function() telescope.lsp_implementations() end, "implementation")
+    buf_map_with_name("n", "gr", function() telescope.lsp_references() end, "references")
+    buf_map_with_name("n", "gt", function() telescope.lsp_type_definitions() end, "type definition")
+
     buf_map_with_name("n", "<localleader>lr", function() vim.lsp.buf.rename() end, "rename")
     buf_map_with_name("n", "<localleader>la", function() vim.lsp.buf.code_action() end, "code action")
     buf_map_with_name("n", "<localleader>ld", function() telescope.lsp_document_symbols() end, "document symbol")
