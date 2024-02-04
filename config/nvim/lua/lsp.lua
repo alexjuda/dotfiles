@@ -5,9 +5,22 @@
 -- show all lsp log msgs
 -- vim.lsp.set_log_level("debug")
 
+-- Makes the symbol preview more tidy. Python LSP server shows each local
+-- variable in the symbol list. That's a lot of noise.
+local show_document_symbols = function()
+    require("telescope.builtin").lsp_document_symbols {
+        ignore_symbols = { "variable" },
+    }
+end
+
+local show_workspace_symbols = function()
+    require("telescope.builtin").lsp_dynamic_workspace_symbols {
+        ignore_symbols = { "variable" },
+    }
+end
+
+
 -- Buffer-local options + keymap
-
-
 local set_lsp_keymaps = function(client, buf_n)
     local wk = require("which-key")
 
@@ -34,7 +47,7 @@ local set_lsp_keymaps = function(client, buf_n)
     buf_map_with_name("n", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
     buf_map_with_name("v", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
 
-    buf_map_with_name("n", "<localleader>lbs", function() telescope.lsp_document_symbols() end, "symbols in this buffer")
+    buf_map_with_name("n", "<localleader>lbs", function() show_document_symbols() end, "symbols in this buffer")
     buf_map_with_name(
         "n", "<localleader>lbd",
         function() telescope.diagnostics { bufnr = 0 } end,
@@ -48,7 +61,7 @@ local set_lsp_keymaps = function(client, buf_n)
     )
     buf_map_with_name(
         "n", "<localleader>lws",
-        function() telescope.lsp_dynamic_workspace_symbols() end,
+        function() show_workspace_symbols() end,
         "symbols in workspace"
     )
 
