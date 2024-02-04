@@ -69,9 +69,19 @@ local yank_file_path = function()
     ]])
 end
 
+local open_enclosing_dir_in_finder = function()
+    -- Filename modifiers used:
+    -- * "%" - current buffer
+    -- * ":p" - full absolute path
+    -- * ":h" - skip one level
+    local dir_path = vim.fn.expand('%:p:h')
+    os.execute("xdg-open " .. dir_path)
+end
+
 map("n", "<leader>fr", function() telescope.oldfiles() end, opts, "recent files")
 map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
 map("n", "<leader>fy", function() yank_file_path() end, opts, "copy file path")
+map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, opts, "open dir in finder")
 
 
 -- Toggles
