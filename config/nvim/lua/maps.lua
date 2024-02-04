@@ -45,8 +45,8 @@ map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 -- Project Sidebar
 ------------------
 map("n", "<leader>pb", ":Neotree buffers<CR>", opts) -- show buffers in the sidebar
-map("n", "<leader>po", ":Neotree reveal<CR>", opts) -- show current file in the project tree
-map("n", "<leader>pt", ":Neotree toggle<CR>", opts) -- open/close project tree
+map("n", "<leader>po", ":Neotree reveal<CR>", opts)  -- show current file in the project tree
+map("n", "<leader>pt", ":Neotree toggle<CR>", opts)  -- open/close project tree
 map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "find file by name")
 
 
@@ -72,7 +72,7 @@ end
 map("n", "<leader>fr", function() telescope.oldfiles() end, opts, "recent files")
 map("n", "<leader>fc", ":e ~/.config/nvim/init.lua<CR>", opts)
 map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
-map("n", "<leader>fy", function () yank_file_path() end, opts, "copy file path")
+map("n", "<leader>fy", function() yank_file_path() end, opts, "copy file path")
 
 
 -- Toggles
@@ -169,7 +169,7 @@ local function toggle_venn()
     end
 end
 
-map("n", "<leader>tv", function () toggle_venn() end, opts, "toggle venn")
+map("n", "<leader>tv", function() toggle_venn() end, opts, "toggle venn")
 
 -- LSP local leaders --
 -- We gotta do it here, because buf-local mappings don't seem to work properly in visual mode :(.
@@ -189,7 +189,7 @@ vim.api.nvim_set_keymap("i", "§", "`", opts)
 
 -- Global
 ----------
-map({"n", "v"}, "<leader><leader>", function() telescope.commands() end, opts, "commands")
+map({ "n", "v" }, "<leader><leader>", function() telescope.commands() end, opts, "commands")
 
 map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
 map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
