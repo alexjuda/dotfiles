@@ -89,7 +89,7 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = false
 
 -- Show backlighted column separator on the right.
-vim.opt.colorcolumn = "90"
+vim.opt.colorcolumn = "80"
 
 -- Make `:find` work recursively. Override the built-in default ("/usr/include").
 vim.opt.path = "**"
