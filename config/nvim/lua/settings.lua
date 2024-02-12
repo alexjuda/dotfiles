@@ -428,6 +428,12 @@ require("neo-tree").setup {
 
 require("gitsigns").setup {}
 
+
+-----------------------------------
+-- Highlight symbol under cursor --
+-----------------------------------
+require("illuminate").configure {}
+
 ------------------------------
 -- View git diffs in neovim --
 ------------------------------
