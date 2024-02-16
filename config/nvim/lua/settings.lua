@@ -352,7 +352,8 @@ require("lualine").setup {
                 },
             }
         },
-        lualine_c = { ts_statusline },
+        -- Don't show file name again.
+        lualine_c = {},
         lualine_x = {
             minor_mode_status,
             {
@@ -369,6 +370,9 @@ require("lualine").setup {
                 separator = { left = "", right = "" },
             },
         }
+    },
+    winbar = {
+        lualine_c = { ts_statusline },
     },
 }
 
