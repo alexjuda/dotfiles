@@ -35,9 +35,10 @@ make framework HOST="frmwrk.local"
 
 Steps to run manually after on the guest:
 
-1. Open neovim. Run: `:PaqSync`
-2. Fix telescope repo.
-3. Log in to:
+1. Set up 1Password.
+2. Open neovim. Run: `:PaqSync`
+3. Fix telescope repo.
+4. Log in to:
     1. Firefox.
     2. "Internet Accounts" in Gnome Settings.
     3. Spotify.
