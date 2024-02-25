@@ -6,17 +6,29 @@ This tool uses Ansible to configure a new device from a host device over SSH.
 
 Steps to take manually before:
 
-1. Install Ansible on the host, e.g. with `pipx`.
-2. Create an ssh key on the target.
-3. Upload the guest's public SSH key to GitHub.
-4. Run `ssh-copy-id` between the host and the guest.
-5. Set up `vars.yml` file based on the [example](./vars.yml.example).
-6. On the guest, set a sensible machine name in Gnome Settings.
+1. On the target:
+    1. Create an ssh key on the target: `ssh-keygen -t ed25519 -a 100`
+    2. Copy the public key into the public folder.
+    3. Set a sensible machine name in Gnome Settings.
+    4. Enable SSH.
+    5. Enable file sharing.
+    6. Reboot.
+
+2. On the host:
+    1. Upload the target's to GitHub.
+    2. Run `ssh-copy-id` between the host and the target.
+    3. Install Ansible, e.g. with `pipx`.
+    4. Set up `vars.yml` file based on the [example](./vars.yml.example).
+
+3. On the target:
+    1. Warm up GitHub with: `ssh -T git@github.com`.
 
 ## Running
 
+Find a suitable [maketarget](./Makefile) and run:
+
 ```bash
-make no-mac INVENTORY="<machine name>.local,"
+make framework HOST="frmwrk.local"
 ```
 
 ## Post
