@@ -12,3 +12,8 @@
   ansible.builtin.command:
     cmd: glib-compile-schemas ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr/schemas
     creates: ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr/gschemas.compiled
+
+- name: install GSConnect
+  ansible.builtin.command:
+    cmd: gext install 1319
+    creates: ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io
