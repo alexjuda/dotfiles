@@ -1,0 +1,8 @@
+- name: install gext
+  community.general.pipx:
+    name: gnome-extensions-cli
+
+- name: install night theme switcher
+  ansible.builtin.command:
+    cmd: gext install 2236
+    creates: ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr

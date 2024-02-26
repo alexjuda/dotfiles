@@ -11,9 +11,13 @@
     ansible.builtin.include_tasks:
       file: link-configs.yml
 
-  - name: gnome tasks
+  - name: gnome settings tasks
     ansible.builtin.include_tasks:
-      file: gnome.yml
+      file: gnome-settings.yml
+
+  - name: gnome extensions tasks
+    ansible.builtin.include_tasks:
+      file: gnome-extensions.yml
 
   - name: fonts tasks
     ansible.builtin.include_tasks:
