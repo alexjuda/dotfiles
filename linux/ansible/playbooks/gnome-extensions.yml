@@ -6,3 +6,9 @@
   ansible.builtin.command:
     cmd: gext install 2236
     creates: ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr
+
+# Workaround for "open() error, gschemas.compiled not found"
+- name: fix night theme switcher's schemas file
+  ansible.builtin.command:
+    cmd: glib-compile-schemas ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr/schemas
+    creates: ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr/gschemas.compiled
