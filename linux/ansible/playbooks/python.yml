@@ -69,3 +69,8 @@
       - python-lsp-ruff
       - pylsp-rope
     state: inject
+
+- name: install ansible
+  community.general.pipx:
+    name: "ansible"
+    install_deps: true
