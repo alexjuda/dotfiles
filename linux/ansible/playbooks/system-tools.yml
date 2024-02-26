@@ -53,6 +53,7 @@
 - name: install GUI apps
   community.general.flatpak:
     name:
+      - com.mattjakeman.ExtensionManager
       - com.spotify.Client
       - org.gnome.Geary
       - org.signal.Signal
