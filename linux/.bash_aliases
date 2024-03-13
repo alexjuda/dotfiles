@@ -20,6 +20,9 @@ custom_aliases=(
     "gco:git checkout"
     "gcp:git cherry-pick"
 
+    "gcl:git clean"
+    "gcli:git clean --interactive"
+
     "gd:git diff"
     "gds:git diff --cached"  # --staged is a synonym of --cached
     "gdt:git diff-tree --no-commit-id --name-only -r"
