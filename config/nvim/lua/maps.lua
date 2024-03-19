@@ -1,6 +1,7 @@
 local wk = require("which-key")
 local telescope = require("telescope.builtin")
 local vapor = require("vapor")
+local spectre = require("spectre")
 
 local map = function(mode, key, cmd, opts, doc)
     vim.keymap.set(mode, key, cmd, opts)
@@ -62,6 +63,9 @@ map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "
 -----------
 map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, opts, "search in buffer")
 map("n", "<leader>ss", function() telescope.live_grep() end, opts, "search in PWD")
+map("n", "<leader>sp", function() spectre.toggle() end, opts, "search in project")
+map({"n", "v"}, "<leader>sw", function() spectre.open_visual() end, opts, "search selection")
+map({"n", "v"}, "<leader>sf", function() spectre.open_file_search({select_word=true}) end, opts, "search in current file")
 
 
 -- Files
