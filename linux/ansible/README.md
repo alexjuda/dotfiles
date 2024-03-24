@@ -35,11 +35,12 @@ make framework HOST="frmwrk.local"
 
 Steps to run manually on the target:
 
-1. Set up 1Password.
-2. Open neovim. Run: `:PaqSync`
-3. Fix telescope repo.
-4. Log in to:
-    1. Firefox.
-    2. "Internet Accounts" in Gnome Settings.
-    3. Spotify.
-    4. Signal.
+1. Open neovim. Run: `:PaqSync`
+2. Fix telescope repo.
+3. Log in to:
+    1. 1Password app.
+    2. Firefox.
+    3. "Internet Accounts" in Gnome Settings.
+    4. `gh auth login`
+    5. Spotify.
+    6. Signal.
