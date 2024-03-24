@@ -271,3 +271,28 @@ local function insert_current_date()
 end
 
 vim.keymap.set({ "i", "n" }, "<F3>", insert_current_date)
+
+-- Insert webpage title when pasting into markdown
+-- Source: https://www.reddit.com/r/vim/comments/139fn2b/comment/js7mth4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
+local InsertMarkdownURL = function()
+  local url = vim.fn.getreg "+"
+  if url == "" then return end
+  local cmd = "curl -L " .. vim.fn.shellescape(url) .. " 2>/dev/null"
+  local handle = io.popen(cmd)
+  if not handle then return end
+  local html = handle:read "*a"
+  handle:close()
+  local title = ""
+  local pattern = "<title>(.-)</title>"
+  local m = string.match(html, pattern)
+  if m then title = m end
+  if title ~= "" then
+    local markdownLink = "[" .. title .. "](" .. url .. ")"
+    vim.api.nvim_command("call append(line('.'), '" .. markdownLink .. "')")
+  else
+    print("Title not found for link")
+  end
+end
+
+vim.keymap.set("n", "<leader>mdp", function () InsertMarkdownURL() end, { silent = true, noremap = true })
