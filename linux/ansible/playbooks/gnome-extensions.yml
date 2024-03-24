@@ -4,7 +4,7 @@
 
 - name: install night theme switcher
   ansible.builtin.command:
-    cmd: gext install 2236
+    cmd: ~/.local/bin/gext install nightthemeswitcher@romainvigier.fr
     creates: ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr
 
 # Workaround for "open() error, gschemas.compiled not found"
@@ -15,5 +15,5 @@
 
 - name: install GSConnect
   ansible.builtin.command:
-    cmd: gext install 1319
+    cmd: ~/.local/bin/gext install gsconnect@andyholmes.github.io
     creates: ~/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io
