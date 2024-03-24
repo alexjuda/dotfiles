@@ -27,10 +27,6 @@
     ansible.builtin.include_tasks:
       file: python.yml
 
-  - name: docker tasks
-    ansible.builtin.include_tasks:
-      file: docker.yml
-
   - name: 1password tasks
     ansible.builtin.include_tasks:
       file: 1password.yml
