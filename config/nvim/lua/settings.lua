@@ -471,6 +471,12 @@ require("mdeval").setup {
     eval_options = {},
 }
 
+---------------------
+-- Interact with LLMs
+---------------------
+
+require('gen').setup {}
+
 ------------------
 -- Autocommands --
 ------------------
