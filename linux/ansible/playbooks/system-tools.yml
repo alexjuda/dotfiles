@@ -43,6 +43,7 @@
       - lazygit
       - neovim
       - pipx
+      - python3-devel
       - ripgrep
       - xclip
       - zsh
