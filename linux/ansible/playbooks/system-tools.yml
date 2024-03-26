@@ -58,6 +58,7 @@
       - com.spotify.Client
       - org.gnome.Geary
       - org.signal.Signal
+      - org.sqlitebrowser.sqlitebrowser
       - org.videolan.VLC
   become: true
   tags: superuser
