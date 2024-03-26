@@ -22,3 +22,8 @@
   ansible.builtin.command:
     cmd: ~/.local/bin/gext install tiling-assistant@leleat-on-github
     creates: ~/.local/share/gnome-shell/extensions/tiling-assistant@leleat-on-github
+
+- name: install vitals
+  ansible.builtin.command:
+    cmd: ~/.local/bin/gext install Vitals@CoreCoding.com
+    creates: ~/.local/share/gnome-shell/extensions/Vitals@CoreCoding.com
