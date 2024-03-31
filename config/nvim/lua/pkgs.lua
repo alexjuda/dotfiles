@@ -153,6 +153,12 @@ require "paq" {
     -- Render markdown notes in a side browser.
     { "iamcco/markdown-preview.nvim", build = function() vim.fn["mkdp#util#install"]() end };
 
+    -- LLMs
+    -------
+
     -- Interact with LLMs
     { "David-Kunz/gen.nvim" };
+
+    -- HuggingFace's Copilot alternative
+    { "huggingface/llm.nvim" };
 }

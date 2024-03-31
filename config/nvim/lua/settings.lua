@@ -479,11 +479,25 @@ require("mdeval").setup {
     eval_options = {},
 }
 
----------------------
--- Interact with LLMs
----------------------
+----------
+-- LLMs --
+----------
+
+-- Make prompts from neovim
+---------------------------
 
 require('gen').setup {}
+
+
+
+-- Copilot-like completion
+--------------------------
+
+require('llm').setup {
+    backend = "ollama",
+    url = "http://localhost:11434/api/generate",
+    model = "codellama",
+}
 
 ------------------
 -- Autocommands --
