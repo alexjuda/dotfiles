@@ -114,6 +114,10 @@ require("lspconfig").pyright.setup {
     on_attach = function(client, buf_n)
         shared_on_attach(client, buf_n)
 
+        -- Disable capabilities already covered by pylsp.
+        -- Workaround for duplicated "new symbol name" prompts.
+        client.server_capabilities.renameProvider = false
+
         -- python-specific keybindings
         --
         -- magma
@@ -138,6 +142,16 @@ require("lspconfig").pylsp.setup {
     settings = {
         pylsp = {
             configurationSources = { "flake8" },
+            plugins = {
+                -- Stabilize rename providers.
+                -- https://github.com/python-rope/pylsp-rope?tab=readme-ov-file#configuration
+                -- Disable pylsp's built-in rope-based rename.
+                rope_rename = { enabled = false },
+                -- Disable pylsp's built-in jedi-based rename.
+                jedi_rename = { enabled = false },
+                -- Enable pylsp-rope 3rd party plugin.
+                pylsp_rope = { rename = true },
+            },
         },
     },
     on_attach = function(client, buf_n)
@@ -150,7 +164,7 @@ require("lspconfig").pylsp.setup {
         client.server_capabilities.hoverProvider = false
         client.server_capabilities.completionProvider = nil
         -- Workaround for duplicated "new symbol name" prompts.
-        client.server_capabilities.renameProvider = false
+        -- client.server_capabilities.renameProvider = false
     end,
     capabilities = shared_capabilities,
 }
