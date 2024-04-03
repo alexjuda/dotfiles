@@ -131,8 +131,8 @@ require "paq" {
     -- help for writing unicode characters
     "chrisbra/unicode.vim";
 
-    -- align text, e.g. markdown tables
-    "junegunn/vim-easy-align";
+    -- powertool for editing markdown tables
+    "Myzel394/easytables.nvim";
 
     -- Lang-specific
     ----------------

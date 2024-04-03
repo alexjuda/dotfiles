@@ -504,6 +504,8 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 --------------
 vim.g.markdown_folding = true
 
+require("easytables").setup {}
+
 -- C++ --
 ---------
 -- Use // ... instead of /* ... */
