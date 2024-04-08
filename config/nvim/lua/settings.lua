@@ -152,6 +152,7 @@ require("nvim-treesitter.configs").setup {
     ensure_installed = {
         "bash",
         "cpp",
+        "dockerfile",
         "git_rebase",
         "gitcommit",
         "gitignore",
@@ -164,7 +165,9 @@ require("nvim-treesitter.configs").setup {
         "mermaid",
         "python",
         "rst",
+        "sql",
         "typescript",
+        "yaml",
     },
 
     sync_install = true,
