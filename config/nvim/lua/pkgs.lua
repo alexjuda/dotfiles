@@ -28,14 +28,19 @@ require "paq" {
     -- File tree sidebar
     "nvim-neo-tree/neo-tree.nvim";
 
-    -- neo-tree's deps
+    -- Dependency for:
+    -- * neotree
+    -- * lspsaga
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+
+    -- Dependency for:
+    -- * neotree
     "MunifTanjim/nui.nvim",
 
     -- nicer bottom status line
     'hoob3rt/lualine.nvim';
 
-    -- common utilities needed by other plugins:
+    -- Dependency for:
     -- * gitsigns
     -- * telescope
     -- * image.nvim
@@ -77,7 +82,7 @@ require "paq" {
     -- LSP
     --------
 
-    -- langauge server configurations
+    -- Langauge Server configurations
     'neovim/nvim-lspconfig';
 
     -- fancy icons in LSP completion prompt
@@ -98,10 +103,13 @@ require "paq" {
     -- Highlight symbol under cursor, automatically
     "RRethy/vim-illuminate";
 
+    -- Improves the Neovim built-in LSP experience. We're using it for winbar
+    -- breadcrumbs.
+    "nvimdev/lspsaga.nvim";
+
     -- Fuzzy completion
     ---------------------
-
-    {"nvim-telescope/telescope.nvim", branch="0.1.0"};
+    "nvim-telescope/telescope.nvim";
 
 
     -- Editing

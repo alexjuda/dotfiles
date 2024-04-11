@@ -315,8 +315,8 @@ require("telescope").setup {
 -- Based on:
 -- * https://www.reddit.com/r/neovim/comments/ojnie2/comment/h52uy92/?utm_source=share&utm_medium=web2x&context=3
 -- * https://github.com/hoob3rt/lualine.nvim#custom-components
-local function ts_statusline()
-    return require("nvim-treesitter").statusline()
+local function breadcrumbs()
+    return require("lspsaga.symbol.winbar").get_bar() or require("nvim-treesitter").statusline()
 end
 
 -- Simulates how Emacs shows currently active minor modes on the status line.
@@ -373,7 +373,7 @@ require("lualine").setup {
         }
     },
     winbar = {
-        lualine_c = { ts_statusline },
+        lualine_c = { breadcrumbs },
     },
 }
 
@@ -393,6 +393,13 @@ require("lsp_signature").setup {
 ---------------------
 
 require("aerial").setup {}
+
+
+---------------------------------------
+-- Breadcrumbs and other nice things --
+---------------------------------------
+
+require("lspsaga").setup {}
 
 
 -----------------------------------
@@ -439,9 +446,6 @@ require("gitsigns").setup {}
 -----------------------------------
 require("illuminate").configure {}
 
-------------------------------
--- View git diffs in neovim --
-------------------------------
 
 -----------
 -- Jumps --
