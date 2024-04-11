@@ -95,13 +95,6 @@ for entry in "${custom_aliases[@]}"; do
     alias "${entry%%:*}"="${entry#*:}"
 done
 
-# Enable tab completion in bash. Needs to run for all aliases.
-if [ -v BASH ]; then
-    for entry in "${custom_aliases[@]}"; do
-        complete -F _complete_alias "${entry%%:*}"
-    done
-fi
-
 # Enable tab completion in zsh. Only needed for root commands.
 # src: https://unix.stackexchange.com/a/477909
 if [ -v ZSH_VERSION ]; then
