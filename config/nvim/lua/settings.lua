@@ -118,13 +118,6 @@ require("nvim-search-and-replace").setup()
 ----------------
 require('image').setup {}
 
-
-require("octo").setup {
-  suppress_missing_scope = {
-    projects_v2 = true,
-  }
-}
-
 ------------
 -- Colors --
 ------------

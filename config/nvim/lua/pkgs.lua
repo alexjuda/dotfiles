@@ -40,7 +40,6 @@ require "paq" {
     -- * telescope
     -- * image.nvim
     -- * neo-tree
-    -- * octo.nvim
     -- * data-viewer.nvim
     -- * nvim-spectre
     "nvim-lua/plenary.nvim";
@@ -59,9 +58,6 @@ require "paq" {
 
     -- Show image file preview as ASCII art
     "samodostal/image.nvim";
-
-    -- Access GitHub PRs from neovim
-    "pwntester/octo.nvim";
 
     -- Visualize tabular data files
     "VidocqH/data-viewer.nvim";
