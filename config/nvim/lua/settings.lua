@@ -235,6 +235,13 @@ require("nvim-treesitter.configs").setup {
     },
 }
 
+-- Use treesitter for folds
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- Prevent folding everything whenever opening a code file.
+vim.opt.foldlevel = 99
+
 --------------------------
 -- TreeSitter Additions --
 --------------------------
