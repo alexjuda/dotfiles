@@ -235,10 +235,6 @@ require("nvim-treesitter.configs").setup {
     },
 }
 
--- Use treesitter for folds
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
 --------------------------
 -- TreeSitter Additions --
 --------------------------
@@ -485,16 +481,6 @@ require('gen').setup {}
 ------------------
 -- Autocommands --
 ------------------
-
--- Open all folds by default
--- src: https://stackoverflow.com/a/8316817
-local open_all_folds = "aj-open-all-folds"
-vim.api.nvim_create_augroup(open_all_folds, { clear = true })
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-    group = open_all_folds,
-    pattern = { "*" },
-    command = "normal zR",
-})
 
 ------------------------------
 -- Filetype-specific config --
