@@ -496,7 +496,19 @@ require('gen').setup {}
 require('llm').setup {
     backend = "ollama",
     url = "http://localhost:11434/api/generate",
-    model = "codellama",
+    -- model = "codellama",
+    -- model = "codellama:7b-code",
+    -- model = "codegemma:code",
+    model = "llama2",
+
+    -- llm.nvim hijacks the mappings in the insert mode, even when the Auto
+    -- Suggest is disabled. We need keymaps that aren't otherwise used.
+    accept_keymap = "<leader><Tab>",
+    dismiss_keymap = "<leader><S-Tab>",
+
+    -- By default, llm.nvim starts in every buffer.
+    -- `:LLMToggleAutoSuggest` can be used instead to opt-in.
+    enable_suggestions_on_startup = false,
 }
 
 ------------------

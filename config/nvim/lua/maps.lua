@@ -46,7 +46,6 @@ map("n", "<leader>bp", ":bprev<cr>", opts)
 map("n", "<leader>bn", ":bnext<cr>", opts)
 map("n", "<leader>bd", ":bp|bd #<cr>", opts) -- close a buffer, but not a window
 map("n", "<leader>bD", ":%bd|e#|bd#<cr>", opts)
-map("n", "<leader><TAB>", "<C-^>", opts)     -- switch to last buffer
 map("n", "<C-PageUp>", ":bprev<cr>", opts)   -- linux-like prev tab
 map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 
