@@ -33,6 +33,8 @@
   ansible.builtin.dnf:
     name:
       - fd-find
+      # for clangd
+      - clang-tools-extra
       - direnv
       - gcc-c++
       - gh
