@@ -32,6 +32,8 @@
 - name: install system packages
   ansible.builtin.dnf:
     name:
+      # for c++ language servers
+      - bear
       - fd-find
       # for clangd
       - clang-tools-extra
