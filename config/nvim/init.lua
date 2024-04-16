@@ -1,4 +1,5 @@
 require("pkgs")
-require("settings")
+require("built_in_settings")
+require("pkg_settings")
 require("maps")
 require("lsp")
