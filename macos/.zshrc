@@ -34,6 +34,9 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 # direnv
 eval "$(direnv hook zsh)"
 
+# rye
+source "$HOME/.local/share/rye_home/env"
+
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 # Add the following commands as triggers for loading nvm.
