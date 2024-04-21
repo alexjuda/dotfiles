@@ -256,36 +256,36 @@ require("lspconfig").rust_analyzer.setup {
 -- Assumes that `ltex-ls` is installed and is available in the $PATH.
 -- Install from a release from: https://github.com/valentjn/ltex-ls/releases.
 
-local function read_dict_words()
-    -- Workaround for ltex-ls not reading/writing dict files.
+-- local function read_dict_words()
+--     -- Workaround for ltex-ls not reading/writing dict files.
 
-    local path = vim.env.HOME .. "/.local/share/lang-servers/ltex-ls-data/dict.txt"
+--     local path = vim.env.HOME .. "/.local/share/lang-servers/ltex-ls-data/dict.txt"
 
-    local f = io.open(path)
-    if f == nil then
-        print("Warning: dict file doesn't exist at" .. path)
-        return {}
-    end
-    io.close(f)
+--     local f = io.open(path)
+--     if f == nil then
+--         print("Warning: dict file doesn't exist at" .. path)
+--         return {}
+--     end
+--     io.close(f)
 
-    local lines = {}
-    for line in io.lines(path) do
-        lines[#lines + 1] = line
-    end
+--     local lines = {}
+--     for line in io.lines(path) do
+--         lines[#lines + 1] = line
+--     end
 
-    return lines
-end
+--     return lines
+-- end
 
-require("lspconfig").ltex.setup {
-    on_attach = shared_on_attach,
-    settings = {
-        ltex = {
-            dictionary = {
-                ["en-US"] = read_dict_words(),
-            },
-        },
-    },
-}
+-- require("lspconfig").ltex.setup {
+--     on_attach = shared_on_attach,
+--     settings = {
+--         ltex = {
+--             dictionary = {
+--                 ["en-US"] = read_dict_words(),
+--             },
+--         },
+--     },
+-- }
 
 
 -- esbonio --
