@@ -87,3 +87,15 @@ function set-ticket() {
     echo ${ticket} > ~/.local/share/ticket.txt
     T=$(cat ~/.local/share/ticket.txt)
 }
+
+# Shorthand for 'nvim'. Additionally, opens CWD as dirbuf if there are no
+# arguments.
+function nv() {
+    if [ -n "$1" ]; then
+        local arg="$1"
+    else
+        local arg="."
+    fi
+
+    nvim ${arg}
+}
