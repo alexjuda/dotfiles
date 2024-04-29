@@ -63,6 +63,9 @@ select-word-style bash
 
 export EDITOR="nvim"
 
+# Enable kubectl command completions
+source <(kubectl completion zsh)
+
 # Pyenv
 # Add the following commands as triggers for loading pyenv.
 lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'
