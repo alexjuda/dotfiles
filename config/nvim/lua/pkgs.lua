@@ -28,6 +28,8 @@ require "paq" {
     -- File tree sidebar
     "nvim-neo-tree/neo-tree.nvim";
 
+    "folke/zen-mode.nvim";
+
     -- Dependency for:
     -- * neotree
     -- * lspsaga

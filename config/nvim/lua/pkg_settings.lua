@@ -10,6 +10,20 @@ require("which-key").setup {}
 require("nvim-search-and-replace").setup()
 
 
+-------------------
+-- zen-mode.nvim --
+-------------------
+require("zen-mode").setup {
+    window = {
+        -- Use just a little over the standard 80 line char limit to acount for
+        -- the line numbers.
+        width = 90,
+        -- We can also use a fraction of the outer window size.
+        -- width = 0.85,
+    },
+}
+
+
 ----------------
 -- image.nvim --
 ----------------
