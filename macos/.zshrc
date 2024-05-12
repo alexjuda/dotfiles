@@ -84,6 +84,15 @@ function venv-reset() {
     pip install --upgrade pip wheel
 }
 
+function venv-reset-uv() {
+    local venv_path=".venv"
+    [[ -s $venv_path ]] && echo "removing $venv_path..." && rm -r $venv_path
+    echo "creating new venv at $venv_path..."
+    uv venv $venv_path
+    source "${venv_path}/bin/activate"
+    uv pip install --upgrade pip wheel
+}
+
 # sets jira ticket that can later be retrieved by echo $T
 function set-ticket() {
     local ticket="$1"
