@@ -101,3 +101,5 @@ vim.opt.swapfile = false
 -- src: https://github.com/tweekmonster/nvim-python-doctor/wiki/Simple-Installation
 vim.cmd [[let g:python3_host_prog = 'python']]
 
+-- Hide backticks, links, and fenced blocks in markdown.
+vim.opt.conceallevel = 2
