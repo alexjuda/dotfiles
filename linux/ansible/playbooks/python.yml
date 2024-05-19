@@ -49,6 +49,10 @@
     cmd: ~/.pyenv/bin/pyenv install -k 3.12.1
     creates: ~/.pyenv/versions/3.*
 
+# The few following rules are just installing tools with pipx. Unfortunately,
+# ansible recipe for pipx doesn't allow passing a list of tools to install all
+# at once.
+
 - name: install cookiecutter
   community.general.pipx:
     name: cookiecutter
@@ -74,3 +78,16 @@
   community.general.pipx:
     name: "ansible"
     install_deps: true
+
+# Utility for installing tools from GH releases.
+- name: install install-release
+  community.general.pipx:
+    name: install-release
+
+# Fixes 'no module found: pkg_config
+- name: inject setuptools to install-release
+  community.general.pipx:
+    name: install-release
+    inject_packages:
+      - setuptools
+    state: inject
