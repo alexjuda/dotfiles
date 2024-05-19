@@ -62,3 +62,9 @@
   git:
     repo: https://github.com/qoomon/zsh-lazyload.git
     dest: ~/.local/share/aj-apps/zsh-lazyload
+
+- name: link install-release config
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/config/install_release
+    dest: ~/.config/install_release
+    state: link
