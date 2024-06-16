@@ -76,6 +76,7 @@ require("nvim-treesitter.configs").setup {
         "rst",
         "sql",
         "typescript",
+        "vimdoc",
         "yaml",
     },
 
