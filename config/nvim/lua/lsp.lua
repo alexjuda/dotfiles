@@ -319,3 +319,14 @@ require("lspconfig").ccls.setup {
     -- Add cuda to the default filetypes list.
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
+
+
+-- Markdown --
+----------------
+-- Requires `marksman` installed. Get it from
+-- https://github.com/artempyanykh/marksman/releases.
+
+require("lspconfig").marksman.setup {
+    on_attach = shared_on_attach,
+    capabilities = shared_capabilities,
+}
