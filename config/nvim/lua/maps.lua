@@ -7,7 +7,7 @@ local map = function(mode, key, cmd, opts, doc)
     vim.keymap.set(mode, key, cmd, opts)
 
     if doc then
-        wk.register({ [key] = doc })
+        wk.add({ { key, desc = doc } })
     end
 end
 
