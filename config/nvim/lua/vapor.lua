@@ -72,8 +72,8 @@ function module.open_todo()
 end
 
 local default_settings = {
-    scratch_dir = "~/vapor-notes/scratch";
-    todo_dir = "~/vapor-notes/todo";
+    scratch_dir = "~/vapor-notes/scratch",
+    todo_dir = "~/vapor-notes/todo",
 }
 
 function module.setup(settings)

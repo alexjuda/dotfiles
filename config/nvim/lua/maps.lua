@@ -64,8 +64,9 @@ map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "
 map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, opts, "search in buffer")
 map("n", "<leader>ss", function() telescope.live_grep() end, opts, "search in PWD")
 map("n", "<leader>sp", function() spectre.toggle() end, opts, "search in project")
-map({"n", "v"}, "<leader>sw", function() spectre.open_visual() end, opts, "search selection")
-map({"n", "v"}, "<leader>sf", function() spectre.open_file_search({select_word=true}) end, opts, "search in current file")
+map({ "n", "v" }, "<leader>sw", function() spectre.open_visual() end, opts, "search selection")
+map({ "n", "v" }, "<leader>sf", function() spectre.open_file_search({ select_word = true }) end, opts,
+    "search in current file")
 
 
 -- Files
@@ -276,23 +277,23 @@ vim.keymap.set({ "i", "n" }, "<F3>", insert_current_date)
 -- Source: https://www.reddit.com/r/vim/comments/139fn2b/comment/js7mth4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 local InsertMarkdownURL = function()
-  local url = vim.fn.getreg "+"
-  if url == "" then return end
-  local cmd = "curl -L " .. vim.fn.shellescape(url) .. " 2>/dev/null"
-  local handle = io.popen(cmd)
-  if not handle then return end
-  local html = handle:read "*a"
-  handle:close()
-  local title = ""
-  local pattern = "<title>(.-)</title>"
-  local m = string.match(html, pattern)
-  if m then title = m end
-  if title ~= "" then
-    local markdownLink = "[" .. title .. "](" .. url .. ")"
-    vim.api.nvim_command("call append(line('.'), '" .. markdownLink .. "')")
-  else
-    print("Title not found for link")
-  end
+    local url = vim.fn.getreg "+"
+    if url == "" then return end
+    local cmd = "curl -L " .. vim.fn.shellescape(url) .. " 2>/dev/null"
+    local handle = io.popen(cmd)
+    if not handle then return end
+    local html = handle:read "*a"
+    handle:close()
+    local title = ""
+    local pattern = "<title>(.-)</title>"
+    local m = string.match(html, pattern)
+    if m then title = m end
+    if title ~= "" then
+        local markdownLink = "[" .. title .. "](" .. url .. ")"
+        vim.api.nvim_command("call append(line('.'), '" .. markdownLink .. "')")
+    else
+        print("Title not found for link")
+    end
 end
 
-vim.keymap.set("n", "<leader>mdp", function () InsertMarkdownURL() end, { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>mdp", function() InsertMarkdownURL() end, { silent = true, noremap = true })
