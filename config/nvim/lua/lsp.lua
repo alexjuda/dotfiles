@@ -91,18 +91,6 @@ local read_exec_path = function(exec_name)
 end
 
 
--- Workaround for virtual magma windows being stuck after cell deletion.
-local function close_float()
-    -- removes any stuck floating window
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local config = vim.api.nvim_win_get_config(win)
-        if config.relative ~= "" then
-            vim.api.nvim_win_close(win, false)
-            print("Closing window", win)
-        end
-    end
-end
-
 -- Requires ``pyright`` installed via npm.
 require("lspconfig").pyright.setup {
     settings = {
@@ -113,22 +101,6 @@ require("lspconfig").pyright.setup {
     },
     on_attach = function(client, buf_n)
         shared_on_attach(client, buf_n)
-
-        -- python-specific keybindings
-        --
-        -- magma
-        vim.keymap.set("n", "<localleader>mi", ":MagmaInit<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("n", "<localleader>mD", ":MagmaDenit<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("n", "<localleader>mm", ":MagmaEvaluateLine<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("v", "<localleader>mm", ":<C-u>MagmaEvaluateVisual<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("n", "<localleader>md", ":MagmaDelete<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("n", "<localleader>mw", close_float, { noremap = true, buffer = buf_n })
-
-        -- jupyter
-        vim.keymap.set("n", "<localleader>jc", ":JupyterConnect<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("n", "<localleader>jD", ":JupyterDisconnect<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("n", "<localleader>jk", ":JupyterTerminateKernel<CR>", { noremap = true, buffer = buf_n })
-        vim.keymap.set("n", "<localleader>jj", ":JupyterSendCell<CR>", { noremap = true, buffer = buf_n })
     end,
     capabilities = shared_capabilities,
 }

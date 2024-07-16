@@ -377,12 +377,6 @@ require("vapor").setup {
     todo_dir = "~/Documents/notes-synced/todo",
 }
 
-
-----------------
--- magma.nvim --
-----------------
-vim.cmd [[let g:magma_image_provider = 'kitty']]
-
 -------------------
 -- Eval snippets --
 -------------------
