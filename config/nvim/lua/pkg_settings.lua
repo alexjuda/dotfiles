@@ -307,7 +307,11 @@ require("aerial").setup {}
 -- Breadcrumbs and other nice things --
 ---------------------------------------
 
-require("lspsaga").setup {}
+require("lspsaga").setup {
+    -- By default, there's a lightbulb for each line there are code actions
+    -- for. Unfortunately, this overloads LSPs when scrolling fast.
+    lightbulb = { enable = false },
+}
 
 
 -----------------------------------
