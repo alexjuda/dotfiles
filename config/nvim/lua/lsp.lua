@@ -28,7 +28,7 @@ local set_lsp_keymaps = function(client, buf_n)
         local opts = { buffer = buf_n, noremap = true }
         vim.keymap.set(mode, lhs, rhs, opts)
 
-        wk.register({ [lhs] = name })
+        wk.add({ lhs, desc = name })
     end
 
     local telescope = require("telescope.builtin")
@@ -65,10 +65,10 @@ local set_lsp_keymaps = function(client, buf_n)
         "symbols in workspace"
     )
 
-    wk.register({ ["<localleader>l"] = "+lsp commands" })
-    wk.register({ ["<localleader>lb"] = "+buffer" })
-    wk.register({ ["<localleader>lw"] = "+workspace" })
-    wk.register({ ["<localleader>L"] = "+lsp connectors" })
+    wk.add({ "<localleader>l", desc = "+lsp commands" })
+    wk.add({ "<localleader>lb", desc = "+buffer" })
+    wk.add({ "<localleader>lw", desc = "+workspace" })
+    wk.add({ "<localleader>L", desc = "+lsp connectors" })
 end
 
 local shared_on_attach = function(client, buf_n)
