@@ -1,3 +1,6 @@
+local common = require("lsp2.common")
+local lsp_python = require("lsp2.python")
+
 ---------
 -- LSP --
 ---------
@@ -5,128 +8,7 @@
 -- show all lsp log msgs
 -- vim.lsp.set_log_level("debug")
 
--- Makes the symbol preview more tidy. Python LSP server shows each local
--- variable in the symbol list. That's a lot of noise.
-local show_document_symbols = function()
-    require("telescope.builtin").lsp_document_symbols {
-        ignore_symbols = { "variable" },
-    }
-end
-
-local show_workspace_symbols = function()
-    require("telescope.builtin").lsp_dynamic_workspace_symbols {
-        ignore_symbols = { "variable" },
-    }
-end
-
-
--- Buffer-local options + keymap
-local set_lsp_keymaps = function(client, buf_n)
-    local wk = require("which-key")
-
-    local buf_map_with_name = function(mode, lhs, rhs, name)
-        local opts = { buffer = buf_n, noremap = true }
-        vim.keymap.set(mode, lhs, rhs, opts)
-
-        wk.add({ lhs, desc = name })
-    end
-
-    local telescope = require("telescope.builtin")
-
-    buf_map_with_name("n", "K", function() vim.lsp.buf.hover() end, "hover")
-    buf_map_with_name("n", "<c-k>", function() vim.lsp.buf.signature_help() end, "signature help")
-
-    buf_map_with_name("n", "gd", function() telescope.lsp_definitions() end, "definition")
-    buf_map_with_name("n", "gD", function() vim.lsp.buf.declaration() end, "declaration")
-    buf_map_with_name("n", "gi", function() telescope.lsp_implementations() end, "implementation")
-    buf_map_with_name("n", "gr", function() telescope.lsp_references() end, "references")
-    buf_map_with_name("n", "gt", function() telescope.lsp_type_definitions() end, "type definition")
-
-    buf_map_with_name("n", "<localleader>lr", function() vim.lsp.buf.rename() end, "rename")
-    buf_map_with_name("n", "<localleader>la", function() vim.lsp.buf.code_action() end, "code action")
-    buf_map_with_name("n", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
-    buf_map_with_name("v", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
-
-    buf_map_with_name("n", "<localleader>lbs", function() show_document_symbols() end, "symbols in this buffer")
-    buf_map_with_name(
-        "n", "<localleader>lbd",
-        function() telescope.diagnostics { bufnr = 0 } end,
-        "diagnostics in this buffer"
-    )
-
-    buf_map_with_name(
-        "n", "<localleader>lwd",
-        function() telescope.diagnostics() end,
-        "diagnostics in workspace"
-    )
-    buf_map_with_name(
-        "n", "<localleader>lws",
-        function() show_workspace_symbols() end,
-        "symbols in workspace"
-    )
-
-    wk.add({ "<localleader>l", desc = "+lsp commands" })
-    wk.add({ "<localleader>lb", desc = "+buffer" })
-    wk.add({ "<localleader>lw", desc = "+workspace" })
-    wk.add({ "<localleader>L", desc = "+lsp connectors" })
-end
-
-local shared_on_attach = function(client, buf_n)
-    set_lsp_keymaps(client, buf_n)
-end
-
-
--- extend default client capabilities with what cmp can do
-local shared_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Python --
-------------
-
--- Infers the full executable path based on shell command name
-local read_exec_path = function(exec_name)
-    local handle = io.popen("which " .. exec_name)
-    local result = handle:read("*a"):gsub("\n", "")
-    handle:close()
-    return result
-end
-
-
--- Requires ``pyright`` installed via npm.
-require("lspconfig").pyright.setup {
-    settings = {
-        python = {
-            -- Use the locally available python executable. Enables using pyright from an activated venv.
-            pythonPath = read_exec_path("python"),
-        },
-    },
-    on_attach = function(client, buf_n)
-        shared_on_attach(client, buf_n)
-    end,
-    capabilities = shared_capabilities,
-}
-
--- Requires `python-lsp-server` pip package.
-require("lspconfig").pylsp.setup {
-    settings = {
-        pylsp = {
-            configurationSources = { "flake8" },
-        },
-    },
-    on_attach = function(client, buf_n)
-        shared_on_attach(client, buf_n)
-
-        -- Disable capabilities already covered by pyright.
-        -- Based on https://neovim.discourse.group/t/how-to-config-multiple-lsp-for-document-hover/3093/2
-        --
-        -- Seems to work around buggy autocomplete behavior, where the symbol disappears after hitting <CR>.
-        client.server_capabilities.hoverProvider = false
-        client.server_capabilities.completionProvider = nil
-        -- Workaround for duplicated "new symbol name" prompts.
-        client.server_capabilities.renameProvider = false
-    end,
-    capabilities = shared_capabilities,
-}
-
+lsp_python.setup()
 
 -- JavaScript --
 ----------------
@@ -135,8 +17,8 @@ require("lspconfig").pylsp.setup {
 
 require("lspconfig").tsserver.setup {
     cmd = { "npx", "typescript-language-server", "--stdio", },
-    on_attach = shared_on_attach,
-    capabilities = shared_capabilities,
+    on_attach = common.shared_on_attach,
+    capabilities = common.shared_capabilities,
 }
 
 -- JSON --
@@ -152,8 +34,8 @@ require("lspconfig").jsonls.setup {
             end
         },
     },
-    on_attach = shared_on_attach,
-    capabilities = shared_capabilities,
+    on_attach = common.shared_on_attach,
+    capabilities = common.shared_capabilities,
 }
 
 -- Java --
@@ -174,8 +56,8 @@ require("lspconfig").jdtls.setup {
         "-configuration",
         vim.env.HOME .. "/.local/share/aj-lsp/jdtls/" .. (is_mac() and "config_mac" or "config_linux"),
     },
-    on_attach = shared_on_attach,
-    capabilities = shared_capabilities,
+    on_attach = common.shared_on_attach,
+    capabilities = common.shared_capabilities,
 }
 
 -- Lua --
@@ -202,8 +84,8 @@ require("lspconfig").lua_ls.setup {
             },
         },
     },
-    on_attach = shared_on_attach,
-    capabilities = shared_capabilities,
+    on_attach = common.shared_on_attach,
+    capabilities = common.shared_capabilities,
 }
 
 
@@ -216,8 +98,8 @@ require("lspconfig").lua_ls.setup {
 -- https://rust-analyzer.github.io/manual.html#nvim-lsp
 
 require("lspconfig").rust_analyzer.setup {
-    on_attach = shared_on_attach,
-    capabilities = shared_capabilities,
+    on_attach = common.shared_on_attach,
+    capabilities = common.shared_capabilities,
 }
 
 
@@ -249,7 +131,7 @@ require("lspconfig").rust_analyzer.setup {
 -- end
 
 -- require("lspconfig").ltex.setup {
---     on_attach = shared_on_attach,
+--     on_attach = common.shared_on_attach,
 --     settings = {
 --         ltex = {
 --             dictionary = {
@@ -266,7 +148,7 @@ require("lspconfig").rust_analyzer.setup {
 -- Language server for Sphinx and rst.
 
 require("lspconfig").esbonio.setup {
-    on_attach = shared_on_attach,
+    on_attach = common.shared_on_attach,
     cmd = { "esbonio", },
 }
 
@@ -278,7 +160,7 @@ require("lspconfig").esbonio.setup {
 -- Requires installing https://github.com/hrsh7th/vscode-langservers-extracted
 
 require("lspconfig").html.setup {
-    on_attach = shared_on_attach,
+    on_attach = common.shared_on_attach,
     cmd = { "npx", "vscode-html-language-server", "--stdio", },
 }
 
@@ -287,7 +169,7 @@ require("lspconfig").html.setup {
 -- C++ and other languages from the C family.
 -- Installation on Fedora: https://stackoverflow.com/a/71810871
 require("lspconfig").ccls.setup {
-    on_attach = shared_on_attach,
+    on_attach = common.shared_on_attach,
     -- Add cuda to the default filetypes list.
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
@@ -299,6 +181,6 @@ require("lspconfig").ccls.setup {
 -- https://github.com/artempyanykh/marksman/releases.
 
 require("lspconfig").marksman.setup {
-    on_attach = shared_on_attach,
-    capabilities = shared_capabilities,
+    on_attach = common.shared_on_attach,
+    capabilities = common.shared_capabilities,
 }
