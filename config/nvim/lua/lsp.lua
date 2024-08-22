@@ -3,6 +3,8 @@ local lsp_python = require("lsp2.python")
 local lsp_js = require("lsp2.js")
 local lsp_json = require("lsp2.json")
 local lsp_java = require("lsp2.java")
+local lsp_lua = require("lsp2.lua")
+local lsp_rust = require("lsp2.rust")
 
 ---------
 -- LSP --
@@ -15,48 +17,8 @@ lsp_python.setup()
 lsp_js.setup()
 lsp_json.setup()
 lsp_java.setup()
-
--- Lua --
----------
--- Requires `lua-language=server` available at PATH.
-require("lspconfig").lua_ls.setup {
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-    on_attach = common.shared_on_attach,
-    capabilities = common.shared_capabilities,
-}
-
-
--- Rust --
-----------
--- Requires `rust-analyzer` available at PATH. Installation:
--- https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
---
--- For LSP settings, see also:
--- https://rust-analyzer.github.io/manual.html#nvim-lsp
-
-require("lspconfig").rust_analyzer.setup {
-    on_attach = common.shared_on_attach,
-    capabilities = common.shared_capabilities,
-}
+lsp_lua.setup()
+lsp_rust.setup()
 
 
 -- ltex-ls --
