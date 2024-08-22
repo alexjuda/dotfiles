@@ -1,5 +1,6 @@
 local common = require("lsp2.common")
 local lsp_python = require("lsp2.python")
+local lsp_js = require("lsp2.js")
 
 ---------
 -- LSP --
@@ -9,17 +10,7 @@ local lsp_python = require("lsp2.python")
 -- vim.lsp.set_log_level("debug")
 
 lsp_python.setup()
-
--- JavaScript --
-----------------
--- Requires `typescript` and `typescript-language-server` packages.
--- If they're not installed locally, it will fetch them each time.
-
-require("lspconfig").tsserver.setup {
-    cmd = { "npx", "typescript-language-server", "--stdio", },
-    on_attach = common.shared_on_attach,
-    capabilities = common.shared_capabilities,
-}
+lsp_js.setup()
 
 -- JSON --
 ----------------
