@@ -1,6 +1,7 @@
 local common = require("lsp2.common")
 local lsp_python = require("lsp2.python")
 local lsp_js = require("lsp2.js")
+local lsp_json = require("lsp2.json")
 
 ---------
 -- LSP --
@@ -11,23 +12,7 @@ local lsp_js = require("lsp2.js")
 
 lsp_python.setup()
 lsp_js.setup()
-
--- JSON --
-----------------
--- Requires `vscode-langservers-extracted` package.
-
-require("lspconfig").jsonls.setup {
-    commands = {
-        -- add support for full buffer formatting using range formatting
-        Format = {
-            function()
-                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-            end
-        },
-    },
-    on_attach = common.shared_on_attach,
-    capabilities = common.shared_capabilities,
-}
+lsp_json.setup()
 
 -- Java --
 ----------
