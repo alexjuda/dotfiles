@@ -8,6 +8,7 @@ local lsp_html = require("lsp2.html")
 local lsp_rst = require("lsp2.rst")
 local lsp_rust = require("lsp2.rust")
 local lsp_markdown = require("lsp2.markdown")
+local lsp_cpp = require("lsp2.cpp")
 
 ---------
 -- LSP --
@@ -25,13 +26,4 @@ lsp_html.setup()
 lsp_rst.setup()
 lsp_rust.setup()
 lsp_markdown.setup()
-
-
--- ccls --
--- C++ and other languages from the C family.
--- Installation on Fedora: https://stackoverflow.com/a/71810871
-require("lspconfig").ccls.setup {
-    on_attach = common.shared_on_attach,
-    -- Add cuda to the default filetypes list.
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-}
+lsp_cpp.setup()
