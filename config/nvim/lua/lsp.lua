@@ -2,6 +2,7 @@ local common = require("lsp2.common")
 local lsp_python = require("lsp2.python")
 local lsp_js = require("lsp2.js")
 local lsp_json = require("lsp2.json")
+local lsp_java = require("lsp2.java")
 
 ---------
 -- LSP --
@@ -13,28 +14,7 @@ local lsp_json = require("lsp2.json")
 lsp_python.setup()
 lsp_js.setup()
 lsp_json.setup()
-
--- Java --
-----------
--- Assumes that a language server distribution is available in the proper
--- directory. Fetch it from https://ftp.fau.de/eclipse/jdtls/snapshots/, put it
--- in ~/.local/share/aj-lsp/ and make a symlink so the paths here work.
-
-local is_mac = function()
-    return vim.fn.has("macunix") == 1
-end
-
-require("lspconfig").jdtls.setup {
-    cmd = {
-        "java",
-        "-jar",
-        vim.env.HOME .. "/.local/share/aj-lsp/jdtls/plugins/org.eclipse.equinox.launcher_1.6.100.v20201223-0822.jar",
-        "-configuration",
-        vim.env.HOME .. "/.local/share/aj-lsp/jdtls/" .. (is_mac() and "config_mac" or "config_linux"),
-    },
-    on_attach = common.shared_on_attach,
-    capabilities = common.shared_capabilities,
-}
+lsp_java.setup()
 
 -- Lua --
 ---------
