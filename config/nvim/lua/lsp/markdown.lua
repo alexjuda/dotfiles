@@ -1,4 +1,4 @@
-local common = require("lsp2.common")
+local common = require("lsp.common")
 
 local M = {}
 
