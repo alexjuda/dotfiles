@@ -1,3 +1,5 @@
+-- Utilities shared across language server configurations.
+
 M = {}
 
 -- Makes the symbol preview more tidy. Python LSP server shows each local
