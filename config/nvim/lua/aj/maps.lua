@@ -4,7 +4,7 @@ local M = {}
 M.setup = function()
     local wk = require("which-key")
     local telescope = require("telescope.builtin")
-    local vapor = require("vapor")
+    local vapor = require("aj.vapor")
     local spectre = require("spectre")
 
     local map = function(mode, key, cmd, opts, doc)

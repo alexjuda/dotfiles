@@ -373,7 +373,7 @@ local setup_all = function()
     -- Notes --
     -----------
 
-    require("vapor").setup {
+    require("aj.vapor").setup {
         scratch_dir = "~/Documents/notes-synced/daily",
         todo_dir = "~/Documents/notes-synced/todo",
     }

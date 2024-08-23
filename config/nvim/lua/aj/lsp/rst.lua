@@ -1,4 +1,4 @@
-local common = require("lsp.common")
+local common = require("aj.lsp.common")
 
 local M = {}
 
