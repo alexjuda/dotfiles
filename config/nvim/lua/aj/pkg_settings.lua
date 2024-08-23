@@ -333,6 +333,10 @@ local setup_all = function()
     -----------------
     require("gitsigns").setup {}
 
+    ---------------------
+    -- Highlight TODOs --
+    ---------------------
+    require("todo-comments").setup {}
 
     -----------------------------------
     -- Highlight symbol under cursor --

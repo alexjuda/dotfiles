@@ -55,10 +55,14 @@ M.setup = function()
         -- * neo-tree
         -- * data-viewer.nvim
         -- * nvim-spectre
+        -- * todo-comments
         "nvim-lua/plenary.nvim",
 
         -- Git gutter & other goodies
         "lewis6991/gitsigns.nvim",
+
+        -- Highlight TODOs in source code
+        "folke/todo-comments.nvim",
 
         -- Find and replace
         "s1n7ax/nvim-search-and-replace",
