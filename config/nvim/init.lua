@@ -1,4 +1,4 @@
-require("pkgs")
+require("pkgs").setup()
 require("built_in_settings").setup()
 require("pkg_settings").setup_all()
 require("maps").setup()
