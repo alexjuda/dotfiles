@@ -1,7 +1,7 @@
 local M = {}
 
 
-M.setup_all_lang_servers = function()
+local setup_all_lang_servers = function()
     require("lsp.cpp").setup()
     require("lsp.html").setup()
     require("lsp.java").setup()
@@ -12,6 +12,11 @@ M.setup_all_lang_servers = function()
     require("lsp.python").setup()
     require("lsp.rst").setup()
     require("lsp.rust").setup()
+end
+
+
+M.setup = function()
+    setup_all_lang_servers()
 end
 
 

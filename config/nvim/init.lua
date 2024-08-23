@@ -1,5 +1,5 @@
 require("pkgs").setup()
 require("built_in_settings").setup()
-require("pkg_settings").setup_all()
+require("pkg_settings").setup()
 require("maps").setup()
-require("lsp").setup_all_lang_servers()
+require("lsp").setup()

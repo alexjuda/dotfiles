@@ -1,7 +1,7 @@
 local M = {}
 
 
-M.setup_all = function()
+local setup_all = function()
     ---------------
     -- which-key --
     ---------------
@@ -449,6 +449,11 @@ M.setup_all = function()
         pattern = { "typescript,typescriptreact" },
         command = "setlocal shiftwidth=2",
     })
+end
+
+
+M.setup = function()
+    setup_all()
 end
 
 return M
