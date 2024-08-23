@@ -33,6 +33,7 @@ M.setup = function()
         -- File tree sidebar
         "nvim-neo-tree/neo-tree.nvim",
 
+        -- Unclutter the UI and set a narrow viewport
         "folke/zen-mode.nvim",
 
         -- Dependency for:
@@ -67,9 +68,6 @@ M.setup = function()
 
         -- Terminal keybindings for command mode
         "assistcontrol/readline.nvim",
-
-        -- Show image file preview as ASCII art
-        "samodostal/image.nvim",
 
         -- Visualize tabular data files
         "VidocqH/data-viewer.nvim",
@@ -110,7 +108,7 @@ M.setup = function()
         -- Highlight symbol under cursor, automatically
         "RRethy/vim-illuminate",
 
-        -- Improves the Neovim built-in LSP experience. We're using it for winbar
+        -- Improves the neovim built-in LSP experience. We're using it for winbar
         -- breadcrumbs.
         "nvimdev/lspsaga.nvim",
 
@@ -133,14 +131,8 @@ M.setup = function()
         -- allow selecting inside/outside tree-sitter objects, like functions
         'nvim-treesitter/nvim-treesitter-textobjects',
 
-        -- swap treesitter objects --
-        "Wansmer/sibling-swap.nvim",
-
         -- draw ascii diagrams
         'jbyuki/venn.nvim',
-
-        -- help for writing unicode characters
-        "chrisbra/unicode.vim",
 
         -- powertool for editing markdown tables
         "Myzel394/easytables.nvim",
@@ -150,18 +142,6 @@ M.setup = function()
 
         -- Eval code snippets
         "jubnzv/mdeval.nvim",
-
-        ----------
-        -- Notes
-        ----------
-        -- LaTeX syntax & autocompiling
-        { "lervag/vimtex" },
-
-        -- Render markdown notes in a side browser.
-        { "iamcco/markdown-preview.nvim",    build = function() vim.fn["mkdp#util#install"]() end },
-
-        -- Interact with LLMs
-        { "David-Kunz/gen.nvim" },
     }
 end
 

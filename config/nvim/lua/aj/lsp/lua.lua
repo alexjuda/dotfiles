@@ -9,7 +9,7 @@ M.setup = function()
         settings = {
             Lua = {
                 runtime = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of neovim)
                     version = 'LuaJIT',
                 },
                 diagnostics = {
@@ -17,7 +17,7 @@ M.setup = function()
                     globals = { 'vim' },
                 },
                 workspace = {
-                    -- Make the server aware of Neovim runtime files
+                    -- Make the server aware of neovim runtime files
                     library = vim.api.nvim_get_runtime_file("", true),
                 },
                 -- Do not send telemetry data containing a randomized but unique identifier

@@ -28,11 +28,6 @@ local setup_all = function()
     }
 
 
-    ----------------
-    -- image.nvim --
-    ----------------
-    require('image').setup {}
-
     ------------
     -- Colors --
     ------------
@@ -160,15 +155,9 @@ local setup_all = function()
     -- Prevent folding everything whenever opening a code file.
     vim.opt.foldlevel = 99
 
-    --------------------------
-    -- TreeSitter Additions --
-    --------------------------
-    require('sibling-swap').setup {}
-
     --------------------
     -- Autocompletion --
     --------------------
-
     local cmp = require("cmp")
 
     -- setup nvim-cmp
@@ -194,16 +183,6 @@ local setup_all = function()
             }),
         },
     })
-
-
-    -- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-    -- cmp.setup.cmdline('/', {
-    --     mapping = cmp.mapping.preset.cmdline(),
-    --     sources = {
-    --         { name = 'buffer' }
-    --     }
-    -- })
-
 
     ---------------
     -- Telescope --
@@ -295,17 +274,14 @@ local setup_all = function()
     ---------------------
     -- Show signatures --
     ---------------------
-
     require("lsp_signature").setup {
         -- show signature in the middle of multi-line invocations
         always_trigger = true,
     }
 
-
     ---------------------
     -- Symbols sidebar --
     ---------------------
-
     require("aerial").setup {}
 
 
@@ -355,7 +331,6 @@ local setup_all = function()
     -----------------
     -- Git goodies --
     -----------------
-
     require("gitsigns").setup {}
 
 
@@ -368,31 +343,15 @@ local setup_all = function()
     -----------
     -- Jumps --
     -----------
-
     require("hop").setup {}
 
     -----------
     -- Notes --
     -----------
-
     require("aj.vapor").setup {
         scratch_dir = "~/Documents/notes-synced/daily",
         todo_dir = "~/Documents/notes-synced/todo",
     }
-
-    -------------------
-    -- Eval snippets --
-    -------------------
-    require("mdeval").setup {
-        -- Workaround for errors like "bad argument #1 to 'pairs'"
-        eval_options = {},
-    }
-
-    ---------------------
-    -- Interact with LLMs
-    ---------------------
-
-    require('gen').setup {}
 
     ------------------
     -- Autocommands --
@@ -401,11 +360,6 @@ local setup_all = function()
     ------------------------------
     -- Filetype-specific config --
     ------------------------------
-
-    -- Python --
-    ------------
-    -- # defaults to "shiftwidth() * 2"
-    -- vim.api.nvim_command("let g:pyindent_open_paren = 'shiftwidth()'")
 
     -- Markdown --
     --------------
