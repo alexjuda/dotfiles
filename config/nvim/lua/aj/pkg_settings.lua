@@ -63,6 +63,7 @@ local setup_all = function()
 
         ensure_installed = {
             "bash",
+            "csv",
             "cpp",
             "diff",
             "dockerfile",
@@ -73,6 +74,7 @@ local setup_all = function()
             "javascript",
             "json",
             "lua",
+            "make",
             "markdown",
             "markdown_inline",
             "mermaid",
