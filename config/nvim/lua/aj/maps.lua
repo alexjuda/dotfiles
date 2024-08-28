@@ -39,7 +39,7 @@ M.setup = function()
 
     -- Leaders
     ------------
-    vim.g.mapleader = " "  -- space as the leader key
+    vim.g.mapleader = " "      -- space as the leader key
     vim.g.maplocalleader = "," -- comma as the local leader key
 
 
@@ -50,16 +50,16 @@ M.setup = function()
     map("n", "<leader>bn", ":bnext<cr>", opts)
     map("n", "<leader>bd", ":bp|bd #<cr>", opts) -- close a buffer, but not a window
     map("n", "<leader>bD", ":%bd|e#|bd#<cr>", opts)
-    map("n", "<leader><TAB>", "<C-^>", opts) -- switch to last buffer
-    map("n", "<C-PageUp>", ":bprev<cr>", opts) -- linux-like prev tab
+    map("n", "<leader><TAB>", "<C-^>", opts)     -- switch to last buffer
+    map("n", "<C-PageUp>", ":bprev<cr>", opts)   -- linux-like prev tab
     map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
 
 
     -- Project Sidebar
     ------------------
     map("n", "<leader>pb", ":Neotree buffers<CR>", opts) -- show buffers in the sidebar
-    map("n", "<leader>po", ":Neotree reveal<CR>", opts) -- show current file in the project tree
-    map("n", "<leader>pt", ":Neotree toggle<CR>", opts) -- open/close project tree
+    map("n", "<leader>po", ":Neotree reveal<CR>", opts)  -- show current file in the project tree
+    map("n", "<leader>pt", ":Neotree toggle<CR>", opts)  -- open/close project tree
     map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "find file by name")
 
 
@@ -95,7 +95,7 @@ M.setup = function()
         os.execute("xdg-open " .. dir_path)
     end
 
-    map("n", "<leader>fr", function() telescope.oldfiles() end, opts, "recent files")
+    map("n", "<leader>fr", function() telescope.oldfiles({ only_cwd = true }) end, opts, "recent files in cwd")
     map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
     map("n", "<leader>fy", function() yank_file_path() end, opts, "copy file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, opts, "open dir in finder")
