@@ -24,7 +24,7 @@ local setup_pyright = function()
         on_attach = function(client, buf_n)
             common.shared_on_attach(client, buf_n)
         end,
-        capabilities = common.shared_capabilities,
+        capabilities = common.make_shared_capabilities(),
     }
 end
 
@@ -48,7 +48,7 @@ local setup_pylsp = function()
             -- Workaround for duplicated "new symbol name" prompts.
             client.server_capabilities.renameProvider = false
         end,
-        capabilities = common.shared_capabilities,
+        capabilities = common.make_shared_capabilities(),
     }
 end
 

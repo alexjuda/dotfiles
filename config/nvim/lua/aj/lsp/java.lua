@@ -22,7 +22,7 @@ M.setup = function()
             vim.env.HOME .. "/.local/share/aj-lsp/jdtls/" .. (is_mac() and "config_mac" or "config_linux"),
         },
         on_attach = common.shared_on_attach,
-        capabilities = common.shared_capabilities,
+        capabilities = common.make_shared_capabilities(),
     }
 end
 

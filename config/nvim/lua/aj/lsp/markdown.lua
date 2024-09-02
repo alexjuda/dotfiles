@@ -10,7 +10,7 @@ M.setup = function()
 
     require("lspconfig").marksman.setup {
         on_attach = common.shared_on_attach,
-        capabilities = common.shared_capabilities,
+        capabilities = common.make_shared_capabilities(),
     }
 end
 

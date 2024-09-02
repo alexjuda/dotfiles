@@ -10,7 +10,7 @@ M.setup = function()
     require("lspconfig").tsserver.setup {
         cmd = { "npx", "typescript-language-server", "--stdio", },
         on_attach = common.shared_on_attach,
-        capabilities = common.shared_capabilities,
+        capabilities = common.make_shared_capabilities(),
     }
 end
 
