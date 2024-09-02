@@ -23,6 +23,9 @@ local setup_pyright = function()
         },
         on_attach = function(client, buf_n)
             common.shared_on_attach(client, buf_n)
+
+            -- print("pyright server caps")
+            -- print(vim.inspect(client.server_capabilities))
         end,
         capabilities = common.make_shared_capabilities(),
     }
@@ -39,14 +42,16 @@ local setup_pylsp = function()
         on_attach = function(client, buf_n)
             common.shared_on_attach(client, buf_n)
 
-            -- Disable capabilities already covered by pyright.
-            -- Based on https://neovim.discourse.group/t/how-to-config-multiple-lsp-for-document-hover/3093/2
+            -- print("pylsp server caps")
+            -- print(vim.inspect(client.server_capabilities))
             --
-            -- Seems to work around buggy autocomplete behavior, where the symbol disappears after hitting <CR>.
-            client.server_capabilities.hoverProvider = false
+            -- Already handled by pyright
             client.server_capabilities.completionProvider = nil
-            -- Workaround for duplicated "new symbol name" prompts.
-            client.server_capabilities.renameProvider = false
+            client.server_capabilities.definitionProvider = nil
+            client.server_capabilities.hoverProvider = nil
+            client.server_capabilities.referencesProvider = nil
+            client.server_capabilities.renameProvider = nil
+            client.server_capabilities.signatureHelpProvider = nil
         end,
         capabilities = common.make_shared_capabilities(),
     }
