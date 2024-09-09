@@ -6,6 +6,8 @@ local M = {}
 M.setup = function()
     -- Requires `typescript` and `typescript-language-server` packages.
     -- If they're not installed locally, it will fetch them each time.
+    -- Anyway, installing:
+    -- npm install -g typescript typescript-language-server
 
     require("lspconfig").ts_ls.setup {
         cmd = { "npx", "typescript-language-server", "--stdio", },
