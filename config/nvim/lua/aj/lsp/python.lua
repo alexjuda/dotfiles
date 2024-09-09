@@ -42,6 +42,10 @@ local setup_pylsp = function()
         on_attach = function(client, buf_n)
             common.shared_on_attach(client, buf_n)
 
+            -- We're in a LSP connection callback.
+            -- The Language Server told us what functionalities it supports,
+            -- and it's 'client.server_capabilities'
+
             -- print("pylsp server caps")
             -- print(vim.inspect(client.server_capabilities))
             --
