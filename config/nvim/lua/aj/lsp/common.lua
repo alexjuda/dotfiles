@@ -73,8 +73,6 @@ M.shared_on_attach = function(client, buf_n)
 end
 
 
--- extend default client capabilities with what cmp can do
-M.shared_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 M.make_shared_capabilities = function()
     return require('cmp_nvim_lsp').default_capabilities()
