@@ -8,6 +8,7 @@ custom_aliases=(
 
     "gb:git branch"
     "gba:git branch --all"
+    "gbc:git branch --show-current"
     "gbd:git branch -d"
     "gbD:git branch -D"
     "gbDD:git branch | grep -v 'dev' | grep -v 'main' | xargs git branch -D"
