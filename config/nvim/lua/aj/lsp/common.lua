@@ -37,6 +37,8 @@ local set_lsp_keymaps = function(client, buf_n)
     buf_map_with_name("n", "gi", function() telescope.lsp_implementations() end, "implementation")
     buf_map_with_name("n", "gr", function() telescope.lsp_references() end, "references")
     buf_map_with_name("n", "gt", function() telescope.lsp_type_definitions() end, "type definition")
+    buf_map_with_name("n", "gci", function() telescope.lsp_incoming_calls() end, "incoming calls")
+    buf_map_with_name("n", "gco", function() telescope.lsp_outgoing_calls() end, "outgoing calls")
 
     buf_map_with_name("n", "<localleader>lr", function() vim.lsp.buf.rename() end, "rename")
     buf_map_with_name("n", "<localleader>la", function() vim.lsp.buf.code_action() end, "code action")
