@@ -188,6 +188,8 @@ M.setup = function()
             bufmap(0, "n", "H", "<C-v>h:VBox<cr>", opts)
             -- draw a box by pressing "f" with visual selection
             bufmap(0, "v", "f", ":VBox<cr>", opts)
+            -- when on a symbol, draw a box around the symbol
+            bufmap(0, "n", "<localleader>f", "Bkh<C-V>jEjl:VBox<cr>", opts)
         else
             vim.cmd [[setlocal ve=]]
             vim.cmd [[mapclear <buffer>]]
