@@ -165,6 +165,7 @@ M.setup = function()
     -- openingh
     map("n", "<Leader>gr", ":OpenInGHRepo <CR>", opts)
     map("n", "<Leader>gf", ":OpenInGHFile <CR>", opts)
+    map("n", "<Leader>gl", ":OpenInGHFileLines <CR>", opts)
 
     -- Root
     ---------
