@@ -31,11 +31,6 @@
     repo: https://github.com/savq/paq-nvim.git
     dest: ~/.local/share/nvim/site/pack/paqs/start/paq-nvim
 
-- name: clone paq
-  git:
-    repo: https://github.com/savq/paq-nvim.git
-    dest: ~/.local/share/nvim/site/pack/paqs/start/paq-nvim
-
 - name: make ltex dict dir
   ansible.builtin.file:
     path: ~/.local/share/lang-servers/ltex-ls-data
