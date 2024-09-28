@@ -32,11 +32,11 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 . "$CUSTOM_APPS/zsh-lazyload/zsh-lazyload.zsh"
 
 # direnv
-eval "$(direnv hook zsh)"
+command -v direnv && eval "$(direnv hook zsh)"
 
 # rye
-source "$HOME/.local/share/rye_home/env"
-
+# TODO: set up rye in ansible
+command -v rye && source "$HOME/.local/share/rye_home/env"
 
 # Enable tab completion customization. Used for aliased commands and completion
 # autocorrect.
@@ -58,7 +58,7 @@ select-word-style bash
 export EDITOR="nvim"
 
 # Enable kubectl command completions
-source <(kubectl completion zsh)
+command -v kubectl && source <(kubectl completion zsh)
 
 # Pyenv
 # Add the following commands as triggers for loading pyenv.
