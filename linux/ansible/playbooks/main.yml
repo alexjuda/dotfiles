@@ -34,3 +34,7 @@
   - name: k8s tasks
     ansible.builtin.include_tasks:
       file: kubernetes.yml
+
+  - name: node tasks
+    ansible.builtin.include_tasks:
+      file: node.yml

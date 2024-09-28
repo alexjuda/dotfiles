@@ -1,0 +1,25 @@
+- name: install node with dnf
+  ansible.builtin.dnf:
+    name:
+      - nodejs
+    state: present
+  become: true
+  tags: superuser
+
+- name: Install vscode-langservers-extracted
+  community.general.npm:
+    name: vscode-langservers-extracted
+    global: true
+    state: present
+
+- name: Install typescript
+  community.general.npm:
+    name: typescript
+    global: true
+    state: present
+
+- name: Install typescript-language-server
+  community.general.npm:
+    name: typescript-language-server
+    global: true
+    state: present
