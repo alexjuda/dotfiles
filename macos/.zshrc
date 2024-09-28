@@ -37,12 +37,6 @@ eval "$(direnv hook zsh)"
 # rye
 source "$HOME/.local/share/rye_home/env"
 
-# Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-# Add the following commands as triggers for loading nvm.
-lazyload nvm -- '. "$NVM_DIR/nvm.sh"'
-lazyload node -- '. "$NVM_DIR/nvm.sh"'
-lazyload npm -- '. "$NVM_DIR/nvm.sh"'
 
 # Enable tab completion customization. Used for aliased commands and completion
 # autocorrect.
