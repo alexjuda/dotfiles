@@ -30,3 +30,7 @@
   - name: 1password tasks
     ansible.builtin.include_tasks:
       file: 1password.yml
+
+  - name: k8s tasks
+    ansible.builtin.include_tasks:
+      file: kubernetes.yml
