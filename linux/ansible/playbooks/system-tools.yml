@@ -46,6 +46,7 @@
       - kitty
       - lazygit
       - neovim
+      - openssl
       - pipx
       - python3-devel
       - ripgrep
