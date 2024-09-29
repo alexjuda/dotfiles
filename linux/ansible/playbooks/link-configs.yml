@@ -57,3 +57,8 @@
   git:
     repo: https://github.com/qoomon/zsh-lazyload.git
     dest: ~/.local/share/aj-apps/zsh-lazyload
+
+- name: clone notes
+  git:
+    repo: git@github.com:alexjuda/notes-synced.git
+    dest: ~/notes-synced
