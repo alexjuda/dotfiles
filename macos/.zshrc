@@ -35,8 +35,8 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 [ -x "$(command -v direnv)" ] && eval "$(direnv hook zsh)"
 
 # rye
-# TODO: set up rye in ansible
-[ -x "$(command -v rye)" ] && source "$HOME/.local/share/rye_home/env"
+export RYE_HOME="$HOME/.local/share/rye_home"
+[[ -f "$HOME/.local/share/rye_home/env" ]] && source "$HOME/.local/share/rye_home/env"
 
 # node
 export PATH="$HOME/.nodenv/bin:$PATH"
