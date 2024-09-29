@@ -29,23 +29,12 @@
   ansible.builtin.command:
     cmd: ~/.nodenv/bin/nodenv global 22.9.0
 
-- name: Install vscode-langservers-extracted
-  community.general.npm:
-    executable: ~/.nodenv/versions/22.9.0/bin/npm
-    name: vscode-langservers-extracted
-    global: true
-    state: present
+- name: Install lang servers
+  ansible.builtin.shell:
+    cmd: |
+      export PATH="$HOME/.nodenv/bin:$PATH"
+      eval "$(nodenv init - zsh)"
 
-- name: Install typescript
-  community.general.npm:
-    executable: ~/.nodenv/versions/22.9.0/bin/npm
-    name: typescript
-    global: true
-    state: present
-
-- name: Install typescript-language-server
-  community.general.npm:
-    executable: ~/.nodenv/versions/22.9.0/bin/npm
-    name: typescript-language-server
-    global: true
-    state: present
+      npm install -g vscode-langservers-extracted
+      npm install -g typescript
+      npm install -g typescript-language-server
