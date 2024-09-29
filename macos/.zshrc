@@ -38,6 +38,11 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 # TODO: set up rye in ansible
 [ -x "$(command -v rye)" ] && source "$HOME/.local/share/rye_home/env"
 
+# node
+export PATH="$HOME/.nodenv/bin:$PATH"
+# if this starts making terminals slow I can move it away to be lazy-loaded
+[ -x "$(command -v nodenv)" ] && eval "$(nodenv init -)"
+
 # Enable tab completion customization. Used for aliased commands and completion
 # autocorrect.
 autoload -Uz compinit
