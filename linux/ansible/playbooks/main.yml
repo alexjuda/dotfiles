@@ -38,3 +38,7 @@
   - name: node tasks
     ansible.builtin.include_tasks:
       file: node.yml
+
+  - name: gh releases tasks
+    ansible.builtin.include_tasks:
+      file: gh-releases.yml

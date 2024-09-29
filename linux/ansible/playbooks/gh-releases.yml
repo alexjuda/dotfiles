@@ -1,0 +1,15 @@
+- name: Install eget
+  ansible.builtin.shell:
+    cmd: |
+      DOWNLOAD_DIR=$(mktemp -d --suffix="eget")
+      mkdir -p ${DOWNLOAD_DIR}
+      cd ${DOWNLOAD_DIR}
+
+      gh release download --repo zyedidia/eget --pattern "*linux_amd64*"
+      tar -xzf eget-*linux_amd64.tar.gz
+      cp eget-*linux_amd64/eget ~/.local/bin/
+
+      cd ~
+      rm -r ${DOWNLOAD_DIR}
+
+    creates: ~/.local/bin/eget
