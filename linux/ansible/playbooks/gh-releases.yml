@@ -21,7 +21,7 @@
 
 - name: Install tools from GH
   ansible.builtin.command:
-    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins"
+    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl"
   loop:
     - artempyanykh/marksman
     - LuaLS/lua-language-server
