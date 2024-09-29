@@ -1,3 +1,8 @@
+- name: Create ~/.local/share/aj-eget-bins
+  ansible.builtin.file:
+    path: ~/.local/share/aj-eget-bins
+    state: directory
+
 - name: Install eget
   ansible.builtin.shell:
     cmd: |
@@ -7,9 +12,13 @@
 
       gh release download --repo zyedidia/eget --pattern "*linux_amd64*"
       tar -xzf eget-*linux_amd64.tar.gz
-      cp eget-*linux_amd64/eget ~/.local/bin/
+      cp eget-*linux_amd64/eget ~/.local/share/aj-eget-bins/eget
 
       cd ~
       rm -r ${DOWNLOAD_DIR}
 
-    creates: ~/.local/bin/eget
+    creates: ~/.local/share/aj-eget-bins/eget
+
+- name: Install marksman
+  ansible.builtin.command:
+    cmd: ~/.local/share/aj-eget-bins/eget artempyanykh/marksman --to ~/.local/share/aj-eget-bins

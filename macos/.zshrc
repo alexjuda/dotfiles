@@ -25,7 +25,7 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
 fi
 
 # Local paths
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/share/aj-eget-bins:$PATH"
 
 # zsh config lazy loader. Helps speeding up the terminal.
 CUSTOM_APPS="$HOME/.local/share/aj-apps"
