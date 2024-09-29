@@ -19,6 +19,10 @@
 
     creates: ~/.local/share/aj-eget-bins/eget
 
-- name: Install marksman
+- name: Install tools from GH
   ansible.builtin.command:
-    cmd: ~/.local/share/aj-eget-bins/eget artempyanykh/marksman --to ~/.local/share/aj-eget-bins
+    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins"
+  loop:
+    - artempyanykh/marksman
+    - LuaLS/lua-language-server
+    - zk-org/zk
