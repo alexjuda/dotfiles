@@ -19,7 +19,7 @@ PROMPT='%(?.%F{blue}⏺.%F{red}⏺)%f %2~ '
 RPROMPT='%F{8}⏱ %*%f'
 
 # Homebrew paths
-if [[ -f /opt/homebrew/bin/brew ]]; then 
+if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
@@ -61,6 +61,7 @@ export EDITOR="nvim"
 [ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
 
 # Pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
 # Add the following commands as triggers for loading pyenv.
 lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'
 # 'python' and 'python3' also depend on running 'pyenv.sh'. However, binding
