@@ -3,9 +3,16 @@
     repo: https://github.com/nodenv/nodenv.git
     dest: ~/.nodenv
 
-- name: build native extension
+- name: build native extension (configure)
   ansible.builtin.command:
-    cmd: cd ~/.nodenv && src/configure && make -C src
+    cmd: src/configure
+    chdir: ~/.nodenv
+    creates: ~/.nodenv/src/Makefile
+
+- name: build native extension (make)
+  ansible.builtin.command:
+    cmd: make -C src
+    chdir: ~/.nodenv
     creates: ~/.nodenv/libexec/nodenv-realpath.dylib
 
 - name: install node-build with git
@@ -15,8 +22,12 @@
 
 - name: install node
   ansible.builtin.command:
-    cmd: ~/.nodenv/bin/nodenv install 22.9.0 && ~/.nodenv/bin/nodenv global 22.9.0
+    cmd: ~/.nodenv/bin/nodenv install 22.9.0
     creates: ~/.nodenv/versions/22.9.0
+
+- name: set global node version
+  ansible.builtin.command:
+    cmd: ~/.nodenv/bin/nodenv global 22.9.0
 
 - name: Install vscode-langservers-extracted
   community.general.npm:
