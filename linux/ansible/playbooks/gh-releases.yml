@@ -24,5 +24,6 @@
     cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl"
   loop:
     - artempyanykh/marksman
+    - astral-sh/rye
     - LuaLS/lua-language-server
     - zk-org/zk
