@@ -1,25 +1,40 @@
-- name: install node with dnf
-  ansible.builtin.dnf:
-    name:
-      - nodejs
-    state: present
-  become: true
-  tags: superuser
+- name: install nodenv with git
+  ansible.builtin.git:
+    repo: https://github.com/nodenv/nodenv.git
+    dest: ~/.nodenv
+
+- name: build native extension
+  ansible.builtin.command:
+    cmd: cd ~/.nodenv && src/configure && make -C src
+    creates: ~/.nodenv/libexec/nodenv-realpath.dylib
+
+- name: install node-build with git
+  ansible.builtin.git:
+    repo: https://github.com/nodenv/node-build.git
+    dest: ~/.nodenv/plugins/node-build
+
+- name: install node
+  ansible.builtin.command:
+    cmd: ~/.nodenv/bin/nodenv install 22.9.0 && ~/.nodenv/bin/nodenv global 22.9.0
+    creates: ~/.nodenv/versions/22.9.0
 
 - name: Install vscode-langservers-extracted
   community.general.npm:
+    executable: ~/.nodenv/versions/22.9.0/bin/npm
     name: vscode-langservers-extracted
     global: true
     state: present
 
 - name: Install typescript
   community.general.npm:
+    executable: ~/.nodenv/versions/22.9.0/bin/npm
     name: typescript
     global: true
     state: present
 
 - name: Install typescript-language-server
   community.general.npm:
+    executable: ~/.nodenv/versions/22.9.0/bin/npm
     name: typescript-language-server
     global: true
     state: present
