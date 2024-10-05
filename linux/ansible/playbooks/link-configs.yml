@@ -61,4 +61,4 @@
 - name: clone notes
   git:
     repo: git@github.com:alexjuda/notes-synced.git
-    dest: ~/notes-synced
+    dest: ~/Documents/notes-synced
