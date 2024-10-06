@@ -39,6 +39,7 @@
       - clang-tools-extra
       - direnv
       - gcc-c++
+      - git-crypt
       - gh
       - glances
       - htop
