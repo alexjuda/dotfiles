@@ -44,6 +44,8 @@ custom_aliases=(
     "gp:git push"
     'gpsup:git push --set-upstream origin $(git branch --show-current)'
 
+    "gpl:git pull --ff-only"
+
     "gr:git remote"
     "grb:git rebase"
     "grbc:git rebase --continue"
