@@ -74,3 +74,7 @@
   community.general.pipx:
     name: "ansible"
     install_deps: true
+
+- name: install watson
+  community.general.pipx:
+    name: "td-watson"
