@@ -12,6 +12,7 @@ local setup_all_lang_servers = function()
     require("aj.lsp.python").setup()
     require("aj.lsp.rst").setup()
     require("aj.lsp.rust").setup()
+    require("aj.lsp.yaml").setup()
 end
 
 
