@@ -25,5 +25,6 @@
   loop:
     - artempyanykh/marksman
     - astral-sh/rye
+    - google/yamlfmt
     - LuaLS/lua-language-server
     - zk-org/zk
