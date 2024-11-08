@@ -26,5 +26,6 @@
     - artempyanykh/marksman
     - astral-sh/rye
     - google/yamlfmt
+    - jesseduffield/lazydocker
     - LuaLS/lua-language-server
     - zk-org/zk
