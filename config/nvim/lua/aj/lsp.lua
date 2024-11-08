@@ -3,6 +3,7 @@ local M = {}
 
 local setup_all_lang_servers = function()
     require("aj.lsp.cpp").setup()
+    require("aj.lsp.helm").setup()
     require("aj.lsp.html").setup()
     require("aj.lsp.java").setup()
     require("aj.lsp.js").setup()
