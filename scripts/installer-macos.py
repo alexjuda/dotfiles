@@ -61,7 +61,6 @@ def main():
     groups.append(
         Runner.Group(
             [
-                "brew tap homebrew/cask-fonts",
                 "brew install font-jetbrains-mono",
                 f"mkdir -p ~/Desktop/fonts && cd ~/Desktop/fonts && ghrel -p {font_dir}.zip ryanoasis/nerd-fonts",  # noqa: E501
                 f"unzip ~/Desktop/fonts/{font_dir}.zip -d ~/Desktop/fonts/{font_dir}",
@@ -74,12 +73,20 @@ def main():
     groups.append(
         Runner.Group(
             [
+                "brew install --cask kitty",
+                "brew install --cask spotify",
+                "brew install eget",
                 "brew install fd",
-                "brew install ripgrep",
                 "brew install gh",
-                "brew install lazygit",
-                "brew install htop",
                 "brew install glances",
+                "brew install htop",
+                "brew install lazydocker",
+                "brew install lazygit",
+                "brew install pipx",
+                "brew install ripgrep",
+                "brew install rye",
+                "brew install uv",
+                "brew install zk",
             ],
             name="cli-flair",
         )
