@@ -41,7 +41,7 @@ export RYE_HOME="$HOME/.local/share/rye_home"
 # node
 export PATH="$HOME/.nodenv/bin:$PATH"
 # if this starts making terminals slow I can move it away to be lazy-loaded
-[ -x "$(command -v nodenv)" ] && eval "$(nodenv init -)"
+[ -x "$(command -v nodenv)" ] && eval "$(nodenv init - zsh)"
 
 # Enable tab completion customization. Used for aliased commands and completion
 # autocorrect.
