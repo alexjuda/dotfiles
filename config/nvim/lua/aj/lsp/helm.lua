@@ -8,7 +8,7 @@ M.setup = function()
 
     require("lspconfig").helm_ls.setup {
         on_attach = common.shared_on_attach,
-        cmd = { "helm-ls", "serve", },
+        cmd = { "helm_ls", "serve", },
     }
 end
 
