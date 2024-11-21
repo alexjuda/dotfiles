@@ -141,6 +141,10 @@ M.setup = function()
         -- powertool for editing markdown tables
         "Myzel394/easytables.nvim",
 
+        -- LLMs
+        ------------
+        "github/copilot.vim",
+
         -- Lang-specific
         ----------------
 
