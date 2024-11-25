@@ -75,7 +75,7 @@ lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'
 
 # Custom utils
 # TODO: move to autoloaded files
-function venv-reset() {
+function venv-reset-py() {
     local venv_path=".venv"
     [[ -s $venv_path ]] && echo "removing $venv_path..." && rm -r $venv_path
     echo "creating new venv at $venv_path..."
@@ -84,7 +84,7 @@ function venv-reset() {
     pip install --upgrade pip wheel
 }
 
-function venv-reset-uv() {
+function venv-reset() {
     local venv_path=".venv"
     [[ -s $venv_path ]] && echo "removing $venv_path..." && rm -r $venv_path
     echo "creating new venv at $venv_path..."
