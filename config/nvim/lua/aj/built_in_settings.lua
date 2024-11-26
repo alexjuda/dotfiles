@@ -107,6 +107,14 @@ M.setup = function()
 
     -- Hide backticks, links, and fenced blocks in markdown.
     vim.opt.conceallevel = 2
+
+    -- Enable comments in .sql files. Lua version of
+    local ft_sql = vim.api.nvim_create_namespace("ft_sql")
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "sql",
+        command = "setlocal commentstring=--\\ %s",
+        group = ft_sql,
+    })
 end
 
 
