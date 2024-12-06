@@ -143,7 +143,7 @@ M.setup = function()
 
         -- LLMs
         ------------
-        "github/copilot.vim",
+        -- "github/copilot.vim",
 
         -- Lang-specific
         ----------------
