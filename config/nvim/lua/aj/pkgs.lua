@@ -148,6 +148,9 @@ M.setup = function()
         -- Lang-specific
         ----------------
 
+        -- Enables files like foo.py.jinja to be syntax highlighted as Python
+        "https://gitlab.com/HiPhish/jinja.vim.git",
+
         -- Eval code snippets
         "jubnzv/mdeval.nvim",
     }
