@@ -123,9 +123,6 @@ M.setup = function()
 
         -- Editing
         ------------
-        -- trigger comments with `gcc`
-        'tpope/vim-commentary',
-
         -- wrap selected block in chars
         'machakann/vim-sandwich',
 
