@@ -1,5 +1,5 @@
 - name: upgrade DNF packages
-  dnf:
+  ansible.builtin.dnf:
     name: "*"
     state: latest
   become: true

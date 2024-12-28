@@ -12,7 +12,9 @@ Steps to take manually before:
     3. Set a sensible machine name in Gnome Settings.
     4. Enable SSH.
     5. Enable file sharing.
-    6. Reboot.
+    6. Install `sudo dnf install python-libdnf5`.
+        * Required on Fedora 41+. [More info](https://github.com/ansible/ansible/issues/84206).
+    7. Reboot.
 
 2. On the controller:
     1. Upload the target public key's to GitHub.
