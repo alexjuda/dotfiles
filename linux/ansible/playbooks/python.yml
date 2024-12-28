@@ -73,6 +73,7 @@
 - name: install ansible
   community.general.pipx:
     name: "ansible"
+    # Includes executables of dependent packages.
     install_deps: true
 
 - name: install watson
