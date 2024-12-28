@@ -29,6 +29,12 @@
   become: true
   tags: superuser
 
+- name: enable ghostty's copr
+  community.general.copr:
+    name: pgdev/ghostty
+  become: true
+  tags: superuser
+
 - name: install system packages
   ansible.builtin.dnf:
     name:
@@ -41,6 +47,7 @@
       - gcc-c++
       - git-crypt
       - gh
+      - ghostty
       - glances
       - htop
       - jetbrains-mono-fonts

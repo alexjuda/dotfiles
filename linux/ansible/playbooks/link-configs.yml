@@ -23,6 +23,12 @@
     dest: ~/.config/nvim
     state: link
 
+- name: link ghostty config
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/config/ghostty
+    dest: ~/.config/ghostty
+    state: link
+
 # Please run: nvim -c ":PaqSync" manually
 #
 # TODO: fix telescope git HEAD
