@@ -3,6 +3,7 @@ nop:
 	@echo Hello, world!
 
 # Required
+# Example: HOST="localhost"
 HOST =
 
 # Optional
