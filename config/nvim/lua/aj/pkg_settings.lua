@@ -240,7 +240,7 @@ local setup_all = function()
                     "%n",
 
                     separator = { left = "", right = "" },
-                }
+                },
             },
             lualine_b = {
                 {
@@ -266,6 +266,10 @@ local setup_all = function()
                 },
                 "fileformat",
                 "filetype",
+            },
+            lualine_y = {
+                "searchcount",
+                "progress",
             },
             lualine_z = {
                 -- Override default separators.

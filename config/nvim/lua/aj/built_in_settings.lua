@@ -89,9 +89,6 @@ M.setup = function()
     vim.opt.ignorecase = true
     vim.opt.smartcase = true
 
-    -- Don't highlight the last search.
-    vim.opt.hlsearch = false
-
     -- Show backlighted column separator on the right.
     vim.opt.colorcolumn = "80"
 
