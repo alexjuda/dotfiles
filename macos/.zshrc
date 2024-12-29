@@ -13,11 +13,6 @@ SAVEHIST=10000
 # session is closed.
 setopt SHARE_HISTORY
 
-# Terminal prompt
-# Based on https://sureshjoshi.com/development/zsh-prompts-that-dont-suck
-PROMPT='%(?.%F{blue}⏺.%F{red}⏺)%f %2~ '
-RPROMPT='%F{8}⏱ %*%f'
-
 # Homebrew paths
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -42,6 +37,9 @@ export RYE_HOME="$HOME/.local/share/rye_home"
 export PATH="$HOME/.nodenv/bin:$PATH"
 # if this starts making terminals slow I can move it away to be lazy-loaded
 [ -x "$(command -v nodenv)" ] && eval "$(nodenv init - zsh)"
+
+# Terminal prompt
+[ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 
 # Enable tab completion customization. Used for aliased commands and completion
 # autocorrect.

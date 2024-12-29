@@ -35,6 +35,12 @@
   become: true
   tags: superuser
 
+- name: enable starship's copr
+  community.general.copr:
+    name: atim/starship
+  become: true
+  tags: superuser
+
 - name: install system packages
   ansible.builtin.dnf:
     name:
@@ -57,6 +63,7 @@
       - python3-devel
       - rclone
       - ripgrep
+      - starship
       - xclip
       - zsh
     state: present
