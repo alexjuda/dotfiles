@@ -272,9 +272,14 @@ local setup_all = function()
                 "progress",
             },
             lualine_z = {
-                -- Override default separators.
+                {
+                    "selectioncount",
+                    -- Override default separators.
+                    separator = { left = "", right = "" },
+                },
                 {
                     "location",
+                    -- Override default separators.
                     separator = { left = "", right = "" },
                 },
             }
