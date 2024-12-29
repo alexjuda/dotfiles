@@ -19,11 +19,14 @@ local setup_all = function()
     -------------------
     require("zen-mode").setup {
         window = {
-            -- Use just a little over the standard 80 line char limit to acount for
-            -- the line numbers.
-            width = 90,
-            -- We can also use a fraction of the outer window size.
+            -- Use just a little over the standard 80 line char limit to account
+            -- for the line numbers. We can also use a fraction of the outer
+            -- window size.
             -- width = 0.85,
+            width = 90,
+            -- Don't shade the backgrop of the Zen window.
+            -- backdrop = 0.95,
+            backdrop = 1.0
         },
     }
 
