@@ -1,1 +1,4 @@
 theme = dark:catppuccin-frappe,light:catppuccin-latte
+
+keybind = ctrl+shift+[=goto_split:left
+keybind = ctrl+shift+]=goto_split:right
