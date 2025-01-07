@@ -150,6 +150,9 @@ M.setup = function()
 
         -- Eval code snippets
         "jubnzv/mdeval.nvim",
+
+        -- Inline markdown rendering, as much as it's possible in a TUI
+        "MeanderingProgrammer/render-markdown.nvim",
     }
 end
 
