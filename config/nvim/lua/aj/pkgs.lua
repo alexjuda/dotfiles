@@ -140,7 +140,7 @@ M.setup = function()
 
         -- LLMs
         ------------
-        -- "github/copilot.vim",
+        "zbirenbaum/copilot.lua",
 
         -- Lang-specific
         ----------------

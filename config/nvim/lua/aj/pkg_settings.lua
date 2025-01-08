@@ -165,6 +165,20 @@ local setup_all = function()
     -- Prevent folding everything whenever opening a code file.
     vim.opt.foldlevel = 99
 
+    ----------
+    -- LLMs --
+    ----------
+    -- See https://github.com/zbirenbaum/copilot.lua?tab=readme-ov-file#setup-and-configuration for keybindings.
+    require('copilot').setup({
+        suggestion = {
+            auto_trigger = true,
+        },
+        filetypes = {
+            gitcommit = true,
+            yaml = true,
+        },
+    })
+
     --------------------
     -- Autocompletion --
     --------------------
