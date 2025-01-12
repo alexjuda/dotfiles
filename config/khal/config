@@ -1,8 +1,8 @@
 [calendars]
 
 [[private]]
-path = /home/alex/.local/share/vdirsyncer/aj_gcal_local
-type = calendar
+path = /home/alex/.local/share/vdirsyncer/aj_gcal_local/*
+type = discover
 
 [locale]
 timeformat = %H:%M
