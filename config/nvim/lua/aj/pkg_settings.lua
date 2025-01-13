@@ -385,6 +385,11 @@ local setup_all = function()
     -----------------------------------
     require("illuminate").configure {}
 
+    ----------------------------------
+    -- Show animations when yanking --
+    ----------------------------------
+    require("tiny-glimmer").setup {}
+
 
     -----------
     -- Jumps --
