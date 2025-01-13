@@ -369,7 +369,16 @@ local setup_all = function()
     ---------------------
     -- Highlight TODOs --
     ---------------------
-    require("todo-comments").setup {}
+    require("todo-comments").setup {
+        highlight = {
+            pattern = {
+                 -- example: 'TODO: abc'
+                [[.*<(KEYWORDS)\s*:]],
+                 -- example: 'TODO (JIRA-123): abc'
+                [[.*<((KEYWORDS)\s*\(.*\)*)\s*:]],
+            },
+        },
+    }
 
     -----------------------------------
     -- Highlight symbol under cursor --
