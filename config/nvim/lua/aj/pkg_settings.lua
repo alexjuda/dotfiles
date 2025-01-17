@@ -223,6 +223,12 @@ local setup_all = function()
         end
 
         require("lualine").setup {
+            options = {
+                disabled_filetypes = {
+                    -- dirbuf and neotree show `nil` in the winbar, which is annoying.
+                    -- winbar = { "dirbuf", "neo-tree", },
+                },
+            },
             sections = {
                 lualine_a = {
                     {
