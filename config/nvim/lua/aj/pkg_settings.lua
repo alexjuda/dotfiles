@@ -2,7 +2,7 @@ local M = {}
 
 
 local setup_all = function()
-    local which_key = function() 
+    local which_key = function()
         require("which-key").setup {}
     end
     which_key()
@@ -359,9 +359,9 @@ local setup_all = function()
         require("todo-comments").setup {
             highlight = {
                 pattern = {
-                     -- example: 'TODO: abc'
+                    -- example: 'TODO: abc'
                     [[.*<(KEYWORDS)\s*:]],
-                     -- example: 'TODO (JIRA-123): abc'
+                    -- example: 'TODO (JIRA-123): abc'
                     [[.*<((KEYWORDS)\s*\(.*\)*)\s*:]],
                 },
             },
