@@ -210,7 +210,12 @@ local setup_all = function()
         -- * https://www.reddit.com/r/neovim/comments/ojnie2/comment/h52uy92/?utm_source=share&utm_medium=web2x&context=3
         -- * https://github.com/hoob3rt/lualine.nvim#custom-components
         local function breadcrumbs()
-            return require("lspsaga.symbol.winbar").get_bar() or require("nvim-treesitter").statusline()
+            local lsp_winbar = require("lspsaga.symbol.winbar").get_bar()
+            local ts_winbar = require("nvim-treesitter").statusline()
+            -- The last bit is a workaround for `nil`. If a `nil` is returned
+            -- here, it shows up as "nil" on the winbar. However, there's also
+            -- `draw_empty = false` option, which hides the winbar altogether.
+            return lsp_winbar or ts_winbar or ""
         end
 
         -- Simulates how Emacs shows currently active minor modes on the status line.
@@ -223,12 +228,6 @@ local setup_all = function()
         end
 
         require("lualine").setup {
-            options = {
-                disabled_filetypes = {
-                    -- dirbuf and neotree show `nil` in the winbar, which is annoying.
-                    -- winbar = { "dirbuf", "neo-tree", },
-                },
-            },
             sections = {
                 lualine_a = {
                     {
