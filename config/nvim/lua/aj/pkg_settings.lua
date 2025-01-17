@@ -420,9 +420,9 @@ local setup_all = function()
     end
     cpp()
 
+    local set_indent_autocmd = "aj-set-indent-width"
     local yaml = function()
         -- Customize indent size
-        local set_indent_autocmd = "aj-set-indent-width"
         vim.api.nvim_create_augroup(set_indent_autocmd, { clear = true })
         vim.api.nvim_create_autocmd("Filetype", {
             group = set_indent_autocmd,
