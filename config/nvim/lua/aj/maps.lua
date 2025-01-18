@@ -210,6 +210,10 @@ M.setup = function()
     -- Kill LSP clients
     vim.api.nvim_set_keymap("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", opts)
 
+    -- Evaluating markdown code blocks --
+    vim.api.nvim_set_keymap("n", "<localleader>ee", ":MdEval<CR>", opts)
+    vim.api.nvim_set_keymap("n", "<localleader>ed", ":MdEvalClean<CR>", opts)
+
 
     -- Rebinds
     ----------
