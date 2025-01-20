@@ -30,8 +30,6 @@
     state: link
 
 # Please run: nvim -c ":PaqSync" manually
-#
-# TODO: fix telescope git HEAD
 - name: clone paq
   git:
     repo: https://github.com/savq/paq-nvim.git
