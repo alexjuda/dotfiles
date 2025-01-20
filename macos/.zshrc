@@ -29,10 +29,6 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 # direnv
 [ -x "$(command -v direnv)" ] && eval "$(direnv hook zsh)"
 
-# rye
-export RYE_HOME="$HOME/.local/share/rye_home"
-[[ -f "$HOME/.local/share/rye_home/env" ]] && source "$HOME/.local/share/rye_home/env"
-
 # node
 export PATH="$HOME/.nodenv/bin:$PATH"
 # if this starts making terminals slow I can move it away to be lazy-loaded
