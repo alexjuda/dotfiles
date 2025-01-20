@@ -59,7 +59,6 @@
       - lazygit
       - neovim
       - openssl
-      - pipx
       - python3-devel
       - rclone
       - ripgrep

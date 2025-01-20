@@ -23,10 +23,6 @@
     ansible.builtin.include_tasks:
       file: fonts.yml
 
-  - name: python tasks
-    ansible.builtin.include_tasks:
-      file: python.yml
-
   - name: 1password tasks
     ansible.builtin.include_tasks:
       file: 1password.yml
