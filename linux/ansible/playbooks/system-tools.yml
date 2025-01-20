@@ -63,6 +63,7 @@
       - rclone
       - ripgrep
       - starship
+      - uv
       - xclip
       - zsh
     state: present
