@@ -59,13 +59,6 @@ export EDITOR="nvim"
 # Enable kubectl command completions
 [ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
 
-# Pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-# Add the following commands as triggers for loading pyenv.
-lazyload pyenv -- '. $CUSTOM_APPS/pyenv.sh'
-# 'python' and 'python3' also depend on running 'pyenv.sh'. However, binding
-# the to run 'pyenv.sh' causes problems, probably due to cyclic dependency
-# between pyenv and python.
 
 # Custom utils
 # TODO: move to autoloaded files
