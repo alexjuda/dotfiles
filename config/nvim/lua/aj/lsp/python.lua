@@ -62,10 +62,22 @@ local setup_pylsp = function()
     }
 end
 
+local setup_ruff = function()
+    -- Requires `ruff-lsp` pip package.
+    require("lspconfig").pylsp.setup {
+        cmd = {"uvx", "ruff-lsp"},
+        on_attach = function(client, buf_n)
+            common.shared_on_attach(client, buf_n)
+        end,
+        capabilities = common.make_shared_capabilities(),
+    }
+end
+
 
 M.setup = function()
     setup_pylsp()
     setup_pyright()
+    setup_ruff()
 end
 
 
