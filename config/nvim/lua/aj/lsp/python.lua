@@ -14,7 +14,7 @@ end
 
 local setup_pyright = function()
     require("lspconfig").pyright.setup {
-        cmd = {"uvx", "--from", "pyright", "pyright-langserver", "--stdio"},
+        cmd = { "uvx", "--from", "pyright", "pyright-langserver", "--stdio" },
         settings = {
             python = {
                 -- Use the locally available python executable. Enables using pyright from an activated venv.
@@ -34,7 +34,12 @@ end
 local setup_pylsp = function()
     -- Requires `python-lsp-server` pip package.
     require("lspconfig").pylsp.setup {
-        cmd = {"uvx", "--from", "python-lsp-server", "pylsp"},
+        cmd = {
+            "uvx",
+            "--from", "python-lsp-server",
+            "--with", "pylsp-rope",
+            "pylsp",
+        },
         settings = {
             pylsp = {
                 configurationSources = { "flake8" },
