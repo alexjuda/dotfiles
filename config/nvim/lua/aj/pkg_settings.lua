@@ -40,13 +40,14 @@ local setup_all = function()
 
             ensure_installed = {
                 "bash",
-                "csv",
+                "beancount",
                 "cpp",
+                "csv",
                 "diff",
                 "dockerfile",
-                "gitattributes",
                 "git_config",
                 "git_rebase",
+                "gitattributes",
                 "gitcommit",
                 "gitignore",
                 "helm",
