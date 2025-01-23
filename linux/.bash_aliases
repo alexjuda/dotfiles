@@ -40,6 +40,7 @@ custom_aliases=(
     "gloga:git log --oneline --decorate --graph --all"
 
     "gm:git merge"
+    "gmff:git merge --ff-only"
 
     "gp:git push"
     'gpsup:git push --set-upstream origin $(git branch --show-current)'
