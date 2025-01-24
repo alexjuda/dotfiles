@@ -19,7 +19,7 @@
 
     creates: ~/.local/share/aj-eget-bins/eget
 
-- name: Install tools from GH
+- name: Install self-contained tools from GH
   ansible.builtin.command:
     cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl"
   loop:
@@ -27,5 +27,24 @@
     - astral-sh/uv
     - google/yamlfmt
     - jesseduffield/lazydocker
-    - LuaLS/lua-language-server
     - zk-org/zk
+
+# Unfortunately it doesn't work well with eget. `eget` just extracts the main
+# script, but lua-ls needs the whole project dir.
+- name: Install lua-language-server
+  ansible.builtin.shell:
+    cmd: |
+      LATEST_TAG=$(gh release view -R LuaLS/lua-language-server --json tagName | jq -r '.tagName')
+
+      mkdir -P ~/.local/share/aj-apps
+      cd ~/.local/share/aj-apps
+
+      ~/.local/share/aj-eget-bins/eget LuaLS/lua-language-server --asset ^musl -d
+      rm -rf lua-ls
+      mkdir lua-ls
+      tar -xzf lua-language-server-${LATEST_TAG}-linux-x64.tar.gz -C lua-ls
+
+      rm ~/.local/bin/lua-language-server
+      ln -s $PWD/lua-ls/bin/lua-language-server ~/.local/bin/lua-language-server
+  loop:
+    - LuaLS/lua-language-server
