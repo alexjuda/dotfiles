@@ -138,12 +138,19 @@ local setup_all = function()
             },
         }
 
-        -- Use treesitter for folds
+        -- Settings based on https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim/
+        -- Use treesitter for folds.
         vim.opt.foldmethod = "expr"
         vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-        vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+
+        -- Don't alter the contents of the fold title line.
+        vim.opt.foldtext = ""
+
         -- Prevent folding everything whenever opening a code file.
         vim.opt.foldlevel = 99
+
+        -- Show a nice TUI for folds on the left.
+        vim.opt.foldcolumn = "1"
     end
     treesitter()
 
