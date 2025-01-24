@@ -34,15 +34,14 @@
 - name: Install lua-language-server
   ansible.builtin.shell:
     cmd: |
-      LATEST_TAG=$(gh release view -R LuaLS/lua-language-server --json tagName | jq -r '.tagName')
-
       mkdir -P ~/.local/share/aj-apps
       cd ~/.local/share/aj-apps
 
       ~/.local/share/aj-eget-bins/eget LuaLS/lua-language-server --asset ^musl -d
       rm -rf lua-ls
       mkdir lua-ls
-      tar -xzf lua-language-server-${LATEST_TAG}-linux-x64.tar.gz -C lua-ls
+      tar -xzf lua-language-server-*-linux-x64.tar.gz -C lua-ls
+      rm lua-language-server-*-linux-x64.tar.gz
 
       rm ~/.local/bin/lua-language-server
       ln -s $PWD/lua-ls/bin/lua-language-server ~/.local/bin/lua-language-server
