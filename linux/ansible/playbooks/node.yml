@@ -22,12 +22,12 @@
 
 - name: install node
   ansible.builtin.command:
-    cmd: ~/.nodenv/bin/nodenv install 22.9.0
-    creates: ~/.nodenv/versions/22.9.0
+    cmd: ~/.nodenv/bin/nodenv install 22.12.0
+    creates: ~/.nodenv/versions/22.12.0
 
 - name: set global node version
   ansible.builtin.command:
-    cmd: ~/.nodenv/bin/nodenv global 22.9.0
+    cmd: ~/.nodenv/bin/nodenv global 22.12.0
 
 - name: Install lang servers
   ansible.builtin.shell:
