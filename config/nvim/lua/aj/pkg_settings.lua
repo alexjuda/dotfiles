@@ -166,7 +166,8 @@ local setup_all = function()
             },
         })
     end
-    llms()
+    -- Uncomment to enable using Copilot
+    -- llms()
 
     local autocompletion = function()
         local cmp = require("cmp")
