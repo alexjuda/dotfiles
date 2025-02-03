@@ -1,4 +1,5 @@
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+# theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = rose-pine
 
 # Bring Linux keybinds to macOS
 # --- splits ---

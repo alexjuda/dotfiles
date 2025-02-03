@@ -16,8 +16,8 @@ M.setup = function()
         -- Color Themes
         ----------
         "Shatur/neovim-ayu",
-
         "catppuccin/nvim",
+        "rose-pine/neovim",
 
         -- UI
         -------
