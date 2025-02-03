@@ -23,6 +23,10 @@ local setup_all = function()
                 },
             },
         }
+
+        -- Workaround margin background color being just plain black.
+        -- Source: https://www.reddit.com/r/neovim/comments/1fmuue9/comment/m8bf88j/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+        vim.api.nvim_set_hl(0, "ZenBg", { bg = "NONE" })
     end
     zen_mode()
 
