@@ -33,12 +33,12 @@ M.setup = function()
         -- File tree sidebar
         "nvim-neo-tree/neo-tree.nvim",
 
-        -- Unclutter the UI and set a narrow viewport
-        "folke/zen-mode.nvim",
-
         -- Dependency for:
         -- * zen-mode
         "folke/twilight.nvim",
+
+        -- Unclutter the UI and set a narrow viewport
+        "folke/zen-mode.nvim",
 
         -- Dependency for:
         -- * neotree
