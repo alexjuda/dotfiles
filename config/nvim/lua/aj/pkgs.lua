@@ -37,6 +37,10 @@ M.setup = function()
         "folke/zen-mode.nvim",
 
         -- Dependency for:
+        -- * zen-mode
+        "folke/twilight.nvim",
+
+        -- Dependency for:
         -- * neotree
         -- * lspsaga
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended

@@ -15,14 +15,12 @@ local setup_all = function()
     local zen_mode = function()
         require("zen-mode").setup {
             window = {
-                -- Use just a little over the standard 80 line char limit to account
-                -- for the line numbers. We can also use a fraction of the outer
-                -- window size.
-                -- width = 0.85,
-                width = 90,
-                -- Don't shade the backgrop of the Zen window.
-                -- backdrop = 0.95,
-                backdrop = 1.0
+                width = 80,
+                options = {
+                    signcolumn = "no",
+                    number = false,
+                    foldcolumn = "0",
+                },
             },
         }
     end
@@ -167,7 +165,7 @@ local setup_all = function()
         })
     end
     -- Uncomment to enable using Copilot
-    -- llms()
+    llms()
 
     local autocompletion = function()
         local cmp = require("cmp")
