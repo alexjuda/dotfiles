@@ -15,6 +15,7 @@ local setup_all = function()
     local zen_mode = function()
         require("zen-mode").setup {
             window = {
+                backdrop = 1.0,
                 width = 80,
                 options = {
                     signcolumn = "no",
