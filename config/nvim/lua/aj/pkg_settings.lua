@@ -20,6 +20,7 @@ local setup_all = function()
                 options = {
                     signcolumn = "no",
                     number = false,
+                    cursorline = false,
                     foldcolumn = "0",
                 },
             },
