@@ -145,6 +145,9 @@ M.setup = function()
         -- powertool for editing markdown tables
         "Myzel394/easytables.nvim",
 
+        -- Delete trailing whitespaces
+        "cappyzawa/trim.nvim",
+
         -- LLMs
         ------------
         "zbirenbaum/copilot.lua",

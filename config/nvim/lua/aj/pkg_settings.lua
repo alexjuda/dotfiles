@@ -407,6 +407,14 @@ local setup_all = function()
     end
     hop()
 
+    local trim = function()
+        require("trim").setup {
+            trim_on_write = false,
+            highlight = true,
+        }
+    end
+    trim()
+
     local notes = function()
         require("aj.vapor").setup {
             scratch_dir = "~/Documents/notes-synced/daily",
