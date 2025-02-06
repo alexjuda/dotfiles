@@ -242,8 +242,9 @@ local setup_all = function()
 
         require("lualine").setup {
             options = {
-                component_separators = { left = "│", right = "│" },
-                section_separators = { left = "", right = "", },
+                -- Don't use the square separators.
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "", },
                 disabled_filetypes = {
                     statusline = { "neo-tree", },
                 },
@@ -254,11 +255,11 @@ local setup_all = function()
                         -- Show buffer number using the vim status line format:
                         -- https://vimdoc.sourceforge.net/htmldoc/options.html#'statusline'
                         "%n",
-
-                        separator = { left = "", right = "" },
                     },
                 },
-                lualine_b = {
+                -- Don't show the gray bar.
+                lualine_b = {},
+                lualine_c = {
                     {
                         "filename",
                         -- Show relative path.
@@ -272,8 +273,6 @@ local setup_all = function()
                         },
                     }
                 },
-                -- Don't show file name again.
-                lualine_c = {},
                 lualine_x = {
                     minor_mode_status,
                     {
@@ -290,13 +289,9 @@ local setup_all = function()
                 lualine_z = {
                     {
                         "selectioncount",
-                        -- Override default separators.
-                        separator = { left = "", right = "" },
                     },
                     {
                         "location",
-                        -- Override default separators.
-                        separator = { left = "", right = "" },
                     },
                 }
             },
