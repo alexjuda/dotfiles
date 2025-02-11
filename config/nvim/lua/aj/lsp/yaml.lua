@@ -9,11 +9,11 @@ M.setup = function()
     -- Anyway, installing:
     -- npm install -g yaml-language-server
 
-    require("lspconfig").yamlls.setup {
-        cmd = { "npx", "yaml-language-server", "--stdio", },
-        on_attach = common.shared_on_attach,
-        capabilities = common.make_shared_capabilities(),
-    }
+    -- require("lspconfig").yamlls.setup {
+    --     cmd = { "npx", "yaml-language-server", "--stdio", },
+    --     on_attach = common.shared_on_attach,
+    --     capabilities = common.make_shared_capabilities(),
+    -- }
 end
 
 
