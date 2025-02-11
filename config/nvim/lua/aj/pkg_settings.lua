@@ -435,24 +435,39 @@ local setup_all = function()
     end
     markdown()
 
-    local cpp = function()
-        -- Use // ... instead of /* ... */
-        local use_line_comments = "aj-use-line-comments"
-        vim.api.nvim_create_augroup(use_line_comments, { clear = true })
+    local python = function()
+        local aj_python = "aj-python"
+        vim.api.nvim_create_augroup(aj_python, { clear = true })
+        -- Set line width to 120 instead of 79. Affects `gww`.
         vim.api.nvim_create_autocmd("Filetype", {
-            group = use_line_comments,
+            group = aj_python,
+            pattern = { "python" },
+            callback = function()
+                vim.opt_local.textwidth = 120
+            end,
+        })
+    end
+    python()
+
+
+    local cpp = function()
+        local aj_cpp = "aj-cpp"
+        vim.api.nvim_create_augroup(aj_cpp, { clear = true })
+        -- Use // ... instead of /* ... */
+        vim.api.nvim_create_autocmd("Filetype", {
+            group = aj_cpp,
             pattern = { "cpp" },
             command = "setlocal commentstring=//%s",
         })
     end
     cpp()
 
-    local set_indent_autocmd = "aj-set-indent-width"
     local yaml = function()
-        -- Customize indent size
-        vim.api.nvim_create_augroup(set_indent_autocmd, { clear = true })
+        local aj_yaml = "aj-yaml"
+        vim.api.nvim_create_augroup(aj_yaml, { clear = true })
+        -- Set indent size to 2 instead of 4
         vim.api.nvim_create_autocmd("Filetype", {
-            group = set_indent_autocmd,
+            group = aj_yaml,
             pattern = { "yaml" },
             command = "setlocal shiftwidth=2",
         })
@@ -460,9 +475,11 @@ local setup_all = function()
     yaml()
 
     local html = function()
-        -- Customize indent size
+        local aj_html = "aj-html"
+        vim.api.nvim_create_augroup(aj_html, { clear = true })
+        -- Set indent size to 2 instead of 4
         vim.api.nvim_create_autocmd("Filetype", {
-            group = set_indent_autocmd,
+            group = aj_html,
             pattern = { "html" },
             command = "setlocal shiftwidth=2",
         })
@@ -470,9 +487,11 @@ local setup_all = function()
     html()
 
     local typescript = function()
-        -- Customize indent size
+        local aj_ts = "aj-ts"
+        vim.api.nvim_create_augroup(aj_ts, { clear = true })
+        -- Set indent size to 2 instead of 4
         vim.api.nvim_create_autocmd("Filetype", {
-            group = set_indent_autocmd,
+            group = aj_ts,
             pattern = { "typescript,typescriptreact" },
             command = "setlocal shiftwidth=2",
         })
