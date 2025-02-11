@@ -26,6 +26,9 @@ local setup_pyright = function()
 
             -- print("pyright server caps")
             -- print(vim.inspect(client.server_capabilities))
+            --
+            -- Already handled by ruff
+            client.server_capabilities.formattingProvider = nil
         end,
         capabilities = common.make_shared_capabilities(),
     }
@@ -62,6 +65,9 @@ local setup_pylsp = function()
             client.server_capabilities.referencesProvider = nil
             client.server_capabilities.renameProvider = nil
             client.server_capabilities.signatureHelpProvider = nil
+
+            -- Already handled by ruff
+            client.server_capabilities.formattingProvider = nil
         end,
         capabilities = common.make_shared_capabilities(),
     }
