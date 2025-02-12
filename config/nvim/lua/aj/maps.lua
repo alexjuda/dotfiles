@@ -254,6 +254,14 @@ M.setup = function()
     vim.keymap.set('!', '<C-k>', readline.kill_line)
     vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
 
+    -- Don't override yank buffer on delete. Instead, put it in the named buffer 'a'.
+    -- Source: https://www.reddit.com/r/neovim/comments/154s3x0/comment/jsr7aei/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+    vim.keymap.set({'n', 'v'}, 'x', '"ax', { noremap = true })
+    vim.keymap.set({'n', 'v'}, 'd', '"ad', { noremap = true })
+    vim.keymap.set({'n', 'v'}, 'c', '"ac', { noremap = true })
+    vim.keymap.set('n', 'D', '"aD', { noremap = true })
+    vim.keymap.set('n', 'C', '"aC', { noremap = true })
+
 
     ------------------
     -- My own utils --
