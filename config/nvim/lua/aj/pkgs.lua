@@ -144,9 +144,6 @@ M.setup = function()
         -- draw ascii diagrams
         'jbyuki/venn.nvim',
 
-        -- powertool for editing markdown tables
-        "Myzel394/easytables.nvim",
-
         -- Delete trailing whitespaces
         "cappyzawa/trim.nvim",
 

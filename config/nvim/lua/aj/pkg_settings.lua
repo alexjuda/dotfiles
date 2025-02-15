@@ -428,8 +428,6 @@ local setup_all = function()
         --------------
         vim.g.markdown_folding = true
 
-        require("easytables").setup {}
-
         require("mdeval").setup {
             require_confirmation = false,
         }
