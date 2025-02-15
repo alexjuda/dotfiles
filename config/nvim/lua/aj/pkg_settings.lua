@@ -280,6 +280,7 @@ local setup_all = function()
                         sources = { "nvim_diagnostic", },
                     },
                     "fileformat",
+                    "copilot",
                     "filetype",
                 },
                 lualine_y = {

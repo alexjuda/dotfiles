@@ -52,6 +52,9 @@ M.setup = function()
         -- nicer bottom status line
         'hoob3rt/lualine.nvim',
 
+        -- copilot status in lualine
+        "AndreM222/copilot-lualine",
+
         -- Dependency for:
         -- * gitsigns
         -- * telescope
