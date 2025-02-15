@@ -37,6 +37,15 @@ local setup_all = function()
     end
     colors()
 
+    local csv_view = function()
+        require("csvview").setup {
+            view = {
+                display_mode = "border",
+            },
+        }
+    end
+    csv_view()
+
     local treesitter = function()
         -- Enable all common functionality
         require("nvim-treesitter.configs").setup {
