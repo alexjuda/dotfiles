@@ -60,7 +60,6 @@ M.setup = function()
         -- * telescope
         -- * image.nvim
         -- * neo-tree
-        -- * data-viewer.nvim
         -- * nvim-spectre
         -- * todo-comments
         "nvim-lua/plenary.nvim",
@@ -80,9 +79,6 @@ M.setup = function()
         -- Terminal keybindings for command mode
         "assistcontrol/readline.nvim",
 
-        -- Visualize tabular data files
-        "VidocqH/data-viewer.nvim",
-
         -- Close buffers after x mins of inactivity.
         "chrisgrieser/nvim-early-retirement",
 
@@ -97,6 +93,9 @@ M.setup = function()
 
         -- Add tiny animations to yank operations.
         "rachartier/tiny-glimmer.nvim",
+
+        -- View and edit CSVs.
+        "hat0uma/csvview.nvim",
 
         -- LSP
         --------
