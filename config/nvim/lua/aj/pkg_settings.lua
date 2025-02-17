@@ -372,6 +372,13 @@ local setup_all = function()
     end
     neo_tree()
 
+    local snacks = function()
+        require("snacks").setup {
+            image = { enabled = true }
+        }
+    end
+    snacks()
+
     local gitsigns = function()
         -- Git goodies
         require("gitsigns").setup {}
