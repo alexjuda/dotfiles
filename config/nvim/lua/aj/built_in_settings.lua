@@ -62,6 +62,12 @@ M.setup = function()
     -- Don't soft wrap in the middle of a word
     vim.o.linebreak = true
 
+    -- Wrapped lines should be indented.
+    vim.o.breakindent = true
+
+    -- Indent wrapped lines to match the parent, taking into account list markers.
+    vim.o.breakindentopt = "list:-1"
+
     -- Disable the bottom line with mode name like "-- INSERT --". Status line
     -- already provides this information.
     vim.o.showmode = false
