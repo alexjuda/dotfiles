@@ -150,12 +150,21 @@ M.setup = function()
     local yaml = function()
         local aj_yaml = "aj-yaml"
         vim.api.nvim_create_augroup(aj_yaml, { clear = true })
+
         -- Set indent size to 2 instead of 4
         vim.api.nvim_create_autocmd("Filetype", {
             group = aj_yaml,
             pattern = { "yaml" },
             command = "setlocal shiftwidth=2",
         })
+
+        -- Register helm as the filetype for yamls in specific dirs.
+        vim.filetype.add {
+            pattern = {
+                [".*/manifests/.*.yaml"] = "helm",
+                [".*/manifests/.*.tpl"] = "helm",
+            }
+        }
     end
     yaml()
 
