@@ -68,6 +68,7 @@ local setup_all = function()
                 "http",
                 "javascript",
                 "json",
+                "latex",
                 "lua",
                 "make",
                 "markdown",
