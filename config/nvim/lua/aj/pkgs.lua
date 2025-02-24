@@ -58,10 +58,10 @@ M.setup = function()
         -- Dependency for:
         -- * gitsigns
         -- * telescope
-        -- * image.nvim
         -- * neo-tree
         -- * nvim-spectre
         -- * todo-comments
+        -- * neotest
         "nvim-lua/plenary.nvim",
 
         -- Git gutter & other goodies
@@ -99,6 +99,17 @@ M.setup = function()
 
         -- View and edit CSVs.
         "hat0uma/csvview.nvim",
+
+        -- Dependency for:
+        -- * neotest
+        "nvim-neotest/nvim-nio",
+
+        -- Dependency for:
+        -- * neotest
+        "antoinemadec/FixCursorHold.nvim",
+
+        -- Test runner and TUI.
+        "nvim-neotest/neotest",
 
         -- LSP
         --------
