@@ -214,6 +214,13 @@ M.setup = function()
     vim.api.nvim_set_keymap("n", "<localleader>ee", ":MdEval<CR>", opts)
     vim.api.nvim_set_keymap("n", "<localleader>ed", ":MdEvalClean<CR>", opts)
 
+    -- Running tests with neotest
+    map("n", "<localleader>tt", function () require("neotest").run.run() end, opts, "Run nearest test")
+    map("n", "<localleader>ts", function () require("neotest").run.stop() end, opts, "Stop nearest test")
+    map("n", "<localleader>ta", function () require("neotest").run.attach() end, opts, "Attach to nearest test")
+
+    -- See also lsp.lua for keymaps for LSP-specific actions.
+
 
     -- Rebinds
     ----------

@@ -111,6 +111,9 @@ M.setup = function()
         -- Test runner and TUI.
         "nvim-neotest/neotest",
 
+        -- Python support for neotest.
+        "nvim-neotest/neotest-python",
+
         -- LSP
         --------
 

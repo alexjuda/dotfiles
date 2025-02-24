@@ -168,7 +168,16 @@ local setup_all = function()
     end
     treesitter()
 
-    local function llms()
+    local neotest = function()
+        require("neotest").setup {
+            adapters = {
+                require("neotest-python"),
+            }
+        }
+    end
+    neotest()
+
+    local llms = function()
         -- See https://github.com/zbirenbaum/copilot.lua?tab=readme-ov-file#setup-and-configuration for keybindings.
         require('copilot').setup({
             suggestion = {
