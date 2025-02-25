@@ -395,6 +395,16 @@ local setup_all = function()
     end
     gitsigns()
 
+    local diffview = function()
+        require("diffview").setup {
+            view = {
+                merge_tool = {
+                    layout = "diff4_mixed",
+                }
+            }
+        }
+    end
+    diffview()
 
     local todo_comments = function()
         -- Highlight TODOs
