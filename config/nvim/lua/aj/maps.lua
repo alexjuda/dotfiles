@@ -221,9 +221,9 @@ M.setup = function()
     vim.api.nvim_set_keymap("n", "<localleader>ed", ":MdEvalClean<CR>", opts)
 
     -- Running tests with neotest
-    map("n", "<localleader>tt", function () require("neotest").run.run() end, opts, "Run nearest test")
-    map("n", "<localleader>ts", function () require("neotest").run.stop() end, opts, "Stop nearest test")
-    map("n", "<localleader>ta", function () require("neotest").run.attach() end, opts, "Attach to nearest test")
+    map("n", "<localleader>tt", function() require("neotest").run.run() end, opts, "Run nearest test")
+    map("n", "<localleader>ts", function() require("neotest").run.stop() end, opts, "Stop nearest test")
+    map("n", "<localleader>ta", function() require("neotest").run.attach() end, opts, "Attach to nearest test")
 
     -- See also lsp.lua for keymaps for LSP-specific actions.
 
@@ -269,9 +269,9 @@ M.setup = function()
 
     -- Don't override yank buffer on delete. Instead, put it in the named buffer 'a'.
     -- Source: https://www.reddit.com/r/neovim/comments/154s3x0/comment/jsr7aei/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-    vim.keymap.set({'n', 'v'}, 'x', '"ax', { noremap = true })
-    vim.keymap.set({'n', 'v'}, 'd', '"ad', { noremap = true })
-    vim.keymap.set({'n', 'v'}, 'c', '"ac', { noremap = true })
+    vim.keymap.set({ 'n', 'v' }, 'x', '"ax', { noremap = true })
+    vim.keymap.set({ 'n', 'v' }, 'd', '"ad', { noremap = true })
+    vim.keymap.set({ 'n', 'v' }, 'c', '"ac', { noremap = true })
     vim.keymap.set('n', 'D', '"aD', { noremap = true })
     vim.keymap.set('n', 'C', '"aC', { noremap = true })
 
