@@ -128,6 +128,12 @@ M.setup = function()
 
     -- Git--
     --------
+    map("n", "<leader>co", "<Plug>(git-conflict-ours)", opts, "choose ours")
+    map("n", "<leader>ct", "<Plug>(git-conflict-theirs)", opts, "choose theirs")
+    map("n", "<leader>cb", "<Plug>(git-conflict-both)", opts, "choose both")
+    map("n", "<leader>c0", "<Plug>(git-conflict-none)", opts, "choose none")
+    map("n", "[x", "<Plug>(git-conflict-prev-conflict)", opts, "prev conflict")
+    map("n", "]x", "<Plug>(git-conflict-next-conflict)", opts, "next conflict")
 
     -- Gitsigns
     -- src: https://github.com/lewis6991/gitsigns.nvim#keymaps

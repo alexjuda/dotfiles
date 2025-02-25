@@ -406,6 +406,13 @@ local setup_all = function()
     end
     diffview()
 
+    local git_conflict = function()
+        require("git-conflict").setup {
+            default_mappings = false,
+        }
+    end
+    git_conflict()
+
     local todo_comments = function()
         -- Highlight TODOs
         require("todo-comments").setup {

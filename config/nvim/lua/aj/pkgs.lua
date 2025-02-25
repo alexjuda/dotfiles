@@ -91,6 +91,9 @@ M.setup = function()
         -- Use neovim's diff mode to view git diffs.
         "sindrets/diffview.nvim",
 
+        -- Simple utility for resolving git conflict markers. KISS.
+        "akinsho/git-conflict.nvim",
+
         -- Project-wide search and replace
         "nvim-pack/nvim-spectre",
 
