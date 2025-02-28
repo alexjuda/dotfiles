@@ -108,3 +108,10 @@ function untar() {
     mkdir -p $basename
     tar -xzf $filename -C $basename
 }
+
+# Make a new 'zk' note. Usage:
+# 1. cdn
+# 2. zkn Hello there!
+function zkn() {
+    zk new -t "$*"
+}
