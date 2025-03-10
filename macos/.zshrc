@@ -115,3 +115,15 @@ function untar() {
 function zkn() {
     zk new -t "$*"
 }
+
+# Rebase against a common ancestor.
+function git-rebase-ancestor () {
+    if [ -n "$1" ]; then
+        local other="$1"
+    else
+        echo "Usage: git-rebase-ancestor <main-branch>"
+        return 1
+    fi
+    local current=$(git rev-parse --abbrev-ref HEAD)
+    git rebase --onto $other $(git merge-base $other $current) $current
+}
