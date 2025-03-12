@@ -34,6 +34,10 @@
   ansible.builtin.command:
     cmd: "~/.local/share/aj-eget-bins/eget ahmetb/kubectx --to ~/.local/share/aj-eget-bins --asset kubectx"
 
+# k9s isn't here because it's weird. They don't ship to fedora repositories. On
+# Github releases, they just expose the .rpm files. You have to download the
+# .rpm file and dnf-install it.
+
 # Unfortunately it doesn't work well with eget. `eget` just extracts the main
 # script, but lua-ls needs the whole project dir.
 - name: Install lua-language-server
