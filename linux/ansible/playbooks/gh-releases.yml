@@ -29,6 +29,11 @@
     - jesseduffield/lazydocker
     - zk-org/zk
 
+# The kubectx repo releases contain multiple apps, so we have to select one.
+- name: Install kubectx
+  ansible.builtin.command:
+    cmd: "~/.local/share/aj-eget-bins/eget ahmetb/kubectx --to ~/.local/share/aj-eget-bins --asset kubectx"
+
 # Unfortunately it doesn't work well with eget. `eget` just extracts the main
 # script, but lua-ls needs the whole project dir.
 - name: Install lua-language-server
