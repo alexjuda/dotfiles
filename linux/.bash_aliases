@@ -57,12 +57,12 @@ custom_aliases=(
     "grv:git remote -v"
 
     "gsh:git show"
-    "gs:git status --untracked-files"
+    "gs:git status --short --branch --untracked-files"
+    "gss:git status --untracked-files"
     "gsr:git rev-parse"
     # Copy latest sha and print.
     # Src: https://unix.stackexchange.com/a/273284
     "gsrc:git rev-parse HEAD | tee >(pbcopy)"
-    "gss:git status --short --branch --untracked-files"
     "gst:git stash"
     "gsta:git stash push"
     "gstaa:git stash --apply"
