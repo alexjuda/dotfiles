@@ -117,6 +117,9 @@ M.setup = function()
         -- Python support for neotest.
         "nvim-neotest/neotest-python",
 
+        -- Eval code under cursor in a side REPL.
+        "Vigemus/iron.nvim",
+
         -- LSP
         --------
 
