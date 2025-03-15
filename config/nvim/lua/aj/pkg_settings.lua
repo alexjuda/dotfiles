@@ -430,8 +430,7 @@ local setup_all = function()
                 command = {"zsh"}
               },
               python = {
-                -- command = { "python3" },  -- or { "ipython", "--no-autoindent" }
-                command = { "ipython" },  -- or { "ipython", "--no-autoindent" }
+                command = { "ipython", "--no-autoindent" },
                 format = common.bracketed_paste_python,
                 block_deviders = { "# %%", "#%%" },
               }
@@ -440,7 +439,7 @@ local setup_all = function()
             repl_open_cmd = view.bottom(10),
 
           },
-          ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
+          -- ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
         }
     end
     iron()
