@@ -225,7 +225,16 @@ M.setup = function()
     map("n", "<localleader>ts", function() require("neotest").run.stop() end, opts, "Stop nearest test")
     map("n", "<localleader>ta", function() require("neotest").run.attach() end, opts, "Attach to nearest test")
 
-    -- See also lsp.lua for keymaps for LSP-specific actions.
+    -- iron.nvim
+    local iron = require("iron.core")
+    map("n", "<localleader>rr", ":IronRepl<CR>", opts, "Toggle iron repl")
+    map("n", "<localleader>rR", ":IronRestart<CR>", opts, "Restart iron repl")
+    map("n", "<localleader>re", function() iron.send_line() end, opts, "Eval line")
+    map("v", "<localleader>re", function()
+        iron.mark_visual()
+        iron.send_mark()
+    end, opts, "Eval visual")
+    map("n", "<localleader>rgg", function() iron.send_until_cursor() end, opts, "Eval from beginning of file until cursor")
 
 
     -- Rebinds
