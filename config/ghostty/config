@@ -21,3 +21,4 @@ keybind = ctrl+shift+n=new_window
 keybind = ctrl+shift+plus=increase_font_size:1
 keybind = ctrl+shift+-=decrease_font_size:1
 keybind = ctrl+shift+0=reset_font_size
+font-size = 14
