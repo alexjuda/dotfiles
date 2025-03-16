@@ -29,12 +29,8 @@ M.setup = function()
     vim.o.expandtab = true
     vim.bo.expandtab = true
 
-    -- Ask for confirmation instead of failing by default
+    -- When an operation is risky, ask for confirmation instead of failing by default.
     vim.o.confirm = true
-
-    -- Show at least one more line when scrolling
-    vim.o.scrolloff = 8
-    vim.wo.scrolloff = 8
 
     -- Show line numbers
     vim.o.number = true
