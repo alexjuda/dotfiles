@@ -167,6 +167,12 @@ local setup_all = function()
 
         -- Show a nice TUI for folds on the left.
         vim.opt.foldcolumn = "1"
+
+        require("treesitter-context").setup {
+            -- Show top context window based on the cropped code block on the
+            -- top. Defaults to showing only previews from under cursor.
+            mode = "topline",
+        }
     end
     treesitter()
 
