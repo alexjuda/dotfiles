@@ -34,6 +34,8 @@ local setup_all = function()
 
     local colors = function()
         vim.cmd.colorscheme "catppuccin"
+        -- vim.cmd.colorscheme "rose-pine"
+        -- vim.cmd.colorscheme "nightfox"
     end
     colors()
 
@@ -246,6 +248,7 @@ local setup_all = function()
             end
             return status
         end
+
 
         require("lualine").setup {
             options = {

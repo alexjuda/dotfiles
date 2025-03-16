@@ -18,6 +18,7 @@ M.setup = function()
         "Shatur/neovim-ayu",
         "catppuccin/nvim",
         "rose-pine/neovim",
+        "EdenEast/nightfox.nvim",
 
         -- UI
         -------
