@@ -144,10 +144,6 @@ M.setup = function()
         -- Highlight symbol under cursor, automatically
         "RRethy/vim-illuminate",
 
-        -- Improves the neovim built-in LSP experience. We're using it for winbar
-        -- breadcrumbs.
-        "nvimdev/lspsaga.nvim",
-
         -- Fuzzy completion
         ---------------------
         "nvim-telescope/telescope.nvim",
