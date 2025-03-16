@@ -30,6 +30,9 @@ M.setup = function()
         -- code parser for syntax highlight & folds
         { 'nvim-treesitter/nvim-treesitter', build = function() vim.cmd(":TSUpdate") end }, -- Update the parsers on plugin update
 
+        -- Winbar-like window on the top with context information, eg. about current class.
+        'nvim-treesitter/nvim-treesitter-context',
+
         -- File tree sidebar
         "nvim-neo-tree/neo-tree.nvim",
 
