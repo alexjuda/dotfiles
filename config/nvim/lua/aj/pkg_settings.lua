@@ -198,7 +198,7 @@ local setup_all = function()
         })
     end
     -- Uncomment to enable using Copilot
-    -- llms()
+    llms()
 
     local autocompletion = function()
         local cmp = require("cmp")
@@ -417,8 +417,8 @@ local setup_all = function()
                 block_deviders = { "# %%", "#%%" },
               }
             },
-            -- How the repl window will be displayed. 10 lines.
-            repl_open_cmd = view.bottom(10),
+            -- Display the REPL in a window below.
+            repl_open_cmd = view.split.horizontal.botright("25%")
 
           },
           -- ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
