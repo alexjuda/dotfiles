@@ -27,6 +27,7 @@
     - astral-sh/uv
     - google/yamlfmt
     - jesseduffield/lazydocker
+    - polarmutex/beancount-language-server
     - zk-org/zk
 
 # The kubectx repo releases contain multiple apps, so we have to select one.
