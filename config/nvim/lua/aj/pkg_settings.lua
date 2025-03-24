@@ -80,6 +80,7 @@ local setup_all = function()
                 "requirements",
                 "rst",
                 "sql",
+                "terraform",
                 "toml",
                 "tsx",
                 "typescript",
