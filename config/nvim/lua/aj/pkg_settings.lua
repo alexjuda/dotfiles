@@ -65,6 +65,7 @@ local setup_all = function()
                 "gitattributes",
                 "gitcommit",
                 "gitignore",
+                "hcl",
                 "helm",
                 "html",
                 "http",
