@@ -29,23 +29,21 @@ local set_lsp_keymaps = function(client, buf_n)
 
     local telescope = require("telescope.builtin")
 
+    -- TODO: remove maps made obsolete by v0.11.
+    -- See also: https://gpanders.com/blog/whats-new-in-neovim-0-11/#defaults
     buf_map_with_name("n", "K", function() vim.lsp.buf.hover() end, "hover")
-    buf_map_with_name("n", "<c-k>", function() vim.lsp.buf.signature_help() end, "signature help")
+    buf_map_with_name("n", "grn", function() vim.lsp.buf.rename() end, "rename")
+    buf_map_with_name("n", "grr", function() telescope.lsp_references() end, "references")
+    buf_map_with_name("n", "gri", function() telescope.lsp_implementations() end, "implementations")
+    buf_map_with_name("n", "gO", function() show_document_symbols() end, "document symbols")
+    buf_map_with_name("n", "gra", function() vim.lsp.buf.code_action() end, "code action")
+    buf_map_with_name({ "i", "s", "n" }, "<c-S>", function() vim.lsp.buf.signature_help() end, "signature help")
 
     buf_map_with_name("n", "gd", function() telescope.lsp_definitions() end, "definition")
-    buf_map_with_name("n", "gD", function() vim.lsp.buf.declaration() end, "declaration")
-    buf_map_with_name("n", "gi", function() telescope.lsp_implementations() end, "implementation")
-    buf_map_with_name("n", "gr", function() telescope.lsp_references() end, "references")
-    buf_map_with_name("n", "gt", function() telescope.lsp_type_definitions() end, "type definition")
+    buf_map_with_name("n", "gD", function() telescope.lsp_type_definitions() end, "type definition")
     buf_map_with_name("n", "gci", function() telescope.lsp_incoming_calls() end, "incoming calls")
     buf_map_with_name("n", "gco", function() telescope.lsp_outgoing_calls() end, "outgoing calls")
 
-    buf_map_with_name("n", "<localleader>lr", function() vim.lsp.buf.rename() end, "rename")
-    buf_map_with_name("n", "<localleader>la", function() vim.lsp.buf.code_action() end, "code action")
-    buf_map_with_name("n", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
-    buf_map_with_name("v", "<localleader>lf", function() vim.lsp.buf.format() end, "format")
-
-    buf_map_with_name("n", "<localleader>lbs", function() show_document_symbols() end, "symbols in this buffer")
     buf_map_with_name(
         "n", "<localleader>lbd",
         function() telescope.diagnostics { bufnr = 0 } end,
@@ -58,9 +56,9 @@ local set_lsp_keymaps = function(client, buf_n)
         "diagnostics in workspace"
     )
     buf_map_with_name(
-        "n", "<localleader>lws",
+        "n", "go",
         function() show_workspace_symbols() end,
-        "symbols in workspace"
+        "workspace symbols"
     )
 
     wk.add({ "<localleader>l", desc = "+lsp commands" })
