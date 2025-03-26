@@ -141,12 +141,7 @@ M.setup = function()
     local gs = package.loaded.gitsigns
 
     -- Actions
-    map({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>', opts, "stage hunk")
-    map('n', '<leader>gS', gs.stage_buffer, opts, "stage buffer")
-    map('n', '<leader>gu', gs.undo_stage_hunk, opts, "undo stage hunk")
-    map('n', '<leader>gR', gs.reset_buffer, opts, "reset buffer")
     map('n', '<leader>gp', gs.preview_hunk, opts, "preview hunk")
-    map('n', '<leader>gb', function() gs.blame_line { full = true } end, opts, "blame line")
     map('n', '<leader>tb', gs.toggle_current_line_blame, opts, "toggle current line blame")
     map('n', '<leader>gd', gs.diffthis, opts, "diff this")
     map('n', '<leader>gD', function() gs.diffthis('~') end, opts, "diff tilde (?)")
@@ -246,12 +241,11 @@ M.setup = function()
     ----------
     map({ "n", "v" }, "<leader><leader>", function() telescope.commands() end, opts, "commands")
 
+    -- TODO: remove when in v0.11. Obsolete.
     map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
     map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
 
-    map("n", "[a", "<cmd>AerialPrev<CR>", opts, "prev symbol (aerial)")
-    map("n", "]a", "<cmd>AerialNext<CR>", opts, "next symbol (aerial)")
-
+    -- TODO: remove when in v0.11. Obsolete.
     map("n", "[q", ":cprev<CR>", opts, "prev quickfix")
     map("n", "]q", ":cnext<CR>", opts, "next quickfix")
 
