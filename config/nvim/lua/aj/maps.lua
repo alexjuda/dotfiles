@@ -240,17 +240,7 @@ M.setup = function()
     -- Global
     ----------
     map({ "n", "v" }, "<leader><leader>", function() telescope.commands() end, opts, "commands")
-
-    -- TODO: remove when in v0.11. Obsolete.
-    map("n", "[d", function() vim.diagnostic.goto_prev() end, opts, "prev diagnostic")
-    map("n", "]d", function() vim.diagnostic.goto_next() end, opts, "next diagnostic")
-
-    -- TODO: remove when in v0.11. Obsolete.
-    map("n", "[q", ":cprev<CR>", opts, "prev quickfix")
-    map("n", "]q", ":cnext<CR>", opts, "next quickfix")
-
     map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
-
     map("n", "yp", '"0p', opts, "paste last yanked")
     map("n", "yP", '"0P', opts, "paste last yanked, prev")
 
