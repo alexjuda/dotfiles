@@ -21,14 +21,23 @@
 
 - name: Install self-contained tools from GH
   ansible.builtin.command:
-    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl"
+    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl --asset x86"
   loop:
     - artempyanykh/marksman
     - astral-sh/uv
     - google/yamlfmt
     - jesseduffield/lazydocker
+    # It's also available in Fedora DNF repos, but we wanna run the latest
+    # release as soon as it hits.
+    - neovim/neovim
     - polarmutex/beancount-language-server
     - zk-org/zk
+
+- name: Fix neovim executable name
+  ansible.builtin.file:
+    src: ~/.local/share/aj-eget-bins/nvim-linux-x86_64
+    dest: ~/.local/share/aj-eget-bins/nvim
+    state: link
 
 # The kubectx repo releases contain multiple apps, so we have to select one.
 - name: Install kubectx
