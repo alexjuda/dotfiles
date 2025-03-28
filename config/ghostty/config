@@ -16,6 +16,8 @@ keybind = ctrl+shift+w=close_surface
 keybind = ctrl+page_up=previous_tab
 keybind = ctrl+page_down=next_tab
 keybind = ctrl+shift+n=new_window
+window-width = 120
+window-height = 36
 
 # --- fonts ---
 keybind = ctrl+shift+plus=increase_font_size:1
