@@ -31,7 +31,7 @@
 
 - name: link platform-specific ghostty config
   ansible.builtin.file:
-    src: ~/Code/dotfiles/config/ghostty/linux
+    src: ~/Code/dotfiles/config/ghostty/linux_config
     dest: ~/.config/ghostty/platform_specific_config
     state: link
 
