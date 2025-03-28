@@ -23,10 +23,16 @@
     dest: ~/.config/nvim
     state: link
 
-- name: link ghostty config
+- name: link main ghostty config
   ansible.builtin.file:
-    src: ~/Code/dotfiles/config/ghostty
-    dest: ~/.config/ghostty
+    src: ~/Code/dotfiles/config/ghostty/config
+    dest: ~/.config/ghostty/config
+    state: link
+
+- name: link platform-specific ghostty config
+  ansible.builtin.file:
+    src: ~/Code/dotfiles/config/ghostty/linux
+    dest: ~/.config/ghostty/platform_specific_config
     state: link
 
 # Please run: nvim -c ":PaqSync" manually
