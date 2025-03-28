@@ -21,7 +21,7 @@
 
 - name: Install self-contained tools from GH
   ansible.builtin.command:
-    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl --asset x86"
+    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl"
   loop:
     - artempyanykh/marksman
     - astral-sh/uv
@@ -29,7 +29,7 @@
     - jesseduffield/lazydocker
     # It's also available in Fedora DNF repos, but we wanna run the latest
     # release as soon as it hits.
-    - neovim/neovim
+    - "neovim/neovim --asset x86"
     - polarmutex/beancount-language-server
     - zk-org/zk
 
