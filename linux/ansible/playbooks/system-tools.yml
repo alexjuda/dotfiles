@@ -50,6 +50,7 @@
       # for clangd
       - clang-tools-extra
       - direnv
+      - doas
       - gcc-c++
       - git-crypt
       - gh
