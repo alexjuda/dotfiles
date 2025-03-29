@@ -1,28 +1,16 @@
 theme = dark:catppuccin-mocha,light:catppuccin-latte
 # theme = rose-pine
 
-# Bring Linux keybinds to macOS
-# --- splits ---
-keybind = ctrl+shift+e=new_split:down
-keybind = ctrl+shift+o=new_split:right
-
-keybind = ctrl+shift+[=goto_split:previous
-keybind = ctrl+shift+]=goto_split:next
-keybind = ctrl+shift+enter=toggle_split_zoom
+# Default ghostty keybindings: https://gist.github.com/hensg/43bc71c21d1f79385892352a390aa2ca
 
 # --- windows ---
-keybind = ctrl+shift+t=new_tab
-keybind = ctrl+shift+w=close_surface
-keybind = ctrl+page_up=previous_tab
-keybind = ctrl+page_down=next_tab
-keybind = ctrl+shift+n=new_window
 window-width = 120
 window-height = 36
 
-# --- fonts ---
-keybind = ctrl+shift+plus=increase_font_size:1
-keybind = ctrl+shift+-=decrease_font_size:1
-keybind = ctrl+shift+0=reset_font_size
+# --- split mgmt ---
+# For some reason, the default prefix for moving across panes is ctrl+super.
+keybind = ctrl+shift+[=goto_split:previous
+keybind = ctrl+shift+]=goto_split:next
 
 # This should be a symlink.
 config-file = ?platform_specific_config
