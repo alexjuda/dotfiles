@@ -1,94 +1,98 @@
-- name: upgrade DNF packages
-  ansible.builtin.dnf:
-    name: "*"
-    state: latest
-  become: true
-  tags: superuser
+- name: Set up system packages and programs
+  hosts: all
+  tasks:
 
-- name: Set git email
-  community.general.git_config:
-    name: user.email
-    scope: global
-    value: "{{ git_email }}"
+  - name: upgrade DNF packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+    become: true
+    tags: superuser
 
-- name: Set git username
-  community.general.git_config:
-    name: user.name
-    scope: global
-    value: "{{ git_username }}"
+  - name: Set git email
+    community.general.git_config:
+      name: user.email
+      scope: global
+      value: "{{ git_email }}"
 
-- name: Set main git branch name
-  community.general.git_config:
-    name: init.defaultBranch
-    scope: global
-    value: main
+  - name: Set git username
+    community.general.git_config:
+      name: user.name
+      scope: global
+      value: "{{ git_username }}"
 
-- name: enable lazygit's copr
-  community.general.copr:
-    name: atim/lazygit
-  become: true
-  tags: superuser
+  - name: Set main git branch name
+    community.general.git_config:
+      name: init.defaultBranch
+      scope: global
+      value: main
 
-- name: enable ghostty's copr
-  community.general.copr:
-    name: pgdev/ghostty
-  become: true
-  tags: superuser
+  - name: enable lazygit's copr
+    community.general.copr:
+      name: atim/lazygit
+    become: true
+    tags: superuser
 
-- name: enable starship's copr
-  community.general.copr:
-    name: atim/starship
-  become: true
-  tags: superuser
+  - name: enable ghostty's copr
+    community.general.copr:
+      name: pgdev/ghostty
+    become: true
+    tags: superuser
 
-- name: install system packages
-  ansible.builtin.dnf:
-    name:
-      # for c++ language servers
-      - bear
-      - fd-find
-      # for clangd
-      - clang-tools-extra
-      - direnv
-      - doas
-      - gcc-c++
-      - git-crypt
-      - gh
-      - ghostty
-      - glances
-      - htop
-      - lazygit
-      - openssl
-      - python3-devel
-      - rclone
-      - ripgrep
-      - starship
-      - uv
-      - xclip
-      - zsh
-    state: present
-  become: true
-  tags: superuser
+  - name: enable starship's copr
+    community.general.copr:
+      name: atim/starship
+    become: true
+    tags: superuser
 
-- name: install GUI apps
-  community.general.flatpak:
-    name:
-      - com.mattjakeman.ExtensionManager
-      - com.spotify.Client
-      - io.missioncenter.MissionCenter
-      - io.podman_desktop.PodmanDesktop
-      - org.gnome.Geary
-      - org.signal.Signal
-      - org.sqlitebrowser.sqlitebrowser
-      - org.videolan.VLC
-  become: true
-  tags: superuser
+  - name: install system packages
+    ansible.builtin.dnf:
+      name:
+        # for c++ language servers
+        - bear
+        - fd-find
+        # for clangd
+        - clang-tools-extra
+        - direnv
+        - doas
+        - gcc-c++
+        - git-crypt
+        - gh
+        - ghostty
+        - glances
+        - htop
+        - lazygit
+        - openssl
+        - python3-devel
+        - rclone
+        - ripgrep
+        - starship
+        - uv
+        - xclip
+        - zsh
+      state: present
+    become: true
+    tags: superuser
 
-- name: set zsh as the default shell for user {{ ansible_user_id }}
-  vars:
-    the_user: "{{ ansible_user_id }}"
-  ansible.builtin.user:
-    name: "{{ the_user }}"
-    shell: /bin/zsh
-  become: true
-  tags: superuser
+  - name: install GUI apps
+    community.general.flatpak:
+      name:
+        - com.mattjakeman.ExtensionManager
+        - com.spotify.Client
+        - io.missioncenter.MissionCenter
+        - io.podman_desktop.PodmanDesktop
+        - org.gnome.Geary
+        - org.signal.Signal
+        - org.sqlitebrowser.sqlitebrowser
+        - org.videolan.VLC
+    become: true
+    tags: superuser
+
+  - name: set zsh as the default shell for user {{ ansible_user_id }}
+    vars:
+      the_user: "{{ ansible_user_id }}"
+    ansible.builtin.user:
+      name: "{{ the_user }}"
+      shell: /bin/zsh
+    become: true
+    tags: superuser

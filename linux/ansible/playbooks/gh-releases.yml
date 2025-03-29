@@ -1,68 +1,72 @@
-- name: Create ~/.local/share/aj-eget-bins
-  ansible.builtin.file:
-    path: ~/.local/share/aj-eget-bins
-    state: directory
+- name: Install tools from Github Releases
+  hosts: all
+  tasks:
 
-- name: Install eget
-  ansible.builtin.shell:
-    cmd: |
-      DOWNLOAD_DIR=$(mktemp -d --suffix="eget")
-      mkdir -p ${DOWNLOAD_DIR}
-      cd ${DOWNLOAD_DIR}
+  - name: Create ~/.local/share/aj-eget-bins
+    ansible.builtin.file:
+      path: ~/.local/share/aj-eget-bins
+      state: directory
 
-      gh release download --repo zyedidia/eget --pattern "*linux_amd64*"
-      tar -xzf eget-*linux_amd64.tar.gz
-      cp eget-*linux_amd64/eget ~/.local/share/aj-eget-bins/eget
+  - name: Install eget
+    ansible.builtin.shell:
+      cmd: |
+        DOWNLOAD_DIR=$(mktemp -d --suffix="eget")
+        mkdir -p ${DOWNLOAD_DIR}
+        cd ${DOWNLOAD_DIR}
 
-      cd ~
-      rm -r ${DOWNLOAD_DIR}
+        gh release download --repo zyedidia/eget --pattern "*linux_amd64*"
+        tar -xzf eget-*linux_amd64.tar.gz
+        cp eget-*linux_amd64/eget ~/.local/share/aj-eget-bins/eget
 
-    creates: ~/.local/share/aj-eget-bins/eget
+        cd ~
+        rm -r ${DOWNLOAD_DIR}
 
-- name: Install self-contained tools from GH
-  ansible.builtin.command:
-    cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl"
-  loop:
-    - artempyanykh/marksman
-    - astral-sh/uv
-    - google/yamlfmt
-    - jesseduffield/lazydocker
-    # It's also available in Fedora DNF repos, but we wanna run the latest
-    # release as soon as it hits.
-    - "neovim/neovim --asset x86"
-    - polarmutex/beancount-language-server
-    - zk-org/zk
+      creates: ~/.local/share/aj-eget-bins/eget
 
-- name: Fix neovim executable name
-  ansible.builtin.file:
-    src: ~/.local/share/aj-eget-bins/nvim-linux-x86_64
-    dest: ~/.local/share/aj-eget-bins/nvim
-    state: link
+  - name: Install self-contained tools from GH
+    ansible.builtin.command:
+      cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl"
+    loop:
+      - artempyanykh/marksman
+      - astral-sh/uv
+      - google/yamlfmt
+      - jesseduffield/lazydocker
+      # It's also available in Fedora DNF repos, but we wanna run the latest
+      # release as soon as it hits.
+      - "neovim/neovim --asset x86"
+      - polarmutex/beancount-language-server
+      - zk-org/zk
 
-# The kubectx repo releases contain multiple apps, so we have to select one.
-- name: Install kubectx
-  ansible.builtin.command:
-    cmd: "~/.local/share/aj-eget-bins/eget ahmetb/kubectx --to ~/.local/share/aj-eget-bins --asset kubectx"
+  - name: Fix neovim executable name
+    ansible.builtin.file:
+      src: ~/.local/share/aj-eget-bins/nvim-linux-x86_64
+      dest: ~/.local/share/aj-eget-bins/nvim
+      state: link
 
-# k9s isn't here because it's weird. They don't ship to fedora repositories. On
-# Github releases, they just expose the .rpm files. You have to download the
-# .rpm file and dnf-install it.
+  # The kubectx repo releases contain multiple apps, so we have to select one.
+  - name: Install kubectx
+    ansible.builtin.command:
+      cmd: "~/.local/share/aj-eget-bins/eget ahmetb/kubectx --to ~/.local/share/aj-eget-bins --asset kubectx"
 
-# Unfortunately it doesn't work well with eget. `eget` just extracts the main
-# script, but lua-ls needs the whole project dir.
-- name: Install lua-language-server
-  ansible.builtin.shell:
-    cmd: |
-      mkdir -P ~/.local/share/aj-apps
-      cd ~/.local/share/aj-apps
+  # k9s isn't here because it's weird. They don't ship to fedora repositories. On
+  # Github releases, they just expose the .rpm files. You have to download the
+  # .rpm file and dnf-install it.
 
-      ~/.local/share/aj-eget-bins/eget LuaLS/lua-language-server --asset ^musl -d
-      rm -rf lua-ls
-      mkdir lua-ls
-      tar -xzf lua-language-server-*-linux-x64.tar.gz -C lua-ls
-      rm lua-language-server-*-linux-x64.tar.gz
+  # Unfortunately it doesn't work well with eget. `eget` just extracts the main
+  # script, but lua-ls needs the whole project dir.
+  - name: Install lua-language-server
+    ansible.builtin.shell:
+      cmd: |
+        mkdir -P ~/.local/share/aj-apps
+        cd ~/.local/share/aj-apps
 
-      rm ~/.local/bin/lua-language-server
-      ln -s $PWD/lua-ls/bin/lua-language-server ~/.local/bin/lua-language-server
-  loop:
-    - LuaLS/lua-language-server
+        ~/.local/share/aj-eget-bins/eget LuaLS/lua-language-server --asset ^musl -d
+        rm -rf lua-ls
+        mkdir lua-ls
+        tar -xzf lua-language-server-*-linux-x64.tar.gz -C lua-ls
+        rm lua-language-server-*-linux-x64.tar.gz
+
+        rm ~/.local/bin/lua-language-server
+        ln -s $PWD/lua-ls/bin/lua-language-server ~/.local/bin/lua-language-server
+    loop:
+      - LuaLS/lua-language-server

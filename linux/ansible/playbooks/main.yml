@@ -1,40 +1,17 @@
-- name: Set up a Fedora workstation.
-  hosts: all
+- ansible.builtin.import_playbook: system-tools.yml
 
-  tasks:
+- ansible.builtin.import_playbook: link-configs.yml
 
-  - name: system tasks
-    ansible.builtin.include_tasks:
-      file: system-tools.yml
+- ansible.builtin.import_playbook: gnome-settings.yml
 
-  - name: configs tasks
-    ansible.builtin.include_tasks:
-      file: link-configs.yml
+- ansible.builtin.import_playbook: gnome-extensions.yml
 
-  - name: gnome settings tasks
-    ansible.builtin.include_tasks:
-      file: gnome-settings.yml
+- ansible.builtin.import_playbook: fonts.yml
 
-  - name: gnome extensions tasks
-    ansible.builtin.include_tasks:
-      file: gnome-extensions.yml
+- ansible.builtin.import_playbook: 1password.yml
 
-  - name: fonts tasks
-    ansible.builtin.include_tasks:
-      file: fonts.yml
+- ansible.builtin.import_playbook: kubernetes.yml
 
-  - name: 1password tasks
-    ansible.builtin.include_tasks:
-      file: 1password.yml
+- ansible.builtin.import_playbook: node.yml
 
-  - name: k8s tasks
-    ansible.builtin.include_tasks:
-      file: kubernetes.yml
-
-  - name: node tasks
-    ansible.builtin.include_tasks:
-      file: node.yml
-
-  - name: gh releases tasks
-    ansible.builtin.include_tasks:
-      file: gh-releases.yml
+- ansible.builtin.import_playbook: gh-releases.yml

@@ -1,74 +1,78 @@
-- name: clone dotfiles
-  git:
-    repo: git@github.com:alexjuda/dotfiles.git
-    dest: ~/Code/dotfiles
-    clone: yes
-    update: no
+- name: Clone and link dotfiles
+  hosts: all
+  tasks:
 
-- name: link kitty config
-  ansible.builtin.file:
-    src: ~/Code/dotfiles/config/kitty
-    dest: ~/.config/kitty
-    state: link
+  - name: clone dotfiles
+    git:
+      repo: git@github.com:alexjuda/dotfiles.git
+      dest: ~/Code/dotfiles
+      clone: yes
+      update: no
 
-- name: link wezterm config
-  ansible.builtin.file:
-    src: ~/Code/dotfiles/config/wezterm
-    dest: ~/.config/wezterm
-    state: link
+  - name: link kitty config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/kitty
+      dest: ~/.config/kitty
+      state: link
 
-- name: link neovim config
-  ansible.builtin.file:
-    src: ~/Code/dotfiles/config/nvim
-    dest: ~/.config/nvim
-    state: link
+  - name: link wezterm config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/wezterm
+      dest: ~/.config/wezterm
+      state: link
 
-- name: link main ghostty config
-  ansible.builtin.file:
-    src: ~/Code/dotfiles/config/ghostty/config
-    dest: ~/.config/ghostty/config
-    state: link
+  - name: link neovim config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/nvim
+      dest: ~/.config/nvim
+      state: link
 
-- name: link platform-specific ghostty config
-  ansible.builtin.file:
-    src: ~/Code/dotfiles/config/ghostty/linux_config
-    dest: ~/.config/ghostty/platform_specific_config
-    state: link
+  - name: link main ghostty config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/ghostty/config
+      dest: ~/.config/ghostty/config
+      state: link
 
-# Please run: nvim -c ":PaqSync" manually
-- name: clone paq
-  git:
-    repo: https://github.com/savq/paq-nvim.git
-    dest: ~/.local/share/nvim/site/pack/paqs/start/paq-nvim
+  - name: link platform-specific ghostty config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/ghostty/linux_config
+      dest: ~/.config/ghostty/platform_specific_config
+      state: link
 
-- name: make ltex dict dir
-  ansible.builtin.file:
-    path: ~/.local/share/lang-servers/ltex-ls-data
-    state: directory
+  # Please run: nvim -c ":PaqSync" manually
+  - name: clone paq
+    git:
+      repo: https://github.com/savq/paq-nvim.git
+      dest: ~/.local/share/nvim/site/pack/paqs/start/paq-nvim
 
-- name: touch ltex dict file
-  ansible.builtin.file:
-    path: ~/.local/share/lang-servers/ltex-ls-data/dict.txt
-    state: touch
+  - name: make ltex dict dir
+    ansible.builtin.file:
+      path: ~/.local/share/lang-servers/ltex-ls-data
+      state: directory
 
-- name: link zsh config
-  ansible.builtin.file:
-    src: ~/Code/dotfiles/macos/.zshrc
-    dest: ~/.zshrc
-    state: link
+  - name: touch ltex dict file
+    ansible.builtin.file:
+      path: ~/.local/share/lang-servers/ltex-ls-data/dict.txt
+      state: touch
 
-- name: link aliases
-  ansible.builtin.file:
-    src: ~/Code/dotfiles/linux/.bash_aliases
-    dest: ~/.bash_aliases
-    state: link
+  - name: link zsh config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/macos/.zshrc
+      dest: ~/.zshrc
+      state: link
 
-- name: clone zsh lazyload
-  git:
-    repo: https://github.com/qoomon/zsh-lazyload.git
-    dest: ~/.local/share/aj-apps/zsh-lazyload
+  - name: link aliases
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/linux/.bash_aliases
+      dest: ~/.bash_aliases
+      state: link
 
-- name: clone notes
-  git:
-    repo: git@github.com:alexjuda/notes-synced.git
-    dest: ~/Documents/notes-synced
+  - name: clone zsh lazyload
+    git:
+      repo: https://github.com/qoomon/zsh-lazyload.git
+      dest: ~/.local/share/aj-apps/zsh-lazyload
+
+  - name: clone notes
+    git:
+      repo: git@github.com:alexjuda/notes-synced.git
+      dest: ~/Documents/notes-synced
