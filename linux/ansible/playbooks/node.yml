@@ -23,6 +23,9 @@
     ansible.builtin.git:
       repo: https://github.com/nodenv/node-build.git
       dest: ~/.nodenv/plugins/node-build
+      # `node-build` repo often gets borked tags which can't be easily fetched. `force` overrides whatever we have
+      # locally to reflect the remove.
+      force: yes
 
   - name: install node
     ansible.builtin.command:
