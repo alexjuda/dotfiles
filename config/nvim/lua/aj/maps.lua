@@ -18,24 +18,6 @@ M.setup = function()
     local bufmap = vim.api.nvim_buf_set_keymap
     local opts = { noremap = true }
 
-    -- Shared opts for telescope's finder
-    local finder_opts = {
-        -- Telescope defaults to an rg invocation that ignores hidden files. I
-        -- wanna make rg:
-        -- * Search inside the hidden files/dirs as well (--hidden).
-        -- * Ignore the '.git' folder.
-        -- * Ignore the 'vendor' folder.
-        --
-        -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
-        find_command = {
-            "rg", "--files",
-            "--color", "never",
-            "--hidden",
-            "--glob", "!.git",
-            "--glob", "!vendor",
-        },
-    }
-
 
     -- Leaders
     ------------
@@ -57,10 +39,28 @@ M.setup = function()
 
     -- Project Sidebar
     ------------------
+    local project_finder_opts = {
+        -- `find_command` needs to return a list of filenames for fuzzy match on. Telescope defaults to an rg invocation
+        -- that ignores hidden and git-ignored files. Instead, I'll use `fd`. It has similar defaults as `rg`, but it's
+        -- easier to customize. Opts:
+        -- * `--hidden`: include hidden files.
+        -- * `--no-ignore`: include git-ignored files.
+        -- * `--exclude FOO`: don't search inside FOO.
+        --
+        -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
+        find_command = {
+            "fd",
+            "--hidden",
+            "--no-ignore",
+            "--exclude", ".git",
+            "--exclude", ".node_modules",
+            "--exclude", ".venv",
+        },
+    }
     map("n", "<leader>pb", ":Neotree buffers<CR>", opts) -- show buffers in the sidebar
     map("n", "<leader>po", ":Neotree reveal<CR>", opts)  -- show current file in the project tree
     map("n", "<leader>pt", ":Neotree toggle<CR>", opts)  -- open/close project tree
-    map("n", "<leader>pf", function() telescope.find_files(finder_opts) end, opts, "find file by name")
+    map("n", "<leader>pf", function() telescope.find_files(project_finder_opts) end, opts, "find file by name")
 
 
     -- Search
@@ -95,8 +95,23 @@ M.setup = function()
         os.execute("xdg-open " .. dir_path)
     end
 
+    local all_files_opts = {
+        -- `find_command` needs to return a list of filenames for fuzzy match on. Telescope defaults to an rg invocation
+        -- that ignores hidden and git-ignored files. Instead, I'll use `fd`. It has similar defaults as `rg`, but it's
+        -- easier to customize. Opts:
+        -- * `--hidden`: include hidden files.
+        -- * `--no-ignore`: include git-ignored files.
+        --
+        -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
+        find_command = {
+            "fd",
+            "--hidden",
+            "--no-ignore",
+        },
+    }
+
     map("n", "<leader>fr", function() telescope.oldfiles({ only_cwd = true }) end, opts, "recent files in cwd")
-    map("n", "<leader>ff", function() telescope.find_files() end, opts, "find files")
+    map("n", "<leader>ff", function() telescope.find_files(all_files_opts) end, opts, "find all files")
     map("n", "<leader>fy", function() yank_file_path() end, opts, "copy file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, opts, "open dir in finder")
 
