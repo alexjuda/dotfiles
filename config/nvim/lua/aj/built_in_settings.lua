@@ -29,6 +29,9 @@ M.setup = function()
     vim.o.expandtab = true
     vim.bo.expandtab = true
 
+    -- Line length. This affects `gww`.
+    vim.opt.textwidth = 120
+
     -- When an operation is risky, ask for confirmation instead of failing by default.
     vim.o.confirm = true
 
