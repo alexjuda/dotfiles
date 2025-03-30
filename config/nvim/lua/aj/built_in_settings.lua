@@ -31,23 +31,25 @@ M.setup = function()
 
     -- Line length. This affects `gww`.
     vim.opt.textwidth = 120
-    -- vim.opt.formatoptions = { t = false }
-    -- vim.opt_local.formatoptions = { t = false}
-    vim.opt.formatoptions = "crqj"
+
     -- Notable breaking options:
-    -- * "t": insert newline when exceeding textwidth in insert mode.
-    -- * "c": like "t", but for comments. With comment line leader.
+    -- * "t": insert newline when exceeding textwidth in insert mode. Formatting for text. Doesn't affect comments.
+    -- * "c": like "t", but for comments. With comment line leader. Doesn't affect non-comments.
     -- * "r": insert comment leader on enter in insert mode. Undo with <C-u>.
-    -- * "o": insert comment leader on o or O.
-    -- * "/": only insert a "//" comment in a new line, when at the line start.
     -- * "q": format comments with "gq".
-    -- * "w": treat trailing whitespace at line end to denote paragraph continuation.
     -- * "a": automated paragraph formatting. Every edit means the paragraph is reformatted.
     -- * "n": recognize numbered lists. Insert appropriate leading margin when wrapping text.
-    -- * "2": use indent of the second line for paragraph indentation.
-    -- * "v": break line at a blank you have entered during the current insert command.
+    -- * "1": don't break after 1-letter word.
+    -- * "j": remove comment leader when joining lines.
+    -- * "p": remove comment leader when joining lines.
     --
-    -- Usual default: "tcqj". Actual default depends on the filetype.
+    -- In general, "t" is useful for prose, "c" is useful for source code.
+    --
+    -- Usual default: "tcqj". Actual default depends on the settings in the filetype script.
+    --
+    -- The following config should be sensible for comments in source code, and markdown. Now, `gq` and `gw` can be used
+    -- to both split _and_ join lines. Even editing a line live makes it automatically re-break. Neat!
+    vim.opt.formatoptions = "crqan1jp"
 
     -- When an operation is risky, ask for confirmation instead of failing by default.
     vim.o.confirm = true
@@ -215,6 +217,19 @@ M.setup = function()
         -- Fix missing comment string.
     end
     hujson()
+
+    local markdown = function()
+        local aj_markdown = "aj-markdown"
+        vim.api.nvim_create_augroup(aj_markdown, { clear = true })
+        vim.api.nvim_create_autocmd("Filetype", {
+            group = aj_markdown,
+            pattern = { "markdown" },
+            callback = function(ev)
+                vim.opt_local.formatoptions = "crqan1jp"
+            end,
+        })
+    end
+    markdown()
 
     local html = function()
         local aj_html = "aj-html"
