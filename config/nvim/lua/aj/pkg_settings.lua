@@ -67,6 +67,7 @@ local setup_all = function()
                 "gitignore",
                 "hcl",
                 "helm",
+                "hjson",
                 "html",
                 "http",
                 "javascript",

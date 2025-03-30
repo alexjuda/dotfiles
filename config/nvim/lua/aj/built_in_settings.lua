@@ -185,6 +185,20 @@ M.setup = function()
     end
     helm()
 
+    local hujson = function()
+        -- Register additional extension for the hjson filetype. And set comment string.
+        vim.filetype.add {
+            extension = {
+                hujson = function(path, bufnr)
+                    vim.bo[bufnr].commentstring = "// %s"
+                    return "hjson"
+                end,
+            },
+        }
+        -- Fix missing comment string.
+    end
+    hujson()
+
     local html = function()
         local aj_html = "aj-html"
         vim.api.nvim_create_augroup(aj_html, { clear = true })
