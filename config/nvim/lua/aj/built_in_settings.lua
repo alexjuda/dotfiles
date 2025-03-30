@@ -209,8 +209,9 @@ M.setup = function()
         vim.filetype.add {
             extension = {
                 hujson = function(path, bufnr)
-                    vim.bo[bufnr].commentstring = "// %s"
-                    return "hjson"
+                    return "hjson", function(bufnr)
+                        vim.bo[bufnr].commentstring = "// %s"
+                    end
                 end,
             },
         }
