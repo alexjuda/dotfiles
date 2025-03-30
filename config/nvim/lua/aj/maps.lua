@@ -153,25 +153,24 @@ M.setup = function()
     -- Gitsigns
     -- src: https://github.com/lewis6991/gitsigns.nvim#keymaps
     ----------------------------------------------------------
-    local gs = package.loaded.gitsigns
+    local gs = require("gitsigns")
 
-    -- Actions
-    map('n', '<leader>gp', gs.preview_hunk, opts, "preview hunk")
-    map('n', '<leader>tb', gs.toggle_current_line_blame, opts, "toggle current line blame")
-    map('n', '<leader>gd', gs.diffthis, opts, "diff this")
-    map('n', '<leader>gD', function() gs.diffthis('~') end, opts, "diff tilde (?)")
-    map('n', '<leader>td', gs.toggle_deleted, opts, "toggle deleted")
+    -- Git
+    map('n', '<leader>gp', function() gs.preview_hunk() end, opts, "preview hunk")
+    map('n', '<leader>gd', function() gs.diffthis() end, opts, "show current unstaged diff")
+    map('n', '<leader>tb', function() gs.toggle_current_line_blame() end, opts, "toggle current line blame")
+    map('n', '<leader>td', function() gs.preview_hunk_inline() end, opts, "preview hunk inline")
 
     -- Navigation
     map('n', ']g', function()
         if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.next_hunk() end)
+        vim.schedule(function() gs.nav_hunk("next") end)
         return '<Ignore>'
     end, { expr = true })
 
     map('n', '[g', function()
         if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.prev_hunk() end)
+        vim.schedule(function() gs.nav_hunk("prev") end)
         return '<Ignore>'
     end, { expr = true })
 
