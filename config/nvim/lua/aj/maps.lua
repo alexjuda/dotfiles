@@ -155,7 +155,7 @@ M.setup = function()
     ----------------------------------------------------------
     local gs = require("gitsigns")
 
-    -- Git
+    -- GitSigns
     map('n', '<leader>gp', function() gs.preview_hunk() end, opts, "preview hunk")
     map('n', '<leader>gd', function() gs.diffthis() end, opts, "show current unstaged diff")
     map('n', '<leader>tb', function() gs.toggle_current_line_blame() end, opts, "toggle current line blame")
@@ -174,8 +174,9 @@ M.setup = function()
         return '<Ignore>'
     end, { expr = true })
 
-    -- Text object
-    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    -- Telescope and git
+    map("n", "<leader>gs", function() telescope.git_status() end, opts, "git status")
+    map("n", "<leader>gS", function() telescope.git_stash() end, opts, "git stash")
 
     -- openingh
     map("n", "<Leader>gr", ":OpenInGHRepo <CR>", opts)
