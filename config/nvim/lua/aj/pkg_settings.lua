@@ -485,8 +485,6 @@ local setup_all = function()
     local markdown = function()
         -- Markdown --
         --------------
-        vim.g.markdown_folding = true
-
         require("mdeval").setup {
             require_confirmation = false,
         }
