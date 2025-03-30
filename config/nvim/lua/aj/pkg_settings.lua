@@ -213,8 +213,7 @@ local setup_all = function()
                 enabled = false,
             },
 
-            -- accept_keymap = "<a-l>",
-            -- dismiss_keymap = "<a-l>",
+            accept_keymap = "<a-l>",
         }
     end
     -- Uncomment to enable using Copilot
