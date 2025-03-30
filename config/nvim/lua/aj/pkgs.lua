@@ -173,6 +173,7 @@ M.setup = function()
         -- LLMs
         ------------
         "zbirenbaum/copilot.lua",
+        "huggingface/llm.nvim",
 
         -- Lang-specific
         ----------------

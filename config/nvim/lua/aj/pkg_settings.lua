@@ -190,18 +190,35 @@ local setup_all = function()
 
     local llms = function()
         -- See https://github.com/zbirenbaum/copilot.lua?tab=readme-ov-file#setup-and-configuration for keybindings.
-        require('copilot').setup({
-            suggestion = {
-                auto_trigger = true,
+        -- require('copilot').setup({
+        --     suggestion = {
+        --         auto_trigger = true,
+        --     },
+        --     filetypes = {
+        --         gitcommit = true,
+        --         yaml = true,
+        --     },
+        -- })
+
+        require("llm").setup {
+            -- TODO: try "qwen2.5-coder:3b". Maybe it will work with FIM.
+            model = "codellama:7b",
+            backend = "ollama",
+            url = "http://localhost:11434",
+            -- Huge debounce, just for now.
+            debounce_ms = 500,
+            -- Without this, the completion is often just <fim_suffix>. I think this is due to codellama not being
+            -- trained with Fill In The Middle tokens.
+            fim = {
+                enabled = false,
             },
-            filetypes = {
-                gitcommit = true,
-                yaml = true,
-            },
-        })
+
+            -- accept_keymap = "<a-l>",
+            -- dismiss_keymap = "<a-l>",
+        }
     end
     -- Uncomment to enable using Copilot
-    -- llms()
+    llms()
 
     local autocompletion = function()
         local cmp = require("cmp")
