@@ -31,6 +31,23 @@ M.setup = function()
 
     -- Line length. This affects `gww`.
     vim.opt.textwidth = 120
+    -- vim.opt.formatoptions = { t = false }
+    -- vim.opt_local.formatoptions = { t = false}
+    vim.opt.formatoptions = "crqj"
+    -- Notable breaking options:
+    -- * "t": insert newline when exceeding textwidth in insert mode.
+    -- * "c": like "t", but for comments. With comment line leader.
+    -- * "r": insert comment leader on enter in insert mode. Undo with <C-u>.
+    -- * "o": insert comment leader on o or O.
+    -- * "/": only insert a "//" comment in a new line, when at the line start.
+    -- * "q": format comments with "gq".
+    -- * "w": treat trailing whitespace at line end to denote paragraph continuation.
+    -- * "a": automated paragraph formatting. Every edit means the paragraph is reformatted.
+    -- * "n": recognize numbered lists. Insert appropriate leading margin when wrapping text.
+    -- * "2": use indent of the second line for paragraph indentation.
+    -- * "v": break line at a blank you have entered during the current insert command.
+    --
+    -- Usual default: "tcqj". Actual default depends on the filetype.
 
     -- When an operation is risky, ask for confirmation instead of failing by default.
     vim.o.confirm = true
