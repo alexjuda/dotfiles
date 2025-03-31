@@ -220,7 +220,6 @@ M.setup = function()
             group = aj_markdown,
             pattern = { "markdown" },
             callback = function(ev)
-                vim.opt_local.formatoptions = "crqn1jp"
             end,
         })
     end
