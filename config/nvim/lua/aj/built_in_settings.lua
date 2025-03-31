@@ -220,6 +220,7 @@ M.setup = function()
             group = aj_markdown,
             pattern = { "markdown" },
             callback = function(ev)
+                vim.opt_local.textwidth = 100
             end,
         })
     end
