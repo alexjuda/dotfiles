@@ -101,6 +101,10 @@ M.setup = function()
     -- less annoying. See also: https://github.com/lewis6991/gitsigns.nvim/issues/563
     -- vim.opt.signcolumn = "number"
 
+    -- Show diagnostic errors as virtual text under the offender code line. Defaults to just underline + signcolumn
+    -- icon.
+    vim.diagnostic.config({ virtual_lines = true })
+
     -- Always show sign column. Otherwise, it would appear and disappear whenever entering
     -- and exiting insert mode in a markdown file with spelling issues.
     vim.opt.signcolumn = "yes"
