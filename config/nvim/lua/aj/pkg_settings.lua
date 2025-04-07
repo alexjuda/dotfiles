@@ -372,7 +372,7 @@ local setup_all = function()
             image = { enabled = true }
         }
     end
-    snacks()
+    -- snacks()
 
     local gitsigns = function()
         -- Git goodies
