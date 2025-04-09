@@ -103,7 +103,7 @@ M.setup = function()
 
     -- Show diagnostic errors as virtual text under the offender code line. Defaults to just underline + signcolumn
     -- icon.
-    vim.diagnostic.config({ virtual_lines = true })
+    vim.diagnostic.config({ virtual_lines = true, update_in_insert = true })
 
     -- Always show sign column. Otherwise, it would appear and disappear whenever entering
     -- and exiting insert mode in a markdown file with spelling issues.
