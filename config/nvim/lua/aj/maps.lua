@@ -158,8 +158,8 @@ M.setup = function()
     -- GitSigns
     map('n', '<leader>gp', function() gs.preview_hunk() end, opts, "preview hunk")
     map('n', '<leader>gd', function() gs.diffthis() end, opts, "show current unstaged diff")
-    map('n', '<leader>tb', function() gs.toggle_current_line_blame() end, opts, "toggle current line blame")
-    map('n', '<leader>td', function() gs.preview_hunk_inline() end, opts, "preview hunk inline")
+    map('n', '<leader>tgb', function() gs.toggle_current_line_blame() end, opts, "toggle current line blame")
+    map('n', '<leader>tgd', function() gs.preview_hunk_inline() end, opts, "preview diff hunk")
 
     -- Navigation
     map('n', ']g', function()
@@ -186,6 +186,15 @@ M.setup = function()
     -- Root
     ---------
     map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
+
+    -- Diagnostics
+    map("n", "<Leader>tdl", function()
+        vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+    end, opts, "Toggle diagnostics as lines")
+
+    map("n", "<Leader>tdt", function()
+        vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
+    end, opts, "Toggle diagnostics as text")
 
 
     -- Local leader
