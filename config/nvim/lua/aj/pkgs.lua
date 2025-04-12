@@ -73,9 +73,6 @@ M.setup = function()
         -- Highlight TODOs in source code
         "folke/todo-comments.nvim",
 
-        -- Swiss knife of plugins.
-        "folke/snacks.nvim",
-
         -- Find and replace
         "s1n7ax/nvim-search-and-replace",
 
