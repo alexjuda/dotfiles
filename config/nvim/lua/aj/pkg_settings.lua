@@ -476,14 +476,6 @@ local setup_all = function()
     end
     trim()
 
-    local notes = function()
-        require("aj.vapor").setup {
-            scratch_dir = "~/Documents/notes-synced/daily",
-            todo_dir = "~/Documents/notes-synced/todo",
-        }
-    end
-    notes()
-
     ------------------------------
     -- Filetype-specific config --
     ------------------------------

@@ -4,7 +4,6 @@ local M = {}
 M.setup = function()
     local wk = require("which-key")
     local telescope = require("telescope.builtin")
-    local vapor = require("aj.vapor")
     local spectre = require("spectre")
 
     local map = function(mode, key, cmd, opts, doc)
@@ -136,13 +135,6 @@ M.setup = function()
     map("n", "<leader>Tp", ":tabprev<CR>", noremap)
     map("n", "<leader>TN", ":tabnew<CR>", noremap)
     map("n", "<leader>Td", ":tabclose<CR>", noremap)
-
-
-    -- Notes
-    ----------
-    -- TODO: delete vapor :(
-    map("n", "<leader>nd", function() vapor.open_scratch() end, noremap, "daily note")
-    map("n", "<leader>nt", function() vapor.open_todo() end, noremap, "daily todo")
 
 
     -- Git
