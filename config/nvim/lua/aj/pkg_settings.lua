@@ -319,15 +319,6 @@ local setup_all = function()
     end
     status_line()
 
-
-    local lsp_signature = function()
-        require("lsp_signature").setup {
-            -- show signature in the middle of multi-line invocations
-            always_trigger = true,
-        }
-    end
-    lsp_signature()
-
     local aerial = function()
         -- Symbols sidebar
         require("aerial").setup {}
