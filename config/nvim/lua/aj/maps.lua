@@ -15,8 +15,12 @@ M.setup = function()
         end
     end
 
+    local wk_group = function(key, doc)
+        wk.add({ { key, group = doc } })
+    end
+
     local bufmap = vim.api.nvim_buf_set_keymap
-    local opts = { noremap = true }
+    local noremap = { noremap = true }
 
 
     -- Leaders
@@ -27,14 +31,15 @@ M.setup = function()
 
     -- Buffers
     ------------
-    map("n", "<leader>bb", function() telescope.buffers() end, opts, "buffers")
-    map("n", "<leader>bp", ":bprev<cr>", opts)
-    map("n", "<leader>bn", ":bnext<cr>", opts)
-    map("n", "<leader>bd", ":bp|bd #<cr>", opts) -- close a buffer, but not a window
-    map("n", "<leader>bD", ":%bd|e#|bd#<cr>", opts)
-    map("n", "<leader><TAB>", "<C-^>", opts)     -- switch to last buffer
-    map("n", "<C-PageUp>", ":bprev<cr>", opts)   -- linux-like prev tab
-    map("n", "<C-PageDown>", ":bnext<cr>", opts) -- linux-like next tab
+    wk_group("<leader>b", "buffer...")
+    map("n", "<leader>bb", function() telescope.buffers() end, noremap, "buffers")
+    map("n", "<leader>bp", ":bprev<cr>", noremap)
+    map("n", "<leader>bn", ":bnext<cr>", noremap)
+    map("n", "<leader>bd", ":bp|bd #<cr>", noremap) -- close a buffer, but not a window
+    map("n", "<leader>bD", ":%bd|e#|bd#<cr>", noremap)
+    map("n", "<leader><TAB>", "<C-^>", noremap)     -- switch to last buffer
+    map("n", "<C-PageUp>", ":bprev<cr>", noremap)   -- linux-like prev tab
+    map("n", "<C-PageDown>", ":bnext<cr>", noremap) -- linux-like next tab
 
 
     -- Project Sidebar
@@ -57,26 +62,26 @@ M.setup = function()
             "--exclude", ".venv",
         },
     }
-    map("n", "<leader>pb", ":Neotree buffers<CR>", opts) -- show buffers in the sidebar
-    map("n", "<leader>po", ":Neotree reveal<CR>", opts)  -- show current file in the project tree
-    map("n", "<leader>pt", ":Neotree toggle<CR>", opts)  -- open/close project tree
-    map("n", "<leader>pf", function() telescope.find_files(project_finder_opts) end, opts, "find file by name")
+    wk_group("<leader>p", "project...")
+    map("n", "<leader>pb", ":Neotree buffers<CR>", noremap) -- show buffers in the sidebar
+    map("n", "<leader>po", ":Neotree reveal<CR>", noremap)  -- show current file in the project tree
+    map("n", "<leader>pt", ":Neotree toggle<CR>", noremap)  -- open/close project tree
+    map("n", "<leader>pf", function() telescope.find_files(project_finder_opts) end, noremap, "find file by name")
 
 
     -- Search
     -----------
-    map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, opts, "search in buffer")
-    map("n", "<leader>ss", function() telescope.live_grep() end, opts, "search in PWD")
-    map("n", "<leader>sp", function() spectre.toggle() end, opts, "search in project")
-    map({ "n", "v" }, "<leader>sw", function() spectre.open_visual() end, opts, "search selection")
-    map({ "n", "v" }, "<leader>sf", function() spectre.open_file_search({ select_word = true }) end, opts,
+    wk_group("<leader>s", "search...")
+    map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, noremap, "search in buffer")
+    map("n", "<leader>ss", function() telescope.live_grep() end, noremap, "search in PWD")
+    map("n", "<leader>sp", function() spectre.toggle() end, noremap, "search in project")
+    map({ "n", "v" }, "<leader>sw", function() spectre.open_visual() end, noremap, "search selection")
+    map({ "n", "v" }, "<leader>sf", function() spectre.open_file_search({ select_word = true }) end, noremap,
         "search in current file")
 
 
     -- Files
     ----------
-
-
     local yank_file_path = function()
         -- Get current buffer's file path relative to PWD.
         -- Yank it to the system clipboard.
@@ -110,45 +115,45 @@ M.setup = function()
         },
     }
 
-    map("n", "<leader>fr", function() telescope.oldfiles({ only_cwd = true }) end, opts, "recent files in cwd")
-    map("n", "<leader>ff", function() telescope.find_files(all_files_opts) end, opts, "find all files")
-    map("n", "<leader>fy", function() yank_file_path() end, opts, "copy file path")
-    map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, opts, "open dir in finder")
+    wk_group("<leader>f", "files...")
+    map("n", "<leader>fr", function() telescope.oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
+    map("n", "<leader>ff", function() telescope.find_files(all_files_opts) end, noremap, "find all files")
+    map("n", "<leader>fy", function() yank_file_path() end, noremap, "copy file path")
+    map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, noremap, "open dir in finder")
 
 
     -- Toggles
     -------------
-    map("n", "<leader>tn", ":set number!<CR>", opts)
-    map("n", "<leader>ta", ":AerialToggle!<CR>", opts) -- Toggle aerial sidebar
+    wk_group("<leader>t", "toggles...")
+    map("n", "<leader>tn", ":set number!<CR>", noremap)
+    map("n", "<leader>ta", ":AerialToggle!<CR>", noremap) -- Toggle aerial sidebar
 
 
     -- Tabs
     -------------
-    map("n", "<leader>Tn", ":tabNext<CR>", opts)
-    map("n", "<leader>Tp", ":tabprev<CR>", opts)
-    map("n", "<leader>TN", ":tabnew<CR>", opts)
-    map("n", "<leader>Td", ":tabclose<CR>", opts)
+    wk_group("<leader>T", "tabs...")
+    map("n", "<leader>Tn", ":tabNext<CR>", noremap)
+    map("n", "<leader>Tp", ":tabprev<CR>", noremap)
+    map("n", "<leader>TN", ":tabnew<CR>", noremap)
+    map("n", "<leader>Td", ":tabclose<CR>", noremap)
 
 
     -- Notes
     ----------
-    map("n", "<leader>nd", function() vapor.open_scratch() end, opts, "daily note")
-    map("n", "<leader>nt", function() vapor.open_todo() end, opts, "daily todo")
+    -- TODO: delete vapor :(
+    map("n", "<leader>nd", function() vapor.open_scratch() end, noremap, "daily note")
+    map("n", "<leader>nt", function() vapor.open_todo() end, noremap, "daily todo")
 
 
-    -- Editor
-    -----------
-    map("n", "<leader>eu", ":UnicodeSearch! ", opts)
-
-
-    -- Git--
+    -- Git
     --------
-    map("n", "<leader>co", "<Plug>(git-conflict-ours)", opts, "choose ours")
-    map("n", "<leader>ct", "<Plug>(git-conflict-theirs)", opts, "choose theirs")
-    map("n", "<leader>cb", "<Plug>(git-conflict-both)", opts, "choose both")
-    map("n", "<leader>c0", "<Plug>(git-conflict-none)", opts, "choose none")
-    map("n", "[x", "<Plug>(git-conflict-prev-conflict)", opts, "prev conflict")
-    map("n", "]x", "<Plug>(git-conflict-next-conflict)", opts, "next conflict")
+    wk_group("<leader>c", "choose...")
+    map("n", "<leader>co", "<Plug>(git-conflict-ours)", noremap, "choose ours")
+    map("n", "<leader>ct", "<Plug>(git-conflict-theirs)", noremap, "choose theirs")
+    map("n", "<leader>cb", "<Plug>(git-conflict-both)", noremap, "choose both")
+    map("n", "<leader>c0", "<Plug>(git-conflict-none)", noremap, "choose none")
+    map("n", "[x", "<Plug>(git-conflict-prev-conflict)", noremap, "prev conflict")
+    map("n", "]x", "<Plug>(git-conflict-next-conflict)", noremap, "next conflict")
 
     -- Gitsigns
     -- src: https://github.com/lewis6991/gitsigns.nvim#keymaps
@@ -156,10 +161,13 @@ M.setup = function()
     local gs = require("gitsigns")
 
     -- GitSigns
-    map('n', '<leader>gp', function() gs.preview_hunk() end, opts, "preview hunk")
-    map('n', '<leader>gd', function() gs.diffthis() end, opts, "show current unstaged diff")
-    map('n', '<leader>tgb', function() gs.toggle_current_line_blame() end, opts, "toggle current line blame")
-    map('n', '<leader>tgd', function() gs.preview_hunk_inline() end, opts, "preview diff hunk")
+    wk_group("<leader>g", "git...")
+    map('n', '<leader>gp', function() gs.preview_hunk() end, noremap, "preview hunk")
+    map('n', '<leader>gd', function() gs.diffthis() end, noremap, "show current unstaged diff")
+
+    wk_group("<leader>tg", "git toggles...")
+    map('n', '<leader>tgb', function() gs.toggle_current_line_blame() end, noremap, "toggle current line blame")
+    map('n', '<leader>tgd', function() gs.preview_hunk_inline() end, noremap, "preview diff hunk")
 
     -- Navigation
     map('n', ']g', function()
@@ -175,26 +183,27 @@ M.setup = function()
     end, { expr = true })
 
     -- Telescope and git
-    map("n", "<leader>gs", function() telescope.git_status() end, opts, "git status")
-    map("n", "<leader>gS", function() telescope.git_stash() end, opts, "git stash")
+    map("n", "<leader>gs", function() telescope.git_status() end, noremap, "git status")
+    map("n", "<leader>gS", function() telescope.git_stash() end, noremap, "git stash")
 
     -- openingh
-    map("n", "<Leader>gr", ":OpenInGHRepo <CR>", opts)
-    map("n", "<Leader>gf", ":OpenInGHFile <CR>", opts)
-    map("n", "<Leader>gl", ":OpenInGHFileLines <CR>", opts)
+    map("n", "<Leader>gr", ":OpenInGHRepo <CR>", noremap)
+    map("n", "<Leader>gf", ":OpenInGHFile <CR>", noremap)
+    map("n", "<Leader>gl", ":OpenInGHFileLines <CR>", noremap)
 
     -- Root
     ---------
-    map("n", "<leader><esc>", ":nohlsearch<cr>", opts)
+    map("n", "<leader><esc>", ":nohlsearch<cr>", noremap)
 
     -- Diagnostics
-    map("n", "<Leader>tdl", function()
+    wk_group("<leader>td", "diagnostic toggles...")
+    map("n", "<leader>tdl", function()
         vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
-    end, opts, "Toggle diagnostics as lines")
+    end, noremap, "Toggle diagnostics as lines")
 
-    map("n", "<Leader>tdt", function()
+    map("n", "<leader>tdt", function()
         vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
-    end, opts, "Toggle diagnostics as text")
+    end, noremap, "Toggle diagnostics as text")
 
 
     -- Local leader
@@ -208,14 +217,14 @@ M.setup = function()
             vim.b.venn_enabled = true
             vim.cmd [[setlocal ve=all]]
             -- draw a line on HJKL keystokes
-            bufmap(0, "n", "J", "<C-v>j:VBox<cr>", opts)
-            bufmap(0, "n", "K", "<C-v>k:VBox<cr>", opts)
-            bufmap(0, "n", "L", "<C-v>l:VBox<cr>", opts)
-            bufmap(0, "n", "H", "<C-v>h:VBox<cr>", opts)
+            bufmap(0, "n", "J", "<C-v>j:VBox<cr>", noremap)
+            bufmap(0, "n", "K", "<C-v>k:VBox<cr>", noremap)
+            bufmap(0, "n", "L", "<C-v>l:VBox<cr>", noremap)
+            bufmap(0, "n", "H", "<C-v>h:VBox<cr>", noremap)
             -- draw a box by pressing "f" with visual selection
-            bufmap(0, "v", "f", ":VBox<cr>", opts)
+            bufmap(0, "v", "f", ":VBox<cr>", noremap)
             -- when on a symbol, draw a box around the symbol
-            bufmap(0, "n", "<localleader>f", "Bkh<C-V>jEjl:VBox<cr>", opts)
+            bufmap(0, "n", "<localleader>f", "Bkh<C-V>jEjl:VBox<cr>", noremap)
         else
             vim.cmd [[setlocal ve=]]
             vim.cmd [[mapclear <buffer>]]
@@ -223,54 +232,54 @@ M.setup = function()
         end
     end
 
-    map("n", "<leader>tv", function() toggle_venn() end, opts, "toggle venn")
-
-    -- LSP local leaders --
-    -- We gotta do it here, because buf-local mappings don't seem to work properly in visual mode :(.
-    vim.api.nvim_set_keymap("v", "<localleader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
+    map("n", "<leader>tv", function() toggle_venn() end, noremap, "toggle venn")
 
     -- Show info about currently active LSP connections
-    vim.api.nvim_set_keymap("n", "<localleader>Li", ":LspInfo<CR>", opts)
+    wk_group("<leader>L", "LSP connections...")
+    -- TODO: use map()
+    vim.api.nvim_set_keymap("n", "<localleader>Li", ":LspInfo<CR>", noremap)
 
     -- Kill LSP clients
-    vim.api.nvim_set_keymap("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", opts)
+    vim.api.nvim_set_keymap("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", noremap)
 
     -- Evaluating markdown code blocks --
-    vim.api.nvim_set_keymap("n", "<localleader>ee", ":MdEval<CR>", opts)
-    vim.api.nvim_set_keymap("n", "<localleader>ed", ":MdEvalClean<CR>", opts)
+    vim.api.nvim_set_keymap("n", "<localleader>ee", ":MdEval<CR>", noremap)
+    vim.api.nvim_set_keymap("n", "<localleader>ed", ":MdEvalClean<CR>", noremap)
 
     -- Running tests with neotest
-    map("n", "<localleader>tt", function() require("neotest").run.run() end, opts, "Run nearest test")
-    map("n", "<localleader>ts", function() require("neotest").run.stop() end, opts, "Stop nearest test")
-    map("n", "<localleader>ta", function() require("neotest").run.attach() end, opts, "Attach to nearest test")
+    wk_group("<localleader>t", "tests...")
+    map("n", "<localleader>tt", function() require("neotest").run.run() end, noremap, "Run nearest test")
+    map("n", "<localleader>ts", function() require("neotest").run.stop() end, noremap, "Stop nearest test")
+    map("n", "<localleader>ta", function() require("neotest").run.attach() end, noremap, "Attach to nearest test")
 
     -- iron.nvim
+    wk_group("<localleader>r", "repl...")
     local iron = require("iron.core")
-    map("n", "<localleader>rr", ":IronRepl<CR>", opts, "Toggle iron repl")
-    map("n", "<localleader>rR", ":IronRestart<CR>", opts, "Restart iron repl")
-    map("n", "<localleader>re", function() iron.send_line() end, opts, "Eval line")
+    map("n", "<localleader>rr", ":IronRepl<CR>", noremap, "Toggle iron repl")
+    map("n", "<localleader>rR", ":IronRestart<CR>", noremap, "Restart iron repl")
+    map("n", "<localleader>re", function() iron.send_line() end, noremap, "Eval line")
     map("v", "<localleader>re", function()
         iron.mark_visual()
         iron.send_mark()
-    end, opts, "Eval visual")
-    map("n", "<localleader>rgg", function() iron.send_until_cursor() end, opts, "Eval from beginning of file until cursor")
+    end, noremap, "Eval visual")
+    map("n", "<localleader>rgg", function() iron.send_until_cursor() end, noremap, "Eval from beginning of file until cursor")
 
 
     -- Rebinds
     ----------
     -- Rebind § to ` for compatibility with Linux.
-    vim.api.nvim_set_keymap("i", "§", "`", opts)
+    vim.api.nvim_set_keymap("i", "§", "`", noremap)
 
     -- Global
     ----------
-    map({ "n", "v" }, "<leader><leader>", function() telescope.commands() end, opts, "commands")
-    map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', opts) -- search for selected text
-    map("n", "yp", '"0p', opts, "paste last yanked")
-    map("n", "yP", '"0P', opts, "paste last yanked, prev")
+    map({ "n", "v" }, "<leader><leader>", function() telescope.commands() end, noremap, "commands")
+    map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', noremap) -- search for selected text
+    map("n", "yp", '"0p', noremap, "paste last yanked")
+    map("n", "yP", '"0P', noremap, "paste last yanked, prev")
 
-    map("n", "s/", ":HopPatternMW<CR>", opts)
-    map("n", "ss", ":HopChar2MW<CR>", opts)
-    map("n", "ss", ":HopChar2MW<CR>", opts)
+    map("n", "s/", ":HopPatternMW<CR>", noremap)
+    map("n", "ss", ":HopChar2MW<CR>", noremap)
+    map("n", "ss", ":HopChar2MW<CR>", noremap)
 
     -- Enable standard terminal keybindings in the vim command mode
     local readline = require 'readline'
@@ -345,6 +354,7 @@ M.setup = function()
         end
     end
 
+    wk_group("<leader>m", "markdown...")
     vim.keymap.set("n", "<leader>mdp", function() InsertMarkdownURL() end, { silent = true, noremap = true })
 end
 
