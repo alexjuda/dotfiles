@@ -487,13 +487,15 @@ local setup_all = function()
 
         require("render-markdown").setup {
             heading = {
+                -- Heandings are too confusing.
+                enabled = false,
                 -- By default, headings would get a full-line bar.
-                width = "block",
-                left_pad = 1,
-                right_pad = 1,
-                border = true,
-                -- Make all the headings symmetric in shape.
-                position = "inline",
+                -- width = "block",
+                -- left_pad = 1,
+                -- right_pad = 1,
+                -- border = true,
+                -- -- Make all the headings symmetric in shape.
+                -- position = "inline",
             },
             code = {
                 -- Defaults to concealing the bottom ```. Switching between insert and normal modes causes the whole
