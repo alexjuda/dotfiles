@@ -15,3 +15,9 @@ keybind = ctrl+shift+]=goto_split:next
 
 # This should be a symlink.
 config-file = ?platform_specific_config
+
+# --- fonts ---
+# Bring Linux-like keybinds to macOS. This needs applied on Linux as well because the original keybinds don't use shift.
+keybind = ctrl+shift+plus=increase_font_size:1
+keybind = ctrl+shift+-=decrease_font_size:1
+keybind = ctrl+shift+0=reset_font_size
