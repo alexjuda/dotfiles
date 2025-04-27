@@ -59,7 +59,7 @@
   - name: Install lua-language-server
     ansible.builtin.shell:
       cmd: |
-        mkdir -P ~/.local/share/aj-apps
+        mkdir -p ~/.local/share/aj-apps
         cd ~/.local/share/aj-apps
 
         ~/.local/share/aj-eget-bins/eget LuaLS/lua-language-server --asset ^musl -d
