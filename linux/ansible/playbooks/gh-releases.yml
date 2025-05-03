@@ -31,6 +31,7 @@
       - astral-sh/uv
       - google/yamlfmt
       - jesseduffield/lazydocker
+      - mrjosh/helm-ls
       # It's also available in Fedora DNF repos, but we wanna run the latest
       # release as soon as it hits.
       - "neovim/neovim --asset x86"
