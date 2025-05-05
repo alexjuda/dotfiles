@@ -57,6 +57,8 @@ autoload -U select-word-style
 select-word-style bash
 
 export EDITOR="nvim"
+# https://github.com/alexjuda/fini
+export FINI_DIR="~/Documents/fini-todos"
 
 # Enable kubectl command completions
 [ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
