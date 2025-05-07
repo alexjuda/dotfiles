@@ -185,6 +185,8 @@ M.setup = function()
             pattern = {
                 [".*/manifests/.*.yaml"] = "helm",
                 [".*/manifests/.*.tpl"] = "helm",
+                [".*/templates/.*.yaml"] = "helm",
+                [".*/templates/.*.tpl"] = "helm",
                 [".*/helm/.*.yaml"] = "helm",
                 [".*/helm/.*.tpl"] = "helm",
             }
