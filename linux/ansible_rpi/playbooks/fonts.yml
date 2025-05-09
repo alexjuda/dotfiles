@@ -1,0 +1,26 @@
+- name: Set up nerd fonts
+  hosts: all
+  tasks:
+
+  - name: find URL for nerd font symbols
+    ansible.builtin.command:
+      cmd: ~/Code/dotfiles/scripts/fetch-gh-asset.py ryanoasis nerd-fonts NerdFontsSymbolsOnly.zip$ --first
+    register: nerd_font_proc_out
+
+  - name: print the URL
+    ansible.builtin.command:
+      cmd: echo 'hello {{ nerd_font_proc_out["stdout"] }}'
+
+  - name: unarchive nerd font symbols
+    ansible.builtin.command:
+      argv:
+        - ~/Code/dotfiles/scripts/extract_from_zip.py
+        - "{{ nerd_font_proc_out['stdout'] }}"
+        - ~/.local/share/fonts
+        - --filename
+        - SymbolsNerdFont-Regular.ttf
+        - SymbolsNerdFontMono-Regular.ttf
+      creates: ~/.local/share/fonts/SymbolsNerdFont*-Regular.ttf
+
+  - name: reset font cache
+    ansible.builtin.command: fc-cache ~/.local/share/fonts

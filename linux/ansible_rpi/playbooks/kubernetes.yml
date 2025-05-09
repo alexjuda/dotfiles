@@ -1,0 +1,27 @@
+- name: Set up k8s
+  hosts: all
+  tasks:
+
+  # Source:
+  # * https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management
+  # * https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_repository_module.html#examples
+  - name: Add kubernetes Yum Repo
+    ansible.builtin.yum_repository:
+      name: kubernetes
+      description: Kubernetes
+      baseurl: https://pkgs.k8s.io/core:/stable:/v1.31/rpm/
+      enabled: false
+      gpgcheck: true
+      gpgkey: https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key
+    become: true
+    tags: superuser
+
+  - name: Install kubectl
+    ansible.builtin.dnf:
+      name:
+        - kubectl
+      state: present
+      enablerepo:
+        - kubernetes
+    become: true
+    tags: superuser
