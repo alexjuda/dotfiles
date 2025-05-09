@@ -1,17 +1,1 @@
-- ansible.builtin.import_playbook: system-tools.yml
-
-- ansible.builtin.import_playbook: link-configs.yml
-
-- ansible.builtin.import_playbook: gnome-settings.yml
-
-- ansible.builtin.import_playbook: gnome-extensions.yml
-
-- ansible.builtin.import_playbook: fonts.yml
-
-- ansible.builtin.import_playbook: 1password.yml
-
-- ansible.builtin.import_playbook: kubernetes.yml
-
-- ansible.builtin.import_playbook: node.yml
-
-- ansible.builtin.import_playbook: gh-releases.yml
+- ansible.builtin.import_playbook: tailscale.yml
