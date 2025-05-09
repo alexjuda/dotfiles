@@ -14,5 +14,4 @@ ANSIBLE := uvx --from ansible-core --with ansible ansible-playbook
 
 .PHONY: rpi
 rpi:
-	# $(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml -K $(VERBOSE) $(EXTRA)
 	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml $(VERBOSE) $(EXTRA)
