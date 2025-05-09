@@ -404,6 +404,11 @@ local setup_all = function()
     end
     git_conflict()
 
+    local indent_blankline = function()
+        require("ibl").setup {}
+    end
+    indent_blankline()
+
     local iron = function()
         -- Snippet taken from https://github.com/Vigemus/iron.nvim.
         local iron = require("iron.core")

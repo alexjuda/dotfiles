@@ -120,6 +120,9 @@ M.setup = function()
         -- Eval code under cursor in a side REPL.
         "Vigemus/iron.nvim",
 
+        -- Show vertical indentation guide lines.
+        "lukas-reineke/indent-blankline.nvim",
+
         -- LSP
         --------
 
