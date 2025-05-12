@@ -193,6 +193,11 @@ local setup_all = function()
         require('copilot').setup({
             suggestion = {
                 auto_trigger = true,
+                keymap = {
+                    -- Fix clash with macOS Aerospace
+                    accept = "<C-]>",
+                    dismiss = "<C-[>",
+                },
             },
             filetypes = {
                 gitcommit = true,
