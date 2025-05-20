@@ -3,9 +3,13 @@
   become: true
   tasks:
 
-  - name: Install Tailscale
+  - name: Install nvim
     ansible.builtin.apt:
       name:
         - neovim
       update_cache: true
       state: present
+
+  - name: Upgrade packages
+    ansible.builtin.apt:
+      upgrade: full
