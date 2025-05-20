@@ -4,6 +4,7 @@ nop:
 
 # Required
 # Example: HOST="sumac0.local"
+# Example: HOST="sumac0,sumac1,sumac2"
 HOST =
 
 # Optional
