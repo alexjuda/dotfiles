@@ -193,6 +193,10 @@ local setup_all = function()
         require('copilot').setup({
             suggestion = {
                 auto_trigger = true,
+                keymap = {
+                    -- Default mappings clash with Aero Space on macOS.
+                    accept = "<Tab>",
+                },
             },
             filetypes = {
                 gitcommit = true,
