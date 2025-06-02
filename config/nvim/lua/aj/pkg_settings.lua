@@ -70,6 +70,7 @@ local setup_all = function()
                 "hjson",
                 "html",
                 "http",
+                "java",
                 "javascript",
                 "json",
                 "latex",
