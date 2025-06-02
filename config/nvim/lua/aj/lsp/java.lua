@@ -7,19 +7,22 @@ local is_mac = function()
     return vim.fn.has("macunix") == 1
 end
 
-M.setup = function()
-    ----------
-    -- Assumes that a language server distribution is available in the proper
-    -- directory. Fetch it from https://ftp.fau.de/eclipse/jdtls/snapshots/, put it
-    -- in ~/.local/share/aj-lsp/ and make a symlink so the paths here work.
+local script_name = function()
+    if is_mac() then
+        return "lang_server_mac.sh"
+    else
+        return "lang_server_linux.sh"
+    end
+end
 
+M.setup = function()
+    -- See https://github.com/georgewfraser/java-language-server for build instructions.
+    -- Then, copy 'dist' under '~/.local/share/aj-apps/java-language-server/'.
     require("lspconfig").jdtls.setup {
         cmd = {
-            "java",
-            "-jar",
-            vim.env.HOME .. "/.local/share/aj-lsp/jdtls/plugins/org.eclipse.equinox.launcher_1.6.100.v20201223-0822.jar",
-            "-configuration",
-            vim.env.HOME .. "/.local/share/aj-lsp/jdtls/" .. (is_mac() and "config_mac" or "config_linux"),
+            vim.env.HOME
+            .. "/.local/share/aj-apps/java-language-server/dist/"
+            .. script_name()
         },
         on_attach = common.shared_on_attach,
         capabilities = common.make_shared_capabilities(),
