@@ -9,4 +9,5 @@
 
 ```bash
 make rpi HOST=user@raspberrypi.local
+make rpi HOST="sumac0,sumac1,sumac2"
 ```
