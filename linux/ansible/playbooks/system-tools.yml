@@ -85,6 +85,7 @@
         - org.signal.Signal
         - org.sqlitebrowser.sqlitebrowser
         - org.videolan.VLC
+        - org.wezfurlong.wezterm
     become: true
     tags: superuser
 
