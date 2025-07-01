@@ -63,6 +63,8 @@ export FINI_DIR="~/Documents/fini-todos"
 # Enable kubectl command completions
 [ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
 
+# Set up zoxide, cd replacement.
+eval "$(zoxide init zsh)"
 
 # Custom utils
 # TODO: move to autoloaded files

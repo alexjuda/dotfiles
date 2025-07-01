@@ -69,6 +69,7 @@
         - starship
         - uv
         - xclip
+        - zoxide
         - zsh
       state: present
     become: true
