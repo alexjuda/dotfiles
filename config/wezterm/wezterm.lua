@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 local on_linux = function()
     -- Based on https://stackoverflow.com/a/3652420
@@ -25,6 +26,9 @@ return {
     -- Custom keybindings
     keys = {
         { key = "w", mods = "CTRL|SHIFT|ALT", action = wezterm.action { CloseCurrentPane = { confirm = true } } },
+        -- Imitate moving between panes as in Kitty.
+        { key = "{", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Prev") },
+        { key = "}", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Next") },
     },
     -- Borders
     window_padding = {
