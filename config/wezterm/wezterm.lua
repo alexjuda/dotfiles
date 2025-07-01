@@ -29,6 +29,9 @@ return {
         -- Imitate moving between panes as in Kitty.
         { key = "{", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Prev") },
         { key = "}", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Next") },
+        -- Imitate splitting panes as in Ghostty.
+        { key = "e", mods = "CTRL|SHIFT", action = act.SplitVertical { domain = "CurrentPaneDomain" } },
+        { key = "o", mods = "CTRL|SHIFT", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
     },
     -- Borders
     window_padding = {
