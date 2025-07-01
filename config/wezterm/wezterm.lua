@@ -24,7 +24,6 @@ return {
     color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
     -- Custom keybindings
     keys = {
-        { key = "w", mods = "ALT|CMD",    action = wezterm.action { CloseCurrentPane = { confirm = true } } },
         { key = "w", mods = "CTRL|SHIFT|ALT", action = wezterm.action { CloseCurrentPane = { confirm = true } } },
     },
     -- Borders
