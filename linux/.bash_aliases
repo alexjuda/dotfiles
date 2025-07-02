@@ -12,7 +12,6 @@ custom_aliases=(
     "gbd:git branch -d"
     "gbD:git branch -D"
     "gbDD:git branch | grep -v 'dev' | grep -v 'main' | xargs git branch -D"
-    "gbl:git blame -b -w"
 
     "gc:git commit -v"
     "gca:git commit -v --amend"  # 'gc!' can't be used in macOS bash
@@ -21,22 +20,14 @@ custom_aliases=(
     "gco:git checkout"
     "gcp:git cherry-pick"
 
-    "gcl:git clean"
-    "gcli:git clean --interactive"
-
     "gd:git diff"
     "gds:git diff --cached"  # --staged is a synonym of --cached
-    "gdt:git diff-tree --no-commit-id --name-only -r"
 
     "gf:git fetch -p"
 
     "ggfl:git push --force-with-lease"
 
-    "gls:git log --stat"
-    "glg:git log --graph"
-    "glga:git log --graph --decorate --all"
     "glo:git log --oneline --decorate"
-    "glog:git log --oneline --decorate --graph --all"
     "gloga:git log --oneline --decorate --graph --all"
 
     "gm:git merge"
@@ -47,25 +38,23 @@ custom_aliases=(
 
     "gpl:git pull --ff-only"
 
-    "gr:git remote"
+    "gr:git remote -v"
     "grb:git rebase"
+    "grba:git rebase --abort"
     "grbc:git rebase --continue"
     "grbi:git rebase -i"
     "grh:git reset"
-    "grhu:git reset @{u}"
     "grhh:git reset --hard"
-    "grv:git remote -v"
+    "grhhu:git reset --hard @{u}"
 
     "gsh:git show"
     "gs:git status --short --branch --untracked-files"
     "gss:git status --untracked-files"
-    "gsr:git rev-parse"
     # Copy latest sha and print.
     # Src: https://unix.stackexchange.com/a/273284
     "gsrc:git rev-parse HEAD | tee >(pbcopy)"
     "gst:git stash"
-    "gsta:git stash push"
-    "gstaa:git stash --apply"
+    "gsta:git stash --apply"
     "gstl:git stash list"
     "gstp:git stash pop"
     "gsts:git stash show --text"
