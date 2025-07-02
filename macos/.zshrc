@@ -24,7 +24,7 @@ fi
 # Local paths
 export PATH="$HOME/.local/bin:$HOME/.local/share/aj-eget-bins:$PATH"
 
-# zsh config lazy loader. Helps speeding up the terminal.
+# zsh config lazy loader. Provides the 'lazyload' cmd. Helps speeding up the terminal.
 CUSTOM_APPS="$HOME/.local/share/aj-apps"
 . "$CUSTOM_APPS/zsh-lazyload/zsh-lazyload.zsh"
 
@@ -66,8 +66,8 @@ bindkey -e
 # https://github.com/alexjuda/fini
 export FINI_DIR="~/Documents/fini-todos"
 
-# Enable kubectl command completions
-[ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
+# Enable kubectl command completions. Lazyloaded to gain 30ms shell startup time on normal boxes.
+lazyload kubectl -- 'source <(kubectl completion zsh)'
 
 # Set up zoxide, cd replacement.
 eval "$(zoxide init zsh)"
