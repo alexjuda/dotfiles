@@ -57,6 +57,12 @@ autoload -U select-word-style
 select-word-style bash
 
 export EDITOR="nvim"
+# Setting nvim or vim as the EDITOR additionally triggers some zsh magic which changes shell input mode from "emacs
+# mode" to "vim mode". This only surfaces when booting zellij, for some weird reason. I like "emacs mode" for word
+# navigation, so I need to override this magic. See also:
+# https://apple.stackexchange.com/questions/476813/how-to-tell-iterm2-to-use-emacs-mode-not-vi-mode
+bindkey -e
+
 # https://github.com/alexjuda/fini
 export FINI_DIR="~/Documents/fini-todos"
 
