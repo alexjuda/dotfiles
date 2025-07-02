@@ -4,6 +4,7 @@
 # * .zshenv is for all shells, including non-interactive ones
 
 # Uncomment for tracing slow start up times. Source: https://www.reddit.com/r/zsh/comments/kums6q/zsh_very_slow_to_open_how_to_debug/.
+# See also: https://blog.askesis.pl/post/2017/04/how-to-debug-zsh-startup-time.html
 # zmodload zsh/zprof
 
 # Zsh doesn't store command history unless told to do so. Source:
