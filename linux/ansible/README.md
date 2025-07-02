@@ -46,3 +46,9 @@ Steps to run manually on the target:
     4. `gh auth login`
     5. Spotify.
     6. Signal.
+
+## Running on localhost
+
+```bash
+make framework HOST="localhost"
+```
