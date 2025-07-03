@@ -44,7 +44,10 @@ CUSTOM_APPS="$HOME/.local/share/aj-apps"
 # node
 export PATH="$HOME/.nodenv/bin:$PATH"
 # if this starts making terminals slow I can move it away to be lazy-loaded
-[ -x "$(command -v nodenv)" ] && eval "$(nodenv init - zsh)"
+# [ -x "$(command -v nodenv)" ] && eval "$(nodenv init - zsh)"
+lazyload nodenv -- 'eval "$(nodenv init - zsh)"'
+lazyload npm -- 'eval "$(nodenv init - zsh)"'
+lazyload node -- 'eval "$(nodenv init - zsh)"'
 
 # Terminal prompt
 [ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
