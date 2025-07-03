@@ -18,7 +18,16 @@ setopt SHARE_HISTORY
 
 # Homebrew paths
 if [[ -f /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    # The following is a result of running `eval "$(/opt/homebrew/bin/brew shellenv)"`
+    export HOMEBREW_PREFIX="/opt/homebrew"
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+    export HOMEBREW_REPOSITORY="/opt/homebrew"
+    fpath[1,0]="/opt/homebrew/share/zsh/site-functions"
+    export PATH="/opt/homebrew/bin:$PATH"
+    [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}"
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+
+    # Manually add Java to PATH. Otherwise we wouldn't have access to JVM.
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 
