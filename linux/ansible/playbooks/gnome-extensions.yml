@@ -32,8 +32,8 @@
       cmd: ~/.local/bin/gext install Vitals@CoreCoding.com
       creates: ~/.local/share/gnome-shell/extensions/Vitals@CoreCoding.com
 
-  # Enables controlling gnome windows through dbus
-  - name: install window calls
+  # Change focused window with keyboard
+  - name: install Focus Changer
     ansible.builtin.command:
-      cmd: ~/.local/bin/gext install window-calls@domandoman.xyz
-      creates: ~/.local/share/gnome-shell/extensions/window-calls@domandoman.xyz
+      cmd: ~/.local/bin/gext install focus-changer@heartmire
+      creates: ~/.local/share/gnome-shell/extensions/focus-changer@heartmire
