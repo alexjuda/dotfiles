@@ -33,6 +33,7 @@ local setup_all = function()
     zen_mode()
 
     local colors = function()
+        -- Catppuccin defaults to "mocha" in dark mode and "latte" in light mode.
         vim.cmd.colorscheme "catppuccin"
         -- vim.cmd.colorscheme "rose-pine"
         -- vim.cmd.colorscheme "nightfox"
