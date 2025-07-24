@@ -461,12 +461,6 @@ local setup_all = function()
     end
     todo_comments()
 
-    local illuminate = function()
-        -- Highlight symbol under cursor
-        require("illuminate").configure {}
-    end
-    illuminate()
-
     local tiny_glimmer = function()
         -- Show animations when yanking
         require("tiny-glimmer").setup {}

@@ -141,9 +141,6 @@ M.setup = function()
         -- Symbols sidebar
         "stevearc/aerial.nvim",
 
-        -- Highlight symbol under cursor, automatically
-        "RRethy/vim-illuminate",
-
         -- Fuzzy completion
         ---------------------
         "nvim-telescope/telescope.nvim",
