@@ -19,6 +19,8 @@ local function scheme_for_appearance(appearance)
     end
 end
 
+local default_size = { cols = 80, rows = 24 }
+
 return {
     -- Determine colorscheme based on System-reported light/dark appearance.
     color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
@@ -39,13 +41,16 @@ return {
         top = 0,
         bottom = 0,
     },
-    -- Fonts
-    -- The default font is the bundled JetBrains Mono. Some time ago it lacked the nerd glyphs required by nvim-tree, but nowadays it seems this was fixed.
 
     -- Change font size without messing up OS window layout.
-    -- adjust_window_size_when_changing_font_size = false,
+    adjust_window_size_when_changing_font_size = false,
+
     -- The default font size (10.0) is too small on 4K screens.
-    font_size = 20,
+    font_size = 18,
+
+    -- The default window size for new windows seems small.
+    initial_cols = math.floor(120 / 80 * default_size.cols),
+    initial_rows = math.floor(120 / 80 * default_size.rows),
 
     -- Stop "WezTerm Update Available" spam on new panes. Flatpak distribution
     -- is few releases behind so it's impossible to install the latest version.
