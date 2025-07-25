@@ -506,12 +506,6 @@ local setup_all = function()
     end
     -- diagram()
 
-    local tiny_glimmer = function()
-        -- Show animations when yanking
-        require("tiny-glimmer").setup {}
-    end
-    tiny_glimmer()
-
     local hop = function()
         -- Jumps based on 2 letter prefix
         require("hop").setup {}

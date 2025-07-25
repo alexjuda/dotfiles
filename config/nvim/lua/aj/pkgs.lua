@@ -100,9 +100,6 @@ M.setup = function()
         -- Project-wide search and replace
         "nvim-pack/nvim-spectre",
 
-        -- Add tiny animations to yank operations.
-        "rachartier/tiny-glimmer.nvim",
-
         -- View and edit CSVs.
         "hat0uma/csvview.nvim",
 
