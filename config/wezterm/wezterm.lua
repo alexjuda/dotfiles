@@ -43,9 +43,9 @@ return {
     -- The default font is the bundled JetBrains Mono. Some time ago it lacked the nerd glyphs required by nvim-tree, but nowadays it seems this was fixed.
 
     -- Change font size without messing up OS window layout.
-    adjust_window_size_when_changing_font_size = false,
+    -- adjust_window_size_when_changing_font_size = false,
     -- The default font size (10.0) is too small on 4K screens.
-    font_size = 16,
+    font_size = 20,
 
     -- Stop "WezTerm Update Available" spam on new panes. Flatpak distribution
     -- is few releases behind so it's impossible to install the latest version.
