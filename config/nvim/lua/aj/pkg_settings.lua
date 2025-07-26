@@ -259,6 +259,11 @@ local setup_all = function()
     end
     telescope()
 
+    local lsp_progress = function()
+        require("lsp-progress").setup {}
+    end
+    lsp_progress()
+
     local status_line = function()
         -- Simulates how Emacs shows currently active minor modes on the status line.
         local function minor_mode_status()
@@ -312,6 +317,9 @@ local setup_all = function()
                     "fileformat",
                     "copilot",
                     "filetype",
+                    function()
+                        return require("lsp-progress").progress()
+                    end,
                 },
                 lualine_y = {
                     "searchcount",

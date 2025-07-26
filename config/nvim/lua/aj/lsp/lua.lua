@@ -4,7 +4,7 @@ local M = {}
 
 
 M.setup = function()
-    -- Requires `lua-language=server` available at PATH.
+    -- Requires `lua-language-server` available at PATH.
     require("lspconfig").lua_ls.setup {
         settings = {
             Lua = {

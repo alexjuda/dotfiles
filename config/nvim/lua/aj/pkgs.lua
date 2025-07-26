@@ -144,6 +144,9 @@ M.setup = function()
         -- LSP-based source for cmp
         "hrsh7th/cmp-nvim-lsp",
 
+        -- Show LSP progress and messages.
+        "linrongbin16/lsp-progress.nvim",
+
         -- Symbols sidebar
         "stevearc/aerial.nvim",
 
