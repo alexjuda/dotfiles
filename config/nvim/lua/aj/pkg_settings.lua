@@ -462,7 +462,14 @@ local setup_all = function()
     todo_comments()
 
     local image = function()
-        require("image").setup {}
+        require("image").setup {
+            integrations = {
+                markdown = {
+                    only_render_image_at_cursor = true,     -- defaults to false
+                    only_render_image_at_cursor_mode = "popup", -- "popup" or "inline", defaults to "popup"
+                }
+            },
+        }
     end
     image()
 
