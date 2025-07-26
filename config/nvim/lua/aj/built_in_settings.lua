@@ -90,9 +90,6 @@ M.setup = function()
     -- Set langauge
     vim.cmd [[language en_US.UTF-8]]
 
-    -- Hide command line if not currently writing a command. Works with neovim >=0.8.
-    vim.o.cmdheight = 0
-
     -- Show horizontal line at cursor row.
     vim.opt.cursorline = true
 
