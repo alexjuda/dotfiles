@@ -123,6 +123,9 @@ M.setup = function()
         -- Show vertical indentation guide lines.
         "lukas-reineke/indent-blankline.nvim",
 
+        -- Render inline images inside markdown documents.
+        "3rd/image.nvim",
+
         -- LSP
         --------
 

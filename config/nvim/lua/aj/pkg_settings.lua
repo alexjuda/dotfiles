@@ -461,6 +461,11 @@ local setup_all = function()
     end
     todo_comments()
 
+    local image = function()
+        require("image").setup {}
+    end
+    image()
+
     local tiny_glimmer = function()
         -- Show animations when yanking
         require("tiny-glimmer").setup {}
