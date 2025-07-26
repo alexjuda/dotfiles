@@ -379,7 +379,18 @@ local setup_all = function()
     neo_tree()
 
     local oil = function()
-        require("oil").setup {}
+        require("oil").setup {
+            columns = {
+                "icon",
+                -- "permissions",
+                -- "size",
+                -- "mtime",
+            },
+            -- Workaround for horizontal stuttering when a given level is first rendered.
+            win_options = {
+                conceallevel = 0,
+            },
+        }
     end
     oil()
 

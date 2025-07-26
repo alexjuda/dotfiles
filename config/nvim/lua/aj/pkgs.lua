@@ -45,8 +45,8 @@ M.setup = function()
         "folke/zen-mode.nvim",
 
         -- Dependency for:
-        -- * neotree
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        -- * oil.nvim
+        "echasnovski/mini.icons", -- not strictly required, but recommended
 
         -- Dependency for:
         -- * neotree
