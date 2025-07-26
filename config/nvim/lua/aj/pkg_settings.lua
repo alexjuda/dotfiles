@@ -49,6 +49,11 @@ local setup_all = function()
     end
     csv_view()
 
+    local marks = function()
+        require("marks").setup {}
+    end
+    marks()
+
     local treesitter = function()
         -- Enable all common functionality
         require("nvim-treesitter.configs").setup {

@@ -88,6 +88,9 @@ M.setup = function()
         -- Create missing directory on :w.
         "jghauser/mkdir.nvim",
 
+        -- Show marks on the sign column. Add utilities around managing marks.
+        "chentoast/marks.nvim",
+
         -- Use neovim's diff mode to view git diffs.
         "sindrets/diffview.nvim",
 
