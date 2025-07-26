@@ -22,8 +22,8 @@ M.setup = function()
 
         -- UI
         -------
-        -- Edit directories
-        'elihunter173/dirbuf.nvim',
+        -- View and edit directories in via text buffers.
+        "stevearc/oil.nvim",
 
         -- leader keybindings helper window
         "folke/which-key.nvim",

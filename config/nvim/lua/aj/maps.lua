@@ -40,6 +40,7 @@ M.setup = function()
     map("n", "<C-PageUp>", ":bprev<cr>", noremap)   -- linux-like prev tab
     map("n", "<C-PageDown>", ":bnext<cr>", noremap) -- linux-like next tab
 
+    map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory", noremap = true })
 
     -- Project Sidebar
     ------------------

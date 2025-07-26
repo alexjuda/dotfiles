@@ -378,6 +378,11 @@ local setup_all = function()
     end
     neo_tree()
 
+    local oil = function()
+        require("oil").setup {}
+    end
+    oil()
+
     local gitsigns = function()
         -- Git goodies
         require("gitsigns").setup {}
