@@ -488,7 +488,14 @@ local setup_all = function()
         }
 
         -- Requires 'mmdc' at PATH: 'npm install -g @mermaid-js/mermaid-cli'.
-        require("diagram").setup {}
+        require("diagram").setup {
+            renderer_options = {
+                mermaid = {
+                    -- Default scale is 1, but it's way too small for my monitors.
+                    scale = 4,
+                },
+            },
+        }
     end
     image()
 
