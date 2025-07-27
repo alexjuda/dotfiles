@@ -49,6 +49,7 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 lazyload nodenv -- 'eval "$(nodenv init - zsh)"'
 lazyload npm -- 'eval "$(nodenv init - zsh)"'
 lazyload node -- 'eval "$(nodenv init - zsh)"'
+lazyload mmdc -- 'eval "$(nodenv init - zsh)"'
 
 # Workaround for LS clients not working with lazyload but needing the server binary.
 export PATH="$HOME/.nodenv/shims:${PATH}"
