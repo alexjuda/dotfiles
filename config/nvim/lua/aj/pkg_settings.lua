@@ -487,6 +487,10 @@ local setup_all = function()
             },
         }
 
+    end
+    image()
+
+    local diagram = function ()
         -- Requires 'mmdc' at PATH: 'npm install -g @mermaid-js/mermaid-cli'.
         require("diagram").setup {
             renderer_options = {
@@ -500,7 +504,7 @@ local setup_all = function()
             },
         }
     end
-    image()
+    -- diagram()
 
     local tiny_glimmer = function()
         -- Show animations when yanking
