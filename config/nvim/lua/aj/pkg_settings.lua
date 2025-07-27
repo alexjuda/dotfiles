@@ -492,7 +492,7 @@ local setup_all = function()
             renderer_options = {
                 mermaid = {
                     -- Default scale is 1, but it's way too small for my monitors.
-                    scale = 4,
+                    scale = 2,
                     -- Default settings work good for light mode, but I use dark mode more.
                     theme = "dark",
                     background = "transparent",
