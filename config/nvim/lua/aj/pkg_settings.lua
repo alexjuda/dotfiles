@@ -486,6 +486,9 @@ local setup_all = function()
                 }
             },
         }
+
+        -- Requires 'mmdc' at PATH: 'npm install -g @mermaid-js/mermaid-cli'.
+        require("diagram").setup {}
     end
     image()
 

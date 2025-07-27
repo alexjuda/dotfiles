@@ -127,7 +127,11 @@ M.setup = function()
         "lukas-reineke/indent-blankline.nvim",
 
         -- Render inline images inside markdown documents.
+        -- Dependency for diagram.nvim.
         "3rd/image.nvim",
+
+        -- Render markdown diagrams via image.nvim.
+        "3rd/diagram.nvim",
 
         -- LSP
         --------
