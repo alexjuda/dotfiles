@@ -36,12 +36,16 @@
     ansible.builtin.command:
       cmd: ~/.nodenv/bin/nodenv global 22.12.0
 
-  - name: Install lang servers
+  - name: Install npm tools
     ansible.builtin.shell:
       cmd: |
         export PATH="$HOME/.nodenv/bin:$PATH"
         eval "$(nodenv init - zsh)"
 
+        # Lang servers
         npm install -g vscode-langservers-extracted
         npm install -g typescript
         npm install -g typescript-language-server
+
+        # Other tools
+        npm install -g @mermaid-js/mermaid-cli
