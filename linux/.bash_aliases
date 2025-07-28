@@ -54,7 +54,7 @@ custom_aliases=(
     # Src: https://unix.stackexchange.com/a/273284
     "gsrc:git rev-parse HEAD | tee >(pbcopy)"
     "gst:git stash"
-    "gsta:git stash --apply"
+    "gsta:git stash apply"
     "gstl:git stash list"
     "gstp:git stash pop"
     "gsts:git stash show --text"
