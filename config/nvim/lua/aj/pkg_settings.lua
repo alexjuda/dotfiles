@@ -558,6 +558,13 @@ local setup_all = function()
                     icon = ' 󰱒 ',
                 },
             },
+            win_options = {
+                conceallevel = {
+                    -- Hide backticks, links, and fenced blocks in markdown (level > 0). On the other hand, don't change the horizontal
+                    -- placement of letters (level < 2).
+                    rendered = 1,
+                }
+            },
         }
     end
     markdown()

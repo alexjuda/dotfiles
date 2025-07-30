@@ -121,7 +121,7 @@ M.setup = function()
     -- src: https://github.com/tweekmonster/nvim-python-doctor/wiki/Simple-Installation
     vim.cmd [[let g:python3_host_prog = 'python']]
 
-    -- Hide backticks, links, and fenced blocks in markdown.
+    -- Use conceal in general.
     vim.opt.conceallevel = 2
 
     -- Enable comments in .sql files.
