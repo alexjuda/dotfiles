@@ -546,6 +546,18 @@ local setup_all = function()
                 -- page to flicker, which is super annoying.
                 border = "thin",
             },
+            checkbox = {
+                -- Show bullet before the checkbox. Improves layout for nested lists.
+                bullet = true,
+                unchecked = {
+                    -- Add space prefix to stabilize the layout.
+                    icon = " 󰄱 ",
+                },
+                checked = {
+                    -- Add space prefix to stabilize the layout.
+                    icon = ' 󰱒 ',
+                },
+            },
         }
     end
     markdown()
