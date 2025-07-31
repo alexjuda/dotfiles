@@ -4,6 +4,8 @@
 # Aerospace uses defaults from the default config if a given option isn't set, with the exception of bindings. All
 # keyboard bindings and binding modes have to be explicitly set here.
 
+start-at-login = true
+
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
