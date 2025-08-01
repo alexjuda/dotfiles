@@ -55,10 +55,6 @@ M.setup = function()
     vim.o.number = true
     vim.wo.number = true
 
-    -- Add some left margin
-    vim.o.numberwidth = 6
-    vim.wo.numberwidth = 6
-
     -- Enable scrolling with mouse
     vim.o.mouse = "a"
 
