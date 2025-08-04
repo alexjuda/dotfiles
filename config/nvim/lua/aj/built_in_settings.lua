@@ -118,7 +118,7 @@ M.setup = function()
     vim.cmd [[let g:python3_host_prog = 'python']]
 
     -- Use conceal in general.
-    vim.opt.conceallevel = 2
+    vim.opt.conceallevel = 1
 
     -- Enable comments in .sql files.
     local ft_sql = vim.api.nvim_create_namespace("ft_sql")

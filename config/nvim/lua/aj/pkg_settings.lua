@@ -558,6 +558,10 @@ local setup_all = function()
                     icon = ' 󰱒 ',
                 },
             },
+            link = {
+                -- Disable showing icons in front of URLs.
+                enabled = false,
+            },
             win_options = {
                 conceallevel = {
                     -- Hide backticks, links, and fenced blocks in markdown (level > 0). On the other hand, don't change the horizontal
