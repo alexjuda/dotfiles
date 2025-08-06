@@ -55,6 +55,11 @@
   # Github releases, they just expose the .rpm files. You have to download the
   # .rpm file and dnf-install it.
 
+  # The grafana/loki repo contains multiple apps.
+  - name: Install logcli
+    ansible.builtin.command:
+      cmd: "~/.local/share/aj-eget-bins/eget grafana/loki --to ~/.local/share/aj-eget-bins --asset logcli"
+
   # Unfortunately it doesn't work well with eget. `eget` just extracts the main
   # script, but lua-ls needs the whole project dir.
   - name: Install lua-language-server
