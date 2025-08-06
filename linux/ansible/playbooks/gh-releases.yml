@@ -37,10 +37,10 @@
       # It's also available in Fedora DNF repos, but we wanna run the latest
       # release as soon as it hits.
       - "neovim/neovim --asset x86"
-      # Ollama ships "standard" and "rocm" binaries. We need the standard one.
-      - "ollama/ollama --asset ^rocm"
       - polarmutex/beancount-language-server
       - zk-org/zk
+
+  # Ollama isn't here because it takes forever to download.
 
   - name: Fix neovim executable name
     ansible.builtin.file:
