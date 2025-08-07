@@ -298,13 +298,8 @@ local setup_all = function()
                     {
                         -- Show total count of open buffers.
                         function()
-                            local loaded = 0
-                            for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-                                if vim.api.nvim_buf_is_loaded(bufnr) then
-                                    loaded = loaded + 1
-                                end
-                            end
-                            return loaded
+                            local info = vim.fn.getbufinfo { buflisted = 1 }
+                            return #info
                         end,
                     },
                 },
