@@ -62,6 +62,11 @@ export PATH="$HOME/.nodenv/shims:${PATH}"
 autoload -Uz compinit
 compinit
 
+# Enable editing current command in EDITOR.
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # Make 'cd' match case-insensitive.
 # Src: https://superuser.com/a/1092328
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
