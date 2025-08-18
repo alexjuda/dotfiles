@@ -15,3 +15,5 @@
 - ansible.builtin.import_playbook: node.yml
 
 - ansible.builtin.import_playbook: gh-releases.yml
+
+- ansible.builtin.import_playbook: python.yml

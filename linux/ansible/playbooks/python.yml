@@ -1,0 +1,18 @@
+- name: Set up Python tools
+  hosts: all
+  tasks:
+
+  - name: Install pylsp with uv
+    ansible.builtin.command:
+      cmd: uv tool install python-lsp-server[rope] --with python-lsp-ruff --with python-lsp-ruff --with pylsp-rope
+      creates: ~/.local/share/uv/tools/python-lsp-server
+
+  - name: Install pyright with uv
+    ansible.builtin.command:
+      cmd: uv tool install pyright
+      creates: ~/.local/share/uv/tools/pyright
+
+  - name: Install ruff with uv
+    ansible.builtin.command:
+      cmd: uv tool install ruff
+      creates: ~/.local/share/uv/tools/ruff
