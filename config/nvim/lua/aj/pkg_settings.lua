@@ -65,6 +65,7 @@ local setup_all = function()
                 "cpp",
                 "csv",
                 "diff",
+                "d2",
                 "dockerfile",
                 "git_config",
                 "git_rebase",

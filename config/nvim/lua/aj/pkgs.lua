@@ -188,6 +188,12 @@ M.setup = function()
 
         -- Inline markdown rendering, as much as it's possible in a TUI
         "MeanderingProgrammer/render-markdown.nvim",
+
+        -- Render d2 diagrams in a sidebar.
+        "terrastruct/d2-vim",
+
+        -- TS grammar for d2lang.
+        { "ravsii/tree-sitter-d2", build = "make nvim-install" },
     }
 end
 
