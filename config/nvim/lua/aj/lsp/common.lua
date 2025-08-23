@@ -69,9 +69,18 @@ M.shared_on_attach = function(client, buf_n)
 end
 
 
-
 M.make_shared_capabilities = function()
     return require('cmp_nvim_lsp').default_capabilities()
+end
+
+
+M.on_mac = function()
+    return vim.fn.has("macunix") == 1
+end
+
+
+M.on_linux = function()
+    return not M.on_mac()
 end
 
 
