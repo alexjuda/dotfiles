@@ -74,14 +74,4 @@ M.make_shared_capabilities = function()
 end
 
 
-M.on_mac = function()
-    return vim.fn.has("macunix") == 1
-end
-
-
-M.on_linux = function()
-    return not M.on_mac()
-end
-
-
 return M

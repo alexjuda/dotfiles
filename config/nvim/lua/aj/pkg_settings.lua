@@ -1,3 +1,5 @@
+local switchers = require("aj.switchers")
+
 local M = {}
 
 
@@ -211,8 +213,10 @@ local setup_all = function()
             },
         })
     end
-    -- Uncomment to enable using Copilot
-    -- llms()
+
+    if switchers.on_mac() then
+        llms()
+    end
 
     local autocompletion = function()
         local cmp = require("cmp")
