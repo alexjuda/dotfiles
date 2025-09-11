@@ -156,6 +156,13 @@ M.setup = function()
         "nvim-telescope/telescope.nvim",
 
 
+        -- DAP
+        "mfussenegger/nvim-dap",
+        "mfussenegger/nvim-dap-python",
+        "rcarriga/nvim-dap-ui",
+        "nvim-neotest/nvim-nio",
+
+
         -- Editing
         ------------
         -- wrap selected block in chars
