@@ -80,11 +80,62 @@ local setup_ruff = function()
     }
 end
 
+local setup_dap = function()
+    local dap = require("dap")
+    local dapui = require("dapui")
+
+    -- Setup dap-ui
+    dapui.setup()
+
+    -- Setup python adapter
+    require("dap-python").setup("python") -- you can pass path to venv python
+
+    -- Open dap-ui automatically
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated["dapui_config"] = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited["dapui_config"] = function()
+      dapui.close()
+    end
+
+    vim.keymap.set("n", "<F5>", function() require("dap").continue() end)
+    vim.keymap.set("n", "<F10>", function() require("dap").step_over() end)
+    vim.keymap.set("n", "<F11>", function() require("dap").step_into() end)
+    vim.keymap.set("n", "<F12>", function() require("dap").step_out() end)
+    vim.keymap.set("n", "<leader>b", function() require("dap").toggle_breakpoint() end)
+    vim.keymap.set("n", "<leader>B", function()
+      require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+    end)
+    vim.keymap.set("n", "<leader>dr", function() require("dap").repl.open() end)
+
+
+    -- Pytest configuration
+    require("dap-python").test_runner = "pytest"
+
+    -- Debug the test under cursor
+    vim.keymap.set("n", "<leader>dn", function()
+      require("dap-python").test_method()
+    end)
+
+    -- Debug the current file’s tests
+    vim.keymap.set("n", "<leader>df", function()
+      require("dap-python").test_class()
+    end)
+
+    -- Debug the whole file
+    vim.keymap.set("n", "<leader>ds", function()
+      require("dap-python").debug_selection()
+    end)
+end
 
 M.setup = function()
     setup_pylsp()
     setup_pyright()
     setup_ruff()
+    setup_dap()
 end
 
 
