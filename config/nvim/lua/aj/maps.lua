@@ -59,7 +59,11 @@ M.setup = function()
             "--no-ignore",
             "--exclude", ".git",
             "--exclude", ".node_modules",
+            -- Python-specific
             "--exclude", ".venv",
+            "--exclude", "__pycache__",
+            "--exclude", ".pytest_cache",
+            "--exclude", ".ruff_cache",
         },
     }
     wk_group("<leader>p", "project...")
@@ -106,6 +110,8 @@ M.setup = function()
         -- easier to customize. Opts:
         -- * `--hidden`: include hidden files.
         -- * `--no-ignore`: include git-ignored files.
+        --
+        -- I want this to be relatively open. I have <leader>pf for project-scoped files.
         --
         -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
         find_command = {
