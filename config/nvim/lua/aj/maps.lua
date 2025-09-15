@@ -204,6 +204,9 @@ M.setup = function()
         vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
     end, noremap, "Toggle diagnostics as text")
 
+    -- Similar to LSP's <C-K> for hover float.
+    map("n", "<C-K>", function() vim.diagnostic.open_float() end, noremap, "Open diagnostics float")
+
 
     -- Local leader
     -----------------
