@@ -211,6 +211,22 @@ local setup_all = function()
                 gitcommit = true,
                 yaml = true,
             },
+            should_attach = function(bufnr, bufname)
+                -- Disable copilot for files with secrets: .envrc, .env, .secrets.baseline, etc.
+                local forbidden_patterns = { ".env", ".envrc" }
+                for _, pattern in ipairs(forbidden_patterns) do
+                    if string.find(bufname, pattern) then
+                        return false
+                    end
+                end
+
+                -- Disable for files with 'secret' in the name.
+                if string.find(bufname, "secret") then
+                    return false
+                end
+
+                return true
+            end,
         })
     end
 
