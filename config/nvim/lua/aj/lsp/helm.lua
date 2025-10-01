@@ -13,7 +13,7 @@ M.setup = function()
         cmd_name = "helm-ls"
     end
 
-    require("lspconfig").helm_ls.setup {
+    vim.lsp.config("helm_ls", {
         on_attach = common.shared_on_attach,
         cmd = { cmd_name, "serve", },
         settings = {
@@ -24,7 +24,9 @@ M.setup = function()
                 },
             },
         },
-    }
+    })
+
+    vim.lsp.enable("helm_ls")
 end
 
 

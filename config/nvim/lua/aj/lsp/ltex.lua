@@ -30,7 +30,7 @@ M.setup = function()
     -- Assumes that `ltex-ls` is installed and is available in the $PATH.
     -- Install from a release from: https://github.com/valentjn/ltex-ls/releases.
 
-    require("lspconfig").ltex.setup {
+    vim.lsp.config("ltex", {
         on_attach = common.shared_on_attach,
         settings = {
             ltex = {
@@ -39,7 +39,9 @@ M.setup = function()
                 },
             },
         },
-    }
+    })
+
+    vim.lsp.enable("ltex")
 end
 
 

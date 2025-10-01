@@ -9,11 +9,13 @@ M.setup = function()
     -- Anyway, installing:
     -- npm install -g typescript typescript-language-server
 
-    require("lspconfig").ts_ls.setup {
+    vim.lsp.config("ts_ls", {
         cmd = { "npx", "typescript-language-server", "--stdio", },
         on_attach = common.shared_on_attach,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("ts_ls")
 end
 
 

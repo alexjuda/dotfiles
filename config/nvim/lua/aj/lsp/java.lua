@@ -18,7 +18,7 @@ end
 M.setup = function()
     -- See https://github.com/georgewfraser/java-language-server for build instructions.
     -- Then, copy 'dist' under '~/.local/share/aj-apps/java-language-server/'.
-    require("lspconfig").jdtls.setup {
+    vim.lsp.config("jdtls", {
         cmd = {
             vim.env.HOME
             .. "/.local/share/aj-apps/java-language-server/dist/"
@@ -26,7 +26,9 @@ M.setup = function()
         },
         on_attach = common.shared_on_attach,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("jdtls")
 end
 
 

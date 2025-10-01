@@ -10,10 +10,12 @@ M.setup = function()
     -- For LSP settings, see also:
     -- https://rust-analyzer.github.io/manual.html#nvim-lsp
 
-    require("lspconfig").rust_analyzer.setup {
+    vim.lsp.config("rust_analyzer", {
         on_attach = common.shared_on_attach,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("rust_analyzer")
 end
 
 

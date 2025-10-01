@@ -5,7 +5,7 @@ local M = {}
 
 M.setup = function()
     -- Requires `lua-language-server` available at PATH.
-    require("lspconfig").lua_ls.setup {
+    vim.lsp.config("lua_ls", {
         settings = {
             Lua = {
                 runtime = {
@@ -28,7 +28,9 @@ M.setup = function()
         },
         on_attach = common.shared_on_attach,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("lua_ls")
 end
 
 

@@ -13,7 +13,7 @@ end
 
 
 local setup_pyright = function()
-    require("lspconfig").pyright.setup {
+    vim.lsp.config("pyright", {
         cmd = { "pyright-langserver", "--stdio" },
         settings = {
             python = {
@@ -31,12 +31,14 @@ local setup_pyright = function()
             client.server_capabilities.formattingProvider = nil
         end,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("pyright")
 end
 
 local setup_pylsp = function()
     -- Requires `python-lsp-server` pip package.
-    require("lspconfig").pylsp.setup {
+    vim.lsp.config("pylsp", {
         cmd = {
             "pylsp",
         },
@@ -67,17 +69,22 @@ local setup_pylsp = function()
             client.server_capabilities.formattingProvider = nil
         end,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("pylsp")
 end
 
 local setup_ruff = function()
-    require("lspconfig").ruff.setup {
+    vim.lsp.config("ruff", {
+
         cmd = { "ruff", "server" },
         on_attach = function(client, buf_n)
             common.shared_on_attach(client, buf_n)
         end,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("ruff")
 end
 
 

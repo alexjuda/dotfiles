@@ -6,7 +6,7 @@ local M = {}
 M.setup = function()
     -- Requires `vscode-langservers-extracted` npm package.
 
-    require("lspconfig").jsonls.setup {
+    vim.lsp.config("jsonls", {
         commands = {
             -- add support for full buffer formatting using range formatting
             Format = {
@@ -17,7 +17,9 @@ M.setup = function()
         },
         on_attach = common.shared_on_attach,
         capabilities = common.make_shared_capabilities(),
-    }
+    })
+
+    vim.lsp.enable("jsonls")
 end
 
 
