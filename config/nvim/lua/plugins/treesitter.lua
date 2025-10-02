@@ -4,16 +4,19 @@ return {
     lazy = false,
     branch = "main",
     build = ":TSUpdate",
-    opts = {
-        -- ensure_installed = {
-        --     "markdown",
-        -- },
-    },
     config = function(opts)
         local ts = require("nvim-treesitter")
         ts.setup(opts)
+
         ts.install {
             "markdown",
         }
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = {
+                "markdown"
+            },
+            callback = function() vim.treesitter.start() end,
+        })
     end
 }
