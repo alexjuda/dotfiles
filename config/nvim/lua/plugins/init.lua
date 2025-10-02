@@ -12,7 +12,5 @@
 -- * git conflict
 -- * indent blankline
 -- * iron
--- * todo comments
--- * hop
 -- * trim
 return {}
