@@ -6,7 +6,6 @@
 -- * copilot
 -- * cmp
 -- * lsp-progress
--- * early retirement
 -- * diff view
 -- * git conflict
 -- * indent blankline
