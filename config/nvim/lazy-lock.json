@@ -1,4 +1,5 @@
 {
+  "aerial.nvim": { "branch": "master", "commit": "5e687b5a14004fa2dd9eccbee042b96869fe1557" },
   "catppuccin": { "branch": "main", "commit": "c89184526212e04feffbddda9d06b041a8fca416" },
   "csvview.nvim": { "branch": "main", "commit": "bbab4c2f808fd8e11ec8dfdd128251aadba566a1" },
   "gitsigns.nvim": { "branch": "main", "commit": "1ee5c1fd068c81f9dd06483e639c2aa4587dc197" },

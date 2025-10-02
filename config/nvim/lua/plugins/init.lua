@@ -6,7 +6,6 @@
 -- * copilot
 -- * cmp
 -- * lsp-progress
--- * aerial
 -- * early retirement
 -- * diff view
 -- * git conflict
