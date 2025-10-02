@@ -143,27 +143,27 @@ M.setup = function()
     -- Gitsigns
     -- src: https://github.com/lewis6991/gitsigns.nvim#keymaps
     ----------------------------------------------------------
-    local gs = require("gitsigns")
+    local gs = function() return require("gitsigns") end
 
     -- GitSigns
     wk_group("<leader>g", "git...")
-    map('n', '<leader>gp', function() gs.preview_hunk() end, noremap, "preview hunk")
-    map('n', '<leader>gd', function() gs.diffthis() end, noremap, "show current unstaged diff")
+    map('n', '<leader>gp', function() gs().preview_hunk() end, noremap, "preview hunk")
+    map('n', '<leader>gd', function() gs().diffthis() end, noremap, "show current unstaged diff")
 
     wk_group("<leader>tg", "git toggles...")
-    map('n', '<leader>tgb', function() gs.toggle_current_line_blame() end, noremap, "toggle current line blame")
-    map('n', '<leader>tgd', function() gs.preview_hunk_inline() end, noremap, "preview diff hunk")
+    map('n', '<leader>tgb', function() gs().toggle_current_line_blame() end, noremap, "toggle current line blame")
+    map('n', '<leader>tgd', function() gs().preview_hunk_inline() end, noremap, "preview diff hunk")
 
     -- Navigation
     map('n', ']g', function()
         if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.nav_hunk("next") end)
+        vim.schedule(function() gs().nav_hunk("next") end)
         return '<Ignore>'
     end, { expr = true })
 
     map('n', '[g', function()
         if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.nav_hunk("prev") end)
+        vim.schedule(function() gs().nav_hunk("prev") end)
         return '<Ignore>'
     end, { expr = true })
 
@@ -242,15 +242,15 @@ M.setup = function()
 
     -- iron.nvim
     wk_group("<localleader>r", "repl...")
-    local iron = require("iron.core")
+    local iron = function() return require("iron.core") end
     map("n", "<localleader>rr", ":IronRepl<CR>", noremap, "Toggle iron repl")
     map("n", "<localleader>rR", ":IronRestart<CR>", noremap, "Restart iron repl")
-    map("n", "<localleader>re", function() iron.send_line() end, noremap, "Eval line")
+    map("n", "<localleader>re", function() iron().send_line() end, noremap, "Eval line")
     map("v", "<localleader>re", function()
-        iron.mark_visual()
-        iron.send_mark()
+        iron().mark_visual()
+        iron().send_mark()
     end, noremap, "Eval visual")
-    map("n", "<localleader>rgg", function() iron.send_until_cursor() end, noremap, "Eval from beginning of file until cursor")
+    map("n", "<localleader>rgg", function() iron().send_until_cursor() end, noremap, "Eval from beginning of file until cursor")
 
 
     -- Rebinds
@@ -270,16 +270,16 @@ M.setup = function()
     map("n", "ss", ":HopChar2MW<CR>", noremap)
 
     -- Enable standard terminal keybindings in the vim command mode
-    local readline = require 'readline'
-    vim.keymap.set('!', '<M-f>', readline.forward_word)
-    vim.keymap.set('!', '<M-b>', readline.backward_word)
-    vim.keymap.set('!', '<C-a>', readline.beginning_of_line)
-    vim.keymap.set('!', '<C-e>', readline.end_of_line)
-    vim.keymap.set('!', '<M-d>', readline.kill_word)
-    vim.keymap.set('!', '<M-BS>', readline.backward_kill_word)
-    vim.keymap.set('!', '<C-w>', readline.unix_word_rubout)
-    vim.keymap.set('!', '<C-k>', readline.kill_line)
-    vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
+    local readline = function() return require 'readline' end
+    vim.keymap.set('!', '<M-f>', function() readline().forward_word() end)
+    vim.keymap.set('!', '<M-b>', function() readline().backward_word() end)
+    vim.keymap.set('!', '<C-a>', function() readline().beginning_of_line() end)
+    vim.keymap.set('!', '<C-e>', function() readline().end_of_line() end)
+    vim.keymap.set('!', '<M-d>', function() readline().kill_word() end)
+    vim.keymap.set('!', '<M-BS>', function() readline().backward_kill_word() end)
+    vim.keymap.set('!', '<C-w>', function() readline().unix_word_rubout() end)
+    vim.keymap.set('!', '<C-k>', function() readline().kill_line() end)
+    vim.keymap.set('!', '<C-u>', function() readline().backward_kill_line() end)
 
     ------------------
     -- My own utils --
