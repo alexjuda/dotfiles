@@ -12,5 +12,4 @@
 -- * git conflict
 -- * indent blankline
 -- * iron
--- * trim
 return {}
