@@ -1,1 +1,18 @@
+-- TODOs:
+-- * treesitter, all the parsers
+-- * treesitter-textobjects
+-- * treesitter-context
+-- * neotest
+-- * copilot
+-- * cmp
+-- * lsp-progress
+-- * aerial
+-- * early retirement
+-- * diff view
+-- * git conflict
+-- * indent blankline
+-- * iron
+-- * todo comments
+-- * hop
+-- * trim
 return {}
