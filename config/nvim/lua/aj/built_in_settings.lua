@@ -2,6 +2,10 @@ local M = {}
 
 
 M.setup = function()
+    -- We need this before we load lazy.nvim
+    vim.g.mapleader = " "
+    vim.g.maplocalleader = ","
+
     --------
     -- UI --
     --------

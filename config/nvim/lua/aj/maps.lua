@@ -3,8 +3,7 @@ local M = {}
 
 M.setup = function()
     local wk = require("which-key")
-    local telescope = require("telescope.builtin")
-    local spectre = require("spectre")
+    local telescope = function() return require("telescope.builtin") end
 
     local map = function(mode, key, cmd, opts, doc)
         vim.keymap.set(mode, key, cmd, opts)
@@ -21,17 +20,10 @@ M.setup = function()
     local bufmap = vim.api.nvim_buf_set_keymap
     local noremap = { noremap = true }
 
-
-    -- Leaders
-    ------------
-    vim.g.mapleader = " "      -- space as the leader key
-    vim.g.maplocalleader = "," -- comma as the local leader key
-
-
     -- Buffers
     ------------
     wk_group("<leader>b", "buffer...")
-    map("n", "<leader>bb", function() telescope.buffers() end, noremap, "buffers")
+    map("n", "<leader>bb", function() telescope().buffers() end, noremap, "buffers")
     map("n", "<leader>bp", ":bprev<cr>", noremap)
     map("n", "<leader>bn", ":bnext<cr>", noremap)
     map("n", "<leader>bd", ":bp|bd #<cr>", noremap) -- close a buffer, but not a window
@@ -64,17 +56,17 @@ M.setup = function()
     map("n", "<leader>pb", ":Neotree buffers<CR>", noremap) -- show buffers in the sidebar
     map("n", "<leader>po", ":Neotree reveal<CR>", noremap)  -- show current file in the project tree
     map("n", "<leader>pt", ":Neotree toggle<CR>", noremap)  -- open/close project tree
-    map("n", "<leader>pf", function() telescope.find_files(project_finder_opts) end, noremap, "find file by name")
+    map("n", "<leader>pf", function() telescope().find_files(project_finder_opts) end, noremap, "find file by name")
 
 
     -- Search
     -----------
     wk_group("<leader>s", "search...")
-    map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, noremap, "search in buffer")
-    map("n", "<leader>ss", function() telescope.live_grep() end, noremap, "search in PWD")
-    map("n", "<leader>sp", function() spectre.toggle() end, noremap, "search in project")
-    map({ "n", "v" }, "<leader>sw", function() spectre.open_visual() end, noremap, "search selection")
-    map({ "n", "v" }, "<leader>sf", function() spectre.open_file_search({ select_word = true }) end, noremap,
+    map("n", "<leader>sb", function() telescope().current_buffer_fuzzy_find() end, noremap, "search in buffer")
+    map("n", "<leader>ss", function() telescope().live_grep() end, noremap, "search in PWD")
+    map("n", "<leader>sp", function() require("spectre").toggle() end, noremap, "search in project")
+    map({ "n", "v" }, "<leader>sw", function() require("spectre").open_visual() end, noremap, "search selection")
+    map({ "n", "v" }, "<leader>sf", function() require("spectre").open_file_search({ select_word = true }) end, noremap,
         "search in current file")
 
 
@@ -116,8 +108,8 @@ M.setup = function()
     }
 
     wk_group("<leader>f", "files...")
-    map("n", "<leader>fr", function() telescope.oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
-    map("n", "<leader>ff", function() telescope.find_files(all_files_opts) end, noremap, "find all files")
+    map("n", "<leader>fr", function() telescope().oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
+    map("n", "<leader>ff", function() telescope().find_files(all_files_opts) end, noremap, "find all files")
     map("n", "<leader>fy", function() yank_file_path() end, noremap, "copy file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, noremap, "open dir in finder")
 
@@ -176,8 +168,8 @@ M.setup = function()
     end, { expr = true })
 
     -- Telescope and git
-    map("n", "<leader>gs", function() telescope.git_status() end, noremap, "git status")
-    map("n", "<leader>gS", function() telescope.git_stash() end, noremap, "git stash")
+    map("n", "<leader>gs", function() telescope().git_status() end, noremap, "git status")
+    map("n", "<leader>gS", function() telescope().git_stash() end, noremap, "git stash")
 
     -- openingh
     map("n", "<Leader>gr", ":OpenInGHRepo <CR>", noremap)
@@ -268,7 +260,7 @@ M.setup = function()
 
     -- Global
     ----------
-    map({ "n", "v" }, "<leader><leader>", function() telescope.commands() end, noremap, "commands")
+    map({ "n", "v" }, "<leader><leader>", function() telescope().commands() end, noremap, "commands")
     map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', noremap) -- search for selected text
     map("n", "yp", '"0p', noremap, "paste last yanked")
     map("n", "yP", '"0P', noremap, "paste last yanked, prev")
