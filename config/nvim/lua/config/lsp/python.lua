@@ -1,47 +1,37 @@
-local common = require("aj.lsp.common")
-
 local M = {}
 
+local function setup_pyright()
+    local common = require("config.lsp.common")
 
--- Infers the full executable path based on shell command name
-local read_exec_path = function(exec_name)
-    local handle = io.popen("which " .. exec_name)
-    local result = handle:read("*a"):gsub("\n", "")
-    handle:close()
-    return result
-end
-
-
-local setup_pyright = function()
     vim.lsp.config("pyright", {
         cmd = { "pyright-langserver", "--stdio" },
+        filetypes = {"python"},
         settings = {
             python = {
                 -- Use the locally available python executable. Enables using pyright from an activated venv.
-                pythonPath = read_exec_path("python"),
+                pythonPath = common.read_exec_path("python"),
             },
         },
         on_attach = function(client, buf_n)
             common.shared_on_attach(client, buf_n)
 
-            -- print("pyright server caps")
-            -- print(vim.inspect(client.server_capabilities))
-            --
             -- Already handled by ruff
             client.server_capabilities.formattingProvider = nil
         end,
-        capabilities = common.make_shared_capabilities(),
+        capabilities = common.shared_make_client_capabilities(),
     })
 
     vim.lsp.enable("pyright")
 end
 
-local setup_pylsp = function()
+
+local function setup_pylsp()
+    local common = require("config.lsp.common")
+
     -- Requires `python-lsp-server` pip package.
     vim.lsp.config("pylsp", {
-        cmd = {
-            "pylsp",
-        },
+        cmd = { "pylsp" },
+        filetypes = { "python" },
         settings = {
             pylsp = {
                 configurationSources = { "flake8" },
@@ -68,30 +58,34 @@ local setup_pylsp = function()
             -- Already handled by ruff
             client.server_capabilities.formattingProvider = nil
         end,
-        capabilities = common.make_shared_capabilities(),
+        capabilities = common.shared_make_client_capabilities(),
     })
 
     vim.lsp.enable("pylsp")
 end
 
-local setup_ruff = function()
-    vim.lsp.config("ruff", {
+local function setup_ruff()
+    local common = require("config.lsp.common")
 
+    vim.lsp.config("ruff", {
         cmd = { "ruff", "server" },
+        filetypes = { "python" },
         on_attach = function(client, buf_n)
             common.shared_on_attach(client, buf_n)
         end,
-        capabilities = common.make_shared_capabilities(),
+        capabilities = common.shared_make_client_capabilities(),
     })
 
     vim.lsp.enable("ruff")
 end
 
-
 M.setup = function()
-    setup_pylsp()
-    setup_pyright()
-    setup_ruff()
+    local common = require("config.lsp.common")
+    common.register_lsp_aucmd("PythonLSPSetup", "python", function()
+        setup_pyright()
+        setup_pylsp()
+        setup_ruff()
+    end)
 end
 
 

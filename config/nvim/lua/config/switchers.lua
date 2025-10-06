@@ -2,13 +2,15 @@
 
 M = {}
 
-M.on_mac = function()
+
+function M.on_mac()
     return vim.fn.has("macunix") == 1
 end
 
 
-M.on_linux = function()
+function M.on_linux()
     return not M.on_mac()
 end
+
 
 return M

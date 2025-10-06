@@ -1,6 +1,4 @@
--- Utilities shared across language server configurations.
-
-M = {}
+local M = {}
 
 -- Makes the symbol preview more tidy. Python LSP server shows each local
 -- variable in the symbol list. That's a lot of noise.
@@ -35,6 +33,7 @@ local set_lsp_keymaps = function(client, buf_n)
 
     -- Mapped to <c-]> by default.
     buf_map_with_name("n", "gd", function() telescope.lsp_definitions() end, "definition")
+    buf_map_with_name("n", "gp", "<C-w>}", "preview definition")
 
     buf_map_with_name("n", "gD", function() telescope.lsp_type_definitions() end, "type definition")
     buf_map_with_name("n", "gci", function() telescope.lsp_incoming_calls() end, "incoming calls")
@@ -63,15 +62,37 @@ local set_lsp_keymaps = function(client, buf_n)
     wk.add({ "<localleader>L", desc = "+lsp connectors" })
 end
 
-
+-- Sensible defaults for all my LSP configs.
 M.shared_on_attach = function(client, buf_n)
     set_lsp_keymaps(client, buf_n)
 end
 
-
-M.make_shared_capabilities = function()
-    return require('cmp_nvim_lsp').default_capabilities()
+-- Sensible defaults for all my LSP configs.
+M.shared_make_client_capabilities = function()
+    -- For more about setting client capabilities with blink, see:
+    -- https://cmp.saghen.dev/installation.html#merging-lsp-capabilities
+    return require("blink.cmp.sources.lib").get_lsp_capabilities()
 end
 
+-- Infers the full executable path based on shell command name.
+M.read_exec_path = function(exec_name)
+    local handle = io.popen("which " .. exec_name)
+    local result = handle:read("*a"):gsub("\n", "")
+    handle:close()
+    return result
+end
+
+-- Allows running LSP configuration only on file enter. LSP configuration takes time, even without connecting to the
+-- actual server.
+M.register_lsp_aucmd = function(group_name, filetypes, callback)
+    local group = vim.api.nvim_create_augroup(group_name, { clear = true })
+
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = filetypes,
+        group = group,
+        callback = callback,
+        desc = "Set up LSPs",
+    })
+end
 
 return M

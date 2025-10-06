@@ -3,8 +3,7 @@ local M = {}
 
 M.setup = function()
     local wk = require("which-key")
-    local telescope = require("telescope.builtin")
-    local spectre = require("spectre")
+    local telescope = function() return require("telescope.builtin") end
 
     local map = function(mode, key, cmd, opts, doc)
         vim.keymap.set(mode, key, cmd, opts)
@@ -21,17 +20,10 @@ M.setup = function()
     local bufmap = vim.api.nvim_buf_set_keymap
     local noremap = { noremap = true }
 
-
-    -- Leaders
-    ------------
-    vim.g.mapleader = " "      -- space as the leader key
-    vim.g.maplocalleader = "," -- comma as the local leader key
-
-
     -- Buffers
     ------------
     wk_group("<leader>b", "buffer...")
-    map("n", "<leader>bb", function() telescope.buffers() end, noremap, "buffers")
+    map("n", "<leader>bb", function() telescope().buffers() end, noremap, "buffers")
     map("n", "<leader>bp", ":bprev<cr>", noremap)
     map("n", "<leader>bn", ":bnext<cr>", noremap)
     map("n", "<leader>bd", ":bp|bd #<cr>", noremap) -- close a buffer, but not a window
@@ -64,17 +56,17 @@ M.setup = function()
     map("n", "<leader>pb", ":Neotree buffers<CR>", noremap) -- show buffers in the sidebar
     map("n", "<leader>po", ":Neotree reveal<CR>", noremap)  -- show current file in the project tree
     map("n", "<leader>pt", ":Neotree toggle<CR>", noremap)  -- open/close project tree
-    map("n", "<leader>pf", function() telescope.find_files(project_finder_opts) end, noremap, "find file by name")
+    map("n", "<leader>pf", function() telescope().find_files(project_finder_opts) end, noremap, "find file by name")
 
 
     -- Search
     -----------
     wk_group("<leader>s", "search...")
-    map("n", "<leader>sb", function() telescope.current_buffer_fuzzy_find() end, noremap, "search in buffer")
-    map("n", "<leader>ss", function() telescope.live_grep() end, noremap, "search in PWD")
-    map("n", "<leader>sp", function() spectre.toggle() end, noremap, "search in project")
-    map({ "n", "v" }, "<leader>sw", function() spectre.open_visual() end, noremap, "search selection")
-    map({ "n", "v" }, "<leader>sf", function() spectre.open_file_search({ select_word = true }) end, noremap,
+    map("n", "<leader>sb", function() telescope().current_buffer_fuzzy_find() end, noremap, "search in buffer")
+    map("n", "<leader>ss", function() telescope().live_grep() end, noremap, "search in PWD")
+    map("n", "<leader>sp", function() require("spectre").toggle() end, noremap, "search in project")
+    map({ "n", "v" }, "<leader>sw", function() require("spectre").open_visual() end, noremap, "search selection")
+    map({ "n", "v" }, "<leader>sf", function() require("spectre").open_file_search({ select_word = true }) end, noremap,
         "search in current file")
 
 
@@ -116,8 +108,8 @@ M.setup = function()
     }
 
     wk_group("<leader>f", "files...")
-    map("n", "<leader>fr", function() telescope.oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
-    map("n", "<leader>ff", function() telescope.find_files(all_files_opts) end, noremap, "find all files")
+    map("n", "<leader>fr", function() telescope().oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
+    map("n", "<leader>ff", function() telescope().find_files(all_files_opts) end, noremap, "find all files")
     map("n", "<leader>fy", function() yank_file_path() end, noremap, "copy file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, noremap, "open dir in finder")
 
@@ -125,8 +117,60 @@ M.setup = function()
     -- Toggles
     -------------
     wk_group("<leader>t", "toggles...")
-    map("n", "<leader>tn", ":set number!<CR>", noremap)
-    map("n", "<leader>ta", ":AerialToggle!<CR>", noremap) -- Toggle aerial sidebar
+    map("n", "<leader>ta", ":AerialToggle!<CR>", noremap, "aerial sidebar")
+    map("n", "<leader>tn", ":set number!<CR>", noremap, "relative numbers")
+    map("n", "<leader>tc", function() require("treesitter-context").toggle() end, noremap, "context bar")
+
+    -- Treesitter Text Objects
+    -------------
+
+    -- Selecting
+    local ts_sel = function() return require("nvim-treesitter-textobjects.select") end
+    local sel_modes = { "x", "o" }
+
+    -- Class
+    map(sel_modes, "ik", function() ts_sel().select_textobject("@class.inner", "textobjects") end, noremap)
+    map(sel_modes, "ak", function() ts_sel().select_textobject("@class.outer", "textobjects") end, noremap)
+
+    -- Function
+    map(sel_modes, "if", function() ts_sel().select_textobject("@function.inner", "textobjects") end, noremap)
+    map(sel_modes, "af", function() ts_sel().select_textobject("@function.outer", "textobjects") end, noremap)
+
+    -- Parameter
+    map(sel_modes, "ip", function() ts_sel().select_textobject("@parameter.inner", "textobjects") end, noremap)
+    map(sel_modes, "ap", function() ts_sel().select_textobject("@parameter.outer", "textobjects") end, noremap)
+
+    -- Call
+    map(sel_modes, "ii", function() ts_sel().select_textobject("@call.inner", "textobjects") end, noremap)
+    map(sel_modes, "ai", function() ts_sel().select_textobject("@call.outer", "textobjects") end, noremap)
+
+    -- Moving
+    local ts_move = function() return require("nvim-treesitter-textobjects.move") end
+    local move_modes = { "n" }
+
+    -- Class
+    map(move_modes, "[k", function() ts_move().goto_previous_start("@class.outer", "textobjects") end, noremap)
+    map(move_modes, "]k", function() ts_move().goto_next_start("@class.outer", "textobjects") end, noremap)
+    map(move_modes, "[K", function() ts_move().goto_previous_end("@class.outer", "textobjects") end, noremap)
+    map(move_modes, "]K", function() ts_move().goto_next_end("@class.outer", "textobjects") end, noremap)
+
+    -- Function
+    map(move_modes, "[f", function() ts_move().goto_previous_start("@function.outer", "textobjects") end, noremap)
+    map(move_modes, "]f", function() ts_move().goto_next_start("@function.outer", "textobjects") end, noremap)
+    map(move_modes, "[F", function() ts_move().goto_previous_end("@function.outer", "textobjects") end, noremap)
+    map(move_modes, "]F", function() ts_move().goto_next_end("@function.outer", "textobjects") end, noremap)
+
+    -- Parameter
+    map(move_modes, "[p", function() ts_move().goto_previous_start("@parameter.inner", "textobjects") end, noremap)
+    map(move_modes, "]p", function() ts_move().goto_next_start("@parameter.inner", "textobjects") end, noremap)
+    map(move_modes, "[P", function() ts_move().goto_previous_end("@parameter.outer", "textobjects") end, noremap)
+    map(move_modes, "]P", function() ts_move().goto_next_end("@parameter.outer", "textobjects") end, noremap)
+
+    -- Call
+    map(move_modes, "[i", function() ts_move().goto_previous_start("@call.outer", "textobjects") end, noremap)
+    map(move_modes, "]i", function() ts_move().goto_next_start("@call.outer", "textobjects") end, noremap)
+    map(move_modes, "[I", function() ts_move().goto_previous_end("@call.outer", "textobjects") end, noremap)
+    map(move_modes, "]I", function() ts_move().goto_next_end("@call.outer", "textobjects") end, noremap)
 
 
     -- Tabs
@@ -151,33 +195,33 @@ M.setup = function()
     -- Gitsigns
     -- src: https://github.com/lewis6991/gitsigns.nvim#keymaps
     ----------------------------------------------------------
-    local gs = require("gitsigns")
+    local gs = function() return require("gitsigns") end
 
     -- GitSigns
     wk_group("<leader>g", "git...")
-    map('n', '<leader>gp', function() gs.preview_hunk() end, noremap, "preview hunk")
-    map('n', '<leader>gd', function() gs.diffthis() end, noremap, "show current unstaged diff")
+    map('n', '<leader>gp', function() gs().preview_hunk() end, noremap, "preview hunk")
+    map('n', '<leader>gd', function() gs().diffthis() end, noremap, "show current unstaged diff")
 
     wk_group("<leader>tg", "git toggles...")
-    map('n', '<leader>tgb', function() gs.toggle_current_line_blame() end, noremap, "toggle current line blame")
-    map('n', '<leader>tgd', function() gs.preview_hunk_inline() end, noremap, "preview diff hunk")
+    map('n', '<leader>tgb', function() gs().toggle_current_line_blame() end, noremap, "toggle current line blame")
+    map('n', '<leader>tgd', function() gs().preview_hunk_inline() end, noremap, "preview diff hunk")
 
     -- Navigation
     map('n', ']g', function()
         if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.nav_hunk("next") end)
+        vim.schedule(function() gs().nav_hunk("next") end)
         return '<Ignore>'
     end, { expr = true })
 
     map('n', '[g', function()
         if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.nav_hunk("prev") end)
+        vim.schedule(function() gs().nav_hunk("prev") end)
         return '<Ignore>'
     end, { expr = true })
 
     -- Telescope and git
-    map("n", "<leader>gs", function() telescope.git_status() end, noremap, "git status")
-    map("n", "<leader>gS", function() telescope.git_stash() end, noremap, "git stash")
+    map("n", "<leader>gs", function() telescope().git_status() end, noremap, "git status")
+    map("n", "<leader>gS", function() telescope().git_stash() end, noremap, "git stash")
 
     -- openingh
     map("n", "<Leader>gr", ":OpenInGHRepo <CR>", noremap)
@@ -232,11 +276,8 @@ M.setup = function()
 
     -- Show info about currently active LSP connections
     wk_group("<leader>L", "LSP connections...")
-    -- TODO: use map()
-    vim.api.nvim_set_keymap("n", "<localleader>Li", ":LspInfo<CR>", noremap)
-
-    -- Kill LSP clients
-    vim.api.nvim_set_keymap("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", noremap)
+    map("n", "<localleader>Li", ":checkhealth vim.lsp<CR>", noremap, "LSP client info")
+    map("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", noremap, "Kill all clients attached to this buf")
 
     -- Evaluating markdown code blocks --
     vim.api.nvim_set_keymap("n", "<localleader>ee", ":MdEval<CR>", noremap)
@@ -250,15 +291,15 @@ M.setup = function()
 
     -- iron.nvim
     wk_group("<localleader>r", "repl...")
-    local iron = require("iron.core")
+    local iron = function() return require("iron.core") end
     map("n", "<localleader>rr", ":IronRepl<CR>", noremap, "Toggle iron repl")
     map("n", "<localleader>rR", ":IronRestart<CR>", noremap, "Restart iron repl")
-    map("n", "<localleader>re", function() iron.send_line() end, noremap, "Eval line")
+    map("n", "<localleader>re", function() iron().send_line() end, noremap, "Eval line")
     map("v", "<localleader>re", function()
-        iron.mark_visual()
-        iron.send_mark()
+        iron().mark_visual()
+        iron().send_mark()
     end, noremap, "Eval visual")
-    map("n", "<localleader>rgg", function() iron.send_until_cursor() end, noremap, "Eval from beginning of file until cursor")
+    map("n", "<localleader>rgg", function() iron().send_until_cursor() end, noremap, "Eval from beginning of file until cursor")
 
 
     -- Rebinds
@@ -268,7 +309,7 @@ M.setup = function()
 
     -- Global
     ----------
-    map({ "n", "v" }, "<leader><leader>", function() telescope.commands() end, noremap, "commands")
+    map({ "n", "v" }, "<leader><leader>", function() telescope().commands() end, noremap, "commands")
     map("v", "*", '"sy:lua vim.api.nvim_command("/" .. vim.fn.getreg("s"))<CR>', noremap) -- search for selected text
     map("n", "yp", '"0p', noremap, "paste last yanked")
     map("n", "yP", '"0P', noremap, "paste last yanked, prev")
@@ -278,16 +319,16 @@ M.setup = function()
     map("n", "ss", ":HopChar2MW<CR>", noremap)
 
     -- Enable standard terminal keybindings in the vim command mode
-    local readline = require 'readline'
-    vim.keymap.set('!', '<M-f>', readline.forward_word)
-    vim.keymap.set('!', '<M-b>', readline.backward_word)
-    vim.keymap.set('!', '<C-a>', readline.beginning_of_line)
-    vim.keymap.set('!', '<C-e>', readline.end_of_line)
-    vim.keymap.set('!', '<M-d>', readline.kill_word)
-    vim.keymap.set('!', '<M-BS>', readline.backward_kill_word)
-    vim.keymap.set('!', '<C-w>', readline.unix_word_rubout)
-    vim.keymap.set('!', '<C-k>', readline.kill_line)
-    vim.keymap.set('!', '<C-u>', readline.backward_kill_line)
+    local readline = function() return require("readline") end
+    vim.keymap.set({"c"}, '<M-f>', function() readline().forward_word() end)
+    vim.keymap.set({"c"}, '<M-b>', function() readline().backward_word() end)
+    vim.keymap.set({"c"}, '<C-a>', function() readline().beginning_of_line() end)
+    vim.keymap.set({"c"}, '<C-e>', function() readline().end_of_line() end)
+    vim.keymap.set({"c"}, '<M-d>', function() readline().kill_word() end)
+    vim.keymap.set({"c"}, '<M-BS>', function() readline().backward_kill_word() end)
+    vim.keymap.set({"c"}, '<C-w>', function() readline().unix_word_rubout() end)
+    vim.keymap.set({"c"}, '<C-k>', function() readline().kill_line() end)
+    vim.keymap.set({"c"}, '<C-u>', function() readline().backward_kill_line() end)
 
     ------------------
     -- My own utils --

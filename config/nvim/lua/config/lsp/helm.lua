@@ -1,9 +1,11 @@
-local common = require("aj.lsp.common")
-local switchers = require("aj.switchers")
-
 local M = {}
 
-M.setup = function()
+local filetypes = {"helm"}
+
+local function setup_helmls()
+    local common = require("config.lsp.common")
+    local switchers = require("config.switchers")
+
     -- Requires installing https://github.com/mrjosh/helm-ls
 
     local cmd_name
@@ -14,8 +16,8 @@ M.setup = function()
     end
 
     vim.lsp.config("helm_ls", {
-        on_attach = common.shared_on_attach,
         cmd = { cmd_name, "serve", },
+        filetypes = filetypes,
         settings = {
             ["helm-ls"] = {
                 yamlls = {
@@ -24,9 +26,19 @@ M.setup = function()
                 },
             },
         },
+        on_attach = common.shared_on_attach,
+        capabilities = common.shared_make_client_capabilities(),
     })
 
     vim.lsp.enable("helm_ls")
+end
+
+
+M.setup = function()
+    local common = require("config.lsp.common")
+    common.register_lsp_aucmd("HelmLSPSetup", filetypes, function()
+        setup_helmls()
+    end)
 end
 
 

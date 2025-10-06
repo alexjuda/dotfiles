@@ -1,11 +1,15 @@
-local common = require("aj.lsp.common")
-
 local M = {}
 
+local filetypes = { "lua" }
 
-M.setup = function()
+local function setup_luals()
+    local common = require("config.lsp.common")
+
     -- Requires `lua-language-server` available at PATH.
     vim.lsp.config("lua_ls", {
+        cmd = { "lua-language-server" },
+        filetypes = filetypes,
+        root_markers = { ".git" },
         settings = {
             Lua = {
                 runtime = {
@@ -27,10 +31,18 @@ M.setup = function()
             },
         },
         on_attach = common.shared_on_attach,
-        capabilities = common.make_shared_capabilities(),
+        capabilities = common.shared_make_client_capabilities(),
     })
 
     vim.lsp.enable("lua_ls")
+end
+
+
+M.setup = function()
+    local common = require("config.lsp.common")
+    common.register_lsp_aucmd("LuaLSPSetup", filetypes, function()
+        setup_luals()
+    end)
 end
 
 
