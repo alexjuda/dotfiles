@@ -384,6 +384,15 @@ M.setup = function()
 
     wk_group("<leader>m", "markdown...")
     vim.keymap.set("n", "<leader>mdp", function() InsertMarkdownURL() end, { silent = true, noremap = true })
+
+    -- Document built-in keymaps --
+    wk.add({
+        { "gq",  desc = "format..." },
+        { "gqa", desc = "format around..." },
+        { "gqq", desc = "format line" },
+        { "gw",  desc = "format raw..." },
+        { "gww", desc = "format line raw" },
+    })
 end
 
 

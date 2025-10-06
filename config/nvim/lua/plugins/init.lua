@@ -5,4 +5,5 @@
 -- * diff view
 -- * git conflict
 -- * iron
+-- * tidying up all existing configs under 'aj'
 return {}
