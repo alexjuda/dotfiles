@@ -137,8 +137,9 @@ M.setup = function()
     map(sel_modes, "af", function() ts_sel().select_textobject("@function.outer", "textobjects") end, noremap)
 
     -- Parameter
-    map(sel_modes, "ip", function() ts_sel().select_textobject("@parameter.inner", "textobjects") end, noremap)
-    map(sel_modes, "ap", function() ts_sel().select_textobject("@parameter.outer", "textobjects") end, noremap)
+    -- 'p' is a built-in for 'paragraph'. Overriding it caused timing issues.
+    map(sel_modes, "iP", function() ts_sel().select_textobject("@parameter.inner", "textobjects") end, noremap)
+    map(sel_modes, "aP", function() ts_sel().select_textobject("@parameter.outer", "textobjects") end, noremap)
 
     -- Call
     map(sel_modes, "ii", function() ts_sel().select_textobject("@call.inner", "textobjects") end, noremap)
