@@ -31,10 +31,7 @@ end
 
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("JavaLSPSetup", filetypes, function()
-        setup_jdtls()
-    end)
+    setup_jdtls()
 end
 
 

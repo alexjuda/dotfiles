@@ -30,10 +30,7 @@ end
 
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("JSONLSPSetup", filetypes, function()
-        setup_jsonls()
-    end)
+    setup_jsonls()
 end
 
 

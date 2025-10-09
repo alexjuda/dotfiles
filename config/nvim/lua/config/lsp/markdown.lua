@@ -18,10 +18,7 @@ end
 
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("MarkdownLSPSetup", filetypes, function()
-        setup_marksman()
-    end)
+    setup_marksman()
 end
 
 

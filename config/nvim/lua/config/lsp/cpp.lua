@@ -21,10 +21,7 @@ end
 
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("CPPLSPSetup", filetypes, function()
-        setup_ccls()
-    end)
+    setup_ccls()
 end
 
 

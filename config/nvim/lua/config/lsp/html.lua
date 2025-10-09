@@ -25,10 +25,7 @@ local function setup_html()
 end
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("HTMLLSPSetup", filetypes, function()
-        setup_html()
-    end)
+    setup_html()
 end
 
 

@@ -35,10 +35,7 @@ end
 
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("HelmLSPSetup", filetypes, function()
-        setup_helmls()
-    end)
+    setup_helmls()
 end
 
 

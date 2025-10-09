@@ -39,10 +39,7 @@ end
 
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("LuaLSPSetup", filetypes, function()
-        setup_luals()
-    end)
+    setup_luals()
 end
 
 

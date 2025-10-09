@@ -80,12 +80,9 @@ local function setup_ruff()
 end
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("PythonLSPSetup", "python", function()
-        setup_pyright()
-        setup_pylsp()
-        setup_ruff()
-    end)
+    setup_pyright()
+    setup_pylsp()
+    setup_ruff()
 end
 
 

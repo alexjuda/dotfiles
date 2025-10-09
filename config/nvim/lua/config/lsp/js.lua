@@ -19,10 +19,7 @@ local function setup_ts_ls()
 end
 
 M.setup = function()
-    local common = require("config.lsp.common")
-    common.register_lsp_aucmd("TSLSPSetup", filetypes, function()
-        setup_ts_ls()
-    end)
+    setup_ts_ls()
 end
 
 
