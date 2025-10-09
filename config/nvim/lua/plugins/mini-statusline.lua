@@ -77,6 +77,9 @@ return {
                     local bufnum = tostring(vim.fn.bufnr("%"))
                     local bufcount = tostring(#vim.fn.getbufinfo({ buflisted = 1 })) -- open buffer count
 
+                    -- Messages from LSP servers.
+                    local lsp_progress = require("lsp-progress").progress()
+
                     -- File details.
                     -- Only show encoding and format components for non-standard values.
                     local filencoding = (vim.bo.fileencoding ~= "utf-8" and vim.bo.fileencoding or nil)
@@ -96,7 +99,7 @@ return {
                         "%=", -- split left/right
                         -- Right --
                         -- Gray, LSP client status + file encoding + ft
-                        { hl = "MiniStatuslineDevinfo",  strings = { lsp, filencoding, fileformat, filetype } },
+                        { hl = "MiniStatuslineDevinfo",  strings = { lsp_progress, lsp, filencoding, fileformat, filetype } },
                         -- Mode-colored, [1/7] 1C 2L 23% + line,col
                         { hl = mode_hl,                  strings = { search, get_visual_selection_info(), get_position_info() } },
                     })
@@ -109,6 +112,16 @@ return {
                     })
                 end,
             },
+        })
+
+        -- Hooks for updating status line
+        local augroup = vim.api.nvim_create_augroup("LspProgressStatusline", { clear = true })
+        vim.api.nvim_create_autocmd("User", {
+          group = augroup,
+          pattern = "LspProgressStatusUpdated",
+          callback = function()
+            vim.cmd("redrawstatus")
+          end,
         })
     end,
 }
