@@ -226,7 +226,7 @@ M.setup = function()
     -- openingh
     map("n", "<Leader>gr", ":OpenInGHRepo <CR>", noremap)
     map("n", "<Leader>gf", ":OpenInGHFile <CR>", noremap)
-    map("n", "<Leader>gl", ":OpenInGHFileLines <CR>", noremap)
+    map({"n", "v"}, "<Leader>gl", ":OpenInGHFileLines <CR>", noremap)
 
     -- Root
     ---------
