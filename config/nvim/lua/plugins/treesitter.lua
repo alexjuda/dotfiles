@@ -61,8 +61,8 @@ return {
                 -- Show a nice TUI for folds on the left.
                 vim.wo.foldcolumn = "1"
 
-                -- Use treesitter for indents.
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                -- Use treesitter for indents. This doesn't work at the time.
+                -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             end,
         })
     end
