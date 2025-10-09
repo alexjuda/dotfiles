@@ -37,6 +37,7 @@ custom_aliases=(
     'gpsup:git push --set-upstream origin $(git branch --show-current)'
 
     "gpl:git pull --ff-only"
+    'gpDO:git push --delete origin'  # needs 1 more arg: explicit branch name
 
     "gr:git remote -v"
     "grb:git rebase"
