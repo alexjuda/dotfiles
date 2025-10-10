@@ -1,5 +1,6 @@
 return {
     "chrisgrieser/nvim-early-retirement",
+    lazy = false,
     opts = {
         -- Default: 20 min.
         retirementAgeMins = 5,

@@ -5,6 +5,7 @@ return {
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons",
     },
+    branch = "v3.x",
     lazy = true,
     cmd = { "Neotree", },
 }
