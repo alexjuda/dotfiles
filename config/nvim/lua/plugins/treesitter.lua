@@ -1,5 +1,6 @@
 local langs = {
     "bash",
+    "beancount",
     "css",
     "csv",
     "dot",
