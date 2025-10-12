@@ -45,6 +45,12 @@
     become: true
     tags: superuser
 
+  - name: enable yazi's copr
+    community.general.copr:
+      name: lihaohong/yazi
+    become: true
+    tags: superuser
+
   - name: install system packages
     ansible.builtin.dnf:
       name:
@@ -70,6 +76,7 @@
         - starship
         - uv
         - xclip
+        - yazi
         - zoxide
         - zsh
       state: present
