@@ -78,6 +78,7 @@ custom_aliases=(
     # open last edited file
     "nvl:nvim -c 'e #<1'"
     "ipytest:pytest --pdbcls=IPython.terminal.debugger:TerminalPdb"
+    "y:yazi"
 )
 
 # Define aliases
