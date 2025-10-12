@@ -52,22 +52,6 @@
       dest: ~/.config/opencode/opencode.json
       state: link
 
-  # Please run: nvim -c ":PaqSync" manually
-  - name: clone paq
-    git:
-      repo: https://github.com/savq/paq-nvim.git
-      dest: ~/.local/share/nvim/site/pack/paqs/start/paq-nvim
-
-  - name: make ltex dict dir
-    ansible.builtin.file:
-      path: ~/.local/share/lang-servers/ltex-ls-data
-      state: directory
-
-  - name: touch ltex dict file
-    ansible.builtin.file:
-      path: ~/.local/share/lang-servers/ltex-ls-data/dict.txt
-      state: touch
-
   - name: link zsh config
     ansible.builtin.file:
       src: ~/Code/dotfiles/macos/.zshrc
