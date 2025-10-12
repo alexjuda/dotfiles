@@ -44,6 +44,14 @@
       dest: ~/.config/ghostty/platform_specific_config
       state: link
 
+  # There's a bunch of other crap opencode creates and keeps under '~/.config/opencode/' dir. We just need to link the
+  # config file. I wish they made proper use of XDG confgi and state dirs.
+  - name: link opencode config file
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/opencode/opencode.json
+      dest: ~/.config/opencode/opencode.json
+      state: link
+
   # Please run: nvim -c ":PaqSync" manually
   - name: clone paq
     git:
