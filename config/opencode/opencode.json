@@ -1,8 +1,17 @@
 {
     "$schema": "https://opencode.ai/config.json",
     "permission": {
+        "bash": "ask",
         "edit": "ask",
-        "bash": "ask"
+        "write": "ask",
+        "read": "ask",
+        "grep": "ask",
+        "glob": "ask",
+        "list": "ask",
+        "patch": "ask",
+        "todowrite": "ask",
+        "todoread": "ask",
+        "webfetch": "ask"
     },
     "provider": {
         "ollama": {
