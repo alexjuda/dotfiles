@@ -43,7 +43,7 @@ custom_aliases=(
     "grb:git rebase"
     "grba:git rebase --abort"
     "grbc:git rebase --continue"
-    "grbi:git rebase -i"
+    "grbi:git rebase --interactive --autosquash"
     "grh:git reset"
     "grhh:git reset --hard"
     "grhhu:git reset --hard @{u}"
