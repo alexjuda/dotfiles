@@ -3,4 +3,5 @@ return {
     -- which-key needs to register triggers
     lazy = false,
     branch = "v3",
+    opts = {},
 }
