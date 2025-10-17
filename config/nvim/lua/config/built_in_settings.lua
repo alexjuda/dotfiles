@@ -93,11 +93,6 @@ M.setup = function()
     -- Show horizontal line at cursor row.
     vim.opt.cursorline = true
 
-    -- Show gitsigns & diagnostics over the line numbers. There's an issue where the status
-    -- line background isn't applied to the sign column. This setting makes it a little
-    -- less annoying. See also: https://github.com/lewis6991/gitsigns.nvim/issues/563
-    -- vim.opt.signcolumn = "number"
-
     -- Show diagnostic errors as virtual text under the offender code line. Defaults to just underline + signcolumn
     -- icon.
     vim.diagnostic.config({ float = true, virtual_text = true, update_in_insert = true })

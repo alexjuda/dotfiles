@@ -183,51 +183,28 @@ M.setup = function()
     map("n", "<leader>Td", ":tabclose<CR>", noremap)
 
 
-    -- Git
-    --------
-    wk_group("<leader>c", "choose...")
-    map("n", "<leader>co", "<Plug>(git-conflict-ours)", noremap, "choose ours")
-    map("n", "<leader>ct", "<Plug>(git-conflict-theirs)", noremap, "choose theirs")
-    map("n", "<leader>cb", "<Plug>(git-conflict-both)", noremap, "choose both")
-    map("n", "<leader>c0", "<Plug>(git-conflict-none)", noremap, "choose none")
-    map("n", "[x", "<Plug>(git-conflict-prev-conflict)", noremap, "prev conflict")
-    map("n", "]x", "<Plug>(git-conflict-next-conflict)", noremap, "next conflict")
-
-    -- Gitsigns
-    -- src: https://github.com/lewis6991/gitsigns.nvim#keymaps
-    ----------------------------------------------------------
-    local gs = function() return require("gitsigns") end
-
-    -- GitSigns
+    -- Git --
+    ---------
     wk_group("<leader>g", "git...")
-    map('n', '<leader>gp', function() gs().preview_hunk() end, noremap, "preview hunk")
-    map('n', '<leader>gd', function() gs().diffthis() end, noremap, "show current unstaged diff")
 
-    wk_group("<leader>tg", "git toggles...")
-    map('n', '<leader>tgb', function() gs().toggle_current_line_blame() end, noremap, "toggle current line blame")
-    map('n', '<leader>tgd', function() gs().preview_hunk_inline() end, noremap, "preview diff hunk")
+    local mg = function() return require("mini.git") end
 
-    -- Navigation
-    map('n', ']g', function()
-        if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs().nav_hunk("next") end)
-        return '<Ignore>'
-    end, { expr = true })
-
-    map('n', '[g', function()
-        if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs().nav_hunk("prev") end)
-        return '<Ignore>'
-    end, { expr = true })
+    -- This is awesome! Works with:
+    -- * Normal files. Shows git log touching the lines.
+    -- * Commit SHAs. Shows individual commit details.
+    -- * Diff inside commit. Shows the full file. Before or after depending on the '-' or '+' line being under the cursor.
+    map({"n", "v"}, "<leader>gi", function() mg().show_at_cursor() end, noremap, "inspect at cursor")
 
     -- Telescope and git
     map("n", "<leader>gs", function() telescope().git_status() end, noremap, "git status")
-    map("n", "<leader>gS", function() telescope().git_stash() end, noremap, "git stash")
 
     -- openingh
     map("n", "<Leader>gr", ":OpenInGHRepo <CR>", noremap)
     map("n", "<Leader>gf", ":OpenInGHFile <CR>", noremap)
     map({"n", "v"}, "<Leader>gl", ":OpenInGHFileLines <CR>", noremap)
+
+    -- toggles
+    wk_group("<leader>tg", "git toggles...")
 
     -- Root
     ---------
