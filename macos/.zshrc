@@ -54,6 +54,11 @@ lazyload mmdc -- 'eval "$(nodenv init - zsh)"'
 # Workaround for LS clients not working with lazyload but needing the server binary.
 export PATH="$HOME/.nodenv/shims:${PATH}"
 
+# Rust
+export RUSTUP_HOME"=$HOME/.local/share/rustup"
+export CARGO_HOME="$HOME/.local/share/cargo"
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
+
 # Terminal prompt
 [ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 
