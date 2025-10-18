@@ -46,11 +46,10 @@ M.setup = function()
         -- I don't want to include ignored files. That's what find_files is for.
         --
         -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
-        find_command = {
-            "fd",
-            "--hidden",
-            "--exclude", ".git",
-        },
+        find_command = function()
+            return { "sh", "-c", "fd --hidden --exclude .git | proximity-sort " .. vim.fn.expand('%:.') }
+        end,
+        sorter = require('telescope.sorters').fuzzy_with_index_bias({}),
     }
     wk_group("<leader>p", "project...")
     map("n", "<leader>pb", ":Neotree buffers<CR>", noremap) -- show buffers in the sidebar
@@ -100,11 +99,10 @@ M.setup = function()
         -- I want this to be relatively open. I have <leader>pf for project-scoped files.
         --
         -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
-        find_command = {
-            "fd",
-            "--hidden",
-            "--no-ignore",
-        },
+        find_command = function()
+            return { "sh", "-c", "fd --hidden --no-ignore | proximity-sort " .. vim.fn.expand('%:.') }
+        end,
+        sorter = require('telescope.sorters').fuzzy_with_index_bias({}),
     }
 
     wk_group("<leader>f", "files...")
