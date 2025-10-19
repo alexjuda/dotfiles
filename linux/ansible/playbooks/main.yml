@@ -17,3 +17,5 @@
 - ansible.builtin.import_playbook: gh-releases.yml
 
 - ansible.builtin.import_playbook: python.yml
+
+- ansible.builtin.import_playbook: rust.yml
