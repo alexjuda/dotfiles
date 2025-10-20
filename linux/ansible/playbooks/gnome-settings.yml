@@ -2,16 +2,88 @@
   hosts: all
   tasks:
 
-  # - name: swap caps lock<->esc & right cmd<->ctrl
-  #   community.general.dconf:
-  #     key: "/org/gnome/desktop/input-sources/xkb-options"
-  #     value: "['caps:swapescape', 'ctrl:swap_rwin_rctl']"
-  #   tags: macbook-only
-  #
-  # # Emulates a macbook-like keyboard layout.
-  # # For list of keyboard swap IDs, see `man xkeyboard-config`
-  # - name: swap caps lock<->esc
-  #   community.general.dconf:
-  #     key: "/org/gnome/desktop/input-sources/xkb-options"
-  #     value: "['caps:swapescape']"
-  #   tags: framework-only
+  - name: Unset unused Forge keybindings
+    community.general.dconf:
+      key: "/org/gnome/shell/extensions/forge/keybindings/{{ item }}"
+      value: "@as []"
+    loop:
+      # focus-border-toggle: ['<Super>x']
+      - focus-border-toggle
+      # window-gap-size-increase: ['<Control><Super>plus']
+      - window-gap-size-increase
+      # window-gap-size-decrease: ['<Control><Super>minus']
+      - window-gap-size-decrease
+      # con-split-layout-toggle: ['<Super>g']
+      - con-split-layout-toggle
+      # con-split-horizontal: ['<Super>z']
+      - con-split-horizontal
+      # con-split-vertical: ['<Super>v']
+      - con-split-vertical
+      # con-stacked-layout-toggle: ['<Shift><Super>s']
+      - con-stacked-layout-toggle
+      # con-tabbed-layout-toggle: ['<Shift><Super>t']
+      - con-tabbed-layout-toggle
+      # con-tabbed-showtab-decoration-toggle: ['<Control><Alt>y']
+      - con-tabbed-showtab-decoration-toggle
+      # window-swap-left: ['<Control><Super>h']
+      - window-swap-left
+      # window-swap-down: ['<Control><Super>j']
+      - window-swap-down
+      # window-swap-up: ['<Control><Super>k']
+      - window-swap-up
+      # window-swap-right: ['<Control><Super>l']
+      - window-swap-right
+      # window-move-left: ['<Shift><Super>h']
+      - window-move-left
+      # window-move-down: ['<Shift><Super>j']
+      - window-move-down
+      # window-move-up: ['<Shift><Super>k']
+      - window-move-up
+      # window-move-right: ['<Shift><Super>l']
+      - window-move-right
+      # window-focus-left: ['<Super>h']
+      # - window-focus-left
+      # window-focus-down: ['<Super>j']
+      # - window-focus-down
+      # window-focus-up: ['<Super>k']
+      # - window-focus-up
+      # window-focus-right: ['<Super>l']
+      # - window-focus-right
+      # window-toggle-float: ['<Super>c']
+      - window-toggle-float
+      # window-toggle-always-float: ['<Shift><Super>c']
+      - window-toggle-always-float
+      # workspace-active-tile-toggle: ['<Shift><Super>w']
+      - workspace-active-tile-toggle
+      # prefs-open: ['<Super>Period']
+      - prefs-open
+      # prefs-tiling-toggle: ['<Super>w']
+      - prefs-tiling-toggle
+      # window-swap-last-active: ['<Super>Return']
+      - window-swap-last-active
+      # window-snap-one-third-right: ['<Control><Alt>g']
+      - window-snap-one-third-right
+      # window-snap-two-third-right: ['<Control><Alt>t']
+      - window-snap-two-third-right
+      # window-snap-one-third-left: ['<Control><Alt>d']
+      - window-snap-one-third-left
+      # window-snap-two-third-left: ['<Control><Alt>e']
+      - window-snap-two-third-left
+      # window-snap-center: ['<Control><Alt>c']
+      - window-snap-center
+      # window-resize-left-increase: ['<Control><Super>y']
+      - window-resize-left-increase
+      # window-resize-left-decrease: ['<Shift><Control><Super>o']
+      - window-resize-left-decrease
+      # window-resize-bottom-increase: ['<Control><Super>u']
+      - window-resize-bottom-increase
+      # window-resize-bottom-decrease: ['<Shift><Control><Super>i']
+      - window-resize-bottom-decrease
+      # window-resize-top-increase: ['<Control><Super>i']
+      - window-resize-top-increase
+      # window-resize-top-decrease: ['<Shift><Control><Super>u']
+      - window-resize-top-decrease
+      # window-resize-right-increase: ['<Control><Super>o']
+      - window-resize-right-increase
+      # window-resize-right-decrease: ['<Shift><Control><Super>y']
+      - window-resize-right-decrease
