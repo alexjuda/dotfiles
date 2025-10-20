@@ -2,88 +2,130 @@
   hosts: all
   tasks:
 
-  - name: Unset unused Forge keybindings
+  # * "@as []" means the keybinding is unset
+  # * commented out row means I'm keeping the default keybinding
+  - name: Set custom Forge keybindings
     community.general.dconf:
-      key: "/org/gnome/shell/extensions/forge/keybindings/{{ item }}"
-      value: "@as []"
+      key: "/org/gnome/shell/extensions/forge/keybindings/{{ item.key }}"
+      value: "{{ item.value }}"
     loop:
       # focus-border-toggle: ['<Super>x']
-      - focus-border-toggle
+      - key: focus-border-toggle
+        value: "@as []"
       # window-gap-size-increase: ['<Control><Super>plus']
-      - window-gap-size-increase
+      - key: window-gap-size-increase
+        value: "@as []"
       # window-gap-size-decrease: ['<Control><Super>minus']
-      - window-gap-size-decrease
+      - key: window-gap-size-decrease
+        value: "@as []"
       # con-split-layout-toggle: ['<Super>g']
-      - con-split-layout-toggle
+      - key: con-split-layout-toggle
+        value: "@as []"
       # con-split-horizontal: ['<Super>z']
-      - con-split-horizontal
+      - key: con-split-horizontal
+        value: "@as []"
       # con-split-vertical: ['<Super>v']
-      - con-split-vertical
+      - key: con-split-vertical
+        value: "@as []"
       # con-stacked-layout-toggle: ['<Shift><Super>s']
-      - con-stacked-layout-toggle
+      - key: con-stacked-layout-toggle
+        value: "@as []"
       # con-tabbed-layout-toggle: ['<Shift><Super>t']
-      - con-tabbed-layout-toggle
+      - key: con-tabbed-layout-toggle
+        value: "@as []"
       # con-tabbed-showtab-decoration-toggle: ['<Control><Alt>y']
-      - con-tabbed-showtab-decoration-toggle
+      - key: con-tabbed-showtab-decoration-toggle
+        value: "@as []"
       # window-swap-left: ['<Control><Super>h']
-      - window-swap-left
+      - key: window-swap-left
+        value: "@as []"
       # window-swap-down: ['<Control><Super>j']
-      - window-swap-down
+      - key: window-swap-down
+        value: "@as []"
       # window-swap-up: ['<Control><Super>k']
-      - window-swap-up
+      - key: window-swap-up
+        value: "@as []"
       # window-swap-right: ['<Control><Super>l']
-      - window-swap-right
-      # window-move-left: ['<Shift><Super>h']
-      - window-move-left
+      - key: window-swap-right
+        value: "@as []"
+      # window-move-left: ['<Shift><Super>h'] -> custom: Shift+Alt+H
+      - key: window-move-left
+        value: "['<Shift><Alt>h']"
       # window-move-down: ['<Shift><Super>j']
-      - window-move-down
+      - key: window-move-down
+        value: "['<Shift><Alt>j']"
       # window-move-up: ['<Shift><Super>k']
-      - window-move-up
+      - key: window-move-up
+        value: "['<Shift><Alt>k']"
       # window-move-right: ['<Shift><Super>l']
-      - window-move-right
-      # window-focus-left: ['<Super>h']
-      # - window-focus-left
-      # window-focus-down: ['<Super>j']
-      # - window-focus-down
-      # window-focus-up: ['<Super>k']
-      # - window-focus-up
-      # window-focus-right: ['<Super>l']
-      # - window-focus-right
+      - key: window-move-right
+        value: "['<Shift><Alt>l']"
+      # window-focus-left: ['<Super>h'] - kept as is
+      # - key: window-focus-left
+      #   value: "['<Super>h']"
+      # window-focus-down: ['<Super>j'] - kept as is
+      # - key: window-focus-down
+      #   value: "['<Super>j']"
+      # window-focus-up: ['<Super>k'] - kept as is
+      # - key: window-focus-up
+      #   value: "['<Super>k']"
+      # window-focus-right: ['<Super>l'] - kept as is
+      # - key: window-focus-right
+      #   value: "['<Super>l']"
       # window-toggle-float: ['<Super>c']
-      - window-toggle-float
+      - key: window-toggle-float
+        value: "@as []"
       # window-toggle-always-float: ['<Shift><Super>c']
-      - window-toggle-always-float
+      - key: window-toggle-always-float
+        value: "@as []"
       # workspace-active-tile-toggle: ['<Shift><Super>w']
-      - workspace-active-tile-toggle
+      - key: workspace-active-tile-toggle
+        value: "@as []"
       # prefs-open: ['<Super>Period']
-      - prefs-open
+      - key: prefs-open
+        value: "@as []"
       # prefs-tiling-toggle: ['<Super>w']
-      - prefs-tiling-toggle
+      - key: prefs-tiling-toggle
+        value: "@as []"
       # window-swap-last-active: ['<Super>Return']
-      - window-swap-last-active
+      - key: window-swap-last-active
+        value: "@as []"
       # window-snap-one-third-right: ['<Control><Alt>g']
-      - window-snap-one-third-right
+      - key: window-snap-one-third-right
+        value: "@as []"
       # window-snap-two-third-right: ['<Control><Alt>t']
-      - window-snap-two-third-right
+      - key: window-snap-two-third-right
+        value: "@as []"
       # window-snap-one-third-left: ['<Control><Alt>d']
-      - window-snap-one-third-left
+      - key: window-snap-one-third-left
+        value: "@as []"
       # window-snap-two-third-left: ['<Control><Alt>e']
-      - window-snap-two-third-left
+      - key: window-snap-two-third-left
+        value: "@as []"
       # window-snap-center: ['<Control><Alt>c']
-      - window-snap-center
+      - key: window-snap-center
+        value: "@as []"
       # window-resize-left-increase: ['<Control><Super>y']
-      - window-resize-left-increase
+      - key: window-resize-left-increase
+        value: "@as []"
       # window-resize-left-decrease: ['<Shift><Control><Super>o']
-      - window-resize-left-decrease
+      - key: window-resize-left-decrease
+        value: "@as []"
       # window-resize-bottom-increase: ['<Control><Super>u']
-      - window-resize-bottom-increase
+      - key: window-resize-bottom-increase
+        value: "@as []"
       # window-resize-bottom-decrease: ['<Shift><Control><Super>i']
-      - window-resize-bottom-decrease
+      - key: window-resize-bottom-decrease
+        value: "@as []"
       # window-resize-top-increase: ['<Control><Super>i']
-      - window-resize-top-increase
+      - key: window-resize-top-increase
+        value: "@as []"
       # window-resize-top-decrease: ['<Shift><Control><Super>u']
-      - window-resize-top-decrease
+      - key: window-resize-top-decrease
+        value: "@as []"
       # window-resize-right-increase: ['<Control><Super>o']
-      - window-resize-right-increase
+      - key: window-resize-right-increase
+        value: "@as []"
       # window-resize-right-decrease: ['<Shift><Control><Super>y']
-      - window-resize-right-decrease
+      - key: window-resize-right-decrease
+        value: "@as []"
