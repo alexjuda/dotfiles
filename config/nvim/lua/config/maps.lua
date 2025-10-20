@@ -2,19 +2,17 @@ local M = {}
 
 
 M.setup = function()
-    local wk = require("which-key")
     local telescope = function() return require("telescope.builtin") end
 
     local map = function(mode, key, cmd, opts, doc)
-        vim.keymap.set(mode, key, cmd, opts)
-
-        if doc then
-            wk.add({ { key, desc = doc } })
-        end
+        local opts2 = vim.tbl_extend("force", opts, { desc = doc })
+        vim.keymap.set(mode, key, cmd, opts2)
     end
 
     local wk_group = function(key, doc)
-        wk.add({ { key, group = doc } })
+        -- In the past I used this fn to document mapping groups. I'm not using which-key anymore, but I'm keeping this
+        -- for some time, because I might figure out an alternative way to document these things.
+        -- wk.add({ { key, group = doc } })
     end
 
     local bufmap = vim.api.nvim_buf_set_keymap
@@ -206,7 +204,6 @@ M.setup = function()
 
     -- Root
     ---------
-    map("n", "<leader><esc>", ":nohlsearch<cr>", noremap)
 
     -- Diagnostics
     wk_group("<leader>td", "diagnostic toggles...")
@@ -294,6 +291,8 @@ M.setup = function()
     map("n", "ss", ":HopChar2MW<CR>", noremap)
     map("n", "ss", ":HopChar2MW<CR>", noremap)
 
+    map("n", "<leader>?", function() telescope().keymaps() end, noremap, "keymaps")
+
     -- Enable standard terminal keybindings in the vim command mode
     local readline = function() return require("readline") end
     vim.keymap.set({"c"}, '<M-f>', function() readline().forward_word() end)
@@ -360,15 +359,6 @@ M.setup = function()
 
     wk_group("<leader>m", "markdown...")
     vim.keymap.set("n", "<leader>mdp", function() InsertMarkdownURL() end, { silent = true, noremap = true })
-
-    -- Document built-in keymaps --
-    wk.add({
-        { "gq",  desc = "format..." },
-        { "gqa", desc = "format around..." },
-        { "gqq", desc = "format line" },
-        { "gw",  desc = "format raw..." },
-        { "gww", desc = "format line raw" },
-    })
 end
 
 

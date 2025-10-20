@@ -16,13 +16,9 @@ end
 
 -- Buffer-local options + keymap
 local set_lsp_keymaps = function(client, buf_n)
-    local wk = require("which-key")
-
     local buf_map_with_name = function(mode, lhs, rhs, name)
-        local opts = { buffer = buf_n, noremap = true }
+        local opts = { buffer = buf_n, noremap = true, desc = name }
         vim.keymap.set(mode, lhs, rhs, opts)
-
-        wk.add({ lhs, desc = name })
     end
 
     local telescope = require("telescope.builtin")
@@ -55,11 +51,6 @@ local set_lsp_keymaps = function(client, buf_n)
         function() show_workspace_symbols() end,
         "workspace symbols"
     )
-
-    wk.add({ "<localleader>l", desc = "+lsp commands" })
-    wk.add({ "<localleader>lb", desc = "+buffer" })
-    wk.add({ "<localleader>lw", desc = "+workspace" })
-    wk.add({ "<localleader>L", desc = "+lsp connectors" })
 end
 
 -- Sensible defaults for all my LSP configs.

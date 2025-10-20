@@ -21,9 +21,9 @@ M.setup = function()
     -- Use point system clipboard to the default register
     vim.o.clipboard = "unnamedplus"
 
-    -- Speed up firing up the WhichKey pane.
+    -- Wait for a key combination longer. Helps figuring out longer combinations.
     -- By default timeoutlen is 1000 ms.
-    vim.o.timeoutlen = 200
+    vim.o.timeoutlen = 2000
 
     -- Tab size
     vim.o.tabstop = 4
