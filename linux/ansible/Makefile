@@ -10,7 +10,10 @@ HOST =
 EXTRA =
 PLAYBOOK = playbooks/main.yml
 VERBOSE = "-vv"
-ANSIBLE := uvx --from ansible-core --with ansible ansible-playbook
+
+# Installing:
+# uv tool install ansible-core
+ANSIBLE := ansible-playbook
 
 .PHONY: framework
 framework:
@@ -23,7 +26,3 @@ macbook:
 .PHONY: snow
 snow:
 	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --skip-tags macbook-only,framework-only -K $(VERBOSE) $(EXTRA)
-
-.PHONY: wip-only
-wip-only:
-	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --tags wip $(VERBOSE) $(EXTRA)
