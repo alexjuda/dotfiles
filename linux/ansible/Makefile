@@ -27,3 +27,9 @@ snow:
 .PHONY: wip-only
 wip-only:
 	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --tags wip $(VERBOSE) $(EXTRA)
+
+macos: PLAYBOOK = playbooks/homebrew.yml
+
+.PHONY: macos
+macos:
+	$(ANSIBLE) $(PLAYBOOK) $(VERBOSE) $(EXTRA)

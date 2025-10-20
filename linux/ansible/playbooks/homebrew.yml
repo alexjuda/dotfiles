@@ -1,0 +1,10 @@
+- name: Install deps with homebrew
+  hosts: localhost
+  # this allows running directly from localhost
+  connection: local
+  tasks:
+
+  - name: Install deps
+    community.general.homebrew:
+      name: proximity-sort
+      state: present
