@@ -2,16 +2,16 @@
   hosts: all
   tasks:
 
-  - name: swap caps lock<->esc & right cmd<->ctrl
-    community.general.dconf:
-      key: "/org/gnome/desktop/input-sources/xkb-options"
-      value: "['caps:swapescape', 'ctrl:swap_rwin_rctl']"
-    tags: macbook-only
-
-  # Emulates a macbook-like keyboard layout.
-  # For list of keyboard swap IDs, see `man xkeyboard-config`
-  - name: swap caps lock<->esc
-    community.general.dconf:
-      key: "/org/gnome/desktop/input-sources/xkb-options"
-      value: "['caps:swapescape']"
-    tags: framework-only
+  # - name: swap caps lock<->esc & right cmd<->ctrl
+  #   community.general.dconf:
+  #     key: "/org/gnome/desktop/input-sources/xkb-options"
+  #     value: "['caps:swapescape', 'ctrl:swap_rwin_rctl']"
+  #   tags: macbook-only
+  #
+  # # Emulates a macbook-like keyboard layout.
+  # # For list of keyboard swap IDs, see `man xkeyboard-config`
+  # - name: swap caps lock<->esc
+  #   community.general.dconf:
+  #     key: "/org/gnome/desktop/input-sources/xkb-options"
+  #     value: "['caps:swapescape']"
+  #   tags: framework-only
