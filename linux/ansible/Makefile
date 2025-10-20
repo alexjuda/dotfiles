@@ -32,4 +32,4 @@ macos: PLAYBOOK = playbooks/homebrew.yml
 
 .PHONY: macos
 macos:
-	$(ANSIBLE) $(PLAYBOOK) $(VERBOSE) $(EXTRA)
+	$(ANSIBLE) --connection local $(PLAYBOOK) $(VERBOSE) $(EXTRA)
