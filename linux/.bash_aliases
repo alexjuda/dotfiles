@@ -11,7 +11,8 @@ custom_aliases=(
     "gbc:git branch --show-current"
     "gbd:git branch -d"
     "gbD:git branch -D"
-    "gbDD:git branch | grep -v 'dev' | grep -v 'main' | xargs git branch -D"
+    # Delete all local branches that don't have 'main' in the name.
+    "gbDD:git branch | grep -v 'main' | xargs git branch -D"
 
     "gc:git commit -v"
     "gca:git commit -v --amend"  # 'gc!' can't be used in macOS bash
