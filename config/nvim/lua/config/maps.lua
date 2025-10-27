@@ -116,6 +116,7 @@ M.setup = function()
     map("n", "<leader>ta", ":AerialToggle!<CR>", noremap, "aerial sidebar")
     map("n", "<leader>tn", ":set number!<CR>", noremap, "relative numbers")
     map("n", "<leader>tc", function() require("treesitter-context").toggle() end, noremap, "context bar")
+    map("n", "<leader>tz", function() require("zen-mode").toggle() end, noremap, "Zen Mode")
 
     -- Treesitter Text Objects
     -------------
