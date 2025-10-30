@@ -6,6 +6,7 @@ local function get_filename()
     return name
 end
 
+
 local function get_position_info()
     -- Equivalent to vi’s default statusline info: "65% 120,4"
     local pos = vim.api.nvim_eval_statusline("%p%% %l,%c", {}).str
@@ -13,10 +14,11 @@ local function get_position_info()
     return pos:gsub("%%", "%%%%")
 end
 
+
 -- Show selection info in Visual mode: "5C 2W 3L"
 local function get_visual_selection_info()
     local mode = vim.fn.mode()
-    if not mode:match("[vV]") then return "" end  -- only in visual mode
+    if not mode:match("[vV\x16]") then return "" end  -- only in visual mode
 
     local start_pos = vim.fn.getpos("v")
     local end_pos = vim.fn.getpos(".")
@@ -86,20 +88,22 @@ return {
                     local fileformat = (vim.bo.fileformat ~= "unix" and vim.bo.fileformat or nil)
                     local filetype = vim.bo.filetype
 
+                    local cwd_basename = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+
                     -- Compose groups and return the statusline string
                     return MS.combine_groups({
                         -- Left --
-                        -- Mode-colored, buffer ID.
-                        { hl = mode_hl,                 strings = { bufnum } },
-                        -- Gray, total count of buffers + LSP warnings + LSP errors.
-                        { hl = "MiniStatuslineDevinfo", strings = { bufcount, diagnostics } },
+                        -- Mode-colored buffer ID, total number of buffers.
+                        { hl = mode_hl,                 strings = { bufnum .. "/" .. bufcount } },
+                        -- Gray. Project name inferred from CWD.
+                        { hl = "MiniStatuslineDevinfo", strings = { cwd_basename } },
                         "%<", -- truncation marker
                         -- Black, filepath relative to nvim's cwd.
                         { hl = "MiniStatuslineFilename", strings = { get_filename() } },
                         "%=", -- split left/right
                         -- Right --
-                        -- Gray, LSP client status + file encoding + ft
-                        { hl = "MiniStatuslineDevinfo",  strings = { lsp_progress, lsp, filencoding, fileformat, filetype } },
+                        -- Gray. LSP client status + LSP warnings and errors + LSP summary + file encoding + ft
+                        { hl = "MiniStatuslineDevinfo",  strings = { lsp_progress, diagnostics, lsp, filencoding, fileformat, filetype } },
                         -- Mode-colored, [1/7] 1C 2L 23% + line,col
                         { hl = mode_hl,                  strings = { search, get_visual_selection_info(), get_position_info() } },
                     })
