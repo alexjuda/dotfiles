@@ -3,8 +3,9 @@
   tasks:
 
   - name: install gext
-    community.general.pipx:
-      name: gnome-extensions-cli
+    ansible.builtin.command:
+      cmd: uv tool install gnome-extensions-cli
+      creates: ~/.local/bin/gext
 
   - name: install night theme switcher
     ansible.builtin.command:
