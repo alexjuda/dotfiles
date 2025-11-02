@@ -44,6 +44,11 @@
       dest: ~/.config/ghostty/platform_specific_config
       state: link
 
+  - name: create opencode config directory
+    ansible.builtin.file:
+      path: ~/.config/opencode
+      state: directory
+
   # There's a bunch of other crap opencode creates and keeps under '~/.config/opencode/' dir. We just need to link the
   # config file. I wish they made proper use of XDG confgi and state dirs.
   - name: link opencode config file
