@@ -79,10 +79,12 @@
   - name: install GUI apps
     community.general.flatpak:
       name:
+        - com.brave.Browser
         - com.mattjakeman.ExtensionManager
         - com.spotify.Client
         - io.missioncenter.MissionCenter
         - io.podman_desktop.PodmanDesktop
+        - org.localsend.localsend_app
         - org.signal.Signal
         - org.sqlitebrowser.sqlitebrowser
         - org.videolan.VLC
