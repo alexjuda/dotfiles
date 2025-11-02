@@ -30,7 +30,6 @@
       - "ahmetb/kubectx --asset kubectx"
       - artempyanykh/marksman
       - astral-sh/uv
-      - "grafana/loki --asset logcli"
       - google/yamlfmt
       - jesseduffield/lazydocker
       - mrjosh/helm-ls

@@ -33,12 +33,6 @@
     become: true
     tags: superuser
 
-  - name: enable ghostty's copr
-    community.general.copr:
-      name: pgdev/ghostty
-    become: true
-    tags: superuser
-
   - name: enable starship's copr
     community.general.copr:
       name: atim/starship
@@ -64,7 +58,6 @@
         - gcc-c++
         - git-crypt
         - gh
-        - ghostty
         - glances
         - htop
         - lazygit
@@ -90,7 +83,6 @@
         - com.spotify.Client
         - io.missioncenter.MissionCenter
         - io.podman_desktop.PodmanDesktop
-        - org.gnome.Geary
         - org.signal.Signal
         - org.sqlitebrowser.sqlitebrowser
         - org.videolan.VLC
