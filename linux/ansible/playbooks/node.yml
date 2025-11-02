@@ -7,18 +7,6 @@
       repo: https://github.com/nodenv/nodenv.git
       dest: ~/.nodenv
 
-  - name: build native extension (configure)
-    ansible.builtin.command:
-      cmd: src/configure
-      chdir: ~/.nodenv
-      creates: ~/.nodenv/src/Makefile
-
-  - name: build native extension (make)
-    ansible.builtin.command:
-      cmd: make -C src
-      chdir: ~/.nodenv
-      creates: ~/.nodenv/libexec/nodenv-realpath.dylib
-
   - name: install node-build with git
     ansible.builtin.git:
       repo: https://github.com/nodenv/node-build.git
@@ -29,12 +17,12 @@
 
   - name: install node
     ansible.builtin.command:
-      cmd: ~/.nodenv/bin/nodenv install 22.12.0
-      creates: ~/.nodenv/versions/22.12.0
+      cmd: ~/.nodenv/bin/nodenv install 25.1.0
+      creates: ~/.nodenv/versions/25.1.0
 
   - name: set global node version
     ansible.builtin.command:
-      cmd: ~/.nodenv/bin/nodenv global 22.12.0
+      cmd: ~/.nodenv/bin/nodenv global 25.1.0
 
   - name: Install npm tools
     ansible.builtin.shell:
