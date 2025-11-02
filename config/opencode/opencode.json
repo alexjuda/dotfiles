@@ -3,15 +3,7 @@
     "permission": {
         "bash": "ask",
         "edit": "ask",
-        "write": "ask",
-        "read": "ask",
-        "grep": "ask",
-        "glob": "ask",
-        "list": "ask",
-        "patch": "ask",
-        "todowrite": "ask",
-        "todoread": "ask",
-        "webfetch": "ask"
+        "webfetch": "allow"
     },
     "provider": {
         "ollama": {
