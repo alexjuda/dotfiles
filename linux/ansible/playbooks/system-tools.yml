@@ -56,6 +56,7 @@
         - direnv
         - doas
         - gcc-c++
+        - fuse-libs # required for running .AppImage
         - git-crypt
         - gh
         - glances
