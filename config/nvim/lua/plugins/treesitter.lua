@@ -44,7 +44,9 @@ return {
             ts.install(langs, { summary = true })
         end, { desc = "Install grammars I have defined in my config" })
 
+        local group = vim.api.nvim_create_augroup("aj-treesitter", {})
         vim.api.nvim_create_autocmd("FileType", {
+            group = group,
             pattern = langs,
             callback = function()
                 vim.treesitter.start()

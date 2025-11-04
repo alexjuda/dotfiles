@@ -172,6 +172,23 @@ M.setup = function()
             command = "setlocal shiftwidth=2",
         })
 
+    end
+    yaml()
+
+    local helm = function()
+        local aj_helm = "aj-helm"
+        vim.api.nvim_create_augroup(aj_helm, { clear = true })
+        vim.api.nvim_create_autocmd("Filetype", {
+            group = aj_helm,
+            pattern = { "helm" },
+            callback = function ()
+                -- Set indent size to 2 instead of 4
+                vim.bo.shiftwidth = 2
+                -- Set comment string for Helm templates
+                vim.bo.commentstring = "{{/* %s */}}"
+            end
+        })
+
         -- Register helm as the filetype for yamls in specific dirs.
         vim.filetype.add {
             pattern = {
@@ -183,18 +200,6 @@ M.setup = function()
                 [".*/helm/.*.tpl"] = "helm",
             }
         }
-    end
-    yaml()
-
-    local helm = function()
-        local aj_helm = "aj-helm"
-        vim.api.nvim_create_augroup(aj_helm, { clear = true })
-        -- Set indent size to 2 instead of 4
-        vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_helm,
-            pattern = { "helm" },
-            command = "setlocal shiftwidth=2",
-        })
     end
     helm()
 
