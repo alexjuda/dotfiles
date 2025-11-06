@@ -129,3 +129,17 @@
       # window-resize-right-decrease: ['<Shift><Control><Super>y']
       - key: window-resize-right-decrease
         value: "@as []"
+
+  - name: Set Focus Changer keybindings to use Alt instead of Super
+    community.general.dconf:
+      key: "/org/gnome/shell/extensions/focus-changer/{{ item.key }}"
+      value: "{{ item.value }}"
+    loop:
+      - key: focus-left
+        value: "['<Alt>h']"
+      - key: focus-down
+        value: "['<Alt>j']"
+      - key: focus-up
+        value: "['<Alt>k']"
+      - key: focus-right
+        value: "['<Alt>l']"
