@@ -15,14 +15,11 @@ VERBOSE = "-vv"
 # uv tool install ansible-core
 ANSIBLE := ansible-playbook
 
-.PHONY: framework
-framework:
-	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --skip-tags macbook-only -K $(VERBOSE) $(EXTRA)
+.PHONY: run
+run:
+	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml -K $(VERBOSE) $(EXTRA)
 
-.PHONY: macbook
-macbook:
-	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --skip-tags framework-only -K $(VERBOSE) $(EXTRA)
 
-.PHONY: snow
-snow:
-	$(ANSIBLE) -i "$(HOST)," $(PLAYBOOK) --extra-vars @vars.yml --skip-tags macbook-only,framework-only -K $(VERBOSE) $(EXTRA)
+.PHONY: localhost
+localhost:
+	$(ANSIBLE) -i localhost, -c local $(PLAYBOOK) --extra-vars @vars.yml -K
