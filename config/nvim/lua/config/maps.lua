@@ -200,6 +200,54 @@ M.setup = function()
     map("n", "<Leader>gf", ":OpenInGHFile <CR>", noremap)
     map({"n", "v"}, "<Leader>gl", ":OpenInGHFileLines <CR>", noremap)
 
+    -- Git conflicts
+    local function find_git_conflicts()
+        local conflicts = {}
+        local handle = io.popen("git diff --name-only --diff-filter=U 2>/dev/null")
+        if not handle then return end
+
+        for filename in handle:lines() do
+            if filename and filename ~= "" then
+                local file_handle = io.open(filename, "r")
+                if file_handle then
+                    local line_num = 0
+                    local conflict_start = nil
+
+                    for line in file_handle:lines() do
+                        line_num = line_num + 1
+
+                        if line:match("^<<<<<<<") then
+                            conflict_start = line_num
+                        elseif line:match("^=======") and conflict_start then
+                            -- Found the middle of a conflict
+                        elseif line:match("^>>>>>>>") and conflict_start then
+                            -- Found the end of a conflict, add to quickfix
+                            table.insert(conflicts, {
+                                filename = filename,
+                                lnum = conflict_start,
+                                col = 1,
+                                text = "Git conflict (lines " .. conflict_start .. "-" .. line_num .. ") in " .. filename
+                            })
+                            conflict_start = nil
+                        end
+                    end
+                    file_handle:close()
+                end
+            end
+        end
+        handle:close()
+
+        if #conflicts > 0 then
+            vim.fn.setqflist(conflicts, "r")
+            vim.cmd("copen")
+            print("Found " .. #conflicts .. " conflict section(s)")
+        else
+            print("No git conflicts found")
+        end
+    end
+
+    map("n", "<leader>gc", find_git_conflicts, noremap, "find git conflicts")
+
     -- toggles
     wk_group("<leader>tg", "git toggles...")
 
