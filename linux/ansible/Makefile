@@ -11,8 +11,11 @@ EXTRA =
 PLAYBOOK = playbooks/main.yml
 VERBOSE = "-vv"
 
-# Installing:
-# uv tool install ansible-core
+.PHONY: install
+install:
+	uv tool install ansible-core
+	ansible-galaxy collection install community.general -p ./.collections
+
 ANSIBLE := ansible-playbook
 
 .PHONY: run
