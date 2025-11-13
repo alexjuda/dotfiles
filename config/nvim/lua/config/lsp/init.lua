@@ -10,6 +10,7 @@ M.setup = function()
     require("config.lsp.markdown").setup()
     require("config.lsp.lua").setup()
     require("config.lsp.python").setup()
+    require("config.lsp.tf").setup()
 end
 
 return M
