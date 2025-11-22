@@ -7,20 +7,47 @@
       path: ~/.local/share/aj-eget-bins
       state: directory
 
-  - name: Install eget
+  - name: Install latest eget from GitHub
     ansible.builtin.shell:
       cmd: |
-        DOWNLOAD_DIR=$(mktemp -d --suffix="eget")
-        mkdir -p ${DOWNLOAD_DIR}
-        cd ${DOWNLOAD_DIR}
+        set -e
 
-        gh release download --repo zyedidia/eget --pattern "*linux_amd64*"
-        tar -xzf eget-*linux_amd64.tar.gz
-        cp eget-*linux_amd64/eget ~/.local/share/aj-eget-bins/eget
+        DEST="$HOME/.local/share/aj-eget-bins"
+        mkdir -p "$DEST"
+
+        # Skip if already installed
+        if [ -x "$DEST/eget" ]; then
+          echo "eget already installed at $DEST/eget"
+          exit 0
+        fi
+
+        # Get release metadata from GitHub API
+        ASSET_URL=$(curl -s https://api.github.com/repos/zyedidia/eget/releases/latest \
+          | grep browser_download_url \
+          | grep linux_amd64 \
+          | cut -d '"' -f 4)
+
+        if [ -z "$ASSET_URL" ]; then
+          echo "Failed to fetch asset URL"
+          exit 1
+        fi
+
+        TMP_DIR=$(mktemp -d)
+        cd "$TMP_DIR"
+
+        # Download release tarball
+        curl -L "$ASSET_URL" -o eget.tar.gz
+
+        # Extract
+        tar -xzf eget.tar.gz
+
+        # Move binary
+        find . -type f -name "eget" -exec cp {} "$DEST/eget" \;
+
+        chmod +x "$DEST/eget"
 
         cd ~
-        rm -r ${DOWNLOAD_DIR}
-
+        rm -rf "$TMP_DIR"
       creates: ~/.local/share/aj-eget-bins/eget
 
   - name: Install self-contained tools from GH
