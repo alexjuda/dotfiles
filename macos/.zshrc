@@ -59,6 +59,11 @@ export RUSTUP_HOME"=$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
+# Go
+# Go workspace. Based on https://24ankitw.medium.com/installing-go-lang-on-mac-homebrew-ee11cc7271fb
+export GOPATH="$HOME/.local/share/aj-apps/golang"
+export PATH="$GOPATH/bin:$PATH"
+
 # Terminal prompt
 [ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 

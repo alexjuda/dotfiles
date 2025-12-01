@@ -2,6 +2,7 @@ local M = {}
 
 M.setup = function()
     require("config.lsp.cpp").setup()
+    require("config.lsp.go").setup()
     require("config.lsp.html").setup()
     require("config.lsp.helm").setup()
     require("config.lsp.java").setup()
