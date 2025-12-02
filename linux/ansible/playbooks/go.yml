@@ -1,0 +1,14 @@
+- name: Set up Go
+  hosts: all
+  tasks:
+
+  - name: Install golang
+    ansible.builtin.dnf:
+      name: golang
+      state: present
+    become: yes
+
+  - name: Create GOPATH directory
+    ansible.builtin.file:
+      path: "{{ ansible_user_dir }}/.local/share/aj-apps/golang"
+      state: directory
