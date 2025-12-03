@@ -10,5 +10,5 @@
 
   - name: Create GOPATH directory
     ansible.builtin.file:
-      path: "{{ ansible_user_dir }}/.local/share/aj-apps/golang"
+      path: "{{ ansible_facts['user_dir'] }}/.local/share/aj-apps/golang"
       state: directory
