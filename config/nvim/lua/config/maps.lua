@@ -170,6 +170,12 @@ M.setup = function()
     map(move_modes, "[I", function() ts_move().goto_previous_end("@call.outer", "textobjects") end, noremap)
     map(move_modes, "]I", function() ts_move().goto_next_end("@call.outer", "textobjects") end, noremap)
 
+    -- Swapping parameters
+    local ts_sw = function() return require("nvim-treesitter-textobjects.swap") end
+    local sw_modes = { "n" }
+    map(sw_modes, "<C-.>", function() ts_sw().swap_next "@parameter.inner" end, noremap, "Shift parameter left")
+    map(sw_modes, "<C-,>", function() ts_sw().swap_previous "@parameter.inner" end, noremap, "Shift parameter right")
+
 
     -- Tabs
     -------------
