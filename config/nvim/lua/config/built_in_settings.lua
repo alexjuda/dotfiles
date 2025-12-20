@@ -198,6 +198,7 @@ M.setup = function()
                 [".*/templates/.*.tpl"] = "helm",
                 [".*/helm/.*.yaml"] = "helm",
                 [".*/helm/.*.tpl"] = "helm",
+                [".*.yaml.gotmpl"] = "helm",
             }
         }
     end
