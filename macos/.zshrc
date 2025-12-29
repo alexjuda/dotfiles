@@ -176,5 +176,13 @@ function git-rebase-ancestor () {
     git rebase --onto $other $(git merge-base $other $current) $current
 }
 
+function retry() {
+    local sleep_time=${RETRY_SLEEP:-1}
+    while ! "$@"; do
+        echo "Command '$@' failed, retrying in ${sleep_time}s..."
+        sleep $sleep_time
+    done
+}
+
 # Uncomment to print startup time profile.
 # zprof
