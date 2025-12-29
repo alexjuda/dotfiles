@@ -71,6 +71,7 @@
         - uv
         - xclip
         - yazi
+        - yq
         - zoxide
         - zsh
       state: present
