@@ -186,3 +186,6 @@ function retry() {
 
 # Uncomment to print startup time profile.
 # zprof
+
+# Chariot completions
+source <(chariot completion zsh)
