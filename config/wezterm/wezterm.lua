@@ -42,7 +42,7 @@ config.window_padding = {
 config.adjust_window_size_when_changing_font_size = false
 
 -- The default font size (10.0) is too small on 4K screens.
-config.font_size = 16
+config.font_size = 14
 
 -- The default window size for new windows seems small.
 config.initial_cols = math.floor(120 / 80 * default_size.cols)
