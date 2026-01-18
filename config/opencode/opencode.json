@@ -42,6 +42,16 @@
                 },
                 "codellama:13b-instruct": {
                     "name": "CodeLlama 13B Instruct (local)"
+                },
+                "codellama:13b-instruct-16k": {
+                    "name": "CodeLlama 13B Instruct 16K (local)",
+                    "tools": true,
+                    "options": {
+                        "numCtx": 16384,
+                        "temperature": 0.1,
+                        "top_k": 20,
+                        "top_p": 0.9
+                    }
                 }
             }
         }
