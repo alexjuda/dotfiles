@@ -39,6 +39,9 @@
                 },
                 "llama3.1:8b": {
                     "name": "llama3.1:8b"
+                },
+                "codellama:13b-instruct": {
+                    "name": "CodeLlama 13B Instruct (local)"
                 }
             }
         }
