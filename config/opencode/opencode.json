@@ -13,6 +13,9 @@
                 "baseURL": "http://localhost:11434/v1"
             },
             "models": {
+                "gpt-oss:20b": {
+                    "name": "gpt-oss:20b"
+                },
                 "llama3.2:8b": {
                     "name": "llama3.1:8b"
                 },
