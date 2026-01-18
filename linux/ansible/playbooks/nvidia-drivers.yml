@@ -1,0 +1,31 @@
+- name: NVIDIA GPU set up
+  hosts: all
+  tasks:
+
+  - name: Check for NVIDIA GPU
+    ansible.builtin.shell: lspci | grep -i nvidia
+    register: nvidia_check
+    ignore_errors: false
+    changed_when: false
+
+  - name: Set has_nvidia_gpu fact
+    ansible.builtin.set_fact:
+      has_nvidia_gpu: "{{ nvidia_check.rc == 0 }}"
+
+  - name: Debug nvidia_check
+    ansible.builtin.debug:
+      var: nvidia_check
+
+  - name: install nvidia-container-toolkit
+    ansible.builtin.dnf:
+      name: nvidia-container-toolkit
+      state: present
+    become: true
+    tags: superuser
+    when: has_nvidia_gpu
+
+  - name: generate NVIDIA CDI spec
+    ansible.builtin.command: nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+    become: true
+    tags: superuser
+    when: has_nvidia_gpu
