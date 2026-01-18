@@ -63,6 +63,7 @@
         - htop
         - lazygit
         - openssl
+        - podman-compose
         - python3-devel
         - rclone
         - ripgrep
