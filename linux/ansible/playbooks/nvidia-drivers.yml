@@ -16,9 +16,15 @@
     ansible.builtin.debug:
       var: nvidia_check
 
+  - name: Enable NVIDIA container toolkit COPR
+    ansible.builtin.command: dnf copr enable -y @ai-ml/nvidia-container-toolkit
+    become: true
+    tags: superuser
+    when: has_nvidia_gpu
+
   - name: install nvidia-container-toolkit
     ansible.builtin.dnf:
-      name: nvidia-container-toolkit
+      name: nvidia-container-toolkit,nvidia-container-toolkit-selinux
       state: present
     become: true
     tags: superuser
@@ -26,6 +32,15 @@
 
   - name: generate NVIDIA CDI spec
     ansible.builtin.command: nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+    become: true
+    tags: superuser
+    when: has_nvidia_gpu
+
+  - name: add user to render and video groups for GPU access
+    ansible.builtin.user:
+      name: "{{ ansible_user_id }}"
+      groups: render,video
+      append: true
     become: true
     tags: superuser
     when: has_nvidia_gpu
