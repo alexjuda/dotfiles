@@ -13,6 +13,12 @@
                 "baseURL": "http://localhost:11434/v1"
             },
             "models": {
+                "llama3.2:8b": {
+                    "name": "llama3.1:8b"
+                },
+                "ministral-3:8b": {
+                    "name": "ministral-3:8b"
+                },
                 "qwen2.5-coder:7b": {
                     "name": "Qwen2.5-Coder 7B"
                 },
@@ -22,9 +28,6 @@
                 "qwen3:8b": {
                     "name": "Qwen3 8B"
                 },
-                "llama3.2:8b": {
-                    "name": "llama3.1:8b"
-                }
             }
         }
     }
