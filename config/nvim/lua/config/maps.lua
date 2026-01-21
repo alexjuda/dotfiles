@@ -414,6 +414,9 @@ M.setup = function()
 
     wk_group("<leader>m", "markdown...")
     vim.keymap.set("n", "<leader>mdp", function() InsertMarkdownURL() end, { silent = true, noremap = true })
+
+    map("v", "<localleader>p", function() require("config.md_actions").wrap_visual_selection_as_md_link() end, noremap,
+        "Wrap selection as Markdown link (clipboard URL)")
 end
 
 
