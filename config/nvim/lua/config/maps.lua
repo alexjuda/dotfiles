@@ -307,9 +307,24 @@ M.setup = function()
     map("n", "<localleader>Li", ":checkhealth vim.lsp<CR>", noremap, "LSP client info")
     map("n", "<localleader>Ld", ":lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>", noremap, "Kill all clients attached to this buf")
 
-    -- Evaluating markdown code blocks --
-    vim.api.nvim_set_keymap("n", "<localleader>ee", ":MdEval<CR>", noremap)
-    vim.api.nvim_set_keymap("n", "<localleader>ed", ":MdEvalClean<CR>", noremap)
+    -- Markdown-related mappings (only for markdown files)
+    local markdown_augroup = vim.api.nvim_create_augroup("MarkdownMappings", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+        group = markdown_augroup,
+        pattern = "markdown",
+        callback = function()
+            -- Evaluating markdown code blocks
+            vim.api.nvim_buf_set_keymap(0, "n", "<localleader>ee", ":MdEval<CR>", { noremap = true })
+            vim.api.nvim_buf_set_keymap(0, "n", "<localleader>ed", ":MdEvalClean<CR>", { noremap = true })
+            -- Markdown link from clipboard
+            vim.keymap.set('n', '<localleader>p',
+                function() require('config.md_actions').paste_md_link_from_clipboard() end,
+                { noremap = true, buffer = true, desc = "Paste MD link from clipboard" })
+            vim.keymap.set("v", "<localleader>p",
+                function() require("config.md_actions").wrap_visual_selection_as_md_link() end,
+                { noremap = true, buffer = true, desc = "Wrap selection as Markdown link (clipboard URL)" })
+        end,
+    })
 
     -- Running tests with neotest
     wk_group("<localleader>t", "tests...")
@@ -388,35 +403,6 @@ M.setup = function()
     end
 
     vim.keymap.set({ "i", "n" }, "<F3>", insert_current_date)
-
-    -- Insert webpage title when pasting into markdown
-    -- Source: https://www.reddit.com/r/vim/comments/139fn2b/comment/js7mth4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-
-    local InsertMarkdownURL = function()
-        local url = vim.fn.getreg "+"
-        if url == "" then return end
-        local cmd = "curl -L " .. vim.fn.shellescape(url) .. " 2>/dev/null"
-        local handle = io.popen(cmd)
-        if not handle then return end
-        local html = handle:read "*a"
-        handle:close()
-        local title = ""
-        local pattern = "<title>(.-)</title>"
-        local m = string.match(html, pattern)
-        if m then title = m end
-        if title ~= "" then
-            local markdownLink = "[" .. title .. "](" .. url .. ")"
-            vim.api.nvim_command("call append(line('.'), '" .. markdownLink .. "')")
-        else
-            print("Title not found for link")
-        end
-    end
-
-    wk_group("<leader>m", "markdown...")
-    vim.keymap.set("n", "<leader>mdp", function() InsertMarkdownURL() end, { silent = true, noremap = true })
-
-    map("v", "<localleader>p", function() require("config.md_actions").wrap_visual_selection_as_md_link() end, noremap,
-        "Wrap selection as Markdown link (clipboard URL)")
 end
 
 

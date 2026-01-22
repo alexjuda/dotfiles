@@ -1,11 +1,13 @@
 local M = {}
 
-
-M.setup = function()
+M.set_leaders = function()
     -- We need this before we load lazy.nvim
     vim.g.mapleader = " "
     vim.g.maplocalleader = ","
+end
 
+
+M.setup = function()
     --------
     -- UI --
     --------
