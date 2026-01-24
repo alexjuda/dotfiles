@@ -257,6 +257,11 @@ M.setup = function()
     -- toggles
     wk_group("<leader>tg", "git toggles...")
 
+    -- AI integration
+    -----------------
+    vim.keymap.set({ "n", "x" }, "<leader>o", function() require("opencode").select() end,
+        { desc = "Select opencode action" })
+
     -- Root
     ---------
 
@@ -272,7 +277,6 @@ M.setup = function()
 
     -- Similar to LSP's <C-K> for hover float.
     map("n", "<C-K>", function() vim.diagnostic.open_float() end, noremap, "Open diagnostics float")
-
 
     -- Local leader
     -----------------
