@@ -7,7 +7,7 @@ M.set_leaders = function()
 end
 
 
-M.setup = function()
+local function set_builtins()
     --------
     -- UI --
     --------
@@ -120,29 +120,30 @@ M.setup = function()
 
     -- Use conceal in general.
     vim.opt.conceallevel = 1
+end
+
+
+local function ft_autocmds()
+    local aj_ft_autocmds = vim.api.nvim_create_augroup("aj-ft-autocmds", { clear = true })
 
     -- Enable comments in .sql files.
-    local ft_sql = vim.api.nvim_create_namespace("ft_sql")
     vim.api.nvim_create_autocmd("FileType", {
         pattern = "sql",
         command = "setlocal commentstring=--\\ %s",
-        group = ft_sql,
+        group = aj_ft_autocmds,
     })
 
     -- Enable comments in .beancount files.
-    local ft_beancount = vim.api.nvim_create_namespace("ft_beancount")
     vim.api.nvim_create_autocmd("FileType", {
         pattern = "beancount",
         command = "setlocal commentstring=;\\ %s",
-        group = ft_beancount,
+        group = aj_ft_autocmds,
     })
 
     local python = function()
-        local aj_python = "aj-python"
-        vim.api.nvim_create_augroup(aj_python, { clear = true })
         -- Set line width to 120 instead of 79. Affects `gww`.
         vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_python,
+            group = aj_ft_autocmds,
             pattern = { "python" },
             callback = function()
                 vim.opt_local.textwidth = 120
@@ -152,11 +153,9 @@ M.setup = function()
     python()
 
     local cpp = function()
-        local aj_cpp = "aj-cpp"
-        vim.api.nvim_create_augroup(aj_cpp, { clear = true })
         -- Use // ... instead of /* ... */
         vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_cpp,
+            group = aj_ft_autocmds,
             pattern = { "cpp" },
             command = "setlocal commentstring=//%s",
         })
@@ -164,12 +163,9 @@ M.setup = function()
     cpp()
 
     local yaml = function()
-        local aj_yaml = "aj-yaml"
-        vim.api.nvim_create_augroup(aj_yaml, { clear = true })
-
         -- Set indent size to 2 instead of 4
         vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_yaml,
+            group = aj_ft_autocmds,
             pattern = { "yaml" },
             command = "setlocal shiftwidth=2",
         })
@@ -178,10 +174,8 @@ M.setup = function()
     yaml()
 
     local helm = function()
-        local aj_helm = "aj-helm"
-        vim.api.nvim_create_augroup(aj_helm, { clear = true })
         vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_helm,
+            group = aj_ft_autocmds,
             pattern = { "helm" },
             callback = function ()
                 -- Set indent size to 2 instead of 4
@@ -217,15 +211,12 @@ M.setup = function()
                 end,
             },
         }
-        -- Fix missing comment string.
     end
     hujson()
 
     local markdown = function()
-        local aj_markdown = "aj-markdown"
-        vim.api.nvim_create_augroup(aj_markdown, { clear = true })
         vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_markdown,
+            group = aj_ft_autocmds,
             pattern = { "markdown" },
             callback = function(ev)
                 vim.opt_local.textwidth = 100
@@ -235,11 +226,9 @@ M.setup = function()
     markdown()
 
     local html = function()
-        local aj_html = "aj-html"
-        vim.api.nvim_create_augroup(aj_html, { clear = true })
         -- Set indent size to 2 instead of 4
         vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_html,
+            group = aj_ft_autocmds,
             pattern = { "html" },
             command = "setlocal shiftwidth=2",
         })
@@ -247,16 +236,34 @@ M.setup = function()
     html()
 
     local typescript = function()
-        local aj_ts = "aj-ts"
-        vim.api.nvim_create_augroup(aj_ts, { clear = true })
         -- Set indent size to 2 instead of 4
         vim.api.nvim_create_autocmd("Filetype", {
-            group = aj_ts,
+            group = aj_ft_autocmds,
             pattern = { "typescript,typescriptreact" },
             command = "setlocal shiftwidth=2",
         })
     end
     typescript()
+end
+
+
+local function general_autocmds()
+    local aj_general_autocmds = vim.api.nvim_create_augroup("aj-general-autocmds", { clear = true })
+
+    -- Automatically resize nvim windows when the terminal OS window resizes.
+    vim.api.nvim_create_autocmd("VimResized", {
+        callback = function()
+            vim.cmd("wincmd =")
+        end,
+        group = aj_general_autocmds,
+    })
+end
+
+
+M.setup = function()
+    set_builtins()
+    ft_autocmds()
+    general_autocmds()
 end
 
 
