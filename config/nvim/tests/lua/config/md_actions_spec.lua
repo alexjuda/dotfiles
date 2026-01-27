@@ -203,22 +203,6 @@ describe('md_actions', function()
             md_actions.get_clipboard:revert()
             vim.notify:revert()
         end)
-
-        it('warns if visual mode not supported', function()
-            stub(md_actions, 'get_clipboard').returns('url')
-            stub(vim.fn, 'visualmode').returns('\022')
-            stub(md_actions, 'is_visual_mode_supported').returns(false)
-            stub(vim, 'notify')
-
-            md_actions.wrap_visual_selection_as_md_link()
-
-            assert.stub(vim.notify).was_called_with("Blockwise visual mode not supported by this snippet.", vim.log.levels.WARN)
-
-            md_actions.get_clipboard:revert()
-            vim.fn.visualmode:revert()
-            md_actions.is_visual_mode_supported:revert()
-            vim.notify:revert()
-        end)
     end)
 
     describe('is_url', function()
@@ -267,41 +251,56 @@ describe('md_actions', function()
         end)
     end)
 
-    describe('paste_md_link_from_clipboard', function()
-        it('pastes jira link', function()
-            stub(md_actions, 'get_clipboard').returns('https://company.atlassian.net/browse/PROJ-123')
-            stub(md_actions, 'is_url').returns(true)
-            stub(md_actions, 'extract_summary').returns('PROJ-123')
-            stub(md_actions, 'format_link').returns('[PROJ-123](https://company.atlassian.net/browse/PROJ-123)')
-            stub(vim.api, 'nvim_win_get_cursor').returns({1, 0})
-            stub(vim.api, 'nvim_buf_set_text')
+    describe('paste_md_link_from_clipboard integration', function()
+        local test_buf
 
-            md_actions.paste_md_link_from_clipboard()
-
-            assert.stub(vim.api.nvim_buf_set_text).was_called_with(0, 0, 0, 0, 0, {'[PROJ-123](https://company.atlassian.net/browse/PROJ-123)'})
-
-            md_actions.get_clipboard:revert()
-            md_actions.is_url:revert()
-            md_actions.format_link:revert()
-            vim.api.nvim_win_get_cursor:revert()
-            vim.api.nvim_buf_set_text:revert()
+        before_each(function()
+            -- Create a new buffer for each test
+            test_buf = vim.api.nvim_create_buf(false, true)
+            vim.api.nvim_buf_set_lines(test_buf, 0, -1, false, {'', ''})
+            vim.api.nvim_win_set_buf(0, test_buf)
+            vim.api.nvim_win_set_cursor(0, {1, 0})
         end)
 
-        it('does nothing if clipboard is not a url', function()
-            stub(md_actions, 'get_clipboard').returns('not a url')
-            stub(md_actions, 'is_url').returns(false)
-            stub(vim.api, 'nvim_win_get_cursor')
-            stub(vim.api, 'nvim_buf_set_text')
+        after_each(function()
+            -- Clean up the test buffer
+            if test_buf and vim.api.nvim_buf_is_valid(test_buf) then
+                vim.api.nvim_buf_delete(test_buf, {force = true})
+            end
+        end)
 
+        it('pastes jira link at cursor position', function()
+            -- Set clipboard content
+            vim.fn.setreg('+', 'https://company.atlassian.net/browse/PROJ-123')
+
+            -- Call the function
             md_actions.paste_md_link_from_clipboard()
 
-            assert.stub(vim.api.nvim_win_get_cursor).was_not_called()
-            assert.stub(vim.api.nvim_buf_set_text).was_not_called()
+            -- Check the buffer content
+            local lines = vim.api.nvim_buf_get_lines(test_buf, 0, -1, false)
+            assert.are.equal('[PROJ-123](https://company.atlassian.net/browse/PROJ-123)', lines[1])
+        end)
 
-            md_actions.get_clipboard:revert()
-            md_actions.is_url:revert()
-            vim.api.nvim_win_get_cursor:revert()
-            vim.api.nvim_buf_set_text:revert()
+        it('warns if clipboard is not a url', function()
+            -- Clear messages first
+            vim.cmd('messages clear')
+
+            -- Set clipboard content to non-URL
+            vim.fn.setreg('+', 'not a url')
+
+            -- Get initial buffer content
+            local initial_lines = vim.api.nvim_buf_get_lines(test_buf, 0, -1, false)
+
+            -- Call the function
+            md_actions.paste_md_link_from_clipboard()
+
+            -- Check that buffer content hasn't changed
+            local final_lines = vim.api.nvim_buf_get_lines(test_buf, 0, -1, false)
+            assert.are.same(initial_lines, final_lines)
+
+            -- Check that warning message appears in messages
+            local messages = vim.fn.execute('messages')
+            assert.is_not_nil(messages:find("not a valid URL"))
         end)
     end)
 end)

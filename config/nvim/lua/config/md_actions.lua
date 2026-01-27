@@ -160,14 +160,15 @@ end
 function M.paste_md_link_from_clipboard()
     local url = M.get_clipboard()
     if not M.is_url(url) then
+        vim.notify("Contents of the register \"+ is not a valid URL", vim.log.levels.WARN)
         return
     end
 
     local summary = M.extract_summary(url)
 
     local link = M.format_link(summary, url)
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    vim.api.nvim_buf_set_text(0, row-1, col, row-1, col, {link})
+
+    vim.api.nvim_paste(link, false, -1)
 end
 
 ---Wrap visual selection as markdown link using clipboard URL
