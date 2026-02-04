@@ -5,7 +5,13 @@
         "edit": "allow",
         "webfetch": "allow"
     },
+    "model": "amazon-bedrock/global.anthropic.claude-sonnet-4-5-20250929-v1:0",
     "provider": {
+        "amazon-bedrock": {
+            "options": {
+                "profile": "bedrock"
+            }
+        },
         "ollama": {
             "npm": "@ai-sdk/openai-compatible",
             "name": "Ollama (local)",
