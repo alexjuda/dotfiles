@@ -1,0 +1,74 @@
+local M = {}
+
+-- Escape characters for literal grep search
+local function escape_grep(text)
+    -- Escape backslashes first
+    text = text:gsub("\\", "\\\\")
+    -- Escape quotes
+    text = text:gsub('"', '\\"')
+    -- Escape grep/shell special chars
+    text = text:gsub("([%*%?%[%]%(%){%}%|%^%$%.%+%-])", "\\%1")
+    return text
+end
+
+function M.prefill_grep_visual()
+    -- Get visual selection positions
+    local start_pos = vim.fn.getpos("v") -- start of selection
+    local end_pos = vim.fn.getpos(".") -- current cursor position
+
+    -- Only single line
+    local line = vim.fn.getline(start_pos[2])
+    local col_start = math.min(start_pos[3], end_pos[3])
+    local col_end = math.max(start_pos[3], end_pos[3])
+
+    local selected_text = line:sub(col_start, col_end)
+
+    -- Escape all special characters
+    selected_text = escape_grep(selected_text)
+
+
+    -- Exit visual mode
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+        "n",
+        false
+    )
+    M.prefill_grep(selected_text)
+end
+
+function M.prefill_grep(text)
+    -- Feed command prompt
+    text = '"' .. text .. '"'
+    local suffix = " *"
+    vim.api.nvim_feedkeys(
+        ":grep " .. text .. suffix,
+        "n",
+        true
+    )
+
+    -- Move back to the empty ""
+    local left_moves = string.rep("<Left>", #suffix + 1)
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes(left_moves, true, false, true),
+        "n",
+        false
+    )
+
+end
+
+function M.toggle_qf()
+    local qf_exists = false
+    for _, win in pairs(vim.fn.getwininfo()) do
+        if win["quickfix"] == 1 then
+            qf_exists = true
+        end
+    end
+    if qf_exists == true then
+        vim.cmd "cclose"
+        return
+    else
+        vim.cmd "copen"
+    end
+end
+
+return M

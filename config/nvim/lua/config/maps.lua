@@ -59,13 +59,15 @@ M.setup = function()
     -- Search
     -----------
     wk_group("<leader>s", "search...")
-    map("n", "<leader>sb", function() telescope().current_buffer_fuzzy_find() end, noremap, "search in buffer")
     map("n", "<leader>ss", function() telescope().live_grep() end, noremap, "search in PWD")
-    map("n", "<leader>sp", function() require("spectre").toggle() end, noremap, "search in project")
-    map({ "n", "v" }, "<leader>sw", function() require("spectre").open_visual() end, noremap, "search selection")
-    map({ "n", "v" }, "<leader>sf", function() require("spectre").open_file_search({ select_word = true }) end, noremap,
-        "search in current file")
+    map({"n", "v"}, "<leader>sc", function() telescope().grep_string() end, noremap, "search string under cursor")
 
+    map("n", "<leader>sg", function() require("config.search_actions").prefill_grep("") end, {}, "grep for selection")
+    map("v", "<leader>sg", function() require("config.search_actions").prefill_grep_visual() end, {}, "grep for selection")
+
+    -- Quickfix
+    -------------
+    map("n", "<leader>q", function () require("config.search_actions").toggle_qf() end, {}, "toggle quickfix window")
 
     -- Files
     ----------
