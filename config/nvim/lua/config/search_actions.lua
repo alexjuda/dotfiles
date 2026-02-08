@@ -11,7 +11,8 @@ local function escape_grep(text)
     return text
 end
 
-function M.prefill_grep_visual()
+-- Get the visually selected text as a string
+local function get_selected_text()
     -- Get visual selection positions
     local start_pos = vim.fn.getpos("v") -- start of selection
     local end_pos = vim.fn.getpos(".") -- current cursor position
@@ -21,11 +22,14 @@ function M.prefill_grep_visual()
     local col_start = math.min(start_pos[3], end_pos[3])
     local col_end = math.max(start_pos[3], end_pos[3])
 
-    local selected_text = line:sub(col_start, col_end)
+    return line:sub(col_start, col_end)
+end
+
+function M.prefill_grep_visual()
+    local selected_text = get_selected_text()
 
     -- Escape all special characters
     selected_text = escape_grep(selected_text)
-
 
     -- Exit visual mode
     vim.api.nvim_feedkeys(
@@ -53,7 +57,36 @@ function M.prefill_grep(text)
         "n",
         false
     )
+end
 
+function M.prefill_cdo_visual()
+    local selected_text = get_selected_text()
+
+    -- Escape all special characters
+    selected_text = escape_grep(selected_text)
+
+    -- Exit visual mode
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+        "n",
+        false
+    )
+
+    -- Feed command prompt
+    local suffix = "/cg"
+    vim.api.nvim_feedkeys(
+        ":cdo s/" .. selected_text .. "//cg",
+        "n",
+        true
+    )
+
+    -- Move back to the empty ""
+    local left_moves = string.rep("<Left>", #suffix)
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes(left_moves, true, false, true),
+        "n",
+        false
+    )
 end
 
 function M.toggle_qf()

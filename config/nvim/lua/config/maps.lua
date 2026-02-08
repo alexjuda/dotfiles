@@ -64,6 +64,7 @@ M.setup = function()
 
     map("n", "<leader>sg", function() require("config.search_actions").prefill_grep("") end, {}, "grep for selection")
     map("v", "<leader>sg", function() require("config.search_actions").prefill_grep_visual() end, {}, "grep for selection")
+    map("v", "<leader>sr", function() require("config.search_actions").prefill_cdo_visual() end, {}, "replace selected text, for files in quickfix")
 
     -- Quickfix
     -------------
