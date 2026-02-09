@@ -134,9 +134,14 @@ end
 ---@param url string
 ---@return string|nil
 local function extract_github_pr(url)
-    local owner, repo, pr = url:match("github%.com/([^/]+)/([^/]+)/pull/(%d+)")
-    if owner and repo and pr then
-        return owner .. "/" .. repo .. "#" .. pr
+    local owner, repo = url:match("github%.com/([^/]+)/([^/]+)")
+    local pr = url:match("github%.com/[^/]+/[^/]+/pull/(%d+)")
+    if owner and repo then
+        if pr then
+            return owner .. "/" .. repo .. "#" .. pr
+        else
+            return owner .. "/" .. repo
+        end
     end
     return nil
 end

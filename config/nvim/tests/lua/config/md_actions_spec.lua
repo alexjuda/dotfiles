@@ -240,6 +240,10 @@ describe('md_actions', function()
             assert.are.equal('owner/repo#123', md_actions.extract_summary('https://github.com/owner/repo/pull/123'))
         end)
 
+        it('extracts repo from GitHub url', function()
+            assert.are.equal('owner/repo', md_actions.extract_summary('https://github.com/owner/repo'))
+        end)
+
         it('extracts domain from unknown url', function()
             assert.are.equal('example.com', md_actions.extract_summary('https://example.com/path'))
             assert.are.equal('sub.example.com', md_actions.extract_summary('https://sub.example.com'))
