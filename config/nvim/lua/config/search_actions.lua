@@ -59,11 +59,24 @@ function M.prefill_grep(text)
     )
 end
 
+function M.prefill_grep_search_reg()
+    local last_searched_text = vim.fn.getreg("/")
+    M.prefill_grep(last_searched_text)
+end
+
 function M.prefill_cdo_visual()
     local selected_text = get_selected_text()
+    M.prefill_cdo(selected_text)
+end
 
+function M.prefill_cdo_search_reg()
+    local last_searched_text = vim.fn.getreg("/")
+    M.prefill_cdo(last_searched_text)
+end
+
+function M.prefill_cdo(text)
     -- Escape all special characters
-    selected_text = escape_grep(selected_text)
+    text = escape_grep(text)
 
     -- Exit visual mode
     vim.api.nvim_feedkeys(
@@ -75,7 +88,7 @@ function M.prefill_cdo_visual()
     -- Feed command prompt
     local suffix = "/cg"
     vim.api.nvim_feedkeys(
-        ":cdo s/" .. selected_text .. "//cg",
+        ":cdo s/" .. text .. "//cg",
         "n",
         true
     )

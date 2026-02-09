@@ -62,8 +62,9 @@ M.setup = function()
     map("n", "<leader>ss", function() telescope().live_grep() end, noremap, "search in PWD")
     map({"n", "v"}, "<leader>sc", function() telescope().grep_string() end, noremap, "search string under cursor")
 
-    map("n", "<leader>sg", function() require("config.search_actions").prefill_grep("") end, {}, "grep for selection")
+    map("n", "<leader>sg", function() require("config.search_actions").prefill_grep_search_reg() end, {}, "grep last searched text")
     map("v", "<leader>sg", function() require("config.search_actions").prefill_grep_visual() end, {}, "grep for selection")
+    map("n", "<leader>sr", function() require("config.search_actions").prefill_cdo_search_reg() end, {}, "replace last searched text, for files in quickfix")
     map("v", "<leader>sr", function() require("config.search_actions").prefill_cdo_visual() end, {}, "replace selected text, for files in quickfix")
 
     -- Quickfix
