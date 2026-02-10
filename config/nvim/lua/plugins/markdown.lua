@@ -18,6 +18,10 @@ return {
             -- position = "inline",
         },
         code = {
+            -- Don't show icon in the sign column.
+            sign = false,
+            -- Don't show codeblock language in normal mode.
+            language = false,
             -- Defaults to concealing the bottom ```. Switching between insert and normal modes causes the whole
             -- page to flicker, which is super annoying.
             border = "thin",
