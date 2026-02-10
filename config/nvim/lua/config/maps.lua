@@ -324,6 +324,7 @@ M.setup = function()
             -- Evaluating markdown code blocks
             vim.api.nvim_buf_set_keymap(0, "n", "<localleader>ee", ":MdEval<CR>", { noremap = true })
             vim.api.nvim_buf_set_keymap(0, "n", "<localleader>ed", ":MdEvalClean<CR>", { noremap = true })
+
             -- Markdown link from clipboard
             vim.keymap.set('n', '<localleader>p',
                 function() require('config.md_actions').paste_md_link_from_clipboard() end,
@@ -331,6 +332,10 @@ M.setup = function()
             vim.keymap.set("v", "<localleader>p",
                 function() require("config.md_actions").wrap_visual_selection_as_md_link() end,
                 { noremap = true, buffer = true, desc = "Wrap selection as Markdown link (clipboard URL)" })
+
+            vim.keymap.set("n", "<localleader>z",
+                function() require("zen-mode").toggle() end,
+                { buffer = true, desc = "Toggle Zen Mode" })
         end,
     })
 

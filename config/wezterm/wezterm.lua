@@ -11,8 +11,6 @@ local function scheme_for_appearance(appearance)
     end
 end
 
-local default_size = { cols = 80, rows = 24 }
-
 local config = wezterm.config_builder()
 config:set_strict_mode(true)
 
@@ -39,17 +37,43 @@ config.window_padding = {
 }
 
 -- Change font size without messing up OS window layout.
-config.adjust_window_size_when_changing_font_size = false
+-- config.adjust_window_size_when_changing_font_size = false
 
 -- The default font size (10.0) is too small on 4K screens.
 config.font_size = 14
 
 -- The default window size for new windows seems small.
+local default_size = { cols = 80, rows = 24 }
 config.initial_cols = math.floor(120 / 80 * default_size.cols)
 config.initial_rows = math.floor(120 / 80 * default_size.rows)
 
 -- Stop "WezTerm Update Available" spam on new panes. Flatpak distribution
 -- is few releases behind so it's impossible to install the latest version.
 config.check_for_updates = false
+
+-- Enable zenmode-wezterm integration.
+-- https://github.com/folke/zen-mode.nvim?tab=readme-ov-file#wezterm
+wezterm.on('user-var-changed', function(window, pane, name, value)
+    local overrides = window:get_config_overrides() or {}
+    if name == "ZEN_MODE" then
+        local incremental = value:find("+")
+        local number_value = tonumber(value)
+        if incremental ~= nil then
+            while (number_value > 0) do
+                window:perform_action(wezterm.action.IncreaseFontSize, pane)
+                number_value = number_value - 1
+            end
+            overrides.enable_tab_bar = false
+        elseif number_value < 0 then
+            window:perform_action(wezterm.action.ResetFontSize, pane)
+            overrides.font_size = nil
+            overrides.enable_tab_bar = true
+        else
+            overrides.font_size = number_value
+            overrides.enable_tab_bar = false
+        end
+    end
+    window:set_config_overrides(overrides)
+end)
 
 return config
