@@ -60,6 +60,7 @@ custom_aliases=(
     "gstl:git stash list"
     "gstp:git stash pop"
     "gsts:git stash show --text"
+    'gsw:git switch $(git branch | fzf)'
 
     # --------------- dir movement --------------
     "cdd:cd ~/Desktop"
