@@ -195,6 +195,7 @@ local function ft_autocmds()
                 [".*/helm/.*.yaml"] = "helm",
                 [".*/helm/.*.tpl"] = "helm",
                 [".*.yaml.gotmpl"] = "helm",
+                [".*/.*values.*.yaml"] = "helm",
             }
         }
     end
