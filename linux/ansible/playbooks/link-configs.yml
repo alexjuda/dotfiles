@@ -63,6 +63,12 @@
       dest: ~/.config/k9s
       state: link
 
+  - name: link yazi config
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/yazi
+      dest: ~/.config/yazi
+      state: link
+
   - name: link zsh config
     ansible.builtin.file:
       src: ~/Code/dotfiles/macos/.zshrc
