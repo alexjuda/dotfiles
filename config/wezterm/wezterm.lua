@@ -5,9 +5,9 @@ local function scheme_for_appearance(appearance)
     -- Based on https://wezfurlong.org/wezterm/config/lua/wezterm.gui/get_appearance.html
     -- It's best when this fits the neovim config.
     if appearance:find 'Dark' then
-        return "Catppuccin Mocha"
+        return "Ayu Mirage"
     else
-        return "Catppuccin Latte"
+        return "ayu_light"
     end
 end
 
