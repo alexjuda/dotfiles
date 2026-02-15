@@ -35,6 +35,9 @@ local function set_builtins()
     vim.o.expandtab = true
     vim.bo.expandtab = true
 
+    -- When scrolling past a multiline, wrapped line, allows moving in between the wrapped visual lines.
+    vim.o.smoothscroll = true
+
     -- Line length. This affects `gww`.
     vim.opt.textwidth = 120
 
@@ -120,6 +123,9 @@ local function set_builtins()
 
     -- Use conceal in general.
     vim.opt.conceallevel = 1
+
+    -- Show border with rounded corners on floating windows, like the LSP hover popup.
+    vim.o.winborder = "rounded"
 end
 
 
