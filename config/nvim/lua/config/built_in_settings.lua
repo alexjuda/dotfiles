@@ -45,9 +45,10 @@ local function set_builtins()
     -- * "t": insert newline when exceeding textwidth in insert mode. Formatting for text. Doesn't affect comments.
     -- * "c": like "t", but for comments. With comment line leader. Doesn't affect non-comments.
     -- * "r": insert comment leader on enter in insert mode. Undo with <C-u>.
-    -- * "q": format comments with "gq". * "n": recognize numbered lists. Insert appropriate leading margin when
-    -- wrapping text. * "1": don't break after 1-letter word. * "j": remove comment leader when joining lines. * "p":
-    -- remove comment leader when joining lines.
+    -- * "q": format comments with "gq".
+    -- * "n": recognize numbered lists. Insert appropriate leading margin when wrapping text.
+    -- * "1": don't break after 1-letter word.
+    -- * "j": remove comment leader when joining lines.
     --
     -- In general, "t" is useful for prose, "c" is useful for source code.
     --
@@ -55,7 +56,7 @@ local function set_builtins()
     --
     -- The following config should be sensible for comments in source code, and markdown. Now, `gq` and `gw` can be used
     -- to both split _and_ join lines. Even editing a line live makes it automatically re-break. Neat!
-    vim.opt.formatoptions = "crqn1jp"
+    vim.opt.formatoptions = "crqn1j"
 
     -- When an operation is risky, ask for confirmation instead of failing by default.
     vim.o.confirm = true
