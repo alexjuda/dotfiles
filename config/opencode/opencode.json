@@ -8,6 +8,15 @@
         "patch": "allow",
         "webfetch": "allow"
     },
+    "agent": {
+        "reader-bedrock": {
+            "mode": "primary",
+            "model": "amazon-bedrock/anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "tools": {
+                "bash": false,
+            },
+        },
+    },
     "provider": {
         "amazon-bedrock": {
             "options": {
