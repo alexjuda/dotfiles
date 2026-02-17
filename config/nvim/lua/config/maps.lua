@@ -376,6 +376,10 @@ M.setup = function()
 
     map("n", "<leader>?", function() telescope().keymaps() end, noremap, "keymaps")
 
+    -- Fix navigating in soft-wrapped lines.
+    vim.keymap.set("n", "j", "gj")
+    vim.keymap.set("n", "k", "gk")
+
     -- Enable standard terminal keybindings in the vim command mode
     local readline = function() return require("readline") end
     vim.keymap.set({"c"}, '<M-f>', function() readline().forward_word() end)
