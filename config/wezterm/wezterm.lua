@@ -1,6 +1,9 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
+local config = wezterm.config_builder()
+config:set_strict_mode(true)
+
 local function scheme_for_appearance(appearance)
     -- Based on https://wezfurlong.org/wezterm/config/lua/wezterm.gui/get_appearance.html
     -- It's best when this fits the neovim config.
@@ -10,9 +13,6 @@ local function scheme_for_appearance(appearance)
         return "ayu_light"
     end
 end
-
-local config = wezterm.config_builder()
-config:set_strict_mode(true)
 
 -- Determine colorscheme based on System-reported light/dark appearance.
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
@@ -36,11 +36,24 @@ config.window_padding = {
     bottom = 0,
 }
 
+
 -- Change font size without messing up OS window layout.
 -- config.adjust_window_size_when_changing_font_size = false
 
--- The default font size (10.0) is too small on 4K screens.
-config.font_size = 18
+local function is_on_mac(triple)
+    if triple:find "apple" then
+        return true
+    else
+        return false
+    end
+end
+
+-- The default font size (10.0) is too small on 4K screens. macOS needs higher values than linux, for some reason.
+if is_on_mac(wezterm.target_triple) then
+    config.font_size = 18
+else
+    config.font_size = 12
+end
 
 -- The default window size for new windows seems small.
 local default_size = { cols = 80, rows = 24 }
