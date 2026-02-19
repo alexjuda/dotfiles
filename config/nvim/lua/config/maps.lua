@@ -34,35 +34,20 @@ M.setup = function()
 
     -- Project Sidebar
     ------------------
-    local project_finder_opts = {
-        -- `find_command` needs to return a list of filenames for fuzzy match on. Telescope defaults to an rg invocation
-        -- that ignores hidden and git-ignored files. Instead, I'll use `fd`. It has similar defaults as `rg`, but it's
-        -- easier to customize. Opts:
-        -- * `--hidden`: include hidden files.
-        -- * `--exclude FOO`: don't search inside FOO.
-        --
-        -- I don't want to include ignored files. That's what find_files is for.
-        --
-        -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
-        find_command = function()
-            return { "sh", "-c", "fd --hidden --exclude .git | proximity-sort " .. vim.fn.expand('%:.') }
-        end,
-        sorter = require('telescope.sorters').fuzzy_with_index_bias({}),
-    }
     wk_group("<leader>p", "project...")
     map("n", "<leader>pb", ":Neotree buffers<CR>", noremap) -- show buffers in the sidebar
     map("n", "<leader>po", ":Neotree reveal<CR>", noremap)  -- show current file in the project tree
     map("n", "<leader>pt", ":Neotree toggle<CR>", noremap)  -- open/close project tree
-    map("n", "<leader>pf", function() telescope().find_files(project_finder_opts) end, noremap, "find file by name")
+    map("n", "<leader>pf", function() require("fff").find_files() end, noremap, "find file by name")
 
 
     -- Search
     -----------
     wk_group("<leader>s", "search...")
-    map("n", "<leader>ss", function() telescope().live_grep() end, noremap, "search in PWD")
+    map("n", "<leader>ss", function() require("fff").live_grep() end, noremap, "search string")
     map({"n", "v"}, "<leader>sc", function() telescope().grep_string() end, noremap, "search string under cursor")
 
-    map("n", "<leader>sg", function() require("config.search_actions").prefill_grep_search_reg() end, {}, "grep last searched text")
+    map("n", "<leader>sg", function() require("config.search_actions").prefill_grep_search_reg() end, {}, "grep for last searched text")
     map("v", "<leader>sg", function() require("config.search_actions").prefill_grep_visual() end, {}, "grep for selection")
     map("n", "<leader>sr", function() require("config.search_actions").prefill_cdo_search_reg() end, {}, "replace last searched text, for files in quickfix")
     map("v", "<leader>sr", function() require("config.search_actions").prefill_cdo_visual() end, {}, "replace selected text, for files in quickfix")
@@ -91,25 +76,8 @@ M.setup = function()
         os.execute("xdg-open " .. dir_path)
     end
 
-    local all_files_opts = {
-        -- `find_command` needs to return a list of filenames for fuzzy match on. Telescope defaults to an rg invocation
-        -- that ignores hidden and git-ignored files. Instead, I'll use `fd`. It has similar defaults as `rg`, but it's
-        -- easier to customize. Opts:
-        -- * `--hidden`: include hidden files.
-        -- * `--no-ignore`: include git-ignored files.
-        --
-        -- I want this to be relatively open. I have <leader>pf for project-scoped files.
-        --
-        -- Default call: https://github.com/nvim-telescope/telescope.nvim/blob/b923665e64380e97294af09117e50266c20c71c7/lua/telescope/builtin/__files.lua#L184
-        find_command = function()
-            return { "sh", "-c", "fd --hidden --no-ignore | proximity-sort " .. vim.fn.expand('%:.') }
-        end,
-        sorter = require('telescope.sorters').fuzzy_with_index_bias({}),
-    }
-
     wk_group("<leader>f", "files...")
     map("n", "<leader>fr", function() telescope().oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
-    map("n", "<leader>ff", function() telescope().find_files(all_files_opts) end, noremap, "find all files")
     map("n", "<leader>fy", function() yank_file_path() end, noremap, "copy file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, noremap, "open dir in finder")
 
