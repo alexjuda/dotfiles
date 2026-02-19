@@ -1,6 +1,8 @@
 local M = {}
 
--- Escape characters for literal grep search
+---Escape characters for literal grep search
+---@param text string
+---@return string
 local function escape_grep(text)
     -- Escape backslashes first
     text = text:gsub("\\", "\\\\")
@@ -11,7 +13,7 @@ local function escape_grep(text)
     return text
 end
 
--- Get the visually selected text as a string
+---Get the visually selected text as a string
 local function get_selected_text()
     -- Get visual selection positions
     local start_pos = vim.fn.getpos("v") -- start of selection
@@ -25,6 +27,7 @@ local function get_selected_text()
     return line:sub(col_start, col_end)
 end
 
+---Prepare grep command with visually selected text as the search term.
 function M.prefill_grep_visual()
     local selected_text = get_selected_text()
 
@@ -40,6 +43,8 @@ function M.prefill_grep_visual()
     M.prefill_grep(selected_text)
 end
 
+---Prepare grep command with `text` as the search term.
+---@param text string
 function M.prefill_grep(text)
     -- Feed command prompt
     text = '"' .. text .. '"'
@@ -59,21 +64,26 @@ function M.prefill_grep(text)
     )
 end
 
+---Prepare grep command with last searched text as the search term.
 function M.prefill_grep_search_reg()
     local last_searched_text = vim.fn.getreg("/")
     M.prefill_grep(last_searched_text)
 end
 
+---Prepare quickfix replace command with visually selected text as the search term.
 function M.prefill_cdo_visual()
     local selected_text = get_selected_text()
     M.prefill_cdo(selected_text)
 end
 
+---Prepare quickfix replace command with last searched text as the search term.
 function M.prefill_cdo_search_reg()
     local last_searched_text = vim.fn.getreg("/")
     M.prefill_cdo(last_searched_text)
 end
 
+---Prepare quickfix update command with `text` as the search term.
+---@param text string
 function M.prefill_cdo(text)
     -- Escape all special characters
     text = escape_grep(text)
@@ -102,6 +112,7 @@ function M.prefill_cdo(text)
     )
 end
 
+---Open/close the quickfix window
 function M.toggle_qf()
     local qf_exists = false
     for _, win in pairs(vim.fn.getwininfo()) do
