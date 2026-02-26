@@ -79,9 +79,25 @@ local function setup_ruff()
     vim.lsp.enable("ruff")
 end
 
+local function setup_ty()
+    local common = require("config.lsp.common")
+
+    vim.lsp.config("ty", {
+        cmd = { "ty", "server" },
+        filetypes = { "python" },
+        on_attach = function(client, buf_n)
+            common.shared_on_attach(client, buf_n)
+        end,
+        capabilities = common.shared_make_client_capabilities(),
+    })
+
+    vim.lsp.enable("ty")
+end
+
 M.setup = function()
-    setup_pyright()
-    setup_pylsp()
+    -- setup_pyright()
+    -- setup_pylsp()
+    setup_ty()
     setup_ruff()
 end
 
