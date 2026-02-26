@@ -227,7 +227,8 @@ local function ft_autocmds()
             group = aj_ft_autocmds,
             pattern = { "markdown" },
             callback = function(ev)
-                vim.opt_local.textwidth = 100
+                -- In insert mode, don't add line breaks while typing.
+                vim.opt_local.formatoptions:remove { "t" }
             end,
         })
     end
