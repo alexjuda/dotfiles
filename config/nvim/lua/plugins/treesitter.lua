@@ -49,6 +49,7 @@ return {
             group = group,
             pattern = langs,
             callback = function()
+
                 vim.treesitter.start()
 
                 -- Use treesitter for folds.
@@ -62,7 +63,11 @@ return {
                 vim.wo.foldlevel = 99
 
                 -- Show a nice TUI for folds on the left.
-                vim.wo.foldcolumn = "1"
+                -- ...but only in normal windows. This breaks floating windows, like for LSP hover. They get a superficial
+                -- padding column on the left, which clips the contents.
+                if vim.api.nvim_win_get_config(0).relative == "" then
+                    vim.wo.foldcolumn = "1"
+                end
 
                 -- Use treesitter for indents. This doesn't work at the time.
                 -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
