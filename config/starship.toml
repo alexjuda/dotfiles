@@ -1,0 +1,5 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[directory]
+truncate_to_repo = false
