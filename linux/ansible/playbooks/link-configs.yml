@@ -63,6 +63,12 @@
       dest: ~/.config/k9s
       state: link
 
+  - name: link starship config file
+    ansible.builtin.file:
+      src: ~/Code/dotfiles/config/starship.toml
+      dest: ~/.config/starship.toml
+      state: link
+
   - name: link yazi config
     ansible.builtin.file:
       src: ~/Code/dotfiles/config/yazi
