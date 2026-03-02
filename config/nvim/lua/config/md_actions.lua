@@ -124,6 +124,8 @@ local function get_notion_title(url)
         table.insert(segments, seg)
     end
     local title_seg = segments[#segments] or ""
+    -- Remove query params if present (?foo=bar)
+    title_seg = title_seg:gsub("?.+$", "")
     -- Remove UUID part if present (after last - followed by alphanum)
     title_seg = title_seg:gsub("-[a-f0-9]+$", ""):gsub("-", " ")
     -- Title case

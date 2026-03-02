@@ -221,8 +221,11 @@ describe('md_actions', function()
     describe('extract_summary', function()
         describe('with notion link', function()
             it('extracts title from notion url', function()
-                local title = md_actions.extract_summary('https://www.notion.so/workspace/My-Page-Title-1234567890abcdef')
-                assert.are.equal('My Page Title', title)
+                assert.are.equal('My Page Title', md_actions.extract_summary('https://www.notion.so/workspace/My-Page-Title-abcd1234567890abcdef'))
+            end)
+
+            it('strips query params', function()
+                assert.are.equal('My Page Title', md_actions.extract_summary('https://www.notion.so/workspace/My-Page-Title-abcd1234567890abcdef?action=Copy_Link'))
             end)
 
             it('returns default if no path', function()
