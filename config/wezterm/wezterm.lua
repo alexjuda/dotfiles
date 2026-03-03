@@ -10,7 +10,11 @@ local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
         return "Ayu Mirage"
     else
-        return "ayu_light"
+        -- return "Ayu Light (Gogh)"
+        -- Ayu Light's contrast is not strong enough for bright environments.
+        -- return "Bamboo Light"
+        return "Builtin Solarized Light"
+        -- return "Everforest Light Hard (Gogh)"
     end
 end
 
