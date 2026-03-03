@@ -20,7 +20,19 @@ return {
                     FoldColumn = line_nr_fg
                 },
             }
-            vim.cmd.colorscheme "ayu-mirage"
+
+            -- Neovim sets the `background` option to "dark" or "light" automatically after reading the OSC codes from
+            -- the terminal.
+            vim.api.nvim_create_autocmd("OptionSet", {
+                pattern = "background",
+                callback = function()
+                    if vim.o.background == "dark" then
+                        vim.cmd.colorscheme "ayu-mirage"
+                    else
+                        vim.cmd.colorscheme "default"
+                    end
+                end,
+            })
         end
     },
 }
