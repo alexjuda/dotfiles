@@ -12,6 +12,12 @@ window-height = 36
 keybind = ctrl+shift+[=goto_split:previous
 keybind = ctrl+shift+]=goto_split:next
 
+# --- tab mgmt ---
+# Make ctrl+* and ctrl+shift+* work the same for moving across tabs. This makes it more normalized with moving across
+# splits.
+keybind = ctrl+shift+page_up=previous_tab
+keybind = ctrl+shift+page_down=next_tab
+
 # This should be a symlink.
 config-file = ?platform_specific_config
 
