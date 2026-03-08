@@ -67,6 +67,8 @@ local function set_builtins()
 
     -- Enable scrolling with mouse
     vim.o.mouse = "a"
+    -- Make mouse scrolling less jumpy
+    vim.o.mousescroll = "ver:1,hor:1"
 
     -- Improve experience with nvim-completion
     -- Config taken from: https://github.com/hrsh7th/nvim-cmp#recommended-configuration
