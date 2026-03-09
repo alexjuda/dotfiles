@@ -5,6 +5,7 @@
             "*": "ask",
             "ls *": "allow",
             "grep *": "allow",
+            "rg *": "allow",
             "which *": "allow"
         },
         "edit": "allow",
