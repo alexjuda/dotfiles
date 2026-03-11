@@ -49,7 +49,8 @@ custom_aliases=(
     "grhh:git reset --hard"
     "grhhu:git reset --hard @{u}"
 
-    "gsh:git show"
+    "gsh:git show" # show latest commit
+    "gshs:git rev-parse HEAD" # show sha only
     "gs:git status --short --branch --untracked-files"
     "gss:git status --untracked-files"
     # Copy latest sha and print.
