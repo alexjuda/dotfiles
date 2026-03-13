@@ -59,12 +59,10 @@ M.setup = function()
     -- Files
     ----------
     local yank_file_path = function()
-        -- Get current buffer's file path relative to PWD.
-        -- Yank it to the system clipboard.
-        -- Src: https://stackoverflow.com/a/954336
-        vim.cmd([[
-        let @+ = expand("%:.")
-    ]])
+        local rel_path = vim.fn.expand("%:.")
+        local line_no = vim.fn.line(".")
+        local grep_line = rel_path .. ":" .. line_no
+        vim.fn.setreg("+", grep_line)
     end
 
     local open_enclosing_dir_in_finder = function()
@@ -78,7 +76,7 @@ M.setup = function()
 
     wk_group("<leader>f", "files...")
     map("n", "<leader>fr", function() telescope().oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
-    map("n", "<leader>fy", function() yank_file_path() end, noremap, "copy file path")
+    map("n", "<leader>fy", function() yank_file_path() end, noremap, "yank file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, noremap, "open dir in finder")
 
 
