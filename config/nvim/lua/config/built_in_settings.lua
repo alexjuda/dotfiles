@@ -268,6 +268,20 @@ local function general_autocmds()
         end,
         group = aj_general_autocmds,
     })
+
+    -- Neovim sets the `background` option to "dark" or "light" automatically after reading the OSC codes from
+    -- the terminal.
+    vim.api.nvim_create_autocmd("OptionSet", {
+        pattern = "background",
+        callback = function()
+            if vim.o.background == "dark" then
+                vim.cmd.colorscheme "ayu-mirage"
+            else
+                vim.cmd.colorscheme "rose-pine-dawn"
+            end
+        end,
+        group = aj_general_autocmds,
+    })
 end
 
 
