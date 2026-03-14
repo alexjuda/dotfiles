@@ -124,9 +124,6 @@ local function set_builtins()
     -- src: https://github.com/tweekmonster/nvim-python-doctor/wiki/Simple-Installation
     vim.cmd [[let g:python3_host_prog = 'python']]
 
-    -- Use conceal in general.
-    vim.opt.conceallevel = 1
-
     -- Show border with rounded corners on floating windows, like the LSP hover popup.
     vim.o.winborder = "rounded"
 end
