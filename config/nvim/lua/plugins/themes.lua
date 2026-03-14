@@ -29,7 +29,7 @@ return {
                     if vim.o.background == "dark" then
                         vim.cmd.colorscheme "ayu-mirage"
                     else
-                        vim.cmd.colorscheme "default"
+                        vim.cmd.colorscheme "ayu-light"
                     end
                 end,
             })
