@@ -194,5 +194,13 @@ function y() {
     rm -f -- "$tmp"
 }
 
+# Open neovim against a temporary file.
+nvt() {
+    local f
+    f=$(mktemp)
+    trap "rm -f $f" EXIT
+    nvim "$f"
+}
+
 # Uncomment to print startup time profile.
 # zprof
