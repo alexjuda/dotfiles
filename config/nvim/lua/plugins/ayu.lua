@@ -1,7 +1,7 @@
 return {
     {
         "Shatur/neovim-ayu",
-        -- This is my main colorscheme. Need to always load it.
+        -- Main colorscheme for dark mode. Need to always load it.
         lazy = false,
         config = function()
             local colors = require("ayu.colors")
@@ -20,19 +20,6 @@ return {
                     FoldColumn = line_nr_fg
                 },
             }
-
-            -- Neovim sets the `background` option to "dark" or "light" automatically after reading the OSC codes from
-            -- the terminal.
-            vim.api.nvim_create_autocmd("OptionSet", {
-                pattern = "background",
-                callback = function()
-                    if vim.o.background == "dark" then
-                        vim.cmd.colorscheme "ayu-mirage"
-                    else
-                        vim.cmd.colorscheme "ayu-light"
-                    end
-                end,
-            })
         end
     },
 }
