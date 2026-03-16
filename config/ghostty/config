@@ -2,11 +2,6 @@ theme = dark:Ayu Mirage,light:Rose Pine Dawn
 
 # Default ghostty keybindings: https://gist.github.com/hensg/43bc71c21d1f79385892352a390aa2ca
 
-# --- windows ---
-# Fits 120 chars of code + 8 columns for neovim sidebar.
-window-width = 128
-window-height = 36
-
 # --- split mgmt ---
 # For some reason, the default prefix for moving across panes is ctrl+super.
 keybind = ctrl+shift+[=goto_split:previous
