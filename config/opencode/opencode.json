@@ -4,6 +4,9 @@
         "bash": {
             "*": "ask",
             "ls *": "allow",
+            "git diff *": "allow",
+            "git log *": "allow",
+            "git show *": "allow",
             "grep *": "allow",
             "rg *": "allow",
             "which *": "allow"
