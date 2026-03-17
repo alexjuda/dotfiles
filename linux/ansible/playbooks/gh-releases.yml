@@ -57,6 +57,7 @@
       - "ahmetb/kubectx --asset kubectx"
       - artempyanykh/marksman
       - astral-sh/uv
+      - BeaconBay/ck
       - google/yamlfmt
       - jesseduffield/lazydocker
       - mrjosh/helm-ls
