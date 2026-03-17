@@ -103,7 +103,7 @@ export FINI_DIR="~/Documents/fini-todos"
 lazyload kubectl -- 'source <(kubectl completion zsh)'
 
 # Set up zoxide, cd replacement.
-eval "$(zoxide init zsh)"
+lazyload z -- 'eval "$(zoxide init zsh)"'
 
 # Chariot completions
 lazyload chariot -- 'source <(chariot completion zsh)'
