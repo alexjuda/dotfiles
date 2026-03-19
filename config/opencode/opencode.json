@@ -3,6 +3,7 @@
     "permission": {
         "bash": {
             "*": "ask",
+            "argocd app get *": "allow",
             "ls *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
