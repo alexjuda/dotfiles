@@ -1,3 +1,5 @@
+local ts = require("config.text_selection")
+
 local M = {}
 
 ---Escape characters for literal grep search
@@ -15,16 +17,8 @@ end
 
 ---Get the visually selected text as a string
 local function get_selected_text()
-    -- Get visual selection positions
-    local start_pos = vim.fn.getpos("v") -- start of selection
-    local end_pos = vim.fn.getpos(".") -- current cursor position
-
-    -- Only single line
-    local line = vim.fn.getline(start_pos[2])
-    local col_start = math.min(start_pos[3], end_pos[3])
-    local col_end = math.max(start_pos[3], end_pos[3])
-
-    return line:sub(col_start, col_end)
+    local start_row, start_col, end_row, end_col = ts.get_visual_positions()
+    return ts.get_text(0, start_row, start_col, end_row, end_col)
 end
 
 ---Prepare grep command with visually selected text as the search term.
@@ -34,12 +28,7 @@ function M.prefill_grep_visual()
     -- Escape all special characters
     selected_text = escape_grep(selected_text)
 
-    -- Exit visual mode
-    vim.api.nvim_feedkeys(
-        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-        "n",
-        false
-    )
+    ts.exit_visual_mode()
     M.prefill_grep(selected_text)
 end
 
