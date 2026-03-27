@@ -17,5 +17,19 @@
         "grep": "allow",
         "patch": "allow",
         "webfetch": "allow"
+    },
+    "small_model": "amazon-bedrock/anthropic.claude-haiku-4-5-20251001-v1:0",
+    "provider": {
+        "amazon-bedrock": {
+            "options": {
+                "profile": "bedrock"
+            }
+        }
+    },
+    "mcp": {
+        "notion": {
+            "type": "remote",
+            "url": "https://mcp.notion.com/mcp"
+        }
     }
 }
