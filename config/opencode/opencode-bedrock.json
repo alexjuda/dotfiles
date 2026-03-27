@@ -30,6 +30,10 @@
         "notion": {
             "type": "remote",
             "url": "https://mcp.notion.com/mcp"
+        },
+        "jira": {
+            "type": "remote",
+            "url": "https://mcp.atlassian.com/v1/mcp"
         }
     }
 }
