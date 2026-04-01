@@ -17,6 +17,7 @@ custom_aliases=(
     "gc:git commit -v"
     "gca:git commit -v --amend"  # 'gc!' can't be used in macOS bash
     "gcb:git checkout -b"
+    "gcl:git clean -d -x --interactive"
     "gcm:git commit -m"
     "gco:git checkout"
     "gcp:git cherry-pick"
