@@ -56,6 +56,10 @@ M.setup = function()
     -------------
     map("n", "<leader>q", function () require("config.search_actions").toggle_qf() end, {}, "toggle quickfix window")
 
+    -- Undotree
+    -------------
+    map("n", "<leader>u", function () require("undotree").open() end, {}, "toggle undotree window")
+
     -- Files
     ----------
     local yank_file_path = function()

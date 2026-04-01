@@ -282,10 +282,16 @@ local function general_autocmds()
 end
 
 
+local function built_in_plugins()
+    vim.cmd("packadd nvim.undotree")
+end
+
+
 M.setup = function()
     set_builtins()
     ft_autocmds()
     general_autocmds()
+    built_in_plugins()
 end
 
 
