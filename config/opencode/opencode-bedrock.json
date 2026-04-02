@@ -34,6 +34,15 @@
         "jira": {
             "type": "remote",
             "url": "https://mcp.atlassian.com/v1/mcp"
+        },
+        "slack": {
+            "type": "local",
+            "command": ["bash", "-c", "$HOME/.config/opencode/slack-mcp.sh"]
         }
+    },
+    "tools": {
+        "slack_slack_post_message": false,
+        "slack_slack_reply_to_thread": false,
+        "slack_slack_add_reaction": false
     }
 }
