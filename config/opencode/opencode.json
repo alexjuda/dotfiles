@@ -1,5 +1,16 @@
 {
     "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "engram": {
+            "command": [
+                "/home/alex/.local/share/aj-eget-bins/engram",
+                "mcp",
+                "--tools=agent"
+            ],
+            "enabled": true,
+            "type": "local"
+        }
+    },
     "permission": {
         "bash": {
             "*": "ask",
