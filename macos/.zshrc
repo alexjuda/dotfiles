@@ -99,6 +99,9 @@ bindkey -e
 # https://github.com/alexjuda/fini
 export FINI_DIR="~/Documents/fini-todos"
 
+# TODO: make this platform-independent
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+
 # Enable kubectl command completions. Lazyloaded to gain 30ms shell startup time on normal boxes.
 lazyload kubectl -- 'source <(kubectl completion zsh)'
 
