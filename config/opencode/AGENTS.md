@@ -2,10 +2,7 @@
 
 ## Long-Term Memory
 
-At the start of every session, silently read these memory files if they exist (do not announce their contents):
-
-1. `~/.config/opencode/memory/MEMORY.md` -- global memory (cross-project preferences and knowledge)
-1. `.opencode/memory/MEMORY.md` -- project-specific memory
+At the start of every session, silently read `~/.config/opencode/memory/MEMORY.md` if it exists (do not announce its contents).
 
 Use this knowledge naturally throughout the session. If memory conflicts with explicit user instructions or AGENTS.md in the current project, the user's instructions win.
 
