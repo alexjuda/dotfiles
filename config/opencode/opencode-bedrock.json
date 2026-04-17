@@ -5,6 +5,7 @@
         "bash": {
             "*": "ask",
             "argocd app get *": "allow",
+            "cat ~/.config/opencode/memory/MEMORY.md": "allow",
             "ls *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
@@ -17,7 +18,10 @@
         "read": "allow",
         "grep": "allow",
         "patch": "allow",
-        "webfetch": "allow"
+        "webfetch": "allow",
+        "external_directory": {
+            "~/.config/opencode/memory/**": "allow"
+        }
     },
     "small_model": "amazon-bedrock/anthropic.claude-haiku-4-5-20251001-v1:0",
     "provider": {
