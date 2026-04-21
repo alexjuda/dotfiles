@@ -9,7 +9,7 @@ Review the current session and identify information worth persisting across sess
 Steps:
 
 1. Load the `agent-memory` skill for formatting and location rules.
-1. Read `~/.config/opencode/memory/MEMORY.md` (create if missing).
+1. Read `~/.config/opencode/memory/MEMORY.md` (create if missing). It contains project-independent information.
 1. Identify what's worth saving from this session.
 1. Update the memory file. Merge with existing content, don't duplicate.
 1. Report what you saved.
