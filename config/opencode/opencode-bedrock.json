@@ -10,6 +10,7 @@
             "git log *": "allow",
             "git show *": "allow",
             "grep *": "allow",
+            "helm template *": "allow",
             "rg *": "allow",
             "which *": "allow"
         },
