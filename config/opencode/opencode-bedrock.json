@@ -7,10 +7,13 @@
             "argocd app get *": "allow",
             "cat ~/.config/opencode/memory/MEMORY.md": "allow",
             "ls *": "allow",
+            "gh pr diff *": "allow",
+            "gh pr view *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
             "git show *": "allow",
             "grep *": "allow",
+            "helm template *": "allow",
             "rg *": "allow",
             "which *": "allow"
         },
@@ -35,12 +38,12 @@
         "notion": {
             "type": "remote",
             "url": "https://mcp.notion.com/mcp",
-            "enabled": false,
+            "enabled": true,
         },
         "jira": {
             "type": "remote",
             "url": "https://mcp.atlassian.com/v1/mcp",
-            "enabled": false
+            "enabled": true
         },
         "slack": {
             "type": "local",
