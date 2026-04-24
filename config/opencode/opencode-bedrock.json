@@ -35,12 +35,12 @@
         "notion": {
             "type": "remote",
             "url": "https://mcp.notion.com/mcp",
-            "enabled": false,
+            "enabled": true,
         },
         "jira": {
             "type": "remote",
             "url": "https://mcp.atlassian.com/v1/mcp",
-            "enabled": false
+            "enabled": true
         },
         "slack": {
             "type": "local",
