@@ -6,6 +6,8 @@
             "*": "ask",
             "argocd app get *": "allow",
             "ls *": "allow",
+            "gh pr diff *": "allow",
+            "gh pr view *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
             "git show *": "allow",
