@@ -6,7 +6,6 @@
             "*": "ask",
             "argocd app get *": "allow",
             "cat ~/.config/opencode/memory/MEMORY.md": "allow",
-            "ls *": "allow",
             "gh pr diff *": "allow",
             "gh pr view *": "allow",
             "git diff *": "allow",
@@ -14,6 +13,7 @@
             "git show *": "allow",
             "grep *": "allow",
             "helm template *": "allow",
+            "ls *": "allow",
             "rg *": "allow",
             "which *": "allow"
         },

@@ -8,16 +8,21 @@
         "bash": {
             "*": "ask",
             "argocd app get *": "allow",
-            "ls *": "allow",
+            "cat ~/.config/opencode/memory/MEMORY.md": "allow",
+            "gh pr diff *": "allow",
+            "gh pr view *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
             "git show *": "allow",
             "grep *": "allow",
+            "helm template *": "allow",
+            "ls *": "allow",
             "rg *": "allow",
             "which *": "allow"
         },
         "edit": "allow",
         "external_directory": {
+            "~/.config/opencode/memory/**": "allow",
             "~/Code/**": "allow"
         },
         "read": {
