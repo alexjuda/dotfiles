@@ -17,14 +17,21 @@
             "rg *": "allow",
             "which *": "allow"
         },
+        "external_directory": {
+            "~/.config/opencode/memory/**": "allow",
+            "~/Code/**": "allow"
+        },
         "edit": "allow",
-        "read": "allow",
+        "read": {
+            "*": "allow",
+            "*.env": "deny",
+            "*.env.*": "deny",
+            "*.env.example": "allow",
+            ".envrc": "deny"
+        },
         "grep": "allow",
         "patch": "allow",
-        "webfetch": "allow",
-        "external_directory": {
-            "~/.config/opencode/memory/**": "allow"
-        }
+        "webfetch": "allow"
     },
     "small_model": "amazon-bedrock/anthropic.claude-haiku-4-5-20251001-v1:0",
     "provider": {

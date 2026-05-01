@@ -17,7 +17,16 @@
             "which *": "allow"
         },
         "edit": "allow",
-        "read": "allow",
+        "external_directory": {
+            "~/Code/**": "allow"
+        },
+        "read": {
+            "*": "allow",
+            "*.env": "deny",
+            "*.env.*": "deny",
+            "*.env.example": "allow",
+            ".envrc": "deny"
+        },
         "grep": "allow",
         "patch": "allow",
         "webfetch": "allow"
