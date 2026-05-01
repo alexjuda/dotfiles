@@ -1,8 +1,8 @@
 - name: Set up Rust toolchain
   hosts: all
   vars:
-    rustup_home: "{{ ansible_user_dir }}/.local/share/rustup"
-    cargo_home: "{{ ansible_user_dir }}/.local/share/cargo"
+    rustup_home: /home/alex/.local/share/rustup
+    cargo_home: /home/alex/.local/share/cargo
   tasks:
   - name: Install rustup with custom paths
     ansible.builtin.shell:
@@ -11,6 +11,9 @@
         export CARGO_HOME="{{ cargo_home }}"
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
       creates: "{{ cargo_home }}/bin/rustc"
+    become_user: alex
+    become: true
+
   - name: Install stable toolchain
     ansible.builtin.shell:
       cmd: |
@@ -18,6 +21,9 @@
         export CARGO_HOME="{{ cargo_home }}"
         {{ cargo_home }}/bin/rustup toolchain install stable
       creates: "{{ rustup_home }}/toolchains/stable-x86_64-unknown-linux-gnu"
+    become_user: alex
+    become: true
+
   - name: Install proximity-sort
     ansible.builtin.shell:
       cmd: |
@@ -25,3 +31,5 @@
         export CARGO_HOME="{{ cargo_home }}"
         {{ cargo_home }}/bin/cargo install proximity-sort
       creates: "{{ cargo_home }}/bin/proximity-sort"
+    become_user: alex
+    become: true

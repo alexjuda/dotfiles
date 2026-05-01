@@ -2,30 +2,29 @@
   hosts: all
   tasks:
 
-  - name: upgrade DNF packages
-    ansible.builtin.dnf:
-      name: "*"
-      state: latest
-    become: true
-    tags: superuser
-
   - name: Set git email
     community.general.git_config:
       name: user.email
       scope: global
       value: "{{ git_email }}"
+    become_user: alex
+    become: true
 
   - name: Set git username
     community.general.git_config:
       name: user.name
       scope: global
       value: "{{ git_username }}"
+    become_user: alex
+    become: true
 
   - name: Set main git branch name
     community.general.git_config:
       name: init.defaultBranch
       scope: global
       value: main
+    become_user: alex
+    become: true
 
   - name: enable lazygit's copr
     community.general.copr:

@@ -1,52 +1,26 @@
-# Configuring with Ansible
+# Ansible Configuration
 
-This tool uses Ansible to configure a new device (target) from a controller device (something you already have under control) over SSH.
+## Overview
 
-## Pre-requisites
+Ansible playbooks for managing Fedora workstations.
 
-Steps to take manually before:
-
-1. On the target:
-    1. Create an ssh key on the target: `ssh-keygen -t ed25519 -a 100`
-    1. Set a sensible machine name in Gnome Settings.
-    1. Enable SSH.
-    1. Install `sudo dnf install python-libdnf5`. Required on Fedora 41+. [More info](https://github.com/ansible/ansible/issues/84206).
-    1. Reboot.
-
-2. On the controller:
-    1. Upload the target public key's to GitHub.
-    1. Run `ssh-copy-id` from the controller to the target.
-    1. Run `scp <target>:/.ssh/id_rsa25519.pub .` and upload the public key to GitHub.
-    1. Install Ansible, e.g. with `uv tool install ansible-core`.
-    1. Set up `vars.yml` file based on the [example](./vars.yml.example).
-
-3. On the target:
-    1. Warm up GitHub with: `ssh -T git@github.com`.
-
-## Running
-
-Find a suitable [maketarget](./Makefile) and run the following. Note that "HOST" denotes an Ansible host, the target device.
+## Quick Start
 
 ```bash
-make framework HOST="frmwrk.local"
+cd /home/alex/Code/dotfiles/linux/ansible
+make localhost
 ```
 
-## Post
+This runs ansible as root via sudo, which triggers your fingerprint (or password) once.
 
-Steps to run manually on the target:
+## Files
 
-1. Open neovim. Run: `:PaqSync`
-2. Fix telescope repo.
-3. Log in to:
-    1. 1Password app.
-    2. Brave app.
-    3. "Internet Accounts" in Gnome Settings.
-    4. `gh auth login`
-    5. Spotify.
-    6. Signal.
+- `ansible.cfg` - Ansible configuration
+- `Makefile` - Build targets for common operations
+- `playbooks/` - Individual playbooks for different system components
+- `vars.yml` - Variables (should contain git_email, git_username, etc.)
+- `templates/` - Templates for fresh machine setup (not currently used)
 
-## Running on localhost
+## Fresh Machine Setup
 
-```bash
-make framework HOST="localhost"
-```
+No special setup required - just run `make localhost` and authenticate with your fingerprint once.

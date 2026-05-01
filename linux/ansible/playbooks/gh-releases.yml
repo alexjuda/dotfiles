@@ -6,6 +6,8 @@
     ansible.builtin.file:
       path: ~/.local/share/aj-eget-bins
       state: directory
+    become_user: alex
+    become: true
 
   - name: Install latest eget from GitHub
     ansible.builtin.shell:
@@ -49,10 +51,14 @@
         cd ~
         rm -rf "$TMP_DIR"
       creates: ~/.local/share/aj-eget-bins/eget
+    become_user: alex
+    become: true
 
   - name: Install self-contained tools from GH
     ansible.builtin.command:
       cmd: "~/.local/share/aj-eget-bins/eget {{ item }} --to ~/.local/share/aj-eget-bins --asset ^musl --upgrade-only"
+    become_user: alex
+    become: true
     loop:
       - "ahmetb/kubectx --asset kubectx"
       - artempyanykh/marksman
@@ -74,6 +80,8 @@
       src: ~/.local/share/aj-eget-bins/nvim-linux-x86_64
       dest: ~/.local/share/aj-eget-bins/nvim
       state: link
+    become_user: alex
+    become: true
 
   # k9s isn't here because it's weird. They don't ship to fedora repositories. On
   # Github releases, they just expose the .rpm files. You have to download the
@@ -97,3 +105,5 @@
         ln -s $PWD/lua-ls/bin/lua-language-server ~/.local/bin/lua-language-server
     loop:
       - LuaLS/lua-language-server
+    become_user: alex
+    become: true

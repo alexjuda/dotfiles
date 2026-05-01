@@ -3,14 +3,14 @@
   tasks:
 
   - name: Check for NVIDIA GPU
-    ansible.builtin.shell: lspci | grep -i nvidia
+    ansible.builtin.shell: lspci | grep -i nvidia || echo ""
     register: nvidia_check
-    ignore_errors: false
     changed_when: false
+    failed_when: false
 
   - name: Set has_nvidia_gpu fact
     ansible.builtin.set_fact:
-      has_nvidia_gpu: "{{ nvidia_check.rc == 0 }}"
+      has_nvidia_gpu: "{{ nvidia_check.stdout | length > 0 }}"
 
   - name: Debug nvidia_check
     ansible.builtin.debug:

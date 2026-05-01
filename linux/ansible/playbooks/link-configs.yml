@@ -8,91 +8,99 @@
       dest: ~/Code/dotfiles
       clone: yes
       update: no
+    become_user: alex
+    become: true
 
-  - name: link kitty config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/kitty
-      dest: ~/.config/kitty
-      state: link
+  - name: link configs
+    block:
+      - name: link kitty config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/kitty
+          dest: ~/.config/kitty
+          state: link
 
-  - name: link wezterm config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/wezterm
-      dest: ~/.config/wezterm
-      state: link
+      - name: link wezterm config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/wezterm
+          dest: ~/.config/wezterm
+          state: link
 
-  - name: link neovim config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/nvim
-      dest: ~/.config/nvim
-      state: link
+      - name: link neovim config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/nvim
+          dest: ~/.config/nvim
+          state: link
 
-  - name: make ghostty config dir
-    ansible.builtin.file:
-      path: ~/.config/ghostty
-      state: directory
+      - name: make ghostty config dir
+        ansible.builtin.file:
+          path: ~/.config/ghostty
+          state: directory
 
-  - name: link main ghostty config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/ghostty/config
-      dest: ~/.config/ghostty/config
-      state: link
+      - name: link main ghostty config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/ghostty/config
+          dest: ~/.config/ghostty/config
+          state: link
 
-  - name: link platform-specific ghostty config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/ghostty/linux_config
-      dest: ~/.config/ghostty/platform_specific_config
-      state: link
+      - name: link platform-specific ghostty config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/ghostty/linux_config
+          dest: ~/.config/ghostty/platform_specific_config
+          state: link
 
-  - name: create opencode config directory
-    ansible.builtin.file:
-      path: ~/.config/opencode
-      state: directory
+      - name: create opencode config directory
+        ansible.builtin.file:
+          path: ~/.config/opencode
+          state: directory
 
-  # There's a bunch of other crap opencode creates and keeps under '~/.config/opencode/' dir. We just need to link the
-  # config file. I wish they made proper use of XDG confgi and state dirs.
-  - name: link opencode config file
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/opencode/opencode.json
-      dest: ~/.config/opencode/opencode.json
-      state: link
+      - name: link opencode config file
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/opencode/opencode.json
+          dest: ~/.config/opencode/opencode.json
+          state: link
 
-  - name: link k9s config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/k9s
-      dest: ~/.config/k9s
-      state: link
+      - name: link k9s config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/k9s
+          dest: ~/.config/k9s
+          state: link
 
-  - name: link starship config file
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/starship.toml
-      dest: ~/.config/starship.toml
-      state: link
+      - name: link starship config file
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/starship.toml
+          dest: ~/.config/starship.toml
+          state: link
 
-  - name: link yazi config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/config/yazi
-      dest: ~/.config/yazi
-      state: link
+      - name: link yazi config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/yazi
+          dest: ~/.config/yazi
+          state: link
 
-  - name: link zsh config
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/macos/.zshrc
-      dest: ~/.zshrc
-      state: link
+      - name: link zsh config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/macos/.zshrc
+          dest: ~/.zshrc
+          state: link
 
-  - name: link aliases
-    ansible.builtin.file:
-      src: ~/Code/dotfiles/linux/.bash_aliases
-      dest: ~/.bash_aliases
-      state: link
+      - name: link aliases
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/linux/.bash_aliases
+          dest: ~/.bash_aliases
+          state: link
+    become_user: alex
+    become: true
 
   - name: clone zsh lazyload
     git:
       repo: https://github.com/qoomon/zsh-lazyload.git
       dest: ~/.local/share/aj-apps/zsh-lazyload
+    become_user: alex
+    become: true
 
   - name: clone notes
     git:
       repo: git@github.com:alexjuda/notes-synced.git
       dest: ~/Documents/notes-synced
+    become_user: alex
+    become: true

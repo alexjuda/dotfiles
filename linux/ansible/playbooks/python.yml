@@ -6,13 +6,19 @@
     ansible.builtin.command:
       cmd: uv tool install python-lsp-server[rope] --with python-lsp-ruff --with python-lsp-ruff --with pylsp-rope
       creates: ~/.local/share/uv/tools/python-lsp-server
+    become_user: alex
+    become: true
 
   - name: Install pyright with uv
     ansible.builtin.command:
       cmd: uv tool install pyright
       creates: ~/.local/share/uv/tools/pyright
+    become_user: alex
+    become: true
 
   - name: Install ruff with uv
     ansible.builtin.command:
       cmd: uv tool install ruff
       creates: ~/.local/share/uv/tools/ruff
+    become_user: alex
+    become: true

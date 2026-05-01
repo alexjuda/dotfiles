@@ -6,6 +6,8 @@
     ansible.builtin.git:
       repo: https://github.com/nodenv/nodenv.git
       dest: ~/.nodenv
+    become_user: alex
+    become: true
 
   - name: install node-build with git
     ansible.builtin.git:
@@ -14,15 +16,21 @@
       # `node-build` repo often gets borked tags which can't be easily fetched. `force` overrides whatever we have
       # locally to reflect the remove.
       force: yes
+    become_user: alex
+    become: true
 
   - name: install node
     ansible.builtin.command:
       cmd: ~/.nodenv/bin/nodenv install 25.1.0
       creates: ~/.nodenv/versions/25.1.0
+    become_user: alex
+    become: true
 
   - name: set global node version
     ansible.builtin.command:
       cmd: ~/.nodenv/bin/nodenv global 25.1.0
+    become_user: alex
+    become: true
 
   - name: Install npm tools
     ansible.builtin.shell:
@@ -37,3 +45,5 @@
 
         # Other tools
         npm install -g @mermaid-js/mermaid-cli
+    become_user: alex
+    become: true

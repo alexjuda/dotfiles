@@ -129,6 +129,8 @@
       # window-resize-right-decrease: ['<Shift><Control><Super>y']
       - key: window-resize-right-decrease
         value: "@as []"
+    become_user: alex
+    become: true
 
   - name: Set Focus Changer keybindings to use Alt instead of Super
     community.general.dconf:
@@ -143,3 +145,5 @@
         value: "['<Alt>k']"
       - key: focus-right
         value: "['<Alt>l']"
+    become_user: alex
+    become: true

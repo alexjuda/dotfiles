@@ -6,10 +6,14 @@
     ansible.builtin.command:
       cmd: ~/Code/dotfiles/scripts/fetch-gh-asset.py ryanoasis nerd-fonts NerdFontsSymbolsOnly.zip$ --first
     register: nerd_font_proc_out
+    become_user: alex
+    become: true
 
   - name: print the URL
     ansible.builtin.command:
       cmd: echo 'hello {{ nerd_font_proc_out["stdout"] }}'
+    become_user: alex
+    become: true
 
   - name: unarchive nerd font symbols
     ansible.builtin.command:
@@ -21,6 +25,10 @@
         - SymbolsNerdFont-Regular.ttf
         - SymbolsNerdFontMono-Regular.ttf
       creates: ~/.local/share/fonts/SymbolsNerdFont*-Regular.ttf
+    become_user: alex
+    become: true
 
   - name: reset font cache
     ansible.builtin.command: fc-cache ~/.local/share/fonts
+    become_user: alex
+    become: true

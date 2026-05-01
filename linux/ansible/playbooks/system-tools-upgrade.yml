@@ -1,0 +1,10 @@
+- name: Set up system packages and programs
+  hosts: all
+  tasks:
+
+  - name: upgrade DNF packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+    become: true
+    tags: superuser
