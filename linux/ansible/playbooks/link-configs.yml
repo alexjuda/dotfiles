@@ -11,6 +11,13 @@
     become_user: alex
     become: true
 
+  - name: clone opencode memory
+    git:
+      repo: git@github.com:alexjuda/opencode-memory.git
+      dest: ~/Code/ai/opencode-memory
+    become_user: alex
+    become: true
+
   - name: link configs
     block:
       - name: link kitty config
@@ -57,6 +64,24 @@
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/opencode/opencode.json
           dest: ~/.config/opencode/opencode.json
+          state: link
+
+      - name: link opencode AGENTS.md
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/opencode/AGENTS.md
+          dest: ~/.config/opencode/AGENTS.md
+          state: link
+
+      - name: link opencode commands
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/opencode/commands
+          dest: ~/.config/opencode/commands
+          state: link
+
+      - name: link opencode memory
+        ansible.builtin.file:
+          src: ~/Code/ai/opencode-memory
+          dest: ~/.config/opencode/memory
           state: link
 
       - name: link k9s config
