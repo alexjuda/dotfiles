@@ -18,6 +18,13 @@
     become_user: alex
     become: true
 
+  - name: clone opencode skills
+    git:
+      repo: git@github.com:alexjuda/skills.git
+      dest: ~/Code/ai/skills
+    become_user: alex
+    become: true
+
   - name: link configs
     block:
       - name: link kitty config
@@ -82,6 +89,12 @@
         ansible.builtin.file:
           src: ~/Code/ai/opencode-memory
           dest: ~/.config/opencode/memory
+          state: link
+
+      - name: link opencode skills
+        ansible.builtin.file:
+          src: ~/Code/ai/skills/skills
+          dest: ~/.config/opencode/skills
           state: link
 
       - name: link k9s config
