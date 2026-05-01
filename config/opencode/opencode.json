@@ -1,19 +1,36 @@
 {
     "$schema": "https://opencode.ai/config.json",
+    "plugin": [
+        "superpowers@git+https://github.com/obra/superpowers.git"
+    ],
     "permission": {
         "bash": {
             "*": "ask",
             "argocd app get *": "allow",
-            "ls *": "allow",
+            "cat ~/.config/opencode/memory/MEMORY.md": "allow",
+            "gh pr diff *": "allow",
+            "gh pr view *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
             "git show *": "allow",
             "grep *": "allow",
+            "helm template *": "allow",
+            "ls *": "allow",
             "rg *": "allow",
             "which *": "allow"
         },
         "edit": "allow",
-        "read": "allow",
+        "external_directory": {
+            "~/.config/opencode/memory/**": "allow",
+            "~/Code/**": "allow"
+        },
+        "read": {
+            "*": "allow",
+            "*.env": "deny",
+            "*.env.*": "deny",
+            "*.env.example": "allow",
+            ".envrc": "deny"
+        },
         "grep": "allow",
         "patch": "allow",
         "webfetch": "allow"
