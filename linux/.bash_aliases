@@ -64,6 +64,10 @@ custom_aliases=(
     "gsts:git stash show --text"
     'gsw:git switch $(git branch | fzf)'
 
+    "gw:git worktree"
+    "gwl:git worktree list"
+    "gwa:git worktree add"
+
     # --------------- dir movement --------------
     "cdd:cd ~/Desktop"
     "cdn:cd ~/Documents/notes-synced"
