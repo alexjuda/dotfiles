@@ -9,6 +9,8 @@
             "ls *": "allow",
             "gh pr diff *": "allow",
             "gh pr view *": "allow",
+            "git branch": "allow",
+            "git branch -a": "allow",
             "git diff *": "allow",
             "git log *": "allow",
             "git show *": "allow",
