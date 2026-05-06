@@ -170,6 +170,20 @@ function zkn() {
     zk new -t "$*"
 }
 
+# Like gco (git checkout), but with worktrees.
+function gwco() {
+    local branch="$1"
+    git worktree add "wt/$branch" $branch
+    cd "wt/$branch"
+}
+
+# Like gbD (git branch --delete), but with worktrees.
+function gwbD() {
+    local branch="$1"
+    local path=$(git worktree list | grep '\['"$branch"'\]' | awk '{print $1}')
+    git worktree remove "$path"
+}
+
 # Rebase against a common ancestor.
 function git-rebase-ancestor () {
     if [ -n "$1" ]; then
