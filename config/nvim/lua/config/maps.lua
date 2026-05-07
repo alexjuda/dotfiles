@@ -389,7 +389,7 @@ M.setup = function()
         insert_text_at_cursor(date)
     end
 
-    vim.keymap.set({ "i", "n" }, "<F3>", insert_current_date)
+    vim.keymap.set({ "i", "n" }, "<F6>", insert_current_date)
 end
 
 
