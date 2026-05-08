@@ -8,6 +8,7 @@
             "cat ~/.config/opencode/memory/MEMORY.md": "allow",
             "ls *": "allow",
             "gh pr diff *": "allow",
+            "gh pr list *": "allow",
             "gh pr view *": "allow",
             "git branch": "allow",
             "git branch -a": "allow",
