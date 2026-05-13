@@ -67,6 +67,15 @@ M.setup = function()
         local line_no = vim.fn.line(".")
         local grep_line = rel_path .. ":" .. line_no
         vim.fn.setreg("+", grep_line)
+        print("\"" .. grep_line .. "\" copied")
+    end
+
+    local yank_absolute_file_path = function()
+        local rel_path = vim.fn.expand("%:p")
+        local line_no = vim.fn.line(".")
+        local grep_line = rel_path .. ":" .. line_no
+        vim.fn.setreg("+", grep_line)
+        print("\"" .. grep_line .. "\" copied")
     end
 
     local open_enclosing_dir_in_finder = function()
@@ -81,6 +90,7 @@ M.setup = function()
     wk_group("<leader>f", "files...")
     map("n", "<leader>fr", function() telescope().oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
     map("n", "<leader>fy", function() yank_file_path() end, noremap, "yank file path")
+    map("n", "<leader>fY", function() yank_absolute_file_path() end, noremap, "yank absolute file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, noremap, "open dir in finder")
 
 
