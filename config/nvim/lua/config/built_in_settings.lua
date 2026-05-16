@@ -252,8 +252,19 @@ local function ft_autocmds()
         })
     end
     typescript()
-end
 
+    -- src: https://github.com/gruvw/strudel.nvim/issues/5#issuecomment-3169163055
+    local strudel = function()
+        vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+            group = aj_ft_autocmds,
+            pattern = "*.str",
+            callback = function()
+                vim.bo.filetype = "javascript"
+            end,
+        })
+    end
+    strudel()
+end
 
 local function general_autocmds()
     local aj_general_autocmds = vim.api.nvim_create_augroup("aj-general-autocmds", { clear = true })
