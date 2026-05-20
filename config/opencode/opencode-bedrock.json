@@ -14,6 +14,7 @@
             "git diff *": "allow",
             "git log *": "allow",
             "git show *": "allow",
+            "git status *": "allow",
             "grep *": "allow",
             "helm template *": "allow",
             "ls *": "allow",
