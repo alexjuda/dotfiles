@@ -3,6 +3,11 @@ return {
     opts = {
         view_options = {
             show_hidden = true,
+            -- Defaults to sorting by type first.
+            sort = {
+                { "name", "asc" },
+                { "type", "asc" },
+            },
         },
     },
     dependencies = { { "nvim-mini/mini.icons", opts = {} } },
