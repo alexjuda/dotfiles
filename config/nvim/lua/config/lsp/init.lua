@@ -1,6 +1,7 @@
 local M = {}
 
 M.setup = function()
+    require("config.lsp.bash").setup()
     require("config.lsp.beancount").setup()
     require("config.lsp.cpp").setup()
     require("config.lsp.go").setup()
