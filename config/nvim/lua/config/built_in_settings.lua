@@ -228,6 +228,9 @@ local function ft_autocmds()
             callback = function(ev)
                 -- In insert mode, don't add line breaks while typing.
                 vim.opt_local.formatoptions:remove { "t" }
+
+                -- Most LLMs produce 80-ish line lengths.
+                vim.opt.textwidth = 80
             end,
         })
     end
