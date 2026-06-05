@@ -65,8 +65,9 @@ custom_aliases=(
     'gsw:git switch $(git branch | fzf)'
 
     "gw:git worktree"
-    "gwl:git worktree list"
     "gwa:git worktree add"
+    "gwd:git worktree remove"
+    "gwl:git worktree list"
 
     # --------------- dir movement --------------
     "cdd:cd ~/Desktop"
