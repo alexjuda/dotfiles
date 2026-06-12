@@ -25,7 +25,8 @@
         },
         "external_directory": {
             "~/.config/opencode/memory/**": "allow",
-            "~/Code/**": "allow"
+            "~/Code/**": "allow",
+            "/tmp/**": "allow"
         },
         "edit": "allow",
         "read": {
