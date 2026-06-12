@@ -109,7 +109,10 @@ lazyload kubectl -- 'source <(kubectl completion zsh)'
 lazyload z -- 'eval "$(zoxide init zsh)"'
 
 # Chariot completions
-lazyload chariot -- 'source <(chariot completion zsh)'
+lazyload chariot -- 'if ! command -v compdef >/dev/null 2>&1; then
+  autoload -Uz compinit && compinit
+fi
+source <(chariot completion zsh)'
 
 # Activate nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
