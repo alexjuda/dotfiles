@@ -180,6 +180,19 @@ function gwco() {
     cd "wt/$branch"
 }
 
+# New worktree from branch name.
+function gwn() {
+    local branch="$1"
+    local cmd1="git branch $branch"
+    echo "$cmd1"
+    eval "$cmd1"
+
+    local path="wt/${branch:gs/\//-/}"
+    local cmd2="git worktree add $path $branch"
+    echo "$cmd2"
+    eval "$cmd2"
+}
+
 # Like gbD (git branch --delete), but with worktrees.
 function gwbD() {
     local branch="$1"
