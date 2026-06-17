@@ -128,7 +128,7 @@ M.setup = function()
 
     -- Moving
     local ts_move = function() return require("nvim-treesitter-textobjects.move") end
-    local move_modes = { "n" }
+    local move_modes = { "n", "x", "o" }
 
     -- Class
     map(move_modes, "[k", function() ts_move().goto_previous_start("@class.outer", "textobjects") end, noremap)
