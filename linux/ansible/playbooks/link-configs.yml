@@ -97,6 +97,12 @@
           dest: ~/.config/opencode/skills
           state: link
 
+      - name: link git config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/git
+          dest: ~/.config/git
+          state: link
+
       - name: link k9s config
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/k9s
