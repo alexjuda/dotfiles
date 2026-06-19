@@ -9,10 +9,16 @@
             "argocd app get *": "allow",
             "cat ~/.config/opencode/memory/MEMORY.md": "allow",
             "gh pr diff *": "allow",
+            "gh pr list *": "allow",
             "gh pr view *": "allow",
+            "git branch": "allow",
+            "git branch -a": "allow",
             "git diff *": "allow",
+            "git fetch *": "allow",
             "git log *": "allow",
+            "git rev-parse": "allow",
             "git show *": "allow",
+            "git status *": "allow",
             "grep *": "allow",
             "helm template *": "allow",
             "ls *": "allow",
@@ -22,7 +28,8 @@
         "edit": "allow",
         "external_directory": {
             "~/.config/opencode/memory/**": "allow",
-            "~/Code/**": "allow"
+            "~/Code/**": "allow",
+            "/tmp/**": "allow"
         },
         "read": {
             "*": "allow",
