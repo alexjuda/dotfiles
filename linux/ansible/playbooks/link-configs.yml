@@ -123,13 +123,13 @@
 
       - name: link zsh config
         ansible.builtin.file:
-          src: ~/Code/dotfiles/macos/.zshrc
+          src: ~/Code/dotfiles/shell/.zshrc
           dest: ~/.zshrc
           state: link
 
-      - name: link aliases
+      - name: link shell aliases
         ansible.builtin.file:
-          src: ~/Code/dotfiles/linux/.bash_aliases
+          src: ~/Code/dotfiles/shell/.bash_aliases
           dest: ~/.bash_aliases
           state: link
     become_user: alex
