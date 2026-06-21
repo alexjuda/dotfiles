@@ -3,8 +3,9 @@
 # Like gco (git checkout), but with worktrees.
 function gwco() {
     local branch="$1"
-    git worktree add "wt/$branch" $branch
-    cd "wt/$branch"
+    local leaf="${branch##*/}"
+    git worktree add "wt/$leaf" $branch
+    cd "wt/$leaf"
 }
 
 # New worktree from branch name.
@@ -20,11 +21,11 @@ function gwn() {
     eval "$cmd2"
 }
 
-# Like gbD (git branch --delete), but with worktrees.
+# Like gbD (git branch --delete), but with worktrees. Assumes that branch `foo/bar/baz` is checked out at `wt/baz`
 function gwbD() {
     local branch="$1"
-    local path=$(git worktree list | grep '\['"$branch"'\]' | awk '{print $1}')
-    git worktree remove "$path"
+    local leaf="${branch##*/}"
+    git worktree remove "wt/$leaf"
 }
 
 # Rebase against a common ancestor.
