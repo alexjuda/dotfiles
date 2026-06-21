@@ -46,5 +46,6 @@
 
         # Other tools
         npm install -g @mermaid-js/mermaid-cli
+        npm install -g opencode-ai
     become_user: alex
     become: true
