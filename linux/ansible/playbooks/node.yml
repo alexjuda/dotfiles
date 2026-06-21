@@ -21,14 +21,14 @@
 
   - name: install node
     ansible.builtin.command:
-      cmd: ~/.nodenv/bin/nodenv install 25.1.0
-      creates: ~/.nodenv/versions/25.1.0
+      cmd: ~/.nodenv/bin/nodenv install 26.3.0
+      creates: ~/.nodenv/versions/26.3.0
     become_user: alex
     become: true
 
   - name: set global node version
     ansible.builtin.command:
-      cmd: ~/.nodenv/bin/nodenv global 25.1.0
+      cmd: ~/.nodenv/bin/nodenv global 26.3.0
     become_user: alex
     become: true
 
@@ -39,9 +39,10 @@
         eval "$(nodenv init - zsh)"
 
         # Lang servers
-        npm install -g vscode-langservers-extracted
+        npm install -g bash-language-server
         npm install -g typescript
         npm install -g typescript-language-server
+        npm install -g vscode-langservers-extracted
 
         # Other tools
         npm install -g @mermaid-js/mermaid-cli

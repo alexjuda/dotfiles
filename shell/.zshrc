@@ -102,6 +102,9 @@ export FINI_DIR="~/Documents/fini-todos"
 # TODO: make this platform-independent
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
+# Activate nix
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 # Enable kubectl command completions. Lazyloaded to gain 30ms shell startup time on normal boxes.
 lazyload kubectl -- 'source <(kubectl completion zsh)'
 
@@ -114,129 +117,18 @@ lazyload chariot -- 'if ! command -v compdef >/dev/null 2>&1; then
 fi
 source <(chariot completion zsh)'
 
-# Activate nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# My shell utilities
+lazyload nv -- 'source ~/.local/share/aj-apps/shell-scripts/nvim-fns.zsh'
+lazyload nvt -- 'source ~/.local/share/aj-apps/shell-scripts/nvim-fns.zsh'
 
-# Custom utils
-# TODO: move to autoloaded files
-function venv-reset-py() {
-    local venv_path=".venv"
-    [[ -s $venv_path ]] && echo "removing $venv_path..." && rm -r $venv_path
-    echo "creating new venv at $venv_path..."
-    python3 -m venv $venv_path
-    source "${venv_path}/bin/activate"
-    pip install --upgrade pip wheel
-}
+lazyload gwco -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
+lazyload gwn -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
+lazyload gwbD -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
+lazyload git-rebase-ancestor -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
 
-function venv-reset() {
-    local venv_path=".venv"
-    [[ -s $venv_path ]] && echo "removing $venv_path..." && rm -r $venv_path
-    echo "creating new venv at $venv_path..."
-    uv venv $venv_path
-    source "${venv_path}/bin/activate"
-    uv pip install --upgrade pip wheel
-}
-
-# sets jira ticket that can later be retrieved by echo $T
-function set-ticket() {
-    local ticket="$1"
-    echo ${ticket} > ~/.local/share/ticket.txt
-    T=$(cat ~/.local/share/ticket.txt)
-}
-
-# Shorthand for 'nvim'. Additionally, opens CWD as dirbuf if there are no
-# arguments.
-function nv() {
-    if [ -n "$1" ]; then
-        local arg="$1"
-    else
-        local arg="."
-    fi
-
-    nvim ${arg}
-}
-
-# Extracting tars is super cumbersome.
-# Source: https://askubuntu.com/a/792063
-function untar() {
-    local filename="$1"
-    local basename="${filename%.tar.gz}"
-
-    mkdir -p $basename
-    tar -xzf $filename -C $basename
-}
-
-# Make a new 'zk' note. Usage:
-# 1. cdn
-# 2. zkn Hello there!
-function zkn() {
-    zk new -t "$*"
-}
-
-# Like gco (git checkout), but with worktrees.
-function gwco() {
-    local branch="$1"
-    git worktree add "wt/$branch" $branch
-    cd "wt/$branch"
-}
-
-# New worktree from branch name.
-function gwn() {
-    local branch="$1"
-    local cmd1="git branch $branch"
-    echo "$cmd1"
-    eval "$cmd1"
-
-    local path="wt/${branch:gs/\//-/}"
-    local cmd2="git worktree add $path $branch"
-    echo "$cmd2"
-    eval "$cmd2"
-}
-
-# Like gbD (git branch --delete), but with worktrees.
-function gwbD() {
-    local branch="$1"
-    local path=$(git worktree list | grep '\['"$branch"'\]' | awk '{print $1}')
-    git worktree remove "$path"
-}
-
-# Rebase against a common ancestor.
-function git-rebase-ancestor () {
-    if [ -n "$1" ]; then
-        local other="$1"
-    else
-        echo "Usage: git-rebase-ancestor <main-branch>"
-        return 1
-    fi
-    local current=$(git rev-parse --abbrev-ref HEAD)
-    git rebase --onto $other $(git merge-base $other $current) $current
-}
-
-function retry() {
-    local sleep_time=${RETRY_SLEEP:-1}
-    while ! "$@"; do
-        echo "Command '$@' failed, retrying in ${sleep_time}s..."
-        sleep $sleep_time
-    done
-}
-
-# Alias for yazi with changing PWD
-# Source: https://yazi-rs.github.io/docs/quick-start
-function y() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-    command yazi "$@" --cwd-file="$tmp"
-    IFS= read -r -d '' cwd < "$tmp"
-    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-    rm -f -- "$tmp"
-}
-
-# Open neovim against a temporary file.
-nvt() {
-    local f
-    f=$(mktemp)
-    trap "rm -f $f" EXIT
-    nvim "$f"
-}
+lazyload y -- 'source ~/.local/share/aj-apps/shell-scripts/yazi-fns.zsh'
+lazyload untar -- 'source ~/.local/share/aj-apps/shell-scripts/tar-fns.zsh'
+lazyload retry -- 'source ~/.local/share/aj-apps/shell-scripts/retry-fns.zsh'
 
 # Uncomment to print startup time profile.
 # zprof

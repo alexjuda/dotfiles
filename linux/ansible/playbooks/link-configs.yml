@@ -132,6 +132,12 @@
           src: ~/Code/dotfiles/shell/.bash_aliases
           dest: ~/.bash_aliases
           state: link
+
+      - name: link shell scripts
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/shell/shell-scripts
+          dest: ~/.local/share/aj-apps/shell-scripts
+          state: link
     become_user: alex
     become: true
 

@@ -43,7 +43,7 @@ custom_aliases=(
 
     "gr:git remote -v"
     "grb:git rebase"
-    "grba:git rebase --abort"
+    "grba:git-rebase-ancestor" # my custom script
     "grbc:git rebase --continue"
     "grbi:git rebase --interactive --autosquash"
     "grh:git reset"
