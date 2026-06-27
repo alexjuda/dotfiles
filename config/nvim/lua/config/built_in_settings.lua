@@ -126,6 +126,17 @@ local function set_builtins()
 
     -- Show border with rounded corners on floating windows, like the LSP hover popup.
     vim.o.winborder = "rounded"
+
+    -- Set up light/dark colorscheme.
+    --
+    -- The following works well on Ghostty with Neovim 0.12.3+. Earlier Neovim versions require
+    -- deferring this to an autocommand triggered by the "optionset background" event. Something
+    -- related to reading OSC codes from the terminal.
+    if vim.o.background == "dark" then
+        vim.cmd.colorscheme "ayu-mirage"
+    else
+        vim.cmd.colorscheme "rose-pine-dawn"
+    end
 end
 
 
@@ -265,20 +276,6 @@ local function general_autocmds()
     vim.api.nvim_create_autocmd("VimResized", {
         callback = function()
             vim.cmd("wincmd =")
-        end,
-        group = aj_general_autocmds,
-    })
-
-    -- Neovim sets the `background` option to "dark" or "light" automatically after reading the OSC codes from
-    -- the terminal.
-    vim.api.nvim_create_autocmd("OptionSet", {
-        pattern = "background",
-        callback = function()
-            if vim.o.background == "dark" then
-                vim.cmd.colorscheme "ayu-mirage"
-            else
-                vim.cmd.colorscheme "rose-pine-dawn"
-            end
         end,
         group = aj_general_autocmds,
     })
