@@ -22,6 +22,10 @@ ANSIBLE := ansible-playbook
 localhost:
 	sudo $(shell which $(ANSIBLE)) -i localhost, -c local $(PLAYBOOK) --extra-vars @vars.yml $(EXTRA)
 
+.PHONY: install-collection
+install-collection:
+	sudo $(shell which ansible-galaxy) collection install community.general
+
 # For remote hosts
 HOST =
 
