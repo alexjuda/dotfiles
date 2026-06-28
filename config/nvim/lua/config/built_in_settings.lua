@@ -242,6 +242,10 @@ local function ft_autocmds()
 
                 -- Most LLMs produce 80-ish line lengths.
                 vim.opt.textwidth = 80
+
+                -- Most often, I treat markdown files as text documents, not code.
+                vim.o.number = false
+                vim.o.foldcolumn = "0"
             end,
         })
     end
