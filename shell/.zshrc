@@ -67,6 +67,9 @@ export PATH="$GOPATH/bin:$PATH"
 # Terminal prompt
 [ -x "$(command -v starship)" ] && eval "$(starship init zsh)"
 
+# Set up completions dir
+fpath+=(~/.zfunc)
+
 # Enable tab completion customization. Used for aliased commands and completion
 # autocorrect.
 autoload -Uz compinit
@@ -112,10 +115,7 @@ lazyload kubectl -- 'source <(kubectl completion zsh)'
 lazyload z -- 'eval "$(zoxide init zsh)"'
 
 # Chariot completions
-lazyload chariot -- 'if ! command -v compdef >/dev/null 2>&1; then
-  autoload -Uz compinit && compinit
-fi
-source <(chariot completion zsh)'
+lazyload chariot -- 'source <(chariot completion zsh)'
 
 # My shell utilities
 lazyload nv -- 'source ~/.local/share/aj-apps/shell-scripts/nvim-fns.zsh'
