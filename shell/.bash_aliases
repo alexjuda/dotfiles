@@ -69,8 +69,10 @@ custom_aliases=(
     "gwd:git worktree remove"
     "gwl:git worktree list"
 
-    'gwroot:git rev-parse --show-toplevel' # show worktree root
     'groot:dirname $(git rev-parse --git-common-dir)' # show project root
+    'gwroot:git rev-parse --show-toplevel' # show worktree root
+    'cdgroot:cd $(dirname $(git rev-parse --git-common-dir))' # cd to project root
+    'cdgwroot:cd $(git rev-parse --show-toplevel)' # cd to worktree root
 
     # --------------- dir movement --------------
     "cdd:cd ~/Desktop"
