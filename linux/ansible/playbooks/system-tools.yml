@@ -32,6 +32,12 @@
     become: true
     tags: superuser
 
+  - name: enable nono's copr
+    community.general.copr:
+      name: always-further/nono
+    become: true
+    tags: superuser
+
   - name: enable starship's copr
     community.general.copr:
       name: atim/starship
@@ -61,6 +67,7 @@
         - glances
         - htop
         - lazygit
+        - nono-cli
         - openssl
         - podman-compose
         - python3-devel
