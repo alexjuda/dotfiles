@@ -1,0 +1,27 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "plugin": [
+        "superpowers@git+https://github.com/obra/superpowers.git"
+    ],
+    "permission": {
+        "bash": {
+            "*": "allow"
+        },
+        "edit": "allow",
+        "external_directory": {
+            "~/.config/opencode/memory/**": "allow",
+            "~/Code/**": "allow",
+            "/tmp/**": "allow"
+        },
+        "read": {
+            "*": "allow",
+            "*.env": "deny",
+            "*.env.*": "deny",
+            "*.env.example": "allow",
+            ".envrc": "deny"
+        },
+        "grep": "allow",
+        "patch": "allow",
+        "webfetch": "allow"
+    }
+}
