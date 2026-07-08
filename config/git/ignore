@@ -3,3 +3,6 @@ wt/
 
 # rv cache
 .rv/
+
+# direnv
+.envrc
