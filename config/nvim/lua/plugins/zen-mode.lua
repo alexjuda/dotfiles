@@ -4,7 +4,7 @@ return {
     opts = {
         window = {
             -- Don't make the side margins of a different shade color than the make text.
-            -- backdrop = 1.0,
+            backdrop = 1.0,
             -- Defaults to something like 120. I use 100 line lengths for markdown.
             width = 100,
             options = {
