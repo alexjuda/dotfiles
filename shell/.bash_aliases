@@ -86,6 +86,9 @@ custom_aliases=(
     "ll:ls -alhF --color=auto"
     "la:ls -ah --color=auto"
 
+    # --------------- search --------------------
+    "ckt:ck --tui" # semantic search with tui, backed by ck-search
+
     # --------------- shortcuts --------------
     "lg:lazygit"
     "va:source .venv/bin/activate"

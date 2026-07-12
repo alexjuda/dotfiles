@@ -6,3 +6,6 @@ wt/
 
 # direnv
 .envrc
+
+# ck-search
+.ck
