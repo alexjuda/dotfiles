@@ -36,7 +36,8 @@
             "*.env": "deny",
             "*.env.*": "deny",
             "*.env.example": "allow",
-            ".envrc": "deny"
+            ".envrc": "deny",
+            "*.envrc": "deny"
         },
         "grep": "allow",
         "patch": "allow",
