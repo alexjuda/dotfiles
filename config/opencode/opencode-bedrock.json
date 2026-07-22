@@ -21,6 +21,7 @@
             "helm template *": "allow",
             "ls *": "allow",
             "rg *": "allow",
+            "wc -l": "allow",
             "which *": "allow"
         },
         "external_directory": {
