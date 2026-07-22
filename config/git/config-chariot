@@ -1,0 +1,5 @@
+# Should be symlinked to ~/.config/git/config
+# >>> chariot git routing >>>
+[include]
+	path = /Users/alexanderjuda/.config/chariot/git/insteadOf.gitconfig
+# <<< chariot git routing <<<
