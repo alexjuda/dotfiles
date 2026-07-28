@@ -86,6 +86,10 @@ custom_aliases=(
     "ll:ls -alhF --color=auto"
     "la:ls -ah --color=auto"
 
+    # --------------- kubernetetes --------------
+    "kg:kubectl get"
+    "kd:kubectl describe"
+
     # --------------- search --------------------
     "ckt:ck --tui" # semantic search with tui, backed by ck-search
 
