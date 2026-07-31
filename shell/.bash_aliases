@@ -30,7 +30,7 @@ custom_aliases=(
     "ggfl:git push --force-with-lease"
 
     "glo:git log --oneline --decorate"
-    "gloga:git log --oneline --decorate --graph --all"
+    'gloga:git log --oneline --decorate --graph --exclude="*/gh-pages" --exclude="*/release-please--branches--main" --all'
 
     "gm:git merge"
     "gmff:git merge --ff-only"
