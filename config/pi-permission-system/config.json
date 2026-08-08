@@ -1,17 +1,36 @@
 {
-  "permission": {
-    "*": "allow",
-    "path": {
-      "*": "allow",
-      "*.direnv": "deny",
-      "*.direnv.*": "deny",
-      "*.env": "deny",
-      "*.env.*": "deny",
-      "*.env.example": "allow"
-    },
-    "bash": {
-      "*": "ask"
-    },
-    "external_directory": "ask"
-  }
+    "permission": {
+        "*": "allow",
+        "path": {
+            "*": "allow",
+            "*.direnv": "deny",
+            "*.direnv.*": "deny",
+            "*.env": "deny",
+            "*.env.*": "deny",
+            "*.env.example": "allow"
+        },
+        "bash": {
+            "*": "ask",
+            "argocd app get *": "allow",
+            "cat ~/.config/opencode/memory/MEMORY.md": "allow",
+            "gh pr diff *": "allow",
+            "gh pr list *": "allow",
+            "gh pr view *": "allow",
+            "git branch": "allow",
+            "git branch -a": "allow",
+            "git diff *": "allow",
+            "git fetch *": "allow",
+            "git log *": "allow",
+            "git rev-parse": "allow",
+            "git show *": "allow",
+            "git status *": "allow",
+            "grep *": "allow",
+            "helm template *": "allow",
+            "ls *": "allow",
+            "rg *": "allow",
+            "wc -l": "allow",
+            "which *": "allow"
+        },
+        "external_directory": "ask"
+    }
 }
