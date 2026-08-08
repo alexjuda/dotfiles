@@ -35,7 +35,9 @@
         },
         "external_directory": {
             "*": "ask",
-            "~/.config/opencode/skills/*": "allow"
+            "~/.config/opencode/skills/*": "allow",
+            "~/Code/*": "allow",
+            "/tmp/*": "allow"
         }
     }
 }
