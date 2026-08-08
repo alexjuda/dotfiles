@@ -7,7 +7,8 @@
             "*.direnv.*": "deny",
             "*.env": "deny",
             "*.env.*": "deny",
-            "*.env.example": "allow"
+            "*.env.example": "allow",
+            "~/.config/opencode/skills/*": "allow"
         },
         "bash": {
             "*": "ask",
@@ -31,6 +32,9 @@
             "wc -l": "allow",
             "which *": "allow"
         },
-        "external_directory": "ask"
+        "external_directory": {
+            "*": "ask",
+            "~/.config/opencode/skills/*": "allow"
+        }
     }
 }
