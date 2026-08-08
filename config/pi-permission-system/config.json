@@ -12,6 +12,7 @@
         },
         "bash": {
             "*": "ask",
+            "*/skills/exa-search-cli/exa-search *": "allow",
             "argocd app get *": "allow",
             "cat ~/.config/opencode/memory/MEMORY.md": "allow",
             "gh pr diff *": "allow",
