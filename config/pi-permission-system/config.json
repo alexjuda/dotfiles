@@ -1,0 +1,17 @@
+{
+  "permission": {
+    "*": "allow",
+    "path": {
+      "*": "allow",
+      "*.direnv": "deny",
+      "*.direnv.*": "deny",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "bash": {
+      "*": "ask"
+    },
+    "external_directory": "ask"
+  }
+}
