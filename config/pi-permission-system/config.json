@@ -33,7 +33,7 @@
             "ls *": "allow",
             "rg *": "allow",
             "sort *": "allow",
-            "wc -l": "allow",
+            "wc *": "allow",
             "which *": "allow"
         },
         "external_directory": {
