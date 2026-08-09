@@ -32,6 +32,7 @@
             "helm template *": "allow",
             "ls *": "allow",
             "rg *": "allow",
+            "sort *": "allow",
             "wc -l": "allow",
             "which *": "allow"
         },
