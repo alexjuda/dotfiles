@@ -4,8 +4,8 @@
   "packages": [
     "npm:@gotgenes/pi-permission-system"
   ],
-  "defaultProvider": "openrouter",
-  "defaultModel": "openrouter/auto",
+  "defaultProvider": "llama.cpp",
+  "defaultModel": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
   "defaultThinkingLevel": "medium",
   "terminal": {
     "showTerminalProgress": true
@@ -18,19 +18,7 @@
   ],
   "hideThinkingBlock": true,
   "enabledModels": [
-    "openrouter/openai/gpt-oss-20b:free",
-    "openrouter/google/gemma-4-31b-it:free",
-    "openrouter/poolside/laguna-s-2.1:free",
-    "openrouter/cohere/north-mini-code:free",
-    "openrouter/poolside/laguna-xs-2.1:free",
-    "openrouter/google/gemma-4-26b-a4b-it:free",
-    "openrouter/inclusionai/ling-3.0-tiny:free",
-    "openrouter/nvidia/nemotron-nano-9b-v2:free",
-    "openrouter/nvidia/nemotron-3-nano-30b-a3b:free",
-    "openrouter/nvidia/nemotron-nano-12b-v2-vl:free",
-    "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
-    "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
-    "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-    "openrouter/openrouter/auto"
+    "llama.cpp/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
+    "openrouter/openrouter/free"
   ]
 }
