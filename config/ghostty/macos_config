@@ -10,6 +10,10 @@ keybind = ctrl+shift+e=new_split:down
 keybind = ctrl+shift+o=new_split:right
 keybind = ctrl+shift+enter=toggle_split_zoom
 
+# --- clipboard ---
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+
 # --- windows ---
 keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+w=close_surface
