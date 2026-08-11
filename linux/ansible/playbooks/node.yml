@@ -45,7 +45,17 @@
         npm install -g vscode-langservers-extracted
 
         # Other tools
+        npm install -g @earendil-works/pi-coding-agent
         npm install -g @mermaid-js/mermaid-cli
         npm install -g opencode-ai
+    become_user: alex
+    become: true
+
+  - name: Install Pi extensions
+    ansible.builtin.shell:
+      cmd: |
+        export PATH="$HOME/.nodenv/bin:$PATH"
+        eval "$(nodenv init - zsh)"
+        pi install npm:@gotgenes/pi-permission-system
     become_user: alex
     become: true

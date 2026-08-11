@@ -144,6 +144,33 @@
           src: ~/Code/dotfiles/shell/shell-scripts
           dest: ~/.local/share/aj-apps/shell-scripts
           state: link
+
+      - name: create pi config directories
+        ansible.builtin.file:
+          path: "{{ item }}"
+          state: directory
+          mode: "0755"
+        loop:
+          - ~/.pi/agent
+          - ~/.pi/agent/extensions/pi-permission-system
+
+      - name: link pi agent settings
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi/settings.json
+          dest: ~/.pi/agent/settings.json
+          state: link
+
+      - name: link pi agent auth
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi/auth.json
+          dest: ~/.pi/agent/auth.json
+          state: link
+
+      - name: link pi permission system config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi-permission-system/config.json
+          dest: ~/.pi/agent/extensions/pi-permission-system/config.json
+          state: link
     become_user: alex
     become: true
 
