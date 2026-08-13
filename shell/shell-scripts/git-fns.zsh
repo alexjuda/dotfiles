@@ -40,3 +40,26 @@ function git-rebase-ancestor () {
     git rebase --onto $other $(git merge-base $other $current) $current
 }
 
+# Review commits one by one.
+function review_next() {
+    local start=$1 end=$2
+    if git merge-base --is-ancestor "$start" HEAD 2>/dev/null \
+        && git merge-base --is-ancestor HEAD "$end" 2>/dev/null; then
+        local next
+        next=$(git rev-list --reverse --ancestry-path "HEAD..$end" | head -1)
+        if [ -z "$next" ]; then
+            git checkout "$start"
+            echo "↩︎  wrapped back to first commit"
+        else
+            git checkout "$next"
+        fi
+    else
+        git checkout "$start"
+        echo "⚠︎  jumped to first commit (was off-range)"
+    fi
+
+    local pos total
+    pos=$(git rev-list --count "$start..HEAD")
+    total=$(git rev-list --count "$start..$end")
+    echo ">>> [$((pos+1))/$((total+1))]"
+}

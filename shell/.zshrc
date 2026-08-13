@@ -125,6 +125,7 @@ lazyload gwco -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
 lazyload gwn -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
 lazyload gwbD -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
 lazyload git-rebase-ancestor -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
+lazyload review_next -- 'source ~/.local/share/aj-apps/shell-scripts/git-fns.zsh'
 
 lazyload y -- 'source ~/.local/share/aj-apps/shell-scripts/yazi-fns.zsh'
 lazyload untar -- 'source ~/.local/share/aj-apps/shell-scripts/tar-fns.zsh'
