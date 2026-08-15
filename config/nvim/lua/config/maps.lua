@@ -62,18 +62,32 @@ M.setup = function()
 
     -- Files
     ----------
-    local yank_file_path = function()
-        local rel_path = vim.fn.expand("%:.")
-        local line_no = vim.fn.line(".")
-        local grep_line = rel_path .. ":" .. line_no
-        vim.fn.setreg("+", grep_line)
-        print("\"" .. grep_line .. "\" copied")
-    end
 
-    local yank_absolute_file_path = function()
-        local rel_path = vim.fn.expand("%:p")
-        local line_no = vim.fn.line(".")
-        local grep_line = rel_path .. ":" .. line_no
+    --- @param params {absolute?: boolean, use_range?: boolean} | nil
+    local yank_file_path = function(params)
+        params = params or {}
+        local absolute = params["absolute"] or false
+        local use_range = params["use_range"] or false
+
+        local rel_path
+        if absolute then
+            rel_path = vim.fn.expand("%:p")
+        else
+            rel_path = vim.fn.expand("%:.")
+        end
+
+        local line_marker
+        if use_range then
+            local v_line = vim.fn.line("v")
+            local dot_line = vim.fn.line(".")
+            local start_line = math.min(v_line, dot_line)
+            local end_line = math.max(v_line, dot_line)
+            line_marker = start_line .. "-" .. end_line
+        else
+            line_marker = vim.fn.line(".")
+        end
+
+        local grep_line = rel_path .. ":" .. line_marker
         vim.fn.setreg("+", grep_line)
         print("\"" .. grep_line .. "\" copied")
     end
@@ -88,9 +102,12 @@ M.setup = function()
     end
 
     wk_group("<leader>f", "files...")
+
     map("n", "<leader>fr", function() telescope().oldfiles({ only_cwd = true }) end, noremap, "recent files in cwd")
     map("n", "<leader>fy", function() yank_file_path() end, noremap, "yank file path")
-    map("n", "<leader>fY", function() yank_absolute_file_path() end, noremap, "yank absolute file path")
+    map("v", "<leader>fy", function() yank_file_path({ use_range = true }) end, noremap, "yank file path")
+    map("n", "<leader>fY", function() yank_file_path({ absolute = true }) end, noremap, "yank absolute file path")
+    map("v", "<leader>fY", function() yank_file_path({ absolute = true, use_range = true }) end, noremap, "yank absolute file path")
     map("n", "<leader>fo", function() open_enclosing_dir_in_finder() end, noremap, "open dir in finder")
 
 
