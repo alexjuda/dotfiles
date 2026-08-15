@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.1",
+  "lastChangelogVersion": "0.84.2",
   "theme": "dark",
   "packages": [
     "npm:@gotgenes/pi-permission-system"
@@ -16,9 +16,5 @@
   "skills": [
     "~/.config/opencode/skills"
   ],
-  "hideThinkingBlock": true,
-  "enabledModels": [
-    "llama.cpp/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
-    "openrouter/openrouter/free"
-  ]
+  "hideThinkingBlock": true
 }
