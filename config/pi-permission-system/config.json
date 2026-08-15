@@ -8,7 +8,8 @@
             "*.env": "deny",
             "*.env.*": "deny",
             "*.env.example": "allow",
-            "~/.config/opencode/skills/*": "allow"
+            "~/.config/opencode/skills/*": "allow",
+            "~/.nodenv/versions/*/lib/node_modules/@earendil-works/pi-coding-agent/docs/*": "allow"
         },
         "bash": {
             "*": "ask",
@@ -45,6 +46,7 @@
         "external_directory": {
             "*": "ask",
             "~/.config/opencode/skills/*": "allow",
+            "~/.nodenv/versions/*/lib/node_modules/@earendil-works/pi-coding-agent/docs/*": "allow",
             "~/Code/*": "allow",
             "/tmp/*": "allow"
         }
