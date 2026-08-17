@@ -34,6 +34,7 @@
             "head *": "allow",
             "helm template *": "allow",
             "ls *": "allow",
+            "python3 -m json.tool *": "allow",
             "rg *": "allow",
             "./searxng_search.py *": "allow",
             "sed *": "allow",
