@@ -14,7 +14,8 @@
   "tuiMode": "regular",
   "fullscreenScrollbar": "auto",
   "skills": [
-    "~/.config/opencode/skills"
+    "~/.config/opencode/skills",
+    "~/Code/3rd-party/ponytail/skills"
   ],
   "hideThinkingBlock": true
 }

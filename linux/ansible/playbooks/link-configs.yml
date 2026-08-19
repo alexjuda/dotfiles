@@ -115,6 +115,12 @@
           dest: ~/.config/lazygit
           state: link
 
+      - name: link nono profiles
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/nono/profiles
+          dest: ~/.config/nono/profiles
+          state: link
+
       - name: link starship config file
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/starship.toml
@@ -153,23 +159,48 @@
         loop:
           - ~/.pi/agent
           - ~/.pi/agent/extensions/pi-permission-system
+          - ~/.pi/nono-agent
 
       - name: link pi agent settings
         ansible.builtin.file:
-          src: ~/Code/dotfiles/config/pi/settings.json
+          src: ~/Code/dotfiles/config/pi/agent/settings.json
           dest: ~/.pi/agent/settings.json
           state: link
 
       - name: link pi agent auth
         ansible.builtin.file:
-          src: ~/Code/dotfiles/config/pi/auth.json
+          src: ~/Code/dotfiles/config/pi/agent/auth.json
           dest: ~/.pi/agent/auth.json
+          state: link
+
+      - name: link pi agent models store
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi/agent/models-store.json
+          dest: ~/.pi/agent/models-store.json
           state: link
 
       - name: link pi permission system config
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/pi-permission-system/config.json
           dest: ~/.pi/agent/extensions/pi-permission-system/config.json
+          state: link
+
+      - name: link pi nono-agent settings
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi/nono-agent/settings.json
+          dest: ~/.pi/nono-agent/settings.json
+          state: link
+
+      - name: link pi nono-agent auth
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi/nono-agent/auth.json
+          dest: ~/.pi/nono-agent/auth.json
+          state: link
+
+      - name: link pi nono-agent models store
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi/nono-agent/models-store.json
+          dest: ~/.pi/nono-agent/models-store.json
           state: link
     become_user: alex
     become: true

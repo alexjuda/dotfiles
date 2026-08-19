@@ -1,0 +1,28 @@
+{
+  "extends": "default",
+  "meta": {
+    "name": "opencode-inline",
+    "version": "1.0.0",
+    "description": "opencode sandbox profile based on the working inline command"
+  },
+  "filesystem": {
+    "read": [
+      "$HOME/.nodenv",
+      "$HOME/.nodenv/shims",
+      "$HOME/Code/dotfiles/config/opencode",
+      "$HOME/Code/ai/opencode-memory",
+      "$HOME/Code/ai/skills/skills"
+    ],
+    "allow": [
+      "$HOME/.config/opencode",
+      "$HOME/.local/share/opencode",
+      "$HOME/.cache/opencode",
+      "$HOME/.cache/uv",
+      "$HOME/.local/state/opencode",
+      "$HOME/Code/ws/ws1",
+      "$HOME/Code/ai/opencode-memory",
+      "$TMPDIR",
+      "/etc/uv"
+    ]
+  }
+}

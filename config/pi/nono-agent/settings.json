@@ -1,0 +1,20 @@
+{
+  "lastChangelogVersion": "0.84.2",
+  "theme": "dark",
+  "packages": [
+    "npm:@gotgenes/pi-permission-system"
+  ],
+  "defaultProvider": "llama.cpp",
+  "defaultModel": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
+  "defaultThinkingLevel": "medium",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "enableInstallTelemetry": true,
+  "tuiMode": "regular",
+  "fullscreenScrollbar": "auto",
+  "skills": [
+    "~/.config/opencode/skills"
+  ],
+  "hideThinkingBlock": true
+}
