@@ -1,0 +1,24 @@
+{
+  "lastChangelogVersion": "0.84.2",
+  "theme": "dark",
+  "packages": [
+    "npm:@gotgenes/pi-permission-system"
+  ],
+  "defaultProvider": "amazon-bedrock",
+  "defaultModel": "global.anthropic.claude-opus-4-8",
+  "defaultThinkingLevel": "medium",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "enableInstallTelemetry": true,
+  "tuiMode": "regular",
+  "fullscreenScrollbar": "auto",
+  "skills": [
+    "~/.config/opencode/skills"
+  ],
+  "hideThinkingBlock": true,
+  "enabledModels": [
+    "llama.cpp/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
+    "openrouter/openrouter/free"
+  ]
+}
