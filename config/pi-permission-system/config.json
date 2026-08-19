@@ -13,7 +13,6 @@
         },
         "bash": {
             "*": "ask",
-            "*/skills/exa-search-cli/exa-search *": "allow",
             "argocd app get *": "allow",
             "cat *": "allow",
             "cd *": "allow",
@@ -25,6 +24,7 @@
             "git branch -a": "allow",
             "git diff *": "allow",
             "git fetch *": "allow",
+            "git ls-files *": "allow",
             "git log *": "allow",
             "git rev-parse": "allow",
             "git show *": "allow",
@@ -37,6 +37,7 @@
             "python3 -m json.tool *": "allow",
             "rg *": "allow",
             "./searxng_search.py *": "allow",
+            "./scripts/notion_mcp.py *": "allow",
             "sed *": "allow",
             "sort *": "allow",
             "tail *": "allow",
