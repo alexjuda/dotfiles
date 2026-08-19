@@ -1,19 +1,12 @@
 {
   "meta": {
     "name": "pi",
-    "version": "1.0.0",
-    "description": "pi.dev sandbox — standalone, no conflicting deny groups"
-  },
-  "security": {
-    "signal_mode": "isolated",
-    "process_info_mode": "isolated",
-    "ipc_mode": "shared_memory_only"
+    "description": "pi.dev sandbox"
   },
   "groups": {
     "include": [
       "node_runtime",
       "python_runtime",
-      "rust_runtime",
       "git_config",
       "unlink_protection",
       { "name": "user_caches_linux", "when": "linux" },
@@ -23,28 +16,24 @@
   },
   "filesystem": {
     "allow": [
-      "$WORKDIR",
+      "$HOME/.npm",
       "$HOME/.pi/nono-agent",
       "$HOME/Code/dotfiles/config/pi/nono-agent",
-      "$HOME/.npm",
-      "$TMPDIR"
+      "$TMPDIR",
+      "$WORKDIR"
     ],
     "read": [
-      "$HOME/.nodenv",
-      "$HOME/.nodenv/shims",
-      "$HOME/.local/share/cargo",
+      "$HOME/.agents",
+      "$HOME/.cache/uv",
       "$HOME/.cargo",
-      "$HOME/.rustup",
       "$HOME/.config/nono/packages",
       "$HOME/.config/nono/profiles",
-      "$HOME/.agents",
-      "$HOME/.local/share/opencode",
-      "$HOME/.cache/uv",
-      "/etc/uv",
       "$HOME/.gitconfig",
       "$HOME/.gitconfig.local",
-      "$HOME/.ssh",
-      "$HOME/.gnupg",
+      "$HOME/.local/share/opencode",
+      "$HOME/.nodenv",
+      "$HOME/Code",
+      "/etc/uv",
       "/usr/local/bin"
     ],
     "suppress_save_prompt": [
@@ -53,9 +42,6 @@
       "$WORKDIR/target",
       "$WORKDIR/.next"
     ]
-  },
-  "network": {
-    "block": false
   },
   "workdir": {
     "access": "readwrite"
@@ -76,6 +62,5 @@
       ".git"
     ],
     "exclude_globs": ["*.tmp.[0-9]*.[0-9]*"]
-  },
-  "interactive": true
+  }
 }
