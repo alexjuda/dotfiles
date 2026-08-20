@@ -1,0 +1,113 @@
+{
+  "extends": [
+    "default"
+  ],
+  "meta": {
+    "name": "pi-bedrock",
+    "version": "0.1.0",
+    "description": "pi coding agent for the ml workspace (derived from python-dev)",
+    "author": null
+  },
+  "security": {
+    "signal_mode": null,
+    "process_info_mode": null,
+    "ipc_mode": null,
+    "capability_elevation": null,
+    "wsl2_proxy_policy": null
+  },
+  "groups": {
+    "include": [
+      "python_runtime",
+      "node_runtime"
+    ],
+    "exclude": []
+  },
+  "commands": {
+    "allow": [],
+    "deny": []
+  },
+  "filesystem": {
+    "allow": [
+      "~/.cache/uv",
+      "~/.pi/agent-nono",
+      "~/.config/opencode",
+      "~/Code",
+      "~/.docker"
+    ],
+    "read": [
+      "~/.nodenv",
+      "~/.config/git",
+      "~/.config/chariot/git",
+      "~/.gitconfig",
+      "~/.nodenv/shims",
+      "/opt/homebrew/lib/docker/cli-plugins",
+      "/opt/homebrew/Cellar/docker-buildx",
+      "/opt/homebrew/Cellar/docker-compose"
+    ],
+    "write": [],
+    "allow_file": [],
+    "read_file": [],
+    "write_file": [],
+    "unix_socket": [
+      "~/.colima/default/docker.sock"
+    ],
+    "unix_socket_bind": [],
+    "unix_socket_dir": [],
+    "unix_socket_dir_bind": [],
+    "unix_socket_subtree": [],
+    "unix_socket_subtree_bind": [],
+    "deny": [],
+    "bypass_protection": [
+      "~/.docker"
+    ],
+    "suppress_save_prompt": [
+      "~/.aws/config",
+      "~/.config/git/config",
+      "~/.config/git/ignore"
+    ]
+  },
+  "network": {
+    "block": false,
+    "allow_http2": false,
+    "network_profile": null,
+    "allow_domain": [],
+    "deny_domain": [],
+    "open_port": [],
+    "open_port_range": [],
+    "listen_port": [],
+    "listen_port_range": [],
+    "connect_port": [],
+    "no_proxy": [],
+    "custom_credentials": {},
+    "tls_intercept": null,
+    "upstream_proxy": null,
+    "upstream_bypass": []
+  },
+  "diagnostics": {
+    "suppress_system_services": []
+  },
+  "linux": {
+    "af_unix_mediation": null,
+    "sandbox_policy": null
+  },
+  "env_credentials": {},
+  "credential_capture": {},
+  "credential_providers": {},
+  "credential_routes": [],
+  "workdir": {
+    "access": "readwrite"
+  },
+  "hooks": {},
+  "session_hooks": {},
+  "rollback": {
+    "exclude_patterns": [],
+    "exclude_globs": []
+  },
+  "interactive": false,
+  "skipdirs": [],
+  "packs": [],
+  "command_args": [],
+  "unsafe_macos_seatbelt_rules": [
+    "(allow user-preference-read)"
+  ]
+}
