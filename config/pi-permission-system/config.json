@@ -37,7 +37,7 @@
             "python3 -m json.tool *": "allow",
             "rg *": "allow",
             "./searxng_search.py *": "allow",
-            "./scripts/notion_mcp.py *": "allow",
+            "*/scripts/notion_mcp.py *": "allow",
             "sed *": "allow",
             "sort *": "allow",
             "tail *": "allow",
