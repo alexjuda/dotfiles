@@ -29,7 +29,8 @@
   "filesystem": {
     "allow": [
       "~/.cache/uv",
-      "~/.pi/agent-nono",
+      "~/.npm",
+      "~/.pi/nono-agent",
       "~/.config/opencode",
       "~/Code",
       "~/.docker"
