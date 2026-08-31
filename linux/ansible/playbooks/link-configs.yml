@@ -115,6 +115,11 @@
           dest: ~/.config/lazygit
           state: link
 
+      - name: make nono config dir
+        ansible.builtin.file:
+          dest: ~/.config/nono
+          state: directory
+
       - name: link nono profiles
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/nono/profiles
