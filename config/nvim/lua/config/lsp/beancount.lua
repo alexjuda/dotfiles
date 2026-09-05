@@ -26,6 +26,9 @@ local function setup_polarmutex_lsp()
         filetypes = filetypes,
         on_attach = common.shared_on_attach,
         capabilities = common.shared_make_client_capabilities(),
+        init_options = {
+            journal_file = "src/main.beancount"
+        },
     })
 
     vim.lsp.enable("beancount-language-server")
