@@ -8,4 +8,5 @@ if #vim.api.nvim_list_uis() > 0 then
     require("config.built_in_settings").setup()
     require("config.maps").setup()
     require("config.lsp").setup()
+    require("config.commands").setup()
 end
