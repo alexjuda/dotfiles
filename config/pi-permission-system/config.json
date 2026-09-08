@@ -31,6 +31,7 @@
             "git status *": "allow",
             "grep *": "allow",
             "find *": "allow",
+            "for *": "allow",
             "head *": "allow",
             "helm template *": "allow",
             "jq *": "allow",
