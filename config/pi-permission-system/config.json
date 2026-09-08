@@ -33,6 +33,7 @@
             "find *": "allow",
             "head *": "allow",
             "helm template *": "allow",
+            "jq *": "allow",
             "ls *": "allow",
             "python3 -m json.tool *": "allow",
             "rg *": "allow",
