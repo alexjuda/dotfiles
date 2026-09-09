@@ -16,6 +16,7 @@
             "argocd app get *": "allow",
             "cat *": "allow",
             "cd *": "allow",
+            "echo *": "allow",
             "./exa-search *": "allow",
             "gh pr diff *": "allow",
             "gh pr list *": "allow",
