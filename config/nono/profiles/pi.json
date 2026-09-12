@@ -32,7 +32,6 @@
       "$HOME/.gitconfig.local",
       "$HOME/.local/share/opencode",
       "$HOME/.nodenv",
-      "$HOME/Code",
       "/etc/uv",
       "/usr/local/bin"
     ],
