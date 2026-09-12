@@ -1,9 +1,7 @@
 {
-  "lastChangelogVersion": "0.84.2",
+  "lastChangelogVersion": "0.85.1",
   "theme": "dark",
-  "packages": [
-    "npm:@gotgenes/pi-permission-system"
-  ],
+  "packages": [],
   "defaultProvider": "llama.cpp",
   "defaultModel": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
   "defaultThinkingLevel": "medium",
@@ -16,5 +14,5 @@
   "skills": [
     "~/.config/opencode/skills"
   ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": false
 }
