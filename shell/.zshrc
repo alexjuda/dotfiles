@@ -86,6 +86,8 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Configure aliases
 . ~/.bash_aliases
+# Platform-specific aliases
+. ~/.bash_aliases_platform.zsh
 
 # Fix deleting one path component at a time.
 # Source: https://stackoverflow.com/a/1438523

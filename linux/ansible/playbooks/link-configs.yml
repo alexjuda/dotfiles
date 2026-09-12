@@ -150,6 +150,12 @@
           dest: ~/.bash_aliases
           state: link
 
+      - name: link platform-specific aliases
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/shell/.bash_aliases_linux.zsh
+          dest: ~/.bash_aliases_platform.zsh
+          state: link
+
       - name: link shell scripts
         ansible.builtin.file:
           src: ~/Code/dotfiles/shell/shell-scripts
