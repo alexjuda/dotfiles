@@ -28,10 +28,13 @@
       "$HOME/.cargo",
       "$HOME/.config/nono/packages",
       "$HOME/.config/nono/profiles",
+      "$HOME/.config/opencode/skills",
       "$HOME/.gitconfig",
       "$HOME/.gitconfig.local",
       "$HOME/.local/share/opencode",
       "$HOME/.nodenv",
+      "$HOME/Code/dotfiles/config/nono",
+      "$HOME/Code/dotfiles/config/opencode",
       "/etc/uv",
       "/usr/local/bin"
     ],
