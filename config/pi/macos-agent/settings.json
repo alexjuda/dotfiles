@@ -16,6 +16,6 @@
   "skills": [
     "~/.config/opencode/skills"
   ],
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "enabledModels": []
 }
