@@ -33,7 +33,8 @@
       "~/.pi/macos-nono-agent",
       "~/.config/opencode",
       "~/Code",
-      "~/.docker"
+      "~/.docker",
+      "~/.local/state/notion-mcp"
     ],
     "read": [
       "~/.nodenv",

@@ -1,9 +1,7 @@
 {
   "lastChangelogVersion": "0.85.1",
   "theme": "dark",
-  "packages": [
-    "npm:@gotgenes/pi-permission-system"
-  ],
+  "packages": [],
   "defaultProvider": "amazon-bedrock",
   "defaultModel": "global.anthropic.claude-opus-4-8",
   "defaultThinkingLevel": "medium",
