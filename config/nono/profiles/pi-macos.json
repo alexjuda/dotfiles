@@ -3,9 +3,9 @@
     "default"
   ],
   "meta": {
-    "name": "pi-bedrock",
+    "name": "pi-macos",
     "version": "0.1.0",
-    "description": "pi coding agent for the ml workspace (derived from python-dev)",
+    "description": "pi coding agent for my workspace (derived from python-dev)",
     "author": null
   },
   "security": {
@@ -30,7 +30,7 @@
     "allow": [
       "~/.cache/uv",
       "~/.npm",
-      "~/.pi/nono-agent",
+      "~/.pi/macos-nono-agent",
       "~/.config/opencode",
       "~/Code",
       "~/.docker"
