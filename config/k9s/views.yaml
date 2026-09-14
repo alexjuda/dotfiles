@@ -1,0 +1,44 @@
+# Author: Alparslan Avci
+# k9s custom views. Reloaded live -- no restart needed.
+#
+# Column syntax:  NAME[:expression][|attrs]
+#
+#   NAME   only [A-Za-z0-9_ %/-] is allowed -- no dots in a column name.
+#   expr   a JSONPath (kubectl-style) or a jq expression, see below.
+#   attrs  N=numeric/right-align  T=age  W=wide-only  S=always-show
+#          H=hide  L=left-align  R=right-align
+#
+# Escaping labels (the part that bites):
+#   Dots inside a label key MUST be backslash-escaped; slashes must NOT be.
+#     works:  .metadata.labels.node\.kubernetes\.io/instance-type
+#     silent: .metadata.labels['node.kubernetes.io/instance-type']
+#   kubectl's bracket-quoting resolves to <none> here with nothing in the log,
+#   so a typo looks exactly like an absent label. Check k9s.log when a column
+#   comes up empty.
+#
+# jq fallbacks: if a spec contains at least two '|' characters, k9s evaluates
+# it with jq instead of JSONPath. That is the only way to express "label A,
+# else label B". The expression must start with '.' -- a leading '(' becomes
+# '.(' and breaks. Pad with a trailing '| .' to reach two pipes if needed.
+#
+# Columns not listed below are not lost: k9s appends every remaining default
+# column in wide mode (press 'w' to toggle).
+
+views:
+  v1/nodes:
+    sortColumn: INSTANCE-TYPE:asc
+    columns:
+      - NAME
+      - STATUS
+      - INSTANCE-TYPE:.metadata.labels.node\.kubernetes\.io/instance-type
+      # Karpenter NodePool, else the managed node group name.
+      - POOL:.metadata.labels["karpenter.sh/nodepool"] // .metadata.labels["eks.amazonaws.com/nodegroup"] // "-" | . | .
+      - ZONE:.metadata.labels.topology\.kubernetes\.io/zone
+      # Native k9s columns: allocatable / capacity nvidia.com/gpu.
+      - GPU/A
+      - GPU/C
+      - TAINTS
+      - PODS
+      - '%CPU'
+      - '%MEM'
+      - AGE

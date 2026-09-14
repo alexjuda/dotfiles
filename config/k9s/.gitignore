@@ -1,0 +1,5 @@
+# k9s app state, per-cluster
+/clusters
+
+# app log
+k9s.log
