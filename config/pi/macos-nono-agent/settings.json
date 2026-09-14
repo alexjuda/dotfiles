@@ -17,8 +17,5 @@
     "~/.config/opencode/skills"
   ],
   "hideThinkingBlock": true,
-  "enabledModels": [
-    "llama.cpp/unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
-    "openrouter/openrouter/free"
-  ]
+  "enabledModels": []
 }
