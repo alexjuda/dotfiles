@@ -105,6 +105,12 @@
     "exclude_patterns": [],
     "exclude_globs": []
   },
+  "open_urls": {
+    "allow_origins": [
+      "https://mcp.notion.com"
+    ],
+    "allow_localhost": false
+  },
   "interactive": false,
   "skipdirs": [],
   "packs": [],
