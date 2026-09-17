@@ -37,6 +37,7 @@
             "helm template *": "allow",
             "jq *": "allow",
             "ls *": "allow",
+            "mkdir *": "allow",
             "python3 -m json.tool *": "allow",
             "rg *": "allow",
             "./searxng_search.py *": "allow",
