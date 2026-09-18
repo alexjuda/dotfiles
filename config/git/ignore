@@ -9,3 +9,6 @@ wt/
 
 # ck-search
 .ck
+
+# Obsidian vault information
+.obsidian
