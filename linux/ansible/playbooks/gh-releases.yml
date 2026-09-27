@@ -65,6 +65,7 @@
       - astral-sh/uv
       - BeaconBay/ck
       - google/yamlfmt
+      - herdrdev/herdr
       - jesseduffield/lazydocker
       - mrjosh/helm-ls
       # It's also available in Fedora DNF repos, but we wanna run the latest
