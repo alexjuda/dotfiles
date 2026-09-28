@@ -42,6 +42,7 @@
             "rg *": "allow",
             "./searxng_search.py *": "allow",
             "*/scripts/notion_mcp.py *": "allow",
+            "scripts/notion_mcp.py call notion-fetch": "allow",
             "sed *": "allow",
             "sort *": "allow",
             "tail *": "allow",
