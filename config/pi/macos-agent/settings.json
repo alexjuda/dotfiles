@@ -1,11 +1,11 @@
 {
-  "lastChangelogVersion": "0.85.1",
+  "lastChangelogVersion": "0.87.1",
   "theme": "dark",
   "packages": [
     "npm:@gotgenes/pi-permission-system"
   ],
   "defaultProvider": "amazon-bedrock",
-  "defaultModel": "global.anthropic.claude-opus-4-8",
+  "defaultModel": "global.anthropic.claude-opus-5-5",
   "defaultThinkingLevel": "medium",
   "terminal": {
     "showTerminalProgress": true
@@ -17,5 +17,8 @@
     "~/.config/opencode/skills"
   ],
   "hideThinkingBlock": false,
-  "enabledModels": []
+  "enabledModels": [
+    "amazon-bedrock/anthropic.claude-opus-4-8",
+    "amazon-bedrock/global.anthropic.claude-opus-5-5"
+  ]
 }
