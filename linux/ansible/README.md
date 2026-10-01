@@ -37,3 +37,5 @@ Prefer the lowest-friction package manager first:
 ## Adding config files
 
 When a new app has a config file: create `../../config/<app>/` with the minimal config, then add a symlink task to `playbooks/link-configs.yml`.
+
+If the app generates runtime files (e.g. `session.json`, `.plugins.lock`), add a `../../config/<app>/.gitignore` listing them so they don't pollute git status.

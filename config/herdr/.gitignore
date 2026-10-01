@@ -1,0 +1,3 @@
+# Runtime files - don't track
+.plugins.lock
+session.json
