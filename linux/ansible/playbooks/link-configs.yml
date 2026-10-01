@@ -190,12 +190,6 @@
           dest: ~/.pi/agent/auth.json
           state: link
 
-      - name: link pi agent models store
-        ansible.builtin.file:
-          src: ~/Code/dotfiles/config/pi/agent/models-store.json
-          dest: ~/.pi/agent/models-store.json
-          state: link
-
       - name: link pi permission system config
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/pi-permission-system/config.json
@@ -212,12 +206,6 @@
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/pi/nono-agent/auth.json
           dest: ~/.pi/nono-agent/auth.json
-          state: link
-
-      - name: link pi nono-agent models store
-        ansible.builtin.file:
-          src: ~/Code/dotfiles/config/pi/nono-agent/models-store.json
-          dest: ~/.pi/nono-agent/models-store.json
           state: link
     become_user: alex
     become: true
