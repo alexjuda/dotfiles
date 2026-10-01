@@ -2,3 +2,18 @@ onboarding = false
 
 [theme]
 name = "kanagawa"
+
+[keys]
+# I keep default keybindings as the 1st element, adding my prefernce as the 2nd. Unless not possible.
+prefix = ["ctrl+b", "ctrl+space"]
+
+new_tab = ["prefix+c", "prefix+t"]
+
+navigate_workspace_up = ["up", "k"]
+navigate_workspace_down = ["down", "j"]
+
+copy_mode = ["prefix+[", "prefix+/"]
+
+# default: prefix+s
+settings = ["prefix+,"]
+split_horizontal = ["prefix+minus", "prefix+s"]
