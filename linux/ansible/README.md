@@ -24,3 +24,12 @@ This runs ansible as root via sudo, which triggers your fingerprint (or password
 ## Fresh Machine Setup
 
 No special setup required - just run `make localhost` and authenticate with your fingerprint once.
+
+## Adding CLI tools
+
+Prefer the lowest-friction package manager first:
+
+1. Fedora DNF → `system-tools.yml` (if available in repos)
+2. COPR → enable copr repo + `dnf` in `system-tools.yml` (if available but not in main repos)
+3. Language-specific installation tool - `python.yml`, `node.yml`, etc
+4. eget via GitHub releases → `gh-releases.yml`
