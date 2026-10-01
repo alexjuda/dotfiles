@@ -103,6 +103,12 @@
           dest: ~/.config/git
           state: link
 
+      - name: link herdr config
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/herdr
+          dest: ~/.config/herdr
+          state: link
+
       - name: link k9s config
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/k9s

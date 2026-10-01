@@ -33,3 +33,7 @@ Prefer the lowest-friction package manager first:
 2. COPR → enable copr repo + `dnf` in `system-tools.yml` (if available but not in main repos)
 3. Language-specific installation tool - `python.yml`, `node.yml`, etc
 4. eget via GitHub releases → `gh-releases.yml`
+
+## Adding config files
+
+When a new app has a config file: create `../../config/<app>/` with the minimal config, then add a symlink task to `playbooks/link-configs.yml`.
