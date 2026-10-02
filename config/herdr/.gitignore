@@ -1,7 +1,8 @@
 # Runtime files - don't track
 .plugins.lock
-session.json
-session-snapshots/
 herdr-client.log
 herdr-server.log
 herdr.sock.agent
+release-notes.json
+session-snapshots/
+session.json
