@@ -1,5 +1,8 @@
 onboarding = false
 
+[ui]
+prompt_new_tab_name = false
+
 [theme]
 name = "kanagawa"
 auto_switch = true
