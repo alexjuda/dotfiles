@@ -4,8 +4,10 @@ onboarding = false
 prompt_new_tab_name = false
 
 [theme]
-name = "kanagawa"
 auto_switch = true
+light_name = "solarized-light"
+dark_name = "kanagawa"
+
 
 [keys]
 # I keep default keybindings as the 1st element, adding my prefernce as the 2nd. Unless not possible.

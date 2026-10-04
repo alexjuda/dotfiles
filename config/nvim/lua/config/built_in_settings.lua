@@ -135,7 +135,7 @@ local function set_builtins()
     if vim.o.background == "dark" then
         vim.cmd.colorscheme "ayu-mirage"
     else
-        vim.cmd.colorscheme "rose-pine-dawn"
+        vim.cmd.colorscheme "solarized"
     end
 end
 
