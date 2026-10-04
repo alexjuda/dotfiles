@@ -17,8 +17,8 @@
   "filesystem": {
     "allow": [
       "$HOME/.npm",
-      "$HOME/.pi/nono-agent",
-      "$HOME/Code/dotfiles/config/pi/nono-agent",
+      "$HOME/.pi",
+      "$HOME/Code/dotfiles/config/pi",
       "$TMPDIR",
       "$WORKDIR"
     ],
@@ -51,18 +51,7 @@
   "environment": {
     "set_vars": {
       "PI_CODING_AGENT_DIR": "$HOME/.pi/nono-agent",
-      "PI_CODING_AGENT_SESSION_DIR": "$HOME/.pi/nono-agent/sessions"
+      "PI_CODING_AGENT_SESSION_DIR": "$HOME/.pi/agent/sessions"
     }
-  },
-  "undo": {
-    "exclude_patterns": [
-      "node_modules",
-      ".next",
-      "__pycache__",
-      "target",
-      ".pi",
-      ".git"
-    ],
-    "exclude_globs": ["*.tmp.[0-9]*.[0-9]*"]
   }
 }
