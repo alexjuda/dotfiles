@@ -28,7 +28,7 @@
             "git fetch *": "allow",
             "git ls-files *": "allow",
             "git log *": "allow",
-            "git rev-parse": "allow",
+            "git rev-parse *": "allow",
             "git show *": "allow",
             "git status *": "allow",
             "grep *": "allow",
