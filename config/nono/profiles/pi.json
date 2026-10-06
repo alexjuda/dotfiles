@@ -31,6 +31,7 @@
       "$HOME/.config/opencode/skills",
       "$HOME/.gitconfig",
       "$HOME/.gitconfig.local",
+      "$HOME/.local/share/aj-eget-bins",
       "$HOME/.local/share/opencode",
       "$HOME/.nodenv",
       "$HOME/Code/dotfiles/config/nono",
