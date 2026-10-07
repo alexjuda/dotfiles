@@ -50,7 +50,8 @@
             "tail *": "allow",
             "uniq *": "allow",
             "wc *": "allow",
-            "which *": "allow"
+            "which *": "allow",
+            "yq *": "allow"
         },
         "external_directory": {
             "*": "ask",
