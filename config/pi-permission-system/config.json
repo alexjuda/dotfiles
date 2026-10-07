@@ -36,6 +36,7 @@
             "find *": "allow",
             "for *": "allow",
             "head *": "allow",
+            "helm lint *": "allow",
             "helm template *": "allow",
             "jq *": "allow",
             "ls *": "allow",
