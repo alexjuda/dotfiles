@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "1.1.0",
   "theme": "dark",
   "packages": [
     "npm:@gotgenes/pi-permission-system"
@@ -18,7 +18,7 @@
   ],
   "hideThinkingBlock": false,
   "enabledModels": [
-    "amazon-bedrock/anthropic.claude-opus-4-8",
-    "amazon-bedrock/global.anthropic.claude-opus-5-5"
+    "amazon-bedrock/global.anthropic.claude-opus-5-5",
+    "amazon-bedrock/global.anthropic.claude-sonnet-5-5"
   ]
 }

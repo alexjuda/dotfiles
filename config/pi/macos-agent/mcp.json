@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "jira": {
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "description": "Atlassian Jira and Confluence: search, read, create, and update issues and pages"
+    },
+    "notion": {
+      "url": "https://mcp.notion.com/mcp",
+      "description": "Notion: search, read, and edit pages and databases"
+    }
+  }
+}
