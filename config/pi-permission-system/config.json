@@ -14,6 +14,7 @@
         "bash": {
             "*": "ask",
             "argocd app get *": "allow",
+            "awk *": "allow",
             "cat *": "allow",
             "cd *": "allow",
             "echo *": "allow",
