@@ -7,6 +7,14 @@
     "notion": {
       "url": "https://mcp.notion.com/mcp",
       "description": "Notion: search, read, and edit pages and databases"
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "!echo Bearer $(gh auth token)"
+      },
+      "exposure": "deferred",
+      "description": "GitHub: repos, issues, PRs, code search, actions"
     }
   }
 }
