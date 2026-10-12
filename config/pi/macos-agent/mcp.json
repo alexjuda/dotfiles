@@ -1,20 +1,23 @@
 {
-  "mcpServers": {
-    "jira": {
-      "url": "https://mcp.atlassian.com/v1/mcp",
-      "description": "Atlassian Jira and Confluence: search, read, create, and update issues and pages"
-    },
-    "notion": {
-      "url": "https://mcp.notion.com/mcp",
-      "description": "Notion: search, read, and edit pages and databases"
-    },
-    "github": {
-      "url": "https://api.githubcopilot.com/mcp/",
-      "headers": {
-        "Authorization": "!echo Bearer $(gh auth token)"
-      },
-      "exposure": "deferred",
-      "description": "GitHub: repos, issues, PRs, code search, actions"
+    "mcpServers": {
+        "jira": {
+            "url": "https://mcp.atlassian.com/v1/mcp",
+            "description": "Atlassian Jira and Confluence: search, read, create, and update issues and pages"
+        },
+        "notion": {
+            "url": "https://mcp.notion.com/mcp",
+            "description": "Notion: search, read, and edit pages and databases"
+        },
+        "github": {
+            "command": "github-mcp-server",
+            "args": [
+                "stdio",
+                "--read-only",
+                "--oauth-scopes",
+                "repo,read:org"
+            ],
+            "exposure": "deferred",
+            "description": "GitHub (read-only): repos, issues, PRs, code search"
+        }
     }
-  }
 }
