@@ -23,3 +23,17 @@ copy_mode = ["prefix+[", "prefix+/"]
 # default: prefix+s
 settings = ["prefix+,"]
 split_horizontal = ["prefix+minus", "prefix+s"]
+
+# Config for https://github.com/AVGVSTVS96/herdr-drovr.
+# Installation: herdr plugin install AVGVSTVS96/herdr-drovr
+[[keys.command]]
+key = "prefix+M"
+type = "plugin_action"
+command = "drovr.move-tab"
+description = "move tab to workspace"
+
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "drovr.move-pane"
+description = "move pane to tab"
