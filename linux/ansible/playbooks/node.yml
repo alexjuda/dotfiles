@@ -47,7 +47,7 @@
         # Other tools
         npm install -g @earendil-works/pi-coding-agent
         npm install -g @mermaid-js/mermaid-cli
-        npm install -g opencode-ai
+        npm install -g hunkdiff
     become_user: alex
     become: true
 
