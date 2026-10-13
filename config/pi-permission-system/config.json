@@ -17,6 +17,7 @@
             "awk *": "allow",
             "cat *": "allow",
             "cd *": "allow",
+            "cut *": "allow",
             "echo *": "allow",
             "date *": "allow",
             "./exa-search *": "allow",
