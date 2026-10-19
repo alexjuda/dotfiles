@@ -2,6 +2,8 @@ onboarding = false
 
 [ui]
 prompt_new_tab_name = false
+# default: 3. My mouse sends 3 events per tick so gotta use something smaller.
+mouse_scroll_lines = 1
 
 [theme]
 auto_switch = true
