@@ -48,6 +48,7 @@
             "ls *": "allow",
             "mkdir *": "allow",
             "python3 -m json.tool *": "allow",
+            "pwd": "allow",
             "rg *": "allow",
             "scripts/notion_mcp.py call notion-fetch": "allow",
             "sed *": "allow",
