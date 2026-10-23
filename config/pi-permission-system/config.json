@@ -18,6 +18,7 @@
             "./searxng_search.py *": "allow",
             "argocd app get *": "allow",
             "awk *": "allow",
+            "bd *": "allow",
             "cat *": "allow",
             "cd *": "allow",
             "cut *": "allow",
