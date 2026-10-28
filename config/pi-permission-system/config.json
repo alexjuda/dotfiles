@@ -43,6 +43,7 @@
             "git show *": "allow",
             "git status *": "allow",
             "git worktree *": "allow",
+            "gofmt *": "allow",
             "grep *": "allow",
             "head *": "allow",
             "helm lint *": "allow",
