@@ -43,6 +43,7 @@
             "git remote -v": "allow",
             "git show *": "allow",
             "git status *": "allow",
+            "git tag --list *": "allow",
             "git worktree *": "allow",
             "gofmt *": "allow",
             "grep *": "allow",
