@@ -62,6 +62,7 @@
             "rg *": "allow",
             "scripts/notion_mcp.py call notion-fetch": "allow",
             "sed *": "allow",
+            "set -e": "allow",
             "sort *": "allow",
             "tail *": "allow",
             "uniq *": "allow",
