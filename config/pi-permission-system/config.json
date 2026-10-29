@@ -30,6 +30,8 @@
             "gh pr diff *": "allow",
             "gh pr list *": "allow",
             "gh pr view *": "allow",
+            "gh run list *": "allow",
+            "gh run view *": "allow",
             "git branch --show-current": "allow",
             "git branch -a": "allow",
             "git branch": "allow",
