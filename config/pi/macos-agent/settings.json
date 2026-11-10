@@ -1,9 +1,10 @@
 {
-  "lastChangelogVersion": "1.2.0",
+  "lastChangelogVersion": "1.4.0",
   "theme": "dark",
   "packages": [
     "npm:@gotgenes/pi-permission-system",
-    "npm:@eleboucher/pi-memini"
+    "npm:@eleboucher/pi-memini",
+    "npm:pi-subagents"
   ],
   "defaultProvider": "amazon-bedrock",
   "defaultModel": "global.anthropic.claude-opus-5-5",
@@ -21,6 +22,9 @@
   "hideThinkingBlock": false,
   "enabledModels": [
     "amazon-bedrock/global.anthropic.claude-opus-5-5",
-    "amazon-bedrock/global.anthropic.claude-sonnet-5-5"
+    "amazon-bedrock/global.anthropic.claude-sonnet-5-5",
+    "amazon-bedrock/global.openai.gpt-6.1-sol",
+    "amazon-bedrock/global.openai.gpt-6.1-terra",
+    "amazon-bedrock/global.openai.gpt-6-astra"
   ]
 }
