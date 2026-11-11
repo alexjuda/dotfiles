@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.99.2",
+  "lastChangelogVersion": "1.5.2",
   "theme": "light/dark",
   "packages": [
     "npm:@gotgenes/pi-permission-system"
@@ -17,5 +17,8 @@
     "~/.config/opencode/skills",
     "~/Code/3rd-party/ponytail/skills"
   ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.0.0"
+  }
 }
