@@ -40,7 +40,9 @@
 
         # Lang servers
         npm install -g bash-language-server
-        npm install -g typescript
+        # As of Nov 2026, typescript-language-server v6.x.x doesn't work with typescript >=v7. We need to install
+        # typescript v6.
+        npm install -g typescript@6
         npm install -g typescript-language-server
         npm install -g vscode-langservers-extracted
 
