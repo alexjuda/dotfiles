@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.2",
   "theme": "dark",
   "packages": [
     "npm:@gotgenes/pi-permission-system",
@@ -7,7 +7,7 @@
     "npm:pi-subagents"
   ],
   "defaultProvider": "amazon-bedrock",
-  "defaultModel": "global.anthropic.claude-opus-5-5",
+  "defaultModel": "amazon-bedrock/global.openai.gpt-6.1-sol",
   "defaultThinkingLevel": "medium",
   "terminal": {
     "showTerminalProgress": true
@@ -17,6 +17,7 @@
   "fullscreenScrollbar": "auto",
   "skills": [
     "~/.config/opencode/skills",
+    "~/Code/3rd-party/mattpocock-skills/skills/engineering",
     "~/Code/3rd-party/mattpocock-skills/skills/productivity"
   ],
   "hideThinkingBlock": false,
@@ -26,5 +27,9 @@
     "amazon-bedrock/global.openai.gpt-6.1-sol",
     "amazon-bedrock/global.openai.gpt-6.1-terra",
     "amazon-bedrock/global.openai.gpt-6-astra"
-  ]
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.0.0",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.88.0"
+  }
 }
