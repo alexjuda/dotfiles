@@ -1,1 +1,4 @@
 font-size = 14
+
+# --- herdr integration ---
+command = ~/.local/share/aj-eget-bins/herdr
