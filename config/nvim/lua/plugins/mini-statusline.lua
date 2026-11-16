@@ -87,6 +87,7 @@ return {
                     local filencoding = (vim.bo.fileencoding ~= "utf-8" and vim.bo.fileencoding or nil)
                     local fileformat = (vim.bo.fileformat ~= "unix" and vim.bo.fileformat or nil)
                     local filetype = vim.bo.filetype
+                    local fold_info = string.format("fold:%d/%s", vim.wo.foldlevel, vim.wo.foldenable and "on" or "off")
 
                     local cwd_basename = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
 
@@ -102,8 +103,8 @@ return {
                         { hl = "MiniStatuslineFilename", strings = { get_filename() } },
                         "%=", -- split left/right
                         -- Right --
-                        -- Gray. LSP client status + LSP warnings and errors + LSP summary + file encoding + ft
-                        { hl = "MiniStatuslineDevinfo",  strings = { lsp_progress, diagnostics, lsp, filencoding, fileformat, filetype } },
+                        -- Gray. LSP status + file details + fold settings.
+                        { hl = "MiniStatuslineDevinfo",  strings = { lsp_progress, diagnostics, lsp, filencoding, fileformat, filetype, fold_info } },
                         -- Mode-colored, [1/7] 1C 2L 23% + line,col
                         { hl = mode_hl,                  strings = { search, get_visual_selection_info(), get_position_info() } },
                     })
