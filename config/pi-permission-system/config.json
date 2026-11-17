@@ -44,6 +44,7 @@
             "git merge-base *": "allow",
             "git rev-parse *": "allow",
             "git remote -v": "allow",
+            "git remote get-url *": "allow",
             "git show *": "allow",
             "git status *": "allow",
             "git tag --list *": "allow",
