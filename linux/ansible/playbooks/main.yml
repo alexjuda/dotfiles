@@ -2,8 +2,6 @@
 
 - ansible.builtin.import_playbook: system-tools.yml
 
-- ansible.builtin.import_playbook: system-tools.yml
-
 - ansible.builtin.import_playbook: nvidia-drivers.yml
 
 - ansible.builtin.import_playbook: link-configs.yml
