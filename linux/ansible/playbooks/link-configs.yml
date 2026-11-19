@@ -11,14 +11,7 @@
     become_user: alex
     become: true
 
-  - name: clone opencode memory
-    git:
-      repo: git@github.com:alexjuda/opencode-memory.git
-      dest: ~/Code/ai/opencode-memory
-    become_user: alex
-    become: true
-
-  - name: clone opencode skills
+  - name: clone alexjuda/skills
     git:
       repo: git@github.com:alexjuda/skills.git
       dest: ~/Code/ai/skills
@@ -60,41 +53,6 @@
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/ghostty/linux_config
           dest: ~/.config/ghostty/platform_specific_config
-          state: link
-
-      - name: create opencode config directory
-        ansible.builtin.file:
-          path: ~/.config/opencode
-          state: directory
-
-      - name: link opencode config file
-        ansible.builtin.file:
-          src: ~/Code/dotfiles/config/opencode/opencode.json
-          dest: ~/.config/opencode/opencode.json
-          state: link
-
-      - name: link opencode AGENTS.md
-        ansible.builtin.file:
-          src: ~/Code/dotfiles/config/opencode/AGENTS.md
-          dest: ~/.config/opencode/AGENTS.md
-          state: link
-
-      - name: link opencode commands
-        ansible.builtin.file:
-          src: ~/Code/dotfiles/config/opencode/commands
-          dest: ~/.config/opencode/commands
-          state: link
-
-      - name: link opencode memory
-        ansible.builtin.file:
-          src: ~/Code/ai/opencode-memory
-          dest: ~/.config/opencode/memory
-          state: link
-
-      - name: link opencode skills
-        ansible.builtin.file:
-          src: ~/Code/ai/skills/skills
-          dest: ~/.config/opencode/skills
           state: link
 
       - name: link git config
