@@ -16,6 +16,8 @@
   "fullscreenScrollbar": "auto",
   "skills": [
     "~/Code/ai/skills",
+    "~/Code/3rd-party/mattpocock-skills/skills/engineering",
+    "~/Code/3rd-party/mattpocock-skills/skills/productivity",
     "~/Code/3rd-party/ponytail/skills"
   ],
   "hideThinkingBlock": true,

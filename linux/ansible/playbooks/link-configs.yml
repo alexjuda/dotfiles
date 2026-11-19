@@ -11,13 +11,6 @@
     become_user: alex
     become: true
 
-  - name: clone alexjuda/skills
-    git:
-      repo: git@github.com:alexjuda/skills.git
-      dest: ~/Code/ai/skills
-    become_user: alex
-    become: true
-
   - name: link configs
     block:
       - name: link kitty config
@@ -179,5 +172,26 @@
     git:
       repo: git@github.com:alexjuda/notes-synced.git
       dest: ~/Documents/notes-synced
+    become_user: alex
+    become: true
+
+  - name: clone alexjuda/skills
+    git:
+      repo: git@github.com:alexjuda/skills.git
+      dest: ~/Code/ai/skills
+    become_user: alex
+    become: true
+
+  - name: clone ponytail
+    git:
+      repo: https://github.com/DietrichGebert/ponytail.git
+      dest: ~/Code/3rd-party/ponytail
+    become_user: alex
+    become: true
+
+  - name: clone mattpocock/skills
+    git:
+      repo: https://github.com/mattpocock/skills.git
+      dest: ~/Code/3rd-party/mattpocock-skills
     become_user: alex
     become: true
