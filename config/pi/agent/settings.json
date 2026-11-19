@@ -14,11 +14,11 @@
   "tuiMode": "regular",
   "fullscreenScrollbar": "auto",
   "skills": [
-    "~/.config/opencode/skills",
+    "~/Code/ai/skills",
     "~/Code/3rd-party/ponytail/skills"
   ],
   "hideThinkingBlock": true,
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.0.0"
+    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.2.0"
   }
 }
