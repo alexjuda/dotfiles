@@ -2,7 +2,8 @@
   "lastChangelogVersion": "1.5.2",
   "theme": "light/dark",
   "packages": [
-    "npm:@gotgenes/pi-permission-system"
+    "npm:@gotgenes/pi-permission-system",
+    "npm:pi-skill-gate"
   ],
   "defaultProvider": "llama.cpp",
   "defaultModel": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q4_K_M",
