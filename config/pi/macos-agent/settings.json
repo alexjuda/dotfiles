@@ -16,9 +16,11 @@
   "tuiMode": "regular",
   "fullscreenScrollbar": "auto",
   "skills": [
-    "~/.config/opencode/skills",
+    "~/Code/alexjuda/skills/skills",
+    "~/Code/workspaces/ml/repos/fl97inc-skills",
     "~/Code/3rd-party/mattpocock-skills/skills/engineering",
-    "~/Code/3rd-party/mattpocock-skills/skills/productivity"
+    "~/Code/3rd-party/mattpocock-skills/skills/productivity",
+    "~/Code/3rd-party/ponytail/skills"
   ],
   "hideThinkingBlock": false,
   "enabledModels": [
