@@ -4,7 +4,7 @@
   "packages": [
     "npm:@gotgenes/pi-permission-system",
     "npm:@eleboucher/pi-memini",
-    "npm:pi-subagents"
+    "npm:pi-skill-gate"
   ],
   "defaultProvider": "amazon-bedrock",
   "defaultModel": "amazon-bedrock/global.openai.gpt-6.1-sol",
