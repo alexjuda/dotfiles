@@ -41,6 +41,7 @@
             "git log *": "allow",
             "git ls-files *": "allow",
             "git ls-remote *": "allow",
+            "git ls-tree *": "allow",
             "git merge-base *": "allow",
             "git rev-parse *": "allow",
             "git remote -v": "allow",
