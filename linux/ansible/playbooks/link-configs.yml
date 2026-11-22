@@ -141,6 +141,12 @@
           dest: ~/.pi/agent/auth.json
           state: link
 
+      - name: link pi AGENTS.md
+        ansible.builtin.file:
+          src: ~/Code/dotfiles/config/pi/agent/AGENTS.md
+          dest: ~/.pi/agent/AGENTS.md
+          state: link
+
       - name: link pi permission system config
         ansible.builtin.file:
           src: ~/Code/dotfiles/config/pi-permission-system/config.json
