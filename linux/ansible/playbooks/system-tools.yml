@@ -60,6 +60,7 @@
         - clang-tools-extra
         - direnv
         - doas
+        - du-dust
         - gcc-c++
         - fuse-libs # required for running .AppImage
         - git-crypt
