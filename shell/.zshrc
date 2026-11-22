@@ -116,6 +116,9 @@ lazyload kubectl -- 'source <(kubectl completion zsh)'
 # Set up zoxide, cd replacement.
 lazyload z -- 'eval "$(zoxide init zsh)"'
 
+# Set up zoxide, cd replacement.
+lazyload bd -- 'source <(bd completion zsh)'
+
 # Chariot completions
 lazyload chariot -- 'source <(chariot completion zsh)'
 
