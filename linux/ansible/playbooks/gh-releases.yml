@@ -64,6 +64,7 @@
       - artempyanykh/marksman
       - astral-sh/uv
       - BeaconBay/ck
+      - "gastownhall/beads --file bd"
       - google/yamlfmt
       - herdrdev/herdr
       - jesseduffield/lazydocker
