@@ -31,7 +31,7 @@
     "amazon-bedrock/global.openai.gpt-6-astra"
   ],
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.0.0",
+    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.2.0",
     "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.88.0"
   }
 }

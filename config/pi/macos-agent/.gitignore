@@ -5,3 +5,5 @@
 /npm
 /pi-subagents/last-seen-version.json
 /sessions
+/config/skill-gate-analytics.json
+/config/skill-gate.json
