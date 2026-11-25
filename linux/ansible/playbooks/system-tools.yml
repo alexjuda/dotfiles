@@ -73,6 +73,7 @@
         - podman-compose
         - python3-devel
         - rclone
+        - restic
         - ripgrep
         - tree-sitter-cli
         - starship
